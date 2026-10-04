@@ -1,0 +1,2085 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>혼자놀자 - 서울 혼놀 코스·지도</title>
+<meta name="description" content="시간·예산·기분만 고르면 서울 혼놀 코스를 동선까지 짜 드려요. 서울 25개 구 혼놀 명소와 혼놀 지도.">
+<meta name="theme-color" content="#EBF0F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1520" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="혼자놀자">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<!-- 공유 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="혼자놀자">
+<meta property="og:title" content="혼자놀자 - 서울 혼놀 코스·지도">
+<meta property="og:description" content="시간·예산·기분만 고르면 서울 혼놀 코스를 동선까지 짜 드려요. 서울 25개 구 혼놀 명소와 혼놀 지도.">
+<meta property="og:url" content="https://choej0822-hue.github.io/">
+<meta property="og:image" content="https://choej0822-hue.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/display.woff" as="font" type="font/woff" crossorigin>
+<style>
+@font-face{font-family:"Honja Display";src:url("fonts/display.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+:root{
+  /* Layout: one phone-width app column. Course = a one-rider "ticket" with a timetable rail; map = full-bleed sketch of Seoul around the Han. */
+  --bg:#EBF0F3;
+  --surface:#FFFFFF;
+  --surface-2:#F3F6F8;
+  --ink:#10223A;
+  --ink-2:#4A5C70;
+  --ink-3:#74859A;
+  --line:#D3DCE3;
+  --sea:#1B5A91;
+  --sea-ink:#FFFFFF;
+  --sea-soft:#DDE8F3;
+  --sun:#E8722A;
+  --sun-ink:#A4460F;
+  --sun-soft:#FCEADD;
+  --on-c:#FFFFFF;
+  --scrim:rgb(6 14 24 / .40);
+  --shadow:0 1px 2px rgb(16 34 58 / .06), 0 6px 18px rgb(16 34 58 / .08);
+  --map-land:#F5F3EE;
+  --map-green:#DCEAD4;
+  --map-palace:#EFE2C4;
+  --map-water:#BED7EA;
+  --map-bank:#98B9D0;
+  --map-line2:#3FA45F;
+  --map-label:#61768B;
+  --c-walk:#13879A;
+  --c-view:#2B6AD0;
+  --c-heritage:#A3680F;
+  --c-culture:#744FC2;
+  --c-food:#D8582A;
+  --c-play:#C93D79;
+  --font-display:"Honja Display","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --font-num:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:14px;
+  --r-sm:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1520;--surface:#122030;--surface-2:#172838;--ink:#E5EDF4;--ink-2:#A8B7C5;--ink-3:#7A8B9C;--line:#24384B;
+    --sea:#5DA4E3;--sea-ink:#06121E;--sea-soft:#16324A;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#3A2617;--on-c:#FFFFFF;
+    --scrim:rgb(0 0 0 / .55);--shadow:0 1px 2px rgb(0 0 0 / .3), 0 8px 22px rgb(0 0 0 / .35);
+    --map-land:#18232F;--map-green:#1C3326;--map-palace:#30291C;--map-water:#123049;--map-bank:#28506F;--map-line2:#3D9A59;--map-label:#8EA2B6;
+    --c-walk:#2BA3B6;--c-view:#4F8BEA;--c-heritage:#D39A44;--c-culture:#9175DD;--c-food:#E77446;--c-play:#DE5C93;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1520;--surface:#122030;--surface-2:#172838;--ink:#E5EDF4;--ink-2:#A8B7C5;--ink-3:#7A8B9C;--line:#24384B;
+  --sea:#5DA4E3;--sea-ink:#06121E;--sea-soft:#16324A;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#3A2617;--on-c:#FFFFFF;
+  --scrim:rgb(0 0 0 / .55);--shadow:0 1px 2px rgb(0 0 0 / .3), 0 8px 22px rgb(0 0 0 / .35);
+  --map-land:#18232F;--map-green:#1C3326;--map-palace:#30291C;--map-water:#123049;--map-bank:#28506F;--map-line2:#3D9A59;--map-label:#8EA2B6;
+  --c-walk:#2BA3B6;--c-view:#4F8BEA;--c-heritage:#D39A44;--c-culture:#9175DD;--c-food:#E77446;--c-play:#DE5C93;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{height:100%;box-sizing:border-box;-webkit-text-size-adjust:100%}
+body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--font-body);word-break:keep-all;overflow-wrap:anywhere}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+.num{font-family:var(--font-num);font-variant-numeric:tabular-nums}
+
+.app{height:100%;max-width:480px;margin-inline:auto;display:flex;flex-direction:column;position:relative;overflow:hidden;background:var(--bg)}
+@media (min-width:520px){.app{border-inline:1px solid var(--line)}}
+
+/* header */
+.top{flex:none;display:flex;align-items:center;gap:8px;padding:10px 16px 8px}
+.brand{display:flex;align-items:center;gap:7px}
+.brand svg{width:30px;height:30px;flex:none}
+.logo-sun{fill:var(--sun)}
+.logo-wave{fill:none;stroke:var(--sea);stroke-width:2.2;stroke-linecap:round}
+.brand-name{font-family:var(--font-display);font-size:24px;line-height:1;letter-spacing:-.01em}
+.beta{font-size:11.5px;font-weight:600;color:var(--sea);background:var(--sea-soft);border-radius:999px;padding:3px 8px;white-space:nowrap}
+.spacer{flex:1}
+.icon-btn{width:36px;height:36px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;color:var(--ink-2)}
+.icon-btn svg{width:18px;height:18px}
+
+.main{flex:1;min-height:0;position:relative}
+.tab{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain}
+.pad{padding-inline:16px;padding-block:6px 36px}
+
+/* tab bar */
+.tabbar{flex:none;display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);border-top:1px solid var(--line)}
+.tabbar button{appearance:none;border:0;background:none;padding:7px 0 9px;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px;font-weight:600;color:var(--ink-3);cursor:pointer}
+.tabbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabbar button[aria-selected="true"]{color:var(--sea)}
+.tabbar .badge{font:600 10px/1 var(--font-num);background:var(--sun);color:var(--on-c);border-radius:999px;padding:2px 5px;margin-left:3px;vertical-align:1px}
+
+/* course tab */
+.hero{font-family:var(--font-display);font-weight:400;font-size:31px;line-height:1.12;letter-spacing:-.01em;margin:10px 0 6px;text-wrap:balance}
+.hero em{font-style:normal;color:var(--sun-ink)}
+.lede{margin:0 0 18px;color:var(--ink-2);font-size:14.5px;max-width:34em}
+.opts{display:grid;gap:16px}
+.q{border:0;margin:0;padding:0;min-width:0}
+.q legend{padding:0;margin-bottom:8px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.q legend button{appearance:none;border:0;background:none;padding:0 0 0 6px;font-size:12px;font-weight:600;color:var(--sea);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{position:relative;display:block}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.chip span{display:inline-flex;align-items:baseline;gap:5px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:14px;font-weight:500;cursor:pointer;user-select:none;-webkit-user-select:none;transition:background .15s,border-color .15s,color .15s}
+.chip small{font-size:11.5px;font-weight:500;color:var(--ink-3)}
+.chip input:checked + span{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.chip input:checked + span small{color:inherit;opacity:.72}
+.chip input:focus-visible + span{outline:2px solid var(--sea);outline-offset:2px}
+.more{border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface-2)}
+.more summary{list-style:none;cursor:pointer;padding:11px 14px;display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(45deg);margin:0 2px 4px auto;transition:transform .15s}
+.more[open] summary::after{transform:rotate(-135deg);margin-bottom:-2px}
+.more-sum{font-weight:500;color:var(--ink-3);font-size:12.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.more-body{display:grid;gap:14px;padding:4px 14px 14px}
+.sel-wrap{position:relative}
+.sel-wrap::after{content:"";position:absolute;right:15px;top:50%;width:8px;height:8px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.sel{width:100%;appearance:none;-webkit-appearance:none;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);color:var(--ink);font:500 15px/1.3 var(--font-body);padding:11px 38px 11px 13px;cursor:pointer}
+.must{display:flex;align-items:center;gap:8px;background:var(--sun-soft);border-radius:var(--r-sm);padding:9px 12px;font-size:13.5px}
+.must b{font-weight:600}
+.must button{margin-left:auto;appearance:none;border:0;background:none;color:var(--sun-ink);font-weight:600;font-size:13px;cursor:pointer;padding:2px 4px}
+.cta{width:100%;border:0;border-radius:var(--r);background:var(--sea);color:var(--sea-ink);padding:15px 18px;font:600 16px/1 var(--font-body);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:var(--shadow)}
+.cta svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.cta:active{transform:translateY(1px)}
+
+/* ticket */
+.ticket{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:12px}
+.t-head{padding:16px 16px 12px}
+.t-kicker{display:flex;justify-content:space-between;gap:10px;font:600 11px/1 var(--font-num);letter-spacing:.08em;color:var(--sun-ink)}
+.t-title{font-family:var(--font-display);font-weight:400;font-size:26px;line-height:1.15;margin:10px 0 4px;text-wrap:balance}
+.t-sub{color:var(--ink-2);font-size:13.5px;margin:0}
+.t-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;margin:14px 0 0}
+.t-meta > div{min-width:0}
+.t-meta dt{font-size:11.5px;color:var(--ink-3);font-weight:600}
+.t-meta dd{margin:2px 0 0;font-weight:600;font-size:15px;line-height:1.3}
+.t-meta dd small{display:block;font-weight:500;font-size:12px;color:var(--ink-3)}
+.pips{display:inline-flex;gap:3px;vertical-align:1px;margin-right:5px}
+.pips i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.pips i.on{background:var(--sun)}
+.perf{position:relative;height:18px;background:linear-gradient(90deg,var(--line) 50%,transparent 0) 0 50%/10px 2px repeat-x;margin-inline:14px}
+.perf::before,.perf::after{content:"";position:absolute;top:0;width:18px;height:18px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+.perf::before{left:-24px}
+.perf::after{right:-24px}
+.notes{margin:0;padding:10px 16px 2px;list-style:none;display:grid;gap:4px}
+.notes li{font-size:12.5px;color:var(--ink-2);padding-left:13px;position:relative}
+.notes li::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--sun)}
+.tl{list-style:none;margin:0;padding:10px 16px 6px}
+.tl > li{display:grid;grid-template-columns:44px 26px minmax(0,1fr);column-gap:8px}
+.tl .time{font:500 13px/1.2 var(--font-num);color:var(--ink-2);padding-top:4px;text-align:right;font-variant-numeric:tabular-nums}
+.tl .rail{position:relative;display:flex;justify-content:center}
+.tl .rail::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--line)}
+.tl > li:first-child .rail::before{top:13px}
+.tl > li:last-child .rail::before{bottom:auto;height:13px}
+.tl .leg .rail::before{background:repeating-linear-gradient(var(--ink-3) 0 3px,transparent 3px 7px);opacity:.6}
+.dotn{position:relative;z-index:1;width:24px;height:24px;margin-top:1px;border-radius:50%;background:var(--c,var(--ink));color:var(--on-c);font:600 12px/24px var(--font-num);text-align:center}
+.dotn.hollow{background:var(--surface);border:2px solid var(--ink);width:16px;height:16px;margin-top:5px}
+.dotn.flag{background:var(--ink);color:var(--surface);width:16px;height:16px;margin-top:5px;border-radius:4px}
+.leg-text{font-size:12.5px;color:var(--ink-3);padding:6px 0 8px}
+.leg-text b{font-weight:600;color:var(--ink-2)}
+.stop .body,.edge .body{padding-bottom:16px;min-width:0}
+.edge .body{font-size:14px;font-weight:600;padding-top:3px}
+.edge .body small{display:block;font-weight:500;font-size:12px;color:var(--ink-3)}
+.stop-name{appearance:none;border:0;background:none;padding:0;text-align:left;font:600 16px/1.3 var(--font-body);color:var(--ink);cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.stop-meta{font-size:12.5px;color:var(--ink-2);margin-top:3px}
+.stop-tip{font-size:13.5px;color:var(--ink-2);margin:6px 0 0}
+.stop-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.mini{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:5px 10px;text-decoration:none;cursor:pointer;color:var(--ink-2);line-height:1.2}
+.mini[aria-pressed="true"]{color:var(--sun-ink);border-color:var(--sun);background:var(--sun-soft)}
+.mini svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mini[aria-pressed="true"] svg{fill:currentColor}
+.t-actions{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.t-actions button{appearance:none;border:0;background:none;padding:13px 4px;font-size:13.5px;font-weight:600;color:var(--sea);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.t-actions button + button{border-left:1px solid var(--line)}
+.t-actions svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.empty{padding:22px 16px;text-align:center;color:var(--ink-2)}
+.empty b{display:block;font-family:var(--font-display);font-weight:400;font-size:20px;color:var(--ink);margin-bottom:6px}
+
+/* levels */
+.section-h{font-family:var(--font-display);font-weight:400;font-size:21px;margin:34px 0 4px}
+.section-p{margin:0;color:var(--ink-2);font-size:13.5px}
+.lv-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+.lv-list li{display:grid;grid-template-columns:68px minmax(0,1fr);gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px}
+.lv-list .lv-tag{font:600 13px/1 var(--font-num);display:grid;gap:5px}
+.lv-list b{font-size:14px}
+.lv-list p{margin:1px 0 0;font-size:12.5px;color:var(--ink-2)}
+.fine{font-size:12px;color:var(--ink-3);margin:18px 0 0}
+
+/* map tab */
+.tab-map{display:flex;flex-direction:column;overflow:hidden}
+.map-bar{flex:none;display:grid;gap:7px;padding-block:4px 9px}
+.scroller{display:flex;gap:6px;overflow-x:auto;padding-inline:16px;scrollbar-width:none}
+.scroller::-webkit-scrollbar{display:none}
+.fchip{flex:none;display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);white-space:nowrap}
+.fchip .cdot{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.fchip[aria-pressed="false"]{color:var(--ink-3);background:transparent}
+.fchip[aria-pressed="false"] .cdot{background:transparent;box-shadow:inset 0 0 0 1.5px var(--c)}
+.rchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.rchip[aria-pressed="false"]{color:var(--ink-2);background:var(--surface)}
+.map-wrap{flex:1;min-height:0;position:relative;overflow:hidden;background:var(--map-land);touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;border-top:1px solid var(--line)}
+.map-wrap.dragging{cursor:grabbing}
+.map-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.landbase{fill:var(--map-land)}
+.green{fill:var(--map-green)}
+.greenline{fill:none;stroke:var(--map-green);stroke-linecap:round;stroke-linejoin:round}
+.palace{fill:var(--map-palace)}
+.bank{fill:none;stroke:var(--map-bank);stroke-linecap:round;stroke-linejoin:round}
+.water{fill:none;stroke:var(--map-water);stroke-linecap:round;stroke-linejoin:round}
+.isle{fill:var(--map-land)}
+.isle.green{fill:var(--map-green)}
+.lake{fill:var(--map-water);stroke:var(--map-bank);stroke-width:.04}
+.line2{fill:none;stroke:var(--map-line2);stroke-width:2.5;stroke-linejoin:round;opacity:.5}
+.route-case{fill:none;stroke:var(--surface);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.route{fill:none;stroke:var(--sun);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.overlay .pin,.overlay .cluster,.overlay .smark{pointer-events:auto}
+.alabel{position:absolute;left:0;top:0;width:0;height:0}
+.alabel span{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font-size:11.5px;font-weight:600;color:var(--map-label);letter-spacing:.06em;text-shadow:0 0 3px var(--map-land),0 0 3px var(--map-land)}
+.alabel.river span{font-family:var(--font-display);font-weight:400;font-size:15px;letter-spacing:.5em;color:var(--map-bank);text-shadow:none}
+.alabel.small span{font-size:10.5px;font-weight:500;letter-spacing:.02em}
+.alabel.line span{font-size:10.5px;font-weight:600;letter-spacing:.02em;color:var(--map-line2)}
+.pin,.cluster,.smark{position:absolute;left:0;top:0;width:0;height:0;border:0;padding:0;background:none;cursor:pointer}
+.pin-dot{position:absolute;left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;background:var(--c);color:var(--on-c);display:grid;place-items:center;box-shadow:0 0 0 2px var(--map-land),0 2px 6px rgb(0 0 0 / .22);transition:transform .15s}
+.pin-dot svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pin-label{position:absolute;left:16px;top:-11px;white-space:nowrap;font-size:12px;font-weight:600;line-height:1.5;background:var(--surface);color:var(--ink);border-radius:6px;padding:1px 6px;box-shadow:0 1px 3px rgb(0 0 0 / .18);display:none}
+.overlay.labels .pin-label,.pin.sel .pin-label{display:block}
+.pin.sel{z-index:3}
+.pin.sel .pin-dot{transform:scale(1.2);box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--c),0 3px 8px rgb(0 0 0 / .25)}
+.pin.dim{opacity:.38}
+.pin:focus-visible{outline:none}
+.pin:focus-visible .pin-dot,.cluster:focus-visible span,.smark:focus-visible b{outline:2px solid var(--sea);outline-offset:3px}
+.cluster span{position:absolute;left:-17px;top:-17px;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--surface);font:600 13px/34px var(--font-num);text-align:center;box-shadow:0 0 0 3px var(--map-land),0 2px 8px rgb(0 0 0 / .25)}
+.smark{z-index:4}
+.smark b{position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;background:var(--sun);color:var(--on-c);font:600 14px/30px var(--font-num);text-align:center;box-shadow:0 0 0 3px var(--surface),0 3px 8px rgb(0 0 0 / .25)}
+.smark.start b{background:var(--ink);color:var(--surface);font:600 11px/30px var(--font-body)}
+.smark i{position:absolute;left:18px;top:-10px;white-space:nowrap;font-style:normal;font-size:12px;font-weight:600;background:var(--surface);color:var(--ink);border-radius:6px;padding:1px 6px;box-shadow:0 1px 3px rgb(0 0 0 / .18)}
+.map-ui{position:absolute;right:12px;top:12px;display:grid;gap:6px;z-index:6}
+.map-ui button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 20px/1 var(--font-body);cursor:pointer;box-shadow:var(--shadow);display:grid;place-items:center}
+.map-ui svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.scalebar{position:absolute;left:12px;bottom:12px;z-index:6;font:500 11px/1 var(--font-num);color:var(--ink-2);pointer-events:none}
+.scalebar i{display:block;height:6px;border:2px solid var(--ink-2);border-top:0;margin-top:3px}
+.compass{position:absolute;right:16px;bottom:14px;z-index:6;width:26px;text-align:center;font:600 11px/1 var(--font-num);color:var(--ink-2);pointer-events:none}
+.compass svg{width:14px;height:20px;display:block;margin:0 auto 2px}
+.compass path{fill:var(--ink-2)}
+.hint{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);z-index:6;background:var(--ink);color:var(--surface);font-size:12.5px;font-weight:500;border-radius:999px;padding:7px 13px;white-space:nowrap;pointer-events:none;box-shadow:var(--shadow);transition:opacity .3s}
+.hint.gone{opacity:0}
+.course-banner{position:absolute;left:12px;right:62px;top:12px;z-index:6;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:7px 8px 7px 12px;display:flex;align-items:center;gap:8px;font-size:13px;box-shadow:var(--shadow)}
+.course-banner b{font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.course-banner button{margin-left:auto;flex:none;appearance:none;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer}
+
+/* sheet */
+.scrim{position:absolute;inset:0;background:var(--scrim);z-index:20}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:21;background:var(--surface);border-radius:18px 18px 0 0;max-height:84%;overflow-y:auto;overscroll-behavior:contain;padding:10px 16px 22px;box-shadow:0 -8px 30px rgb(0 0 0 / .2);animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+.sheet-grip{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 6px}
+.sheet-close{position:absolute;right:12px;top:12px}
+.s-eyebrow{display:flex;align-items:center;gap:6px;margin:8px 48px 0 0;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.cdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
+.s-title{font-family:var(--font-display);font-weight:400;font-size:25px;line-height:1.2;margin:6px 48px 6px 0;text-wrap:balance}
+.s-lv{font-size:13px;font-weight:600;color:var(--ink-2);display:flex;align-items:center;gap:2px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin:14px 0;padding:12px 14px;background:var(--surface-2);border-radius:var(--r-sm)}
+.facts > div{min-width:0}
+.facts dt{font-size:11.5px;color:var(--ink-3);font-weight:600}
+.facts dd{margin:2px 0 0;font-size:14px;font-weight:600}
+.s-tip{margin:0;font-size:14.5px}
+.s-info{margin:10px 0 0;font-size:12.5px;color:var(--ink-2)}
+.s-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 14px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1.2}
+.btn.primary{background:var(--sea);border-color:var(--sea);color:var(--sea-ink);flex:1 1 100%}
+.btn[aria-pressed="true"]{color:var(--sun-ink);border-color:var(--sun);background:var(--sun-soft)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn[aria-pressed="true"] svg{fill:currentColor}
+.s-fine{font-size:12px;color:var(--ink-3);margin:14px 0 0}
+.about h2{font-family:var(--font-display);font-weight:400;font-size:24px;margin:8px 48px 6px 0}
+.about ul{padding-left:18px;margin:10px 0 0;display:grid;gap:7px;font-size:13.5px;color:var(--ink-2)}
+.about h3{font-size:14px;margin:18px 0 0}
+
+/* saved */
+.saved-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.saved-list li{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 10px 10px 12px}
+.saved-list b{display:block;font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.saved-list small{display:block;font-size:12px;color:var(--ink-3)}
+.saved-empty{margin-top:16px;background:var(--surface);border:1px dashed var(--line);border-radius:var(--r);padding:26px 18px;text-align:center;color:var(--ink-2)}
+.saved-empty b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+.saved-empty .btn{margin-top:14px}
+
+.toast{position:absolute;left:50%;bottom:76px;transform:translateX(-50%);z-index:30;background:var(--ink);color:var(--surface);border-radius:18px;padding:9px 16px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow);width:max-content;max-width:calc(100% - 32px);text-align:center;pointer-events:none}
+/* 혼놀 정보 (crowd notes) */
+.solo{margin:14px 0 0;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-sm)}
+.solo-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0;font-size:13px;font-weight:700;color:var(--ink-2)}
+.solo-h button{appearance:none;border:0;background:none;padding:2px 0;font:600 13px var(--font-body);color:var(--sea);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.solo-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.solo-tag{display:inline-flex;align-items:center;font-size:12.5px;font-weight:600;border-radius:999px;padding:4px 10px;background:var(--sea-soft);color:var(--ink)}
+.solo-tag.bad{background:var(--sun-soft);color:var(--sun-ink)}
+.solo-empty,.solo-src{margin:6px 0 0;font-size:12.5px;color:var(--ink-3)}
+.report{display:grid;gap:16px;margin-top:12px}
+.field{display:grid;gap:7px}
+.field label{font-size:13px;font-weight:600;color:var(--ink-2)}
+.field input{width:100%;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface-2);color:var(--ink);font:400 15px var(--font-body);padding:11px 12px}
+.form-err{margin:0;font-size:13px;font-weight:600;color:var(--sun-ink)}
+.report .btn.primary:disabled{opacity:.6;cursor:default}
+.copybox{width:100%;min-height:150px;margin-top:10px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface-2);color:var(--ink);font:13px/1.5 var(--font-body);padding:10px;resize:vertical}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+
+/* installed app: keep clear of the status bar and the gesture bar */
+.top{padding-top:max(10px,env(safe-area-inset-top))}
+.tabbar{padding-bottom:env(safe-area-inset-bottom)}
+.toast{bottom:calc(76px + env(safe-area-inset-bottom))}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><path class="logo-sun" d="M8 17a7 7 0 0 1 14 0Z"/><path class="logo-wave" d="M3.5 20.5c2.7-2 5.4-2 8.1 0s5.4 2 8.1 0 4.5-1.6 6.8-.8"/><path class="logo-wave" d="M6 25c2.4-1.6 4.8-1.6 7.2 0s4.8 1.6 7.2 0"/></svg>
+      <span class="brand-name">혼자놀자</span>
+    </div>
+    <span class="beta">서울 베타</span>
+    <span class="spacer"></span>
+    <button class="icon-btn" id="btn-about" type="button" aria-label="혼자놀자 안내 보기">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 9v5"/><circle cx="10" cy="6.2" r=".6" fill="currentColor"/></svg>
+    </button>
+  </header>
+
+  <main class="main">
+    <section class="tab" id="tab-course" role="tabpanel" aria-labelledby="tb-course">
+      <div class="pad">
+        <h1 class="hero">오늘, <em>혼자</em><br>어디 갈까?</h1>
+        <p class="lede">시간·예산·기분만 고르면 서울 혼놀 코스를 동선까지 짜 드려요. 서울 25개 구 혼놀 명소 <span id="place-count">80</span>곳을 담았어요.</p>
+        <form class="opts" id="opts" novalidate>
+          <fieldset class="q"><legend>얼마나</legend><div class="chips" data-group="dur"></div></fieldset>
+          <fieldset class="q"><legend>예산은</legend><div class="chips" data-group="budget"></div></fieldset>
+          <fieldset class="q"><legend>지금 기분</legend><div class="chips" data-group="mood"></div></fieldset>
+          <fieldset class="q"><legend>혼놀 레벨<button type="button" id="btn-lv-help">레벨이 뭐예요?</button></legend><div class="chips" data-group="lv"></div></fieldset>
+          <details class="more" id="more">
+            <summary>세부 설정 <span class="more-sum" id="more-sum"></span></summary>
+            <div class="more-body">
+              <fieldset class="q"><legend id="lg-start">어디서 출발</legend><div class="sel-wrap"><select class="sel" id="start-sel" name="start" aria-labelledby="lg-start"></select></div></fieldset>
+              <fieldset class="q"><legend>이동</legend><div class="chips" data-group="move"></div></fieldset>
+              <fieldset class="q"><legend>언제</legend><div class="chips" data-group="day"></div><div class="chips" data-group="when" style="margin-top:6px"></div></fieldset>
+              <fieldset class="q"><legend>날씨</legend><div class="chips" data-group="rain"></div></fieldset>
+            </div>
+          </details>
+          <div class="must" id="must" hidden></div>
+          <button type="submit" class="cta" id="btn-roll">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l8-4 8 4v10l-8 4-8-4Z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg>
+            코스 뽑기
+          </button>
+        </form>
+        <div id="result" aria-live="polite"></div>
+
+        <h2 class="section-h" id="levels-h">혼놀 레벨</h2>
+        <p class="section-p">장소마다 혼자 가기 얼마나 쉬운지 다섯 단계로 매겼어요. 코스는 고른 레벨까지만 넣어요.</p>
+        <ul class="lv-list" id="lv-list"></ul>
+        <p class="fine">운영시간·요금은 2026년 10월 기준 공개 안내를 참고했고 바뀔 수 있어요. 이동 시간은 거리로 계산한 대략값이에요.</p>
+      </div>
+    </section>
+
+    <section class="tab tab-map" id="tab-map" role="tabpanel" aria-labelledby="tb-map" hidden>
+      <div class="map-bar">
+        <div class="scroller" id="region-chips" aria-label="동네 바로가기"></div>
+        <div class="scroller" id="cat-chips" aria-label="종류 필터"></div>
+      </div>
+      <div class="map-wrap" id="map">
+        <svg class="map-svg" id="map-svg" role="img" aria-label="서울 혼놀 지도 일러스트. 한강과 공원 위치는 단순화돼 있어요.">
+          <g id="world">
+            <rect class="landbase" x="-80" y="-80" width="260" height="260"/>
+            <g id="parks-g"></g>
+            <g id="water-g"></g>
+            <path class="line2" id="line2" vector-effect="non-scaling-stroke"/>
+            <path class="route-case" id="route-case" vector-effect="non-scaling-stroke"/>
+            <path class="route" id="route" vector-effect="non-scaling-stroke"/>
+          </g>
+        </svg>
+        <div class="overlay" id="overlay"></div>
+        <div class="map-ui">
+          <button type="button" id="zin" aria-label="확대">+</button>
+          <button type="button" id="zout" aria-label="축소">−</button>
+          <button type="button" id="zfit" aria-label="서울 전체 보기"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg></button>
+        </div>
+        <div class="course-banner" id="course-banner" hidden></div>
+        <div class="scalebar" id="scalebar" aria-hidden="true"><span class="num" id="scale-t">1 km</span><i id="scale-i"></i></div>
+        <div class="compass" aria-hidden="true"><svg viewBox="0 0 14 20"><path d="M7 0l6 18-6-4-6 4Z"/></svg>N</div>
+        <div class="hint" id="hint">위 동네 칩을 누르거나 두 손가락으로 확대해 보세요</div>
+      </div>
+    </section>
+
+    <section class="tab" id="tab-saved" role="tabpanel" aria-labelledby="tb-saved" hidden>
+      <div class="pad">
+        <h1 class="hero">찜한 곳</h1>
+        <p class="lede">가 보고 싶은 곳을 모아 두고, 한 곳을 골라 코스에 넣을 수 있어요. 찜은 이 기기에만 저장돼요.</p>
+        <div id="saved"></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar" role="tablist" aria-label="화면 이동">
+    <button type="button" role="tab" id="tb-course" aria-controls="tab-course" aria-selected="true" data-tab="course">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg>코스 짜기
+    </button>
+    <button type="button" role="tab" id="tb-map" aria-controls="tab-map" aria-selected="false" data-tab="map">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6Z"/><path d="M9 4v14M15 6v14"/></svg>혼놀 지도
+    </button>
+    <button type="button" role="tab" id="tb-saved" aria-controls="tab-saved" aria-selected="false" data-tab="saved">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20Z"/></svg><span>찜<span class="badge" id="fav-count" hidden>0</span></span>
+    </button>
+  </nav>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+    <div class="sheet-grip" aria-hidden="true"></div>
+    <button class="icon-btn sheet-close" id="sheet-close" type="button" aria-label="닫기">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg>
+    </button>
+    <div id="sheet-body"></div>
+  </section>
+  <div class="toast" id="toast" role="status" hidden></div>
+</div>
+
+<script>
+(function () {
+'use strict';
+const HAS_DOM = typeof document !== 'undefined';
+
+/* ================= data ================= */
+const CATS = {
+  walk:     { label: '산책·공원', c: 'var(--c-walk)',
+    icon: '<path d="M8 2.4 4.6 7.2h2L3.6 11.2h8.8L9.4 7.2h2Z"/><path d="M8 11.2v3"/>' },
+  view:     { label: '전망·체험', c: 'var(--c-view)',
+    icon: '<path d="M1.6 8.2S4 4 8 4s6.4 4.2 6.4 4.2S12 12.4 8 12.4 1.6 8.2 1.6 8.2Z"/><circle cx="8" cy="8.2" r="1.9"/>' },
+  heritage: { label: '역사·한옥', c: 'var(--c-heritage)',
+    icon: '<path d="M1.8 6.4c2.3.1 4.3-.8 6.2-3.1 1.9 2.3 3.9 3.2 6.2 3.1"/><path d="M3.6 6.8V13h8.8V6.8"/><path d="M6.6 13V9.8h2.8V13"/>' },
+  culture:  { label: '전시·책', c: 'var(--c-culture)',
+    icon: '<rect x="2.5" y="3" width="11" height="10" rx="1.4"/><path d="M4.6 11l2.4-2.8 1.9 1.9 1.4-1.4 1.4 2.3"/>' },
+  food:     { label: '맛집·카페', c: 'var(--c-food)',
+    icon: '<path d="M2.4 8.2h11.2a5.6 5.6 0 0 1-11.2 0Z"/><path d="M6.2 5.6 7 2.6M9.6 5.6l1.3-3"/>' },
+  play:     { label: '놀거리', c: 'var(--c-play)',
+    icon: '<path d="M8 2.4l1.7 3.4 3.7.5-2.7 2.6.6 3.7L8 10.9l-3.3 1.7.6-3.7-2.7-2.6 3.7-.5Z"/>' },
+};
+const LEVELS = [null,
+  { name: '누구나', desc: '공원·한강·서점처럼 혼자 와도 아무도 신경 안 쓰는 곳' },
+  { name: '살짝 용기', desc: '미술관·시장·코인노래방처럼 혼자 온 사람이 꽤 있는 곳' },
+  { name: '혼놀 중수', desc: '고깃집 같은 식당에서 제대로 혼밥하기' },
+  { name: '혼놀 고수', desc: '원데이 클래스·볼링장처럼 보통 여럿이 가는 곳' },
+  { name: '혼놀 마스터', desc: '방탈출처럼 단체가 기본인 곳' },
+];
+/* hours: s = [open, close] in minutes after midnight (or summer when m is set), w = winter, m = summer months,
+   sWe / wWe = weekend overrides, dow = per-weekday overrides (0 = Sun), seasons = [monthFrom, monthTo, open, close] list.
+   closed: list of { d: weekday, n: [nth occurrences] }. lastEntry: minutes before closing when entry stops.
+   tags: sunset = good at dusk, night = fine after dark, day = must be done before sunset (hills, trails).
+   solo: confirmed 혼놀 notes from reports, ids from SOLO_TAGS (e.g. solo: ['seat', 'quiet']). */
+const PLACES = [
+  /* 종로·서촌·광화문 */
+  { id: 'gyeongbokgung', name: '경복궁', short: '경복궁', area: '광화문', cat: 'heritage', lat: 37.5788, lon: 126.9770,
+    stay: 70, min: 45, cost: 3000, lv: 1, moods: ['vibe', 'think', 'heal'],
+    hours: { seasons: [[3, 5, 540, 1080], [6, 8, 540, 1110], [9, 10, 540, 1080], [11, 2, 540, 1020]] }, lastEntry: 60, closed: [{ d: 2 }],
+    info: '일반 3,000원 · 만 24세 이하·한복 입으면 무료 · 화요일 휴궁 · 3~5·9~10월 9–18시, 6~8월 18:30, 11~2월 17시 · 입장은 닫기 1시간 전까지',
+    tip: '넓어서 혼자 내 속도로 천천히 걷기 좋아요. 한복을 입으면 무료로 들어갈 수 있어요.', q: '경복궁' },
+  { id: 'deoksugung', name: '덕수궁', short: '덕수궁', area: '시청', cat: 'heritage', lat: 37.5658, lon: 126.9751,
+    stay: 50, min: 30, cost: 1000, lv: 1, moods: ['vibe', 'heal', 'think'], tags: ['night'],
+    hours: { s: [540, 1260] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '일반 1,000원 · 만 24세 이하·한복 입으면 무료 · 9–21시(표는 20시까지) · 월요일 휴궁',
+    tip: '밤 9시까지 열어서 저녁 궁궐 산책이 돼요. 덕수궁 돌담길까지 이어 걸으면 딱 좋아요.', q: '덕수궁' },
+  { id: 'mmca', name: '국립현대미술관 서울', short: '국현 서울관', area: '삼청동', cat: 'culture', lat: 37.5787, lon: 126.9800,
+    stay: 70, min: 40, cost: 4000, lv: 2, indoor: true, moods: ['think', 'vibe', 'heal'],
+    hours: { s: [600, 1080], dow: { 3: [600, 1260], 6: [600, 1260] } },
+    info: '전시마다 요금 다름(통합권 1만원) · 수·토 18–21시 무료 · 10–18시(수·토 21시) · 청소년·대학생 무료 혜택 있음',
+    tip: '수·토요일 저녁엔 무료로 볼 수 있어요. 경복궁 바로 옆이라 궁 산책이랑 묶기 좋아요.', q: '국립현대미술관 서울' },
+  { id: 'sema', name: '서울시립미술관 서소문본관', short: '서울시립미술관', area: '시청', cat: 'culture', lat: 37.5641, lon: 126.9737,
+    stay: 60, min: 35, cost: 0, lv: 2, indoor: true, moods: ['think', 'heal', 'vibe'],
+    hours: { m: [3, 10], s: [600, 1200], sWe: [600, 1140], w: [600, 1200], wWe: [600, 1080], dow: { 5: [600, 1260] } }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '무료(일부 특별전 유료) · 화–목 10–20시, 금 21시, 주말 19시(11~2월 18시) · 월요일 휴관 · 입장은 1시간 전까지',
+    tip: '덕수궁 돌담길 바로 옆이라 궁궐 산책이랑 묶기 좋아요.', q: '서울시립미술관 서소문본관' },
+  { id: 'cheonggye', name: '청계천', short: '청계천', area: '광화문·종로', cat: 'walk', lat: 37.5690, lon: 126.9858,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'think', 'vibe'], tags: ['night'],
+    info: '상시 개방 · 무료',
+    tip: '광화문 청계광장에서 시작하는 물길 산책로예요. 해가 지면 조명이 켜져서 밤에 걷기 좋아요.', q: '청계천' },
+  { id: 'tongin', name: '통인시장 엽전도시락', short: '엽전도시락', area: '서촌', cat: 'food', meal: true, covered: true, lat: 37.5807, lon: 126.9701,
+    stay: 50, min: 35, cost: 10000, lv: 2, moods: ['taste', 'fun'],
+    hours: { s: [660, 960] }, lastEntry: 60, closed: [{ d: 1 }, { d: 0, n: [3] }],
+    info: '1인 1만원(엽전 20개) · 화–일 11–16시 · 월요일·셋째 주 일요일 휴무',
+    tip: '엽전으로 시장 반찬을 하나씩 사서 나만의 도시락을 채워요. 1인분 단위라 혼밥 입문으로 좋아요.', q: '통인시장 엽전도시락' },
+  { id: 'kyobo', name: '교보문고 광화문점', short: '교보문고', area: '광화문', cat: 'culture', lat: 37.5709, lon: 126.9779,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [570, 1320] },
+    info: '9:30–22시 · 입장 무료',
+    tip: '큰 원목 테이블에 앉아 책을 읽어도 돼요. 비 오는 날 혼놀 피난처로 최고예요.', q: '교보문고 광화문점' },
+  { id: 'ikseon', name: '익선동 한옥거리', short: '익선동', area: '종로', cat: 'heritage', lat: 37.5741, lon: 126.9895,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['vibe', 'taste'], tags: ['night'],
+    hours: { s: [660, 1320] },
+    info: '골목은 무료 · 가게는 대부분 11시 이후',
+    tip: '좁은 한옥 골목에 카페와 소품숍이 모여 있어요. 평일 낮이 덜 붐벼요.', q: '익선동 한옥거리' },
+  { id: 'gwangjang', name: '광장시장', short: '광장시장', area: '종로', cat: 'food', covered: true, lat: 37.5701, lon: 126.9996,
+    stay: 50, min: 30, cost: 10000, lv: 2, moods: ['taste', 'fun'],
+    hours: { s: [540, 1320] },
+    info: '가게마다 다름 · 먹거리 약 1만원 안쪽',
+    tip: '좌판에 나란히 앉아 먹는 구조라 혼밥이 자연스러워요. 빈대떡 하나만 시켜도 돼요.', q: '광장시장' },
+  { id: 'yundongju', name: '윤동주문학관', short: '윤동주문학관', area: '서촌', cat: 'culture', lat: 37.5904, lon: 126.9655,
+    stay: 40, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 10–18시 · 월요일 휴관',
+    tip: '물탱크를 고쳐 만든 작은 문학관이에요. 뒤쪽 시인의 언덕에서 서울 풍경을 보며 쉬어 가요.', q: '윤동주문학관' },
+  /* 성수·서울숲 */
+  { id: 'seoulforest', name: '서울숲', short: '서울숲', area: '성수', cat: 'walk', lat: 37.5444, lon: 127.0374,
+    stay: 60, min: 30, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료(일부 시설은 시간 제한)',
+    tip: '넓은 잔디와 숲길이 있어서 돗자리 하나 들고 혼자 쉬기 좋아요.', q: '서울숲' },
+  { id: 'eungbong', name: '응봉산 팔각정', short: '응봉산', area: '응봉', cat: 'view', lat: 37.5478, lon: 127.0287,
+    stay: 30, min: 20, cost: 0, lv: 1, moods: ['vibe', 'heal'], tags: ['sunset', 'night'],
+    info: '상시 개방 · 무료 · 짧은 오르막',
+    tip: '한강과 서울숲, 성수대교가 한눈에 보이는 야경 명소예요. 짧은 오르막이 있어요.', q: '응봉산 팔각정' },
+  { id: 'yeonmujang', name: '성수 연무장길 (팝업·편집숍)', short: '연무장길', area: '성수', cat: 'play', covered: true, lat: 37.5428, lon: 127.0552,
+    stay: 60, min: 30, cost: 0, lv: 2, moods: ['fun', 'vibe'],
+    hours: { s: [660, 1260] },
+    info: '구경은 무료 · 가게마다 다름',
+    tip: '팝업스토어와 편집숍이 모여 있어서 혼자 내 취향대로 골라 들어가기 좋아요.', q: '성수 연무장길' },
+  { id: 'seongsu_cafe', name: '성수 카페 골목', short: '성수 카페', area: '성수', cat: 'food', cafe: true, lat: 37.5466, lon: 127.0418,
+    stay: 60, min: 30, cost: 7000, lv: 1, indoor: true, moods: ['heal', 'vibe', 'think', 'taste'],
+    hours: { s: [600, 1320] },
+    info: '여러 곳 · 가게마다 다름 · 음료 약 7천원',
+    tip: '서울숲 옆 골목에 큰 창 카페가 많아요. 1인석 있는 곳에서 책 들고 쉬기 좋아요.', q: '성수동 카페' },
+  { id: 'seongsu_meal', name: '성수 혼밥 골목 (라멘·덮밥)', short: '성수 혼밥', area: '성수', cat: 'food', meal: true, lat: 37.5450, lon: 127.0505,
+    stay: 45, min: 30, cost: 12000, lv: 2, indoor: true, moods: ['taste'],
+    hours: { s: [660, 1260] },
+    info: '여러 곳 · 1인분 약 1만~1.5만원',
+    tip: '바 좌석이 있는 라멘집이나 덮밥집을 고르면 혼밥이 편해요.', q: '성수동 라멘' },
+  { id: 'ttukseom', name: '뚝섬한강공원', short: '뚝섬한강공원', area: '자양', cat: 'walk', lat: 37.5300, lon: 127.0668,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'vibe', 'fun'], tags: ['night'],
+    info: '상시 개방 · 무료',
+    tip: '강바람 맞으며 걷거나 편의점 라면 하나 사서 강 보며 먹기 좋아요.', q: '뚝섬한강공원' },
+  /* 홍대·연남·망원 */
+  { id: 'gyeongui', name: '경의선숲길 연남동 구간', short: '경의선숲길', area: '연남', cat: 'walk', lat: 37.5615, lon: 126.9238,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['night'],
+    info: '상시 개방 · 무료',
+    tip: '옛 기찻길을 공원으로 바꾼 산책로예요. ‘연트럴파크’라고 불리는 연남동 구간이 제일 활기차요.', q: '경의선숲길 연남동' },
+  { id: 'yeonnam_cafe', name: '연남동 카페 골목', short: '연남 카페', area: '연남', cat: 'food', cafe: true, lat: 37.5633, lon: 126.9212,
+    stay: 60, min: 30, cost: 7000, lv: 1, indoor: true, moods: ['heal', 'vibe', 'taste', 'think'],
+    hours: { s: [600, 1320] },
+    info: '여러 곳 · 음료 약 7천원',
+    tip: '작은 카페가 골목마다 있어서 마음에 드는 창가 자리를 찾아 들어가면 돼요.', q: '연남동 카페' },
+  { id: 'hongdae_street', name: '홍대 걷고싶은거리', short: '홍대 거리', area: '홍대', cat: 'play', lat: 37.5530, lon: 126.9228,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['fun', 'vibe'], tags: ['night'],
+    info: '상시 · 무료 · 버스킹은 주로 저녁과 주말',
+    tip: '버스킹 구경하다 보면 혼자인 것도 잊어요. 주변에 코인노래방과 오락실이 몰려 있어요.', q: '홍대 걷고싶은거리' },
+  { id: 'mangwon_market', name: '망원시장', short: '망원시장', area: '망원', cat: 'food', covered: true, lat: 37.5560, lon: 126.9065,
+    stay: 45, min: 30, cost: 8000, lv: 2, moods: ['taste', 'fun'],
+    hours: { s: [600, 1200] },
+    info: '가게마다 다름 · 간식·식사 약 1만원 안쪽',
+    tip: '혼자 먹기 편한 간식과 분식이 많아요. 사 들고 망원한강공원으로 가도 좋아요.', q: '망원시장' },
+  { id: 'mangwon_park', name: '망원한강공원', short: '망원한강공원', area: '망원', cat: 'walk', lat: 37.5553, lon: 126.8950,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'vibe', 'think'], tags: ['sunset', 'night'],
+    info: '상시 개방 · 무료',
+    tip: '한강 노을 명소예요. 해 지기 30분쯤 전에 도착해서 강가 계단에 앉아 보세요.', q: '망원한강공원' },
+  { id: 'seonyudo', name: '선유도공원', short: '선유도공원', area: '한강', cat: 'walk', lat: 37.5453, lon: 126.8995,
+    stay: 50, min: 30, cost: 0, lv: 1, moods: ['heal', 'think', 'vibe'],
+    hours: { s: [360, 1440] },
+    info: '6–24시 · 무료',
+    tip: '옛 정수장을 공원으로 바꾼 한강 위의 섬이에요. 9호선 선유도역에서 걸어서 갈 수 있어요.', q: '선유도공원' },
+  /* 여의도·한강 */
+  { id: 'yeouido_park', name: '여의도한강공원', short: '여의도한강공원', area: '여의도', cat: 'walk', lat: 37.5298, lon: 126.9335,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'fun', 'vibe'], tags: ['night'],
+    info: '상시 개방 · 무료',
+    tip: '강가 계단에 앉아 멍 때리기 좋은 곳이에요. 밤엔 마포대교 쪽 야경이 예뻐요.', q: '여의도한강공원' },
+  { id: 'hangang_ramen', name: '한강라면 (편의점 즉석라면)', short: '한강라면', area: '여의도', cat: 'food', meal: true, lat: 37.5288, lon: 126.9312,
+    stay: 30, min: 20, cost: 4000, lv: 1, moods: ['taste', 'fun'], tags: ['night'],
+    hours: { s: [480, 1380] },
+    info: '편의점마다 다름 · 약 4천원',
+    tip: '한강공원 편의점의 즉석라면 기계로 끓여 먹는 라면이에요. 혼자 먹어도 전혀 어색하지 않아요.', q: '여의도한강공원 편의점' },
+  { id: 'thehyundai', name: '더현대 서울', short: '더현대 서울', area: '여의도', cat: 'play', lat: 37.5259, lon: 126.9284,
+    stay: 70, min: 40, cost: 0, lv: 1, indoor: true, moods: ['fun', 'vibe'],
+    hours: { s: [630, 1200], dow: { 5: [630, 1230], 6: [630, 1230], 0: [630, 1230] } },
+    info: '입장 무료 · 월–목 10:30–20시, 금–일 20:30까지',
+    tip: '5층 실내 정원 ‘사운즈 포레스트’가 쉬어 가기 좋아요. 비 오는 날 혼놀 피난처로도 딱이에요.', q: '더현대 서울' },
+  { id: 'yeouido_gongwon', name: '여의도공원', short: '여의도공원', area: '여의도', cat: 'walk', lat: 37.5253, lon: 126.9218,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료',
+    tip: '빌딩 숲 한가운데 있는 긴 공원이에요. 점심 먹고 혼자 산책하기 좋아요.', q: '여의도공원' },
+  { id: 'nodeul', name: '노들섬', short: '노들섬', area: '한강', cat: 'view', lat: 37.5180, lon: 126.9590,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['vibe', 'heal', 'think'], tags: ['sunset', 'night'],
+    info: '섬은 상시 개방 · 무료 · 안쪽 시설은 시간 제한',
+    tip: '한강 한가운데 섬이라 노을과 야경을 둘 다 볼 수 있어요. 잔디마당에 앉아 쉬기 좋아요.', q: '노들섬' },
+  { id: 'ttareungyi', name: '따릉이 한강 라이딩', short: '따릉이', area: '여의도', cat: 'view', lat: 37.5270, lon: 126.9330,
+    stay: 60, min: 40, cost: 1000, lv: 1, moods: ['fun', 'heal'],
+    hours: { s: [360, 1260] },
+    info: '서울시 공공자전거 · 1시간권 약 1천원 · 앱에서 결제',
+    tip: '여의나루역 근처에서 빌려 한강 자전거길을 달려요. 헬멧 쓰고, 해 지기 전에 돌아오면 좋아요.', q: '여의나루역 따릉이' },
+  /* 용산·이태원 */
+  { id: 'nmk', name: '국립중앙박물관', short: '국립중앙박물관', area: '용산', cat: 'culture', lat: 37.5240, lon: 126.9803,
+    stay: 90, min: 45, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal', 'vibe'],
+    hours: { s: [570, 1050], dow: { 3: [570, 1260], 6: [570, 1260] } }, lastEntry: 30,
+    info: '상설전 무료(특별전 유료) · 9:30–17:30, 수·토 21시 · 입장은 닫기 30분 전까지',
+    tip: '반가사유상 두 점만 놓인 ‘사유의 방’은 혼자 조용히 앉아 있기 좋은 곳이에요.', q: '국립중앙박물관' },
+  { id: 'leeum', name: '리움미술관', short: '리움', area: '한남', cat: 'culture', lat: 37.5385, lon: 126.9990,
+    stay: 70, min: 40, cost: 0, lv: 2, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '상설전 무료(온라인 예약) · 기획전 유료 · 10–18시 · 월요일 휴관',
+    tip: '건물 자체가 작품 같은 미술관이에요. 상설전은 예약만 하면 무료예요.', q: '리움미술관' },
+  { id: 'haebangchon', name: '해방촌 언덕길', short: '해방촌', area: '용산', cat: 'view', lat: 37.5428, lon: 126.9862,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['vibe', 'heal'], tags: ['sunset', 'night'],
+    info: '골목은 무료 · 카페는 가게마다 다름',
+    tip: '남산 아래 언덕 동네라 골목 끝에서 서울 시내가 내려다보여요. 노을 무렵이 제일 예뻐요.', q: '해방촌' },
+  { id: 'hannam_cafe', name: '한남동 카페·편집숍', short: '한남 카페', area: '한남', cat: 'food', cafe: true, lat: 37.5370, lon: 127.0020,
+    stay: 60, min: 30, cost: 8000, lv: 1, indoor: true, moods: ['vibe', 'heal', 'taste'],
+    hours: { s: [600, 1320] },
+    info: '여러 곳 · 음료 약 8천원',
+    tip: '조용한 골목에 감각 있는 카페와 편집숍이 많아요. 리움에서 걸어갈 수 있어요.', q: '한남동 카페' },
+  { id: 'cgv_yongsan', name: 'CGV 용산아이파크몰 ‘혼영’', short: 'CGV 용산', area: '용산', cat: 'play', lat: 37.5292, lon: 126.9650,
+    stay: 130, min: 110, cost: 15000, lv: 2, indoor: true, moods: ['fun', 'heal'],
+    hours: { s: [540, 1440] },
+    info: '일반관 약 1.5만원 · 특별관은 더 비싸요 · 상영 시간표는 따로 확인',
+    tip: '아이맥스 같은 특별관이 모인 혼영 성지예요. 혼자면 좋은 자리 한 칸 잡기도 쉬워요.', q: 'CGV 용산아이파크몰' },
+  /* 을지로·남산 */
+  { id: 'namsan', name: '남산 산책로·N서울타워', short: '남산', area: '남산', cat: 'view', lat: 37.5512, lon: 126.9882,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['vibe', 'heal', 'think'], tags: ['sunset', 'night'],
+    info: '산책로 무료 · 타워 전망대는 유료',
+    tip: '서울 한가운데서 야경을 보는 제일 쉬운 방법이에요. 걸어 올라가면 운동도 돼요.', q: 'N서울타워' },
+  { id: 'euljiro_meal', name: '을지로 노포 혼밥 (냉면·국밥)', short: '을지로 노포', area: '을지로', cat: 'food', meal: true, lat: 37.5662, lon: 126.9925,
+    stay: 45, min: 30, cost: 15000, lv: 3, indoor: true, moods: ['taste'],
+    hours: { s: [660, 1260] },
+    info: '여러 곳 · 1인분 약 1.5만원',
+    tip: '오래된 노포엔 혼자 온 단골이 많아요. 냉면이나 국밥처럼 1인분 메뉴를 고르면 돼요.', q: '을지로 노포 맛집' },
+  { id: 'sewoon', name: '세운상가 옥상 전망', short: '세운상가', area: '을지로', cat: 'view', lat: 37.5683, lon: 126.9947,
+    stay: 30, min: 20, cost: 0, lv: 1, moods: ['vibe', 'think'], tags: ['sunset'],
+    hours: { s: [600, 1260] },
+    info: '무료 · 상가 운영시간 안에 열려요(방문 전 확인)',
+    tip: '종묘에서 남산까지 이어지는 도심 풍경이 한눈에 보여요. 을지로 골목 산책 중에 들르기 좋아요.', q: '세운상가 옥상' },
+  { id: 'myeongdong_cathedral', name: '명동성당', short: '명동성당', area: '명동', cat: 'heritage', lat: 37.5633, lon: 126.9873,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['heal', 'think'],
+    hours: { s: [540, 1260] },
+    info: '무료 · 미사 시간엔 조용히',
+    tip: '번화한 명동 한가운데 있는 고딕 성당이에요. 잠깐 앉아 마음을 정리하기 좋아요.', q: '명동성당' },
+  { id: 'seoullo', name: '서울로7017', short: '서울로7017', area: '서울역', cat: 'walk', lat: 37.5560, lon: 126.9700,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['night'],
+    info: '상시 개방 · 무료',
+    tip: '옛 고가도로를 걷는 길로 바꾼 공중 산책로예요. 서울역 기차들을 내려다보며 걸어요.', q: '서울로7017' },
+  { id: 'ddp', name: '동대문디자인플라자 (DDP)', short: 'DDP', area: '동대문', cat: 'view', lat: 37.5665, lon: 127.0095,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['vibe', 'fun'], tags: ['night'],
+    info: '바깥 산책은 무료 · 전시는 따로',
+    tip: '은색 곡선 건물을 따라 한 바퀴 걷기 좋아요. 밤에 조명이 들어오면 더 멋있어요.', q: '동대문디자인플라자' },
+  /* 강남·코엑스 */
+  { id: 'starfield_library', name: '별마당도서관', short: '별마당도서관', area: '삼성', cat: 'culture', lat: 37.5100, lon: 127.0600,
+    stay: 50, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal', 'vibe'],
+    hours: { s: [630, 1320] },
+    info: '무료 · 10:30–22시',
+    tip: '높은 책장이 둘러싼 코엑스몰 한가운데 도서관이에요. 아무 책이나 꺼내 앉아 읽어도 돼요.', q: '별마당도서관' },
+  { id: 'coex_aquarium', name: '코엑스 아쿠아리움', short: '아쿠아리움', area: '삼성', cat: 'play', lat: 37.5128, lon: 127.0588,
+    stay: 80, min: 60, cost: 27000, lv: 4, indoor: true, moods: ['fun', 'heal'],
+    hours: { s: [600, 1200] }, lastEntry: 60,
+    info: '온라인 27,000원 · 현장 35,000원 · 10–20시(입장 19시까지)',
+    tip: '가족·커플 사이에서 혼자 물고기 보며 멍 때리기. 혼놀 고수 코스예요.', q: '코엑스 아쿠아리움' },
+  { id: 'bongeunsa', name: '봉은사', short: '봉은사', area: '삼성', cat: 'heritage', lat: 37.5150, lon: 127.0577,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'],
+    hours: { s: [360, 1260] },
+    info: '경내 무료 · 저녁엔 일찍 닫힐 수 있어요',
+    tip: '코엑스 바로 건너편, 빌딩 숲 사이 절이에요. 조용히 걷다 보면 도심 소음이 멀어져요.', q: '봉은사' },
+  { id: 'seonjeongneung', name: '선정릉', short: '선정릉', area: '선릉', cat: 'heritage', lat: 37.5087, lon: 127.0480,
+    stay: 50, min: 25, cost: 1000, lv: 1, moods: ['heal', 'think'],
+    hours: { seasons: [[3, 10, 360, 1260], [11, 1, 360, 1050], [2, 2, 360, 1080]] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '일반 1,000원 · 만 24세 이하 무료 · 3~10월 6–21시, 11~1월 17:30, 2월 18시 · 월요일 휴릉',
+    tip: '강남 빌딩 사이에 숨은 조선 왕릉 숲길이에요. 아침 일찍 산책하기도 좋아요.', q: '선정릉' },
+  { id: 'garosu', name: '신사동 가로수길', short: '가로수길', area: '신사', cat: 'play', lat: 37.5205, lon: 127.0230,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['vibe', 'fun'],
+    hours: { s: [660, 1320] },
+    info: '구경 무료 · 가게마다 다름',
+    tip: '플래그십 매장과 골목 카페를 구경하며 걷기 좋은 거리예요.', q: '신사동 가로수길' },
+  /* 잠실·송파 */
+  { id: 'seokchon', name: '석촌호수', short: '석촌호수', area: '잠실', cat: 'walk', lat: 37.5093, lon: 127.1035,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'vibe', 'think'], tags: ['night'],
+    info: '상시 개방 · 무료',
+    tip: '호수 둘레가 2km 남짓이라 한 바퀴 걷기 딱 좋아요. 롯데월드타워 야경도 같이 보여요.', q: '석촌호수' },
+  { id: 'lottemall', name: '롯데월드몰', short: '롯데월드몰', area: '잠실', cat: 'play', lat: 37.5134, lon: 127.1042,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['fun', 'vibe'],
+    hours: { s: [630, 1320] },
+    info: '입장 무료 · 10:30–22시 · 타워 전망대는 따로 유료',
+    tip: '비 오는 날 혼자 구경하기 좋은 큰 쇼핑몰이에요. 서점과 팝업 구경만 해도 시간이 잘 가요.', q: '롯데월드몰' },
+  { id: 'lotteworld', name: '롯데월드 ‘혼자 놀이공원’', short: '롯데월드', area: '잠실', cat: 'play', lat: 37.5111, lon: 127.0980,
+    stay: 240, min: 180, cost: 67000, lv: 5, indoor: true, moods: ['fun'],
+    hours: { s: [600, 1320] },
+    info: '종합이용권 성인 67,000원 · 운영시간은 날짜마다 달라요',
+    tip: '혼놀의 끝판왕이에요. 평일 오전에 가면 줄이 짧아서 혼자 타기 편해요.', q: '롯데월드 어드벤처' },
+  { id: 'olympicpark', name: '올림픽공원 ‘나홀로나무’', short: '나홀로나무', area: '송파', cat: 'walk', lat: 37.5200, lon: 127.1200,
+    stay: 60, min: 30, cost: 0, lv: 1, moods: ['heal', 'think', 'vibe'],
+    info: '상시 개방 · 무료',
+    tip: '넓은 언덕에 홀로 선 ‘나홀로나무’가 있어요. 혼놀 인증샷 찍기 딱 좋은 곳이에요.', q: '올림픽공원 나홀로나무' },
+  { id: 'songridan', name: '송리단길 카페 골목', short: '송리단길', area: '송파', cat: 'food', cafe: true, lat: 37.5068, lon: 127.1085,
+    stay: 60, min: 30, cost: 7000, lv: 1, indoor: true, moods: ['heal', 'vibe', 'taste'],
+    hours: { s: [600, 1320] },
+    info: '여러 곳 · 음료 약 7천원',
+    tip: '석촌호수 동쪽 골목에 작은 카페와 식당이 모여 있어요.', q: '송리단길' },
+  /* 대학로·도심 더하기 */
+  { id: 'naksan', name: '낙산공원 성곽길', short: '낙산공원', area: '대학로', cat: 'view', lat: 37.5806, lon: 127.0075,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['vibe', 'heal', 'think'], tags: ['sunset', 'night'],
+    info: '상시 개방 · 무료 · 오르막 조금',
+    tip: '한양도성 성곽을 따라 걷는 언덕 공원이에요. 해 지면 성곽 조명이 켜지고 도심 야경이 펼쳐져요.', q: '낙산공원' },
+  { id: 'daehakro', name: '대학로 소극장 ‘혼연극’', short: '대학로 연극', area: '대학로', cat: 'play', lat: 37.5822, lon: 127.0030,
+    stay: 110, min: 100, cost: 25000, lv: 3, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [840, 1320] },
+    info: '작품마다 다름 · 보통 2~4만원 · 공연 시간표는 따로 확인',
+    tip: '소극장은 무대가 가까워서 혼자 봐도 몰입이 잘 돼요. 혼자면 좋은 자리 한 칸 잡기가 오히려 쉬워요.', q: '대학로 소극장' },
+  { id: 'seoul_library', name: '서울도서관', short: '서울도서관', area: '시청', cat: 'culture', lat: 37.5664, lon: 126.9779,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [540, 1260], sWe: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 화–금 9–21시, 주말 9–18시 · 월요일·공휴일 휴관 · 자료실마다 시간 다름',
+    tip: '옛 서울시청 건물을 고친 도서관이에요. 벽면을 가득 채운 큰 책장이 볼거리예요.', q: '서울도서관' },
+  { id: 'warmemorial', name: '전쟁기념관', short: '전쟁기념관', area: '용산', cat: 'culture', lat: 37.5366, lon: 126.9771,
+    stay: 70, min: 40, cost: 0, lv: 1, indoor: true, moods: ['think'],
+    hours: { s: [570, 1080] }, lastEntry: 30, closed: [{ d: 1 }],
+    info: '상설전 무료 · 9:30–18시(입장 17:30까지) · 월요일 휴관',
+    tip: '전시관이 넓어서 혼자 내 속도로 천천히 돌아보기 좋아요. 야외엔 실제 비행기와 전차가 서 있어요.', q: '전쟁기념관' },
+  /* 광진·동대문·중랑 */
+  { id: 'childrenpark', name: '서울어린이대공원', short: '어린이대공원', area: '능동', cat: 'walk', lat: 37.5490, lon: 127.0810,
+    stay: 60, min: 30, cost: 0, lv: 2, moods: ['heal', 'fun'],
+    hours: { s: [300, 1320] },
+    info: '무료 · 공원 5–22시 · 동물원 10–17시(무료)',
+    tip: '평일엔 산책하는 어른도 많아요. 무료 동물원과 숲길이 있어서 혼자 한 바퀴 돌기 좋아요.', q: '서울어린이대공원' },
+  { id: 'achasan', name: '아차산 능선길', short: '아차산', area: '광장동', cat: 'view', lat: 37.5560, lon: 127.1010,
+    stay: 90, min: 60, cost: 0, lv: 1, moods: ['heal', 'think', 'fun'], tags: ['day'],
+    info: '상시 · 무료 · 아차산역에서 걸어서 시작 · 해 지기 전에 내려오기',
+    tip: '높지 않아서 운동화면 충분해요. 능선에 오르면 한강과 잠실 롯데타워가 한눈에 보여요.', q: '아차산' },
+  { id: 'gyeongdong', name: '경동시장 · 스타벅스 경동1960', short: '경동1960', area: '제기동', cat: 'food', cafe: true, covered: true, lat: 37.5800, lon: 127.0395,
+    stay: 60, min: 30, cost: 7000, lv: 1, moods: ['vibe', 'taste', 'heal'],
+    hours: { s: [600, 1200] },
+    info: '시장 구경 무료 · 음료 약 7천원 · 시장 가게는 저녁 일찍 닫아요',
+    tip: '시장 건물 위층 옛 극장을 카페로 바꾼 곳이에요. 계단식 좌석에서 커피 마시고 약재 시장 골목을 구경해요.', q: '스타벅스 경동1960' },
+  { id: 'mangu', name: '망우역사문화공원', short: '망우공원', area: '망우동', cat: 'heritage', lat: 37.5935, lon: 127.1065,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['think', 'heal'], tags: ['day'],
+    info: '상시 · 무료 · 산책로 약 4.7km · 해 있을 때 걷기',
+    tip: '한용운·방정환·이중섭 같은 근현대 인물들이 잠든 숲길이에요. 생각 정리하며 조용히 걷기 좋아요.', q: '망우역사문화공원' },
+  /* 성북·강북·도봉·노원 */
+  { id: 'gilsangsa', name: '길상사', short: '길상사', area: '성북동', cat: 'heritage', lat: 37.5996, lon: 126.9939,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'],
+    hours: { s: [540, 1080] },
+    info: '경내 무료 · 저녁엔 일찍 닫아요(방문 전 확인)',
+    tip: '옛 요정 ‘대원각’이 법정 스님의 절이 된 곳이에요. 숲속 의자에 앉아 있으면 도심인 걸 잊어요.', q: '길상사' },
+  { id: 'dreamforest', name: '북서울꿈의숲', short: '꿈의숲', area: '번동', cat: 'walk', lat: 37.6206, lon: 127.0410,
+    stay: 60, min: 30, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료(일부 시설은 시간 제한)',
+    tip: '옛 놀이공원 자리에 생긴 큰 숲 공원이에요. 연못가 정자와 넓은 잔디에서 쉬기 좋아요.', q: '북서울꿈의숲' },
+  { id: 'dobongsan', name: '도봉산 둘레길', short: '도봉산', area: '도봉', cat: 'walk', lat: 37.6930, lon: 127.0365,
+    stay: 150, min: 90, cost: 0, lv: 1, moods: ['heal', 'fun', 'think'], tags: ['day'],
+    info: '무료 · 도봉산역에서 걸어서 시작 · 해 지기 전에 내려오기',
+    tip: '역에서 내리면 바로 산길이 시작돼요. 정상 욕심 없이 둘레길만 걸어도 숲 기운이 가득해요.', q: '도봉산 탐방지원센터' },
+  { id: 'buksema', name: '서울시립 북서울미술관', short: '북서울미술관', area: '중계동', cat: 'culture', lat: 37.6407, lon: 127.0670,
+    stay: 60, min: 35, cost: 0, lv: 2, indoor: true, moods: ['think', 'heal', 'vibe'],
+    hours: { m: [3, 10], s: [600, 1200], sWe: [600, 1140], w: [600, 1200], wWe: [600, 1080], dow: { 5: [600, 1260] } }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '무료(특별전 유료) · 화–목 10–20시, 금 21시, 주말 19시(11~2월 18시) · 월요일 휴관',
+    tip: '공원 안에 있는 넓고 조용한 미술관이에요. 전시 보고 바로 앞 공원을 걷기 좋아요.', q: '서울시립 북서울미술관' },
+  { id: 'gyeongchun', name: '경춘선숲길 · 화랑대철도공원', short: '경춘선숲길', area: '공릉', cat: 'walk', lat: 37.6199, lon: 127.0855,
+    stay: 60, min: 30, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['night'],
+    info: '상시 · 무료 · 불빛정원은 해 지면 켜져서 22시까지(시기마다 다름)',
+    tip: '옛 기찻길을 걷다 보면 기차가 서 있는 철도공원이 나와요. 해 지면 불빛정원이 켜져요.', q: '화랑대철도공원' },
+  /* 은평·서대문·마포 */
+  { id: 'eunpyeong_hanok', name: '은평한옥마을 · 진관사', short: '은평한옥마을', area: '진관동', cat: 'heritage', lat: 37.6418, lon: 126.9385,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['heal', 'vibe', 'think'],
+    info: '마을·절 무료 · 한옥 카페와 문학관은 가게마다 다름',
+    tip: '북한산 아래 한옥이 모인 마을이에요. 안쪽 진관사까지 걸어가면 계곡 물소리가 좋아요.', q: '은평한옥마을' },
+  { id: 'ansan', name: '안산자락길', short: '안산자락길', area: '서대문', cat: 'walk', lat: 37.5770, lon: 126.9440,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 경사 완만한 데크길(한 바퀴 약 7km)',
+    tip: '휠체어도 다닐 수 있는 완만한 숲속 데크길이에요. 일부만 걷다 내려와도 충분해요.', q: '안산자락길' },
+  { id: 'seodaemun_prison', name: '서대문형무소역사관', short: '서대문형무소', area: '현저동', cat: 'heritage', covered: true, lat: 37.5743, lon: 126.9561,
+    stay: 60, min: 40, cost: 3000, lv: 1, moods: ['think'],
+    hours: { seasons: [[3, 10, 570, 1080], [11, 2, 570, 1020]] }, lastEntry: 30, closed: [{ d: 1 }],
+    info: '일반 3,000원 · 3~10월 9:30–18시, 11~2월 17시 · 입장은 닫기 30분 전까지 · 월요일 휴관',
+    tip: '독립운동가들이 갇혔던 옥사를 그대로 둔 역사관이에요. 혼자 조용히 돌아보며 생각할 거리가 많아요.', q: '서대문형무소역사관' },
+  { id: 'haneul', name: '하늘공원', short: '하늘공원', area: '상암', cat: 'view', lat: 37.5683, lon: 126.8855,
+    stay: 60, min: 35, cost: 0, lv: 1, moods: ['vibe', 'heal'], tags: ['sunset'],
+    hours: { seasons: [[1, 1, 420, 1080], [2, 2, 420, 1110], [3, 3, 360, 1200], [4, 4, 330, 1200], [5, 5, 300, 1200], [6, 7, 300, 1230], [8, 8, 330, 1230], [9, 9, 330, 1200], [10, 10, 360, 1200], [11, 11, 390, 1140], [12, 12, 420, 1080]] },
+    info: '무료 · 달마다 개방 시간 다름(여름 20:30, 겨울 18시까지) · 밤엔 출입 제한',
+    tip: '억새로 유명한 언덕 공원이에요. 계단길을 올라가면 한강 너머로 노을이 펼쳐져요.', q: '하늘공원' },
+  /* 강서·양천·구로·금천 */
+  { id: 'botanic', name: '서울식물원 온실', short: '서울식물원', area: '마곡', cat: 'walk', indoor: true, lat: 37.5694, lon: 126.8350,
+    stay: 70, min: 40, cost: 5000, lv: 1, moods: ['heal', 'vibe', 'think'],
+    hours: { s: [570, 1080] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '온실 5,000원 · 9:30–18시(표는 17시까지) · 월요일 휴관 · 바깥 공원은 무료',
+    tip: '열대·지중해 식물이 가득한 큰 유리 온실이에요. 비 오는 날에도 숲속을 걷는 기분이 나요.', q: '서울식물원' },
+  { id: 'westlake', name: '서서울호수공원', short: '서서울호수', area: '신월동', cat: 'walk', lat: 37.5277, lon: 126.8346,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'fun'],
+    info: '상시 개방 · 무료',
+    tip: '옛 정수장을 고친 호수 공원이에요. 김포공항으로 내려가는 비행기가 머리 위로 낮게 지나가요.', q: '서서울호수공원' },
+  { id: 'hangdong', name: '항동철길 · 푸른수목원', short: '항동철길', area: '항동', cat: 'walk', lat: 37.4832, lon: 126.8250,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['heal', 'vibe', 'think'],
+    hours: { s: [300, 1320] },
+    info: '무료 · 수목원 5–22시 · 온실은 9–18시(겨울 17시)',
+    tip: '기찻길 위를 걷다 보면 서울 첫 시립 수목원이 이어져요. 사진 찍으며 천천히 걷기 좋아요.', q: '푸른수목원' },
+  { id: 'gasan', name: '가산 아울렛 타운', short: '가산 아울렛', area: '가산', cat: 'play', indoor: true, lat: 37.4790, lon: 126.8860,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['fun'],
+    hours: { s: [630, 1260] },
+    info: '구경 무료 · 보통 10:30–21시(건물마다 다름)',
+    tip: '아울렛 건물이 몰려 있어서 비 오는 날 혼자 쇼핑하며 걷기 좋아요.', q: '가산 마리오아울렛' },
+  /* 영등포·동작·관악 */
+  { id: 'mullae', name: '문래창작촌', short: '문래창작촌', area: '문래', cat: 'culture', lat: 37.5150, lon: 126.8960,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['vibe', 'think'], tags: ['night'],
+    hours: { s: [720, 1320] },
+    info: '골목 구경 무료 · 카페·작업실은 가게마다 다름',
+    tip: '철공소 골목 사이사이에 작업실과 카페가 숨어 있어요. 낮엔 쇳소리, 저녁엔 조명이 분위기를 만들어요.', q: '문래창작촌' },
+  { id: 'noryangjin', name: '노량진수산시장 ‘혼회’', short: '노량진 혼회', area: '노량진', cat: 'food', meal: true, covered: true, lat: 37.5136, lon: 126.9406,
+    stay: 60, min: 40, cost: 30000, lv: 4, moods: ['taste', 'fun'],
+    hours: { s: [600, 1320] },
+    info: '회 값 + 상차림비 · 혼자면 약 3만원 안팎',
+    tip: '1층에서 회를 고르고 위층 식당에서 상차림비를 내고 먹어요. 혼자 먹을 만큼만 달라고 하면 돼요.', q: '노량진수산시장' },
+  { id: 'boramae', name: '보라매공원', short: '보라매공원', area: '신대방동', cat: 'walk', lat: 37.4927, lon: 126.9198,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'fun'],
+    info: '상시 개방 · 무료',
+    tip: '옛 공군사관학교 자리라 공원 안에 진짜 비행기가 전시돼 있어요. 호수 한 바퀴 걷기 좋아요.', q: '보라매공원' },
+  { id: 'sharosu', name: '샤로수길 혼밥', short: '샤로수길', area: '봉천동', cat: 'food', meal: true, lat: 37.4795, lon: 126.9560,
+    stay: 45, min: 30, cost: 12000, lv: 2, indoor: true, moods: ['taste'],
+    hours: { s: [660, 1320] },
+    info: '여러 곳 · 1인분 약 1만~1.5만원',
+    tip: '서울대입구역 옆 골목에 1인 메뉴 있는 맛집이 많아요. 바 좌석 있는 집을 고르면 편해요.', q: '샤로수길 맛집' },
+  /* 서초·강남·강동 */
+  { id: 'banpo', name: '반포한강공원 달빛무지개분수', short: '반포 분수', area: '반포', cat: 'walk', lat: 37.5105, lon: 126.9960,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['vibe', 'heal', 'fun'], tags: ['sunset', 'night'],
+    info: '공원 상시 · 무료 · 분수는 3월 중순~10월 12시·19:30·20시·20:30·21시(6~9월 21:30 추가, 20분씩) · 바람·비 오면 쉬어요',
+    tip: '다리에서 쏟아지는 분수 쇼를 강가 계단에 앉아 보면 돼요. 분수 없는 계절엔 세빛섬 야경이 예뻐요.', q: '반포한강공원' },
+  { id: 'sac', name: '예술의전당 전시', short: '예술의전당', area: '서초', cat: 'culture', lat: 37.4787, lon: 127.0118,
+    stay: 80, min: 50, cost: 15000, lv: 2, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [660, 1140] }, lastEntry: 60,
+    info: '전시마다 요금·시간 다름(보통 1.5~2만원, 11–19시) · 공연은 따로 예매',
+    tip: '한가람미술관 전시를 골라 혼자 보기 좋아요. 저녁엔 광장 분수 쇼도 있어요(계절 운영).', q: '예술의전당' },
+  { id: 'yangjaecheon', name: '양재천 산책길', short: '양재천', area: '개포', cat: 'walk', lat: 37.4840, lon: 127.0455,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['night'],
+    info: '상시 · 무료',
+    tip: '강남 한가운데를 흐르는 개천 산책길이에요. 물가 나무 그늘이 길게 이어져서 생각 정리하며 걷기 좋아요.', q: '양재천' },
+  { id: 'gwangnaru', name: '광나루한강공원', short: '광나루', area: '암사', cat: 'walk', lat: 37.5480, lon: 127.1245,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'fun'],
+    info: '상시 개방 · 무료',
+    tip: '한강 상류 쪽이라 다른 한강공원보다 한적해요. 따릉이 타고 강 따라 달리기도 좋아요.', q: '광나루한강공원' },
+  /* neighbourhood spots: no fixed pin, searched near wherever the course is */
+  { id: 'g_karaoke', name: '코인노래방 ‘혼코노’', short: '혼코노', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 40, min: 20, cost: 5000, lv: 2, indoor: true, moods: ['fun'],
+    hours: { s: [600, 1440] },
+    info: '곡 단위 결제라 부담이 적어요 · 약 5천원',
+    tip: '혼코노는 혼놀 국룰이에요. 목 풀고 나오면 기분 전환 확실해요.', q: '코인노래방' },
+  { id: 'g_manhwa', name: '만화카페', short: '만화카페', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 90, min: 60, cost: 9000, lv: 1, indoor: true, moods: ['heal', 'fun'],
+    hours: { s: [600, 1320] },
+    info: '시간제 요금 · 약 1만원 안쪽',
+    tip: '칸막이 좌석이 있는 곳이 많아서 혼자 가기 제일 편한 곳 중 하나예요.', q: '만화카페' },
+  { id: 'g_bookstore', name: '독립서점 구경', short: '독립서점', area: '동네 어디서나', cat: 'culture', generic: true,
+    stay: 40, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [720, 1260] },
+    info: '구경 무료 · 가게마다 다름',
+    tip: '주인이 고른 책이 놓인 작은 서점이에요. 망원·연남 쪽에 특히 많아요.', q: '독립서점' },
+  { id: 'g_bbq', name: '1인 고깃집 ‘혼고기’', short: '혼고기', area: '동네 어디서나', cat: 'food', generic: true, meal: true,
+    stay: 50, min: 35, cost: 15000, lv: 3, indoor: true, moods: ['taste'],
+    hours: { s: [660, 1320] },
+    info: '1인분 약 1.5만원부터',
+    tip: '1인 화로를 주는 고깃집을 찾으면 혼자서도 편하게 구워 먹을 수 있어요.', q: '1인 고기집' },
+  { id: 'g_class', name: '원데이 클래스 (향수·반지 공방)', short: '원데이 클래스', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 90, min: 75, cost: 40000, lv: 4, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [660, 1260] },
+    info: '예약 필수 · 약 4만원부터',
+    tip: '처음 보는 사람들 사이에서 혼자 뭔가를 만들어 오는 고수 코스예요. 성수에 특히 많아요.', q: '원데이 클래스 공방' },
+  { id: 'g_bowling', name: '혼자 볼링 ‘혼볼’', short: '혼볼', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 60, min: 45, cost: 12000, lv: 4, indoor: true, moods: ['fun'],
+    hours: { s: [600, 1440] },
+    info: '게임 요금 + 신발 대여 · 약 1.2만원',
+    tip: '옆 레인 단체 손님 사이에서 혼자 치면 고수 인정이에요. 평일 낮이 한산해요.', q: '볼링장' },
+  { id: 'g_escape', name: '혼자 방탈출', short: '혼자 방탈출', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 75, min: 70, cost: 30000, lv: 5, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [660, 1380] },
+    info: '1인 예약이 되는 테마인지 꼭 확인 · 2인 요금을 받는 곳도 있어요',
+    tip: '혼놀 마스터 코스예요. 혼자 할 수 있는 테마를 미리 골라 예약하세요.', q: '방탈출' },
+  { id: 'g_honbap', name: '혼밥 맛집 (국밥·라멘·덮밥)', short: '혼밥 맛집', area: '동네 어디서나', cat: 'food', generic: true, meal: true,
+    stay: 40, min: 25, cost: 10000, lv: 1, indoor: true, moods: ['taste', 'heal'],
+    hours: { s: [660, 1260] },
+    info: '1인분 약 1만원 · 바 좌석 있는 집이 편해요',
+    tip: '국밥·라멘·덮밥처럼 1인분이 기본인 메뉴를 고르면 혼밥이 제일 쉬워요.', q: '혼밥 맛집' },
+  { id: 'g_cinema', name: '동네 영화관 ‘혼영’', short: '혼영', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 130, min: 110, cost: 15000, lv: 1, indoor: true, moods: ['fun', 'heal'],
+    hours: { s: [600, 1440] },
+    info: '일반관 약 1.5만원 · 상영 시간표는 따로 확인',
+    tip: '혼영은 이제 너무 흔해서 아무도 신경 안 써요. 가운데 한 자리는 혼자일 때 더 잘 남아 있어요.', q: '영화관' },
+  { id: 'g_arcade', name: '오락실·인형뽑기', short: '오락실', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 40, min: 20, cost: 5000, lv: 1, indoor: true, moods: ['fun'],
+    hours: { s: [600, 1440] },
+    info: '한 판 500원~1천원 · 약 5천원',
+    tip: '리듬게임이나 펀치 기계 한 판이면 스트레스가 풀려요. 혼자 온 사람이 제일 많은 곳 중 하나예요.', q: '오락실' },
+];
+const BY_ID = Object.fromEntries(PLACES.map(p => [p.id, p]));
+const URBAN = [
+  { name: '홍대', key: '홍대', lat: 37.5560, lon: 126.9230 },
+  { name: '망원', key: '망원동', lat: 37.5560, lon: 126.9050 },
+  { name: '성수', key: '성수동', lat: 37.5440, lon: 127.0520 },
+  { name: '광화문', key: '광화문', lat: 37.5720, lon: 126.9770 },
+  { name: '종로', key: '종로3가', lat: 37.5720, lon: 126.9900 },
+  { name: '을지로', key: '을지로', lat: 37.5663, lon: 126.9917 },
+  { name: '명동', key: '명동', lat: 37.5609, lon: 126.9863 },
+  { name: '여의도', key: '여의도', lat: 37.5240, lon: 126.9260 },
+  { name: '서울역', key: '서울역', lat: 37.5547, lon: 126.9707 },
+  { name: '용산', key: '용산역', lat: 37.5297, lon: 126.9645 },
+  { name: '이태원', key: '이태원', lat: 37.5345, lon: 126.9946 },
+  { name: '신사', key: '신사동', lat: 37.5200, lon: 127.0230 },
+  { name: '강남', key: '강남역', lat: 37.4979, lon: 127.0276 },
+  { name: '삼성', key: '삼성역', lat: 37.5090, lon: 127.0600 },
+  { name: '잠실', key: '잠실', lat: 37.5110, lon: 127.1000 },
+  { name: '신촌', key: '신촌', lat: 37.5552, lon: 126.9369 },
+  { name: '대학로', key: '대학로', lat: 37.5822, lon: 127.0019 },
+  { name: '성신여대', key: '성신여대입구', lat: 37.5926, lon: 127.0164 },
+  { name: '건대', key: '건대입구', lat: 37.5404, lon: 127.0701 },
+  { name: '왕십리', key: '왕십리', lat: 37.5612, lon: 127.0371 },
+  { name: '청량리', key: '청량리', lat: 37.5800, lon: 127.0469 },
+  { name: '수유', key: '수유역', lat: 37.6380, lon: 127.0257 },
+  { name: '노원', key: '노원역', lat: 37.6551, lon: 127.0613 },
+  { name: '연신내', key: '연신내', lat: 37.6190, lon: 126.9210 },
+  { name: '마곡', key: '마곡', lat: 37.5600, lon: 126.8250 },
+  { name: '목동', key: '목동', lat: 37.5265, lon: 126.8750 },
+  { name: '영등포', key: '영등포', lat: 37.5156, lon: 126.9073 },
+  { name: '노량진', key: '노량진', lat: 37.5131, lon: 126.9425 },
+  { name: '구로디지털단지', key: '구로디지털단지', lat: 37.4852, lon: 126.9015 },
+  { name: '가산', key: '가산디지털단지', lat: 37.4815, lon: 126.8827 },
+  { name: '신림', key: '신림', lat: 37.4842, lon: 126.9297 },
+  { name: '사당', key: '사당', lat: 37.4765, lon: 126.9816 },
+  { name: '교대', key: '교대역', lat: 37.4934, lon: 127.0141 },
+  { name: '천호', key: '천호', lat: 37.5386, lon: 127.1236 },
+  { name: '공릉', key: '공릉역', lat: 37.6253, lon: 127.0730 },
+  { name: '상봉', key: '상봉역', lat: 37.5965, lon: 127.0850 },
+  { name: '창동', key: '창동역', lat: 37.6531, lon: 127.0477 },
+  { name: '미아사거리', key: '미아사거리', lat: 37.6131, lon: 127.0300 },
+  { name: '불광', key: '불광역', lat: 37.6103, lon: 126.9298 },
+  { name: '홍제', key: '홍제역', lat: 37.5890, lon: 126.9437 },
+  { name: '합정', key: '합정', lat: 37.5495, lon: 126.9139 },
+  { name: '당산', key: '당산역', lat: 37.5343, lon: 126.9024 },
+  { name: '신도림', key: '신도림', lat: 37.5088, lon: 126.8913 },
+  { name: '발산', key: '발산역', lat: 37.5585, lon: 126.8376 },
+  { name: '화곡', key: '화곡역', lat: 37.5415, lon: 126.8403 },
+  { name: '개봉', key: '개봉역', lat: 37.4946, lon: 126.8580 },
+  { name: '서울대입구', key: '서울대입구역', lat: 37.4812, lon: 126.9527 },
+  { name: '양재', key: '양재역', lat: 37.4840, lon: 127.0346 },
+  { name: '선릉', key: '선릉역', lat: 37.5045, lon: 127.0490 },
+  { name: '수서', key: '수서역', lat: 37.4873, lon: 127.1018 },
+  { name: '가락시장', key: '가락시장역', lat: 37.4927, lon: 127.1183 },
+  { name: '길동', key: '길동역', lat: 37.5378, lon: 127.1400 },
+  { name: '군자', key: '군자역', lat: 37.5571, lon: 127.0794 },
+  { name: '회기', key: '회기역', lat: 37.5897, lon: 127.0578 },
+  { name: '안암', key: '안암역', lat: 37.5862, lon: 127.0292 },
+];
+const OPT = {
+  dur: [{ id: 'd2', label: '2시간', min: 120 }, { id: 'd4', label: '반나절', sub: '4시간', min: 240 }, { id: 'd7', label: '하루', sub: '7시간', min: 420 }],
+  budget: [{ id: 'b0', label: '0원', won: 0 }, { id: 'b1', label: '1만원', won: 10000 }, { id: 'b3', label: '3만원', won: 30000 }, { id: 'b9', label: '넉넉히', won: 1e9 }],
+  mood: [{ id: 'heal', label: '힐링', sub: '조용히 쉬기' }, { id: 'vibe', label: '감성', sub: '예쁜 거 보기' }, { id: 'fun', label: '신나게', sub: '에너지 발산' }, { id: 'taste', label: '맛있게', sub: '먹으러 나옴' }, { id: 'think', label: '생각정리', sub: '머리 비우기' }],
+  lv: [{ id: 'l2', label: '입문', sub: 'Lv.1–2', max: 2 }, { id: 'l3', label: '중수', sub: 'Lv.3까지', max: 3 }, { id: 'l5', label: '고수', sub: 'Lv.5까지', max: 5 }],
+  /* g = group in the start picker */
+  start: [{ id: 'gwanghwamun', label: '광화문', name: '광화문역', g: '도심', lat: 37.5710, lon: 126.9765 },
+          { id: 'euljiro', label: '을지로3가', name: '을지로3가역', g: '도심', lat: 37.5663, lon: 126.9917 },
+          { id: 'seoulstn', label: '서울역', name: '서울역', g: '도심', lat: 37.5547, lon: 126.9707 },
+          { id: 'hyehwa', label: '혜화(대학로)', name: '혜화역', g: '도심', lat: 37.5822, lon: 127.0019 },
+          { id: 'hongdae', label: '홍대입구', name: '홍대입구역', g: '서북', lat: 37.5572, lon: 126.9245 },
+          { id: 'sinchon', label: '신촌', name: '신촌역', g: '서북', lat: 37.5552, lon: 126.9369 },
+          { id: 'yeonsinnae', label: '연신내', name: '연신내역', g: '서북', lat: 37.6190, lon: 126.9210 },
+          { id: 'seongsu', label: '성수', name: '성수역', g: '동북', lat: 37.5446, lon: 127.0558 },
+          { id: 'konkuk', label: '건대입구', name: '건대입구역', g: '동북', lat: 37.5404, lon: 127.0701 },
+          { id: 'wangsimni', label: '왕십리', name: '왕십리역', g: '동북', lat: 37.5612, lon: 127.0371 },
+          { id: 'cheongnyangni', label: '청량리', name: '청량리역', g: '동북', lat: 37.5800, lon: 127.0469 },
+          { id: 'suyu', label: '수유', name: '수유역', g: '동북', lat: 37.6380, lon: 127.0257 },
+          { id: 'nowon', label: '노원', name: '노원역', g: '동북', lat: 37.6551, lon: 127.0613 },
+          { id: 'yeouido', label: '여의도', name: '여의도역', g: '서남', lat: 37.5216, lon: 126.9243 },
+          { id: 'yeongdeungpo', label: '영등포', name: '영등포역', g: '서남', lat: 37.5156, lon: 126.9073 },
+          { id: 'magok', label: '마곡나루', name: '마곡나루역', g: '서남', lat: 37.5668, lon: 126.8272 },
+          { id: 'guro', label: '구로디지털단지', name: '구로디지털단지역', g: '서남', lat: 37.4852, lon: 126.9015 },
+          { id: 'sillim', label: '신림', name: '신림역', g: '서남', lat: 37.4842, lon: 126.9297 },
+          { id: 'itaewon', label: '이태원', name: '이태원역', g: '용산', lat: 37.5345, lon: 126.9946 },
+          { id: 'yongsan', label: '용산', name: '용산역', g: '용산', lat: 37.5297, lon: 126.9645 },
+          { id: 'gangnam', label: '강남', name: '강남역', g: '동남', lat: 37.4979, lon: 127.0276 },
+          { id: 'samseong', label: '삼성(코엑스)', name: '삼성역', g: '동남', lat: 37.5088, lon: 127.0631 },
+          { id: 'sadang', label: '사당', name: '사당역', g: '동남', lat: 37.4765, lon: 126.9816 },
+          { id: 'jamsil', label: '잠실', name: '잠실역', g: '동남', lat: 37.5133, lon: 127.1002 },
+          { id: 'cheonho', label: '천호', name: '천호역', g: '동남', lat: 37.5386, lon: 127.1236 }],
+  move: [{ id: 'walk', label: '뚜벅이', sub: '도보·지하철' }, { id: 'car', label: '차·택시' }],
+  day: [{ id: 'today', label: '오늘' }, { id: 'tmr', label: '내일' }],
+  when: [{ id: 'now', label: '지금' }, { id: 't10', label: '오전 10시', h: 10 }, { id: 't14', label: '오후 2시', h: 14 }, { id: 't18', label: '저녁 6시', h: 18 }],
+  rain: [{ id: 'sun', label: '맑음' }, { id: 'rain', label: '비 와요', sub: '실내만' }],
+};
+const DEFAULTS = { dur: 'd4', budget: 'b1', mood: 'heal', lv: 'l2', start: 'hongdae', move: 'walk', day: 'today', when: 'now', rain: 'sun', must: null };
+/* approximate Seoul sunset by month, minutes after midnight */
+const SUNSET = [1065, 1095, 1120, 1145, 1170, 1190, 1190, 1165, 1125, 1085, 1050, 1040];
+const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+
+/* ================= helpers ================= */
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const pad2 = n => String(n).padStart(2, '0');
+function fmtTime(min) { const m = ((Math.round(min) % 1440) + 1440) % 1440; return pad2(Math.floor(m / 60)) + ':' + pad2(m % 60); }
+function fmtDur(min) { min = Math.round(min); const h = Math.floor(min / 60), m = min % 60; if (!h) return m + '분'; return m ? h + '시간 ' + m + '분' : h + '시간'; }
+function fmtWon(n) { return n === 0 ? '무료' : n.toLocaleString('ko-KR') + '원'; }
+function fmtTotal(n) { return n.toLocaleString('ko-KR') + '원'; }
+function esc(s) { return String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch])); }
+function haversine(a, b) {
+  const R = 6371, r = Math.PI / 180;
+  const dLat = (b.lat - a.lat) * r, dLon = (b.lon - a.lon) * r;
+  const s = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(s));
+}
+function rngFrom(seed) {
+  let t = seed >>> 0;
+  return () => { t += 0x6D2B79F5; let r = Math.imul(t ^ (t >>> 15), 1 | t); r ^= r + Math.imul(r ^ (r >>> 7), 61 | r); return ((r ^ (r >>> 14)) >>> 0) / 4294967296; };
+}
+
+/* ================= course engine ================= */
+function hoursOn(p, date) {
+  const dow = date.getDay(), nth = Math.ceil(date.getDate() / 7), m = date.getMonth() + 1;
+  if (p.closed && p.closed.some(r => r.d === dow && (!r.n || r.n.includes(nth)))) return null;
+  const H = p.hours;
+  if (!H) return [0, 1440];
+  if (H.dow && H.dow[dow]) return H.dow[dow];
+  if (H.seasons) {
+    for (const s of H.seasons) {
+      const inside = s[0] <= s[1] ? (m >= s[0] && m <= s[1]) : (m >= s[0] || m <= s[1]);
+      if (inside) return [s[2], s[3]];
+    }
+  }
+  const summer = !H.m || (m >= H.m[0] && m <= H.m[1]);
+  const weekend = dow === 0 || dow === 6;
+  let r = summer ? H.s : (H.w || H.s);
+  if (weekend) r = (summer ? H.sWe : H.wWe) || r;
+  return r;
+}
+function travel(from, to, move) {
+  const km = haversine(from, to) * 1.3;
+  if (km < 0.2) return { min: 2, mode: 'walk', km };
+  if (move === 'car') return { min: Math.round(5 + km / 20 * 60), mode: 'car', km };
+  if (km <= 1.2) return { min: Math.max(3, Math.round(km / 4.5 * 60)), mode: 'walk', km };
+  return { min: Math.round(9 + km / 30 * 60), mode: 'subway', km };
+}
+function nearUrban(pos) {
+  let best = null;
+  for (const u of URBAN) { const d = haversine(pos, u); if (d < 2.6 && (!best || d < best.d)) best = { u, d }; }
+  return best ? best.u : null;
+}
+/* lunch 11:00–14:00, dinner 17:00–20:00 */
+const MEAL_WINDOWS = [[660, 840], [1020, 1200]];
+function inMealTime(min) { return MEAL_WINDOWS.some(w => min >= w[0] && min <= w[1]); }
+function mealTimeAhead(min, endLimit) { return MEAL_WINDOWS.some(w => w[0] > min && w[0] <= endLimit - 40); }
+function pick(key, id) { return OPT[key].find(x => x.id === id) || OPT[key][0]; }
+function resolveOpts(st, now, seed) {
+  const date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  let startMin, shifted = null, dayOffset = 0;
+  if (st.day === 'tmr') { date.setDate(date.getDate() + 1); dayOffset = 1; }
+  const w = pick('when', st.when);
+  if (w.id === 'now') {
+    if (dayOffset) startMin = 600;
+    else {
+      const nm = now.getHours() * 60 + now.getMinutes();
+      startMin = Math.ceil(nm / 10) * 10;
+      if (startMin < 480) { startMin = 540; shifted = '이른 시간이라 오전 9시 출발로 맞췄어요.'; }
+      else if (startMin > 1230) { date.setDate(date.getDate() + 1); dayOffset = 1; startMin = 600; shifted = '늦은 시간이라 내일 오전 10시 출발로 짰어요.'; }
+    }
+  } else startMin = w.h * 60;
+  const start = st.start === 'here' && st.here ? { id: 'here', label: '내 위치', name: '내 위치', lat: st.here.lat, lon: st.here.lon } : pick('start', st.start);
+  return {
+    durMin: pick('dur', st.dur).min, budget: pick('budget', st.budget).won, mood: pick('mood', st.mood).id,
+    lvMax: pick('lv', st.lv).max, start, move: pick('move', st.move).id,
+    date, dayOffset, startMin, rain: st.rain === 'rain', must: st.must && BY_ID[st.must] ? st.must : null, seed, shifted,
+  };
+}
+function buildCourse(o) {
+  const rnd = rngFrom(o.seed);
+  const sunset = SUNSET[o.date.getMonth()];
+  const endLimit = o.startMin + o.durMin;
+  const maxStops = o.durMin <= 120 ? 3 : o.durMin <= 240 ? 5 : 7;
+  let t = o.startMin, pos = { lat: o.start.lat, lon: o.start.lon }, left = o.budget;
+  const stops = [], used = new Set(), catCount = {};
+  let meals = 0, cafes = 0, generics = 0, challenge = false;
+  /* nearby places that would fit but are closed that day, nearest first */
+  const closedToday = PLACES.filter(p => !p.generic && !hoursOn(p, o.date) && p.moods.includes(o.mood) && p.lv <= o.lvMax && haversine(o.start, p) < 6)
+    .sort((a, b) => haversine(o.start, a) - haversine(o.start, b));
+  while (stops.length < maxStops && endLimit - t >= 25) {
+    let best = null;
+    for (const p of PLACES) {
+      if (used.has(p.id) || p.lv > o.lvMax || p.cost > left) continue;
+      if (o.rain && !(p.indoor || p.covered)) continue;
+      const hrs = hoursOn(p, o.date);
+      if (!hrs) continue;
+      let tr, at;
+      if (p.generic) {
+        const u = nearUrban(pos);
+        if (!u) continue;
+        tr = { min: 6, mode: 'near', km: 0 };
+        at = { lat: pos.lat, lon: pos.lon, near: u };
+      } else { tr = travel(pos, p, o.move); at = p; }
+      const arrive = t + tr.min;
+      const begin = Math.max(arrive, hrs[0]);
+      const wait = begin - arrive;
+      if (wait > 30) continue;
+      const close = hrs[1];
+      if (p.lastEntry && begin > close - p.lastEntry) continue;
+      const tg = p.tags || [];
+      const outdoor = !p.indoor && !p.covered;
+      let stay = Math.min(p.stay, close - begin, endLimit + 10 - begin);
+      /* hills and trails: be back down before sunset; unlit outdoor spots: done by dusk */
+      if (tg.includes('day')) stay = Math.min(stay, sunset - 10 - begin);
+      else if (outdoor && !tg.includes('night')) stay = Math.min(stay, sunset + 30 - begin);
+      if (stay < p.min) continue;
+      /* after dusk only lit night spots outdoors, and nothing outdoors after 21:30 */
+      if (outdoor && begin >= sunset + 30 && !tg.includes('night')) continue;
+      if (outdoor && begin >= 1290) continue;
+      /* eat at meal times when the course still reaches one */
+      if (p.meal && !inMealTime(begin) && mealTimeAhead(begin, endLimit)) continue;
+      let s = 0;
+      const mi = p.moods.indexOf(o.mood);
+      if (mi === 0) s += 7.5; else if (mi > 0) s += 5.5;
+      const last = stops[stops.length - 1];
+      if (last && last.p.cat === p.cat) s -= 3.5;
+      s -= (catCount[p.cat] || 0) * 1.8;
+      s -= tr.min / 5 + Math.max(0, tr.min - 20) / 5;
+      s -= wait / 8;
+      if (p.meal) {
+        if (meals) s -= (o.mood === 'taste' && o.durMin >= 420) ? 2 : 9;
+        else {
+          s += inMealTime(begin) ? 7 : -1;
+          if (o.mood === 'taste') s += 3;
+        }
+      }
+      if (p.cafe && cafes) s -= 6;
+      if (tg.includes('sunset') && begin <= sunset + 10 && begin + stay >= sunset - 40) s += 4;
+      if (tg.includes('night') && begin >= sunset - 20) s += 3;
+      if (o.lvMax >= 4 && !challenge && p.lv >= 4) s += 3;
+      /* generic spots only when nothing real is close, but a first meal is always welcome */
+      if (p.generic) s -= (p.meal && !meals) ? 1.5 : 3.5 + generics * 3;
+      /* don't zig-zag back to an area the course already left */
+      if (!p.generic && stops.slice(0, -1).some(x => haversine(x.at, p) < 1.2)) s -= 3;
+      if (o.must === p.id) s += 40;
+      s += rnd() * 2.2;
+      if (!best || s > best.s) best = { s, p, tr, at, arrive, begin, wait, stay };
+    }
+    if (!best) break;
+    stops.push({ p: best.p, at: best.at, travel: best.tr, arrive: best.arrive, begin: best.begin, wait: best.wait, stay: best.stay, end: best.begin + best.stay });
+    used.add(best.p.id);
+    catCount[best.p.cat] = (catCount[best.p.cat] || 0) + 1;
+    if (best.p.meal) meals++;
+    if (best.p.cafe) cafes++;
+    if (best.p.generic) generics++;
+    if (best.p.lv >= 4) challenge = true;
+    left -= best.p.cost;
+    t = best.begin + best.stay;
+    pos = { lat: best.at.lat, lon: best.at.lon };
+  }
+  return {
+    o, stops, sunset, closedToday,
+    cost: stops.reduce((a, x) => a + x.p.cost, 0),
+    lvMax: stops.reduce((a, x) => Math.max(a, x.p.lv), 0),
+    travelMin: stops.reduce((a, x) => a + x.travel.min, 0),
+    endMin: stops.length ? stops[stops.length - 1].end : o.startMin,
+    mustMissing: !!(o.must && !used.has(o.must)),
+  };
+}
+function dayWord(o) { return (o.dayOffset ? '내일' : '오늘') + '(' + DOW[o.date.getDay()] + ')'; }
+function courseNotes(c) {
+  const o = c.o, n = [];
+  if (o.shifted) n.push(o.shifted);
+  if (c.mustMissing) n.push(BY_ID[o.must].short + '은(는) 이 조건에선 시간이나 예산이 안 맞아서 빠졌어요. 시간을 늘리거나 예산을 바꿔 보세요.');
+  if (o.rain) n.push('비 오는 날이라 실내나 지붕 있는 곳만 넣었어요.');
+  const closed = c.closedToday.slice(0, 2).map(p => p.short);
+  if (closed.length) n.push(dayWord(o) + ' 휴무라 뺀 곳: ' + closed.join(', '));
+  if (c.stops.some(s => (s.p.tags || []).includes('sunset') && s.begin <= c.sunset + 10 && s.end >= c.sunset - 40)) n.push('노을은 ' + fmtTime(c.sunset) + ' 무렵이에요. 시간 맞춰 넣었어요.');
+  if (o.budget === 0) n.push('예산 0원이라 무료로 즐길 수 있는 곳만 골랐어요.');
+  if (c.stops.some(s => ['gyeongbokgung', 'deoksugung', 'seonjeongneung'].includes(s.p.id))) n.push('궁궐·왕릉은 만 24세 이하면 무료예요. 비용은 일반 요금으로 계산했어요.');
+  if (c.stops.some(s => s.p.generic)) n.push('‘동네 어디서나’ 장소는 지도 앱에서 가까운 곳을 찾아 가면 돼요.');
+  return n;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { PLACES, OPT, DEFAULTS, buildCourse, resolveOpts, hoursOn, travel, courseNotes, fmtTime };
+}
+if (!HAS_DOM) return;
+
+/* ================= state ================= */
+const $ = (s, r) => (r || document).querySelector(s);
+const KEY_OPTS = 'honjanolja.opts.v1', KEY_FAVS = 'honjanolja.favs.v1';
+/* set before launch: a feedback form or mailto: link, shown in the info sheet when filled */
+const FEEDBACK_URL = '';
+/* set before launch to collect 혼놀 정보 reports: the Google Form pre-filled link (README '혼놀 정보 제보 연결하기').
+   Left empty, the report button stays hidden on the site. */
+const REPORT_PREFILL_URL = '';
+function readStore(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+function writeStore(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage off: keep in memory */ } }
+const saved = readStore(KEY_OPTS, null);
+const state = Object.assign({}, DEFAULTS, saved && typeof saved === 'object' ? saved : {});
+/* "my location" is never stored, so a saved 'here' falls back to the default station */
+for (const k of Object.keys(OPT)) if (!OPT[k].some(x => x.id === state[k])) state[k] = DEFAULTS[k];
+delete state.here;
+if (state.must && !BY_ID[state.must]) state.must = null;
+let favs = readStore(KEY_FAVS, null);
+if (favs === null) favs = readStore('honnolgak.seoul.favs.v1', []); /* carry over picks from the beta name */
+if (!Array.isArray(favs)) favs = [];
+favs = favs.filter(id => BY_ID[id]);
+let seed = 7 + Math.floor(Math.random() * 9000);
+let course = null;
+let tab = 'course';
+
+/* ================= course UI ================= */
+function chipHTML(group, x) {
+  const id = 'o-' + group + '-' + x.id;
+  return '<label class="chip" for="' + id + '"><input type="radio" name="' + group + '" id="' + id + '" value="' + x.id + '"' + (state[group] === x.id ? ' checked' : '') + '>' +
+    '<span>' + esc(x.label) + (x.sub ? '<small>' + esc(x.sub) + '</small>' : '') + '</span></label>';
+}
+function renderOptions() {
+  document.querySelectorAll('[data-group]').forEach(box => {
+    const g = box.dataset.group;
+    box.innerHTML = OPT[g].map(x => chipHTML(g, x)).join('');
+  });
+  renderStartSel();
+  updateMoreSummary();
+  renderMust();
+}
+function renderStartSel() {
+  const groups = [];
+  for (const x of OPT.start) { let g = groups.find(a => a.name === x.g); if (!g) groups.push(g = { name: x.g, items: [] }); g.items.push(x); }
+  $('#start-sel').innerHTML = '<option value="here">내 위치에서 출발 (GPS)</option>' +
+    groups.map(g => '<optgroup label="' + esc(g.name) + '">' + g.items.map(x => '<option value="' + x.id + '">' + esc(x.label) + '</option>').join('') + '</optgroup>').join('');
+  $('#start-sel').value = state.start;
+}
+function startLabel() { return state.start === 'here' ? '내 위치' : pick('start', state.start).label; }
+function updateMoreSummary() {
+  const parts = [startLabel() + ' 출발', pick('move', state.move).label, pick('day', state.day).label + ' ' + pick('when', state.when).label];
+  if (state.rain === 'rain') parts.push('비');
+  $('#more-sum').textContent = parts.join(' · ');
+}
+/* GPS start: ask once per pick, keep the position only in memory */
+function useMyLocation() {
+  const prev = state.start === 'here' ? DEFAULTS.start : state.start;
+  const back = msg => { $('#start-sel').value = state.start === 'here' && state.here ? 'here' : (state.start = prev); toast(msg); updateMoreSummary(); };
+  if (!navigator.geolocation) { back('이 기기에선 위치를 쓸 수 없어요. 출발역을 골라 주세요.'); return; }
+  toast('위치 확인 중이에요…');
+  try {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const lat = pos.coords.latitude, lon = pos.coords.longitude;
+      if (lat < 37.40 || lat > 37.72 || lon < 126.74 || lon > 127.22) { back('지금 위치가 서울 밖이에요. 출발역을 골라 주세요.'); return; }
+      state.here = { lat: Math.round(lat * 1000) / 1000, lon: Math.round(lon * 1000) / 1000 };
+      state.start = 'here'; saveOpts(); updateMoreSummary(); regenerate(false);
+      toast('내 위치에서 출발하는 코스로 바꿨어요');
+    }, () => back('위치를 못 가져왔어요. 출발역을 골라 주세요.'), { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+  } catch (e) { back('위치를 못 가져왔어요. 출발역을 골라 주세요.'); }
+}
+function renderMust() {
+  const box = $('#must');
+  if (!state.must) { box.hidden = true; box.innerHTML = ''; return; }
+  const p = BY_ID[state.must];
+  box.hidden = false;
+  box.innerHTML = '<span>꼭 넣을 곳 <b>' + esc(p.short) + '</b></span><button type="button" id="must-x" aria-label="꼭 넣을 곳 빼기">빼기</button>';
+  $('#must-x').addEventListener('click', () => { state.must = null; saveOpts(); renderMust(); regenerate(false); });
+}
+function saveOpts() { writeStore(KEY_OPTS, Object.assign({}, state, { here: undefined })); }
+function regenerate(newSeed) {
+  if (newSeed) seed = (seed * 31 + 17 + Math.floor(Math.random() * 97)) % 2147483000;
+  course = buildCourse(resolveOpts(state, new Date(), seed));
+  renderCourse();
+  if (courseOnMap) { courseOnMap = course; drawCourseOverlay(); }
+}
+function pipsHTML(lv) { let h = '<span class="pips" aria-hidden="true">'; for (let i = 1; i <= 5; i++) h += '<i' + (i <= lv ? ' class="on"' : '') + '></i>'; return h + '</span>'; }
+function searchQuery(p, at) {
+  if (p.generic) return '서울 ' + ((at && at.near && at.near.key) || '') + ' ' + p.q;
+  return '서울 ' + p.q;
+}
+function naverUrl(q) { return 'https://map.naver.com/p/search/' + encodeURIComponent(q.replace(/\s+/g, ' ').trim()); }
+function kakaoUrl(q) { return 'https://map.kakao.com/link/search/' + encodeURIComponent(q.replace(/\s+/g, ' ').trim()); }
+const HEART = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.6S2.6 10.4 2.6 6.4A3 3 0 0 1 8 4.7a3 3 0 0 1 5.4 1.7c0 4-5.4 7.2-5.4 7.2Z"/></svg>';
+function legText(s) {
+  const tr = s.travel;
+  let t;
+  if (tr.mode === 'near') t = '<b>근처에서 찾기</b> · 약 ' + tr.min + '분';
+  else if (tr.mode === 'walk') t = '<b>걸어서</b> ' + tr.min + '분';
+  else if (tr.mode === 'car') t = '<b>차·택시</b> 약 ' + tr.min + '분';
+  else t = '<b>지하철</b> 약 ' + fmtDur(tr.min) + ' (역까지 걷는 시간 포함)';
+  if (s.wait > 0) t += ' · ' + s.wait + '분 기다리면 오픈';
+  return t;
+}
+function renderCourse() {
+  const box = $('#result');
+  const c = course, o = c.o;
+  const dur = pick('dur', state.dur), mood = pick('mood', state.mood);
+  const title = dur.label + ' ' + mood.label + ' 코스';
+  const no = 'NO.' + seed.toString(36).toUpperCase().padStart(4, '0');
+  if (!c.stops.length) {
+    box.innerHTML = '<article class="ticket" id="ticket"><div class="t-head"><div class="t-kicker"><span>혼놀 승차권 · 1인</span><span>' + no + '</span></div></div>' +
+      '<div class="empty"><b>이 조건으론 갈 만한 곳이 없어요</b>출발 시간을 바꾸거나 예산·레벨을 넓혀 보세요.</div></article>';
+    return;
+  }
+  const notes = courseNotes(c).map(n => '<li>' + esc(n) + '</li>').join('');
+  let rows = '<li class="edge"><div class="time">' + fmtTime(o.startMin) + '</div><div class="rail"><span class="dotn hollow" aria-hidden="true"></span></div>' +
+    '<div class="body">출발 · ' + esc(o.start.name) + '<small>' + esc(dayWord(o)) + '</small></div></li>';
+  c.stops.forEach((s, i) => {
+    const p = s.p, cat = CATS[p.cat];
+    rows += '<li class="leg"><div class="time"></div><div class="rail"></div><div class="leg-text">' + legText(s) + '</div></li>';
+    const faved = favs.includes(p.id);
+    const q = searchQuery(p, s.at);
+    rows += '<li class="stop"><div class="time">' + fmtTime(s.begin) + '</div><div class="rail"><span class="dotn" style="--c:' + cat.c + '">' + (i + 1) + '</span></div><div class="body">' +
+      '<button type="button" class="stop-name" data-open="' + p.id + '">' + esc(p.name) + '</button>' +
+      '<div class="stop-meta">' + esc(cat.label) + ' · ' + fmtDur(s.stay) + ' · ' + fmtWon(p.cost) + ' · Lv.' + p.lv + (p.generic ? ' · ' + esc((s.at.near && s.at.near.name) || '') + ' 근처' : '') + '</div>' +
+      '<p class="stop-tip">' + esc(p.tip) + '</p>' +
+      '<div class="stop-links">' +
+        (p.generic ? '' : '<button type="button" class="mini" data-mapto="' + p.id + '">지도</button>') +
+        '<a class="mini" href="' + naverUrl(q) + '" target="_blank" rel="noopener">네이버 지도</a>' +
+        '<a class="mini" href="' + kakaoUrl(q) + '" target="_blank" rel="noopener">카카오맵</a>' +
+        '<button type="button" class="mini" data-fav="' + p.id + '" aria-pressed="' + faved + '" aria-label="' + esc(p.short) + ' 찜하기">' + HEART + '찜</button>' +
+      '</div></div></li>';
+  });
+  rows += '<li class="edge"><div class="time">' + fmtTime(c.endMin) + '</div><div class="rail"><span class="dotn flag" aria-hidden="true"></span></div><div class="body">코스 끝<small>여기서 자유 해산</small></div></li>';
+  box.innerHTML = '<article class="ticket" id="ticket" aria-label="' + esc(title) + '">' +
+    '<div class="t-head"><div class="t-kicker"><span>혼놀 승차권 · 1인</span><span>' + no + '</span></div>' +
+    '<h2 class="t-title">' + esc(title) + '</h2>' +
+    '<p class="t-sub">' + esc(dayWord(o)) + ' ' + fmtTime(o.startMin) + ' 출발 · ' + esc(o.start.name) + ' · ' + esc(pick('move', state.move).label) + '</p>' +
+    '<dl class="t-meta">' +
+      '<div><dt>시간</dt><dd class="num">' + fmtTime(o.startMin) + '–' + fmtTime(c.endMin) + '<small>' + fmtDur(c.endMin - o.startMin) + '</small></dd></div>' +
+      '<div><dt>예상 비용</dt><dd class="num">' + fmtTotal(c.cost) + '<small>교통비 별도</small></dd></div>' +
+      '<div><dt>혼놀 난이도</dt><dd>' + pipsHTML(c.lvMax) + 'Lv.' + c.lvMax + '<small>' + esc(LEVELS[c.lvMax].name) + ' 코스</small></dd></div>' +
+      '<div><dt>들르는 곳</dt><dd>' + c.stops.length + '곳<small>이동 약 ' + fmtDur(c.travelMin) + '</small></dd></div>' +
+    '</dl></div>' +
+    '<div class="perf" aria-hidden="true"></div>' +
+    (notes ? '<ul class="notes">' + notes + '</ul>' : '') +
+    '<ol class="tl">' + rows + '</ol>' +
+    '<div class="t-actions">' +
+      '<button type="button" id="act-reroll"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 6A5.7 5.7 0 0 0 3 4.6M2.5 10A5.7 5.7 0 0 0 13 11.4"/><path d="M3 1.8v2.8h2.8M13 14.2v-2.8h-2.8"/></svg>다른 코스</button>' +
+      '<button type="button" id="act-map"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.5 2 4v9.5L6 12l4 1.5 4-1.5V2.5L10 4Z"/><path d="M6 2.5V12M10 4v9.5"/></svg>지도로 보기</button>' +
+      '<button type="button" id="act-share"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 9.5V2M5.2 4.6 8 1.8l2.8 2.8"/><path d="M5 7H3.5v7h9V7H11"/></svg>공유</button>' +
+    '</div></article>';
+  $('#act-reroll').addEventListener('click', () => { regenerate(true); });
+  $('#act-map').addEventListener('click', () => { courseOnMap = course; switchTab('map'); drawCourseOverlay(true); });
+  $('#act-share').addEventListener('click', shareCourse);
+}
+function courseText(c) {
+  const o = c.o;
+  const dur = pick('dur', state.dur), mood = pick('mood', state.mood);
+  const lines = ['[혼자놀자] 서울 ' + dur.label + ' ' + mood.label + ' 코스',
+    '혼놀 Lv.' + c.lvMax + ' · ' + fmtTime(o.startMin) + '–' + fmtTime(c.endMin) + ' · 예상 ' + fmtTotal(c.cost) + '(교통비 별도)',
+    fmtTime(o.startMin) + ' 출발 · ' + o.start.name];
+  c.stops.forEach((s, i) => lines.push(fmtTime(s.begin) + ' ' + (i + 1) + '. ' + s.p.name + ' (' + fmtDur(s.stay) + ')'));
+  lines.push(fmtTime(c.endMin) + ' 코스 끝');
+  return lines.join('\n');
+}
+/* the public web address, only when running as its own site (not inside a preview frame) */
+function appUrl() {
+  try { if (window.top === window && /^https?:$/.test(location.protocol)) return location.origin + location.pathname.replace(/index\.html$/, ''); } catch (e) { /* framed */ }
+  return '';
+}
+function shareCourse() {
+  const text = courseText(course), url = appUrl();
+  if (navigator.share) {
+    const data = url ? { title: '혼자놀자', text, url } : { title: '혼자놀자', text };
+    navigator.share(data).catch(err => { if (!err || err.name !== 'AbortError') copyCourse(); });
+    return;
+  }
+  copyCourse();
+}
+function copyCourse() {
+  const url = appUrl();
+  const text = courseText(course) + (url ? '\n' + url : '');
+  const fallback = () => openSheet('<div class="about"><h2 id="sheet-title">코스 복사</h2><p class="s-info">자동 복사가 막혀 있어요. 아래 글을 길게 눌러 복사해 주세요.</p><textarea class="copybox" id="copybox" readonly>' + esc(text) + '</textarea></div>', () => { const ta = $('#copybox'); ta.focus(); ta.select(); });
+  try {
+    if (!navigator.clipboard || !navigator.clipboard.writeText) { fallback(); return; }
+    navigator.clipboard.writeText(text).then(() => toast('코스를 복사했어요. 카톡에 붙여 넣어 보세요.'), fallback);
+  } catch (e) { fallback(); }
+}
+let toastTimer = 0;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.hidden = true; }, 2200);
+}
+function renderLevels() {
+  let h = '';
+  for (let i = 1; i <= 5; i++) h += '<li><span class="lv-tag">Lv.' + i + pipsHTML(i) + '</span><div><b>' + esc(LEVELS[i].name) + '</b><p>' + esc(LEVELS[i].desc) + '</p></div></li>';
+  $('#lv-list').innerHTML = h;
+}
+
+/* ================= favourites ================= */
+function toggleFav(id) {
+  const i = favs.indexOf(id);
+  if (i >= 0) favs.splice(i, 1); else favs.push(id);
+  writeStore(KEY_FAVS, favs);
+  const on = favs.includes(id);
+  document.querySelectorAll('[data-fav="' + id + '"]').forEach(b => b.setAttribute('aria-pressed', String(on)));
+  renderSaved();
+  toast(on ? '찜했어요' : '찜을 뺐어요');
+}
+function renderSaved() {
+  const box = $('#saved');
+  const badge = $('#fav-count');
+  badge.hidden = !favs.length; badge.textContent = favs.length;
+  if (!favs.length) {
+    box.innerHTML = '<div class="saved-empty"><b>아직 찜한 곳이 없어요</b>지도나 코스에서 하트를 누르면 여기에 모여요.<br><button type="button" class="btn" id="go-map">혼놀 지도 보러 가기</button></div>';
+    $('#go-map').addEventListener('click', () => switchTab('map'));
+    return;
+  }
+  box.innerHTML = '<ul class="saved-list">' + favs.map(id => {
+    const p = BY_ID[id];
+    return '<li><span class="cdot" style="--c:' + CATS[p.cat].c + '"></span><div style="min-width:0"><b>' + esc(p.name) + '</b><small>' + esc(p.area) + ' · Lv.' + p.lv + ' · ' + fmtWon(p.cost) + '</small></div>' +
+      '<button type="button" class="mini" data-open="' + id + '">보기</button><button type="button" class="mini" data-fav="' + id + '" aria-pressed="true" aria-label="' + esc(p.short) + ' 찜 빼기">' + HEART + '</button></li>';
+  }).join('') + '</ul>';
+}
+
+/* ================= sheet ================= */
+let lastFocus = null, sheetCloseCb = null;
+function openSheet(html, after, onClose) {
+  lastFocus = document.activeElement;
+  $('#sheet-body').innerHTML = html;
+  $('#scrim').hidden = false;
+  const sh = $('#sheet'); sh.hidden = false; sh.scrollTop = 0;
+  sheetCloseCb = onClose || null;
+  $('#sheet-close').focus({ preventScroll: true });
+  if (after) after();
+}
+function closeSheet() {
+  if ($('#sheet').hidden) return;
+  $('#sheet').hidden = true; $('#scrim').hidden = true;
+  const cb = sheetCloseCb; sheetCloseCb = null;
+  if (cb) cb();
+  if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll: true });
+}
+function todayHoursText(p) {
+  const h = hoursOn(p, new Date());
+  if (!h) return '오늘 휴무';
+  if (h[0] === 0 && h[1] >= 1440) return '상시';
+  return fmtTime(h[0]) + '–' + (h[1] >= 1440 ? '24:00' : fmtTime(h[1]));
+}
+function openPlace(id) {
+  const p = BY_ID[id]; if (!p) return;
+  const cat = CATS[p.cat], faved = favs.includes(id);
+  const from = state.start === 'here' && state.here ? state.here : pick('start', state.start);
+  const q = searchQuery(p, p.generic ? { near: nearUrban(from) } : null);
+  const html = '<p class="s-eyebrow"><span class="cdot" style="--c:' + cat.c + '"></span>' + esc(cat.label) + ' · ' + esc(p.area) + '</p>' +
+    '<h2 class="s-title" id="sheet-title">' + esc(p.name) + '</h2>' +
+    '<div class="s-lv">혼놀&nbsp;' + pipsHTML(p.lv) + 'Lv.' + p.lv + ' ' + esc(LEVELS[p.lv].name) + '</div>' +
+    '<dl class="facts">' +
+      '<div><dt>머무는 시간</dt><dd>약 ' + fmtDur(p.stay) + '</dd></div>' +
+      '<div><dt>예상 비용</dt><dd>' + fmtWon(p.cost) + '</dd></div>' +
+      '<div><dt>오늘 운영</dt><dd class="num">' + esc(todayHoursText(p)) + '</dd></div>' +
+      '<div><dt>실내·야외</dt><dd>' + (p.indoor ? '실내' : p.covered ? '지붕 있음' : '야외') + '</dd></div>' +
+    '</dl>' +
+    '<p class="s-tip">' + esc(p.tip) + '</p>' +
+    '<p class="s-info">' + esc(p.info) + '</p>' +
+    soloHTML(p) +
+    '<div class="s-actions">' +
+      '<button type="button" class="btn primary" id="s-must">이곳 넣어서 코스 짜기</button>' +
+      '<button type="button" class="btn" data-fav="' + id + '" aria-pressed="' + faved + '">' + HEART + '찜</button>' +
+      '<a class="btn" href="' + naverUrl(q) + '" target="_blank" rel="noopener">네이버 지도</a>' +
+      '<a class="btn" href="' + kakaoUrl(q) + '" target="_blank" rel="noopener">카카오맵</a>' +
+    '</div>' +
+    '<p class="s-fine">' + (p.generic ? '특정 가게가 아니라 동네마다 있는 종류예요. 지도 앱에서 가까운 곳을 찾아보세요. ' : '') + '운영시간·요금은 바뀔 수 있어요. 가기 전에 한 번 확인해 주세요.</p>';
+  openSheet(html, () => {
+    const rb = $('#s-report'); if (rb) rb.addEventListener('click', () => openReport(id));
+    $('#s-must').addEventListener('click', () => {
+      state.must = id; saveOpts(); renderMust();
+      closeSheet(); switchTab('course');
+      regenerate(true);
+      const tk = $('#ticket'); if (tk) tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
+    });
+  }, () => { if (selected === id) { selected = null; scheduleRender(); } });
+  if (!p.generic) { selected = id; scheduleRender(); }
+}
+/* ================= 혼놀 정보 제보 ================= */
+/* reports go to the operator's Google Form; confirmed notes are copied by hand into a place's `solo` list */
+const SOLO_TAGS = [
+  { id: 'seat', label: '1인석·바 좌석 있어요', short: '1인석 있음', good: true },
+  { id: 'many', label: '혼자 온 사람이 많아요', short: '혼자 온 사람 많음', good: true },
+  { id: 'meal', label: '혼밥하기 편해요', short: '혼밥 편함', good: true, food: true },
+  { id: 'quiet', label: '조용해요', short: '조용함', good: true },
+  { id: 'stay', label: '오래 있어도 눈치 안 보여요', short: '오래 있어도 OK', good: true },
+  { id: 'awk', label: '혼자 가기 좀 어색해요', short: '혼자는 좀 어색', good: false },
+  { id: 'wait', label: '줄이 길어요', short: '대기 김', good: false },
+  { id: 'wrong', label: '운영시간·요금이 달라요', short: '정보 확인 필요', good: false },
+];
+const SOLO_BY_ID = Object.fromEntries(SOLO_TAGS.map(t => [t.id, t]));
+const WHEN_LABELS = ['평일 낮', '평일 저녁', '주말 낮', '주말 저녁'];
+const KEY_REPORTS = 'honjanolja.reports.v1';
+/* the pre-filled link carries PLACE / TAGS / LEVEL / WHEN / TIP as dummy answers; map them to the form's entry ids */
+const REPORT = (() => {
+  if (!REPORT_PREFILL_URL) return null;
+  try {
+    const u = new URL(REPORT_PREFILL_URL);
+    const map = {};
+    u.searchParams.forEach((v, k) => { if (/^entry\.\d+$/.test(k)) map[String(v).trim().toUpperCase()] = k; });
+    if (!map.PLACE || !map.TAGS || !/\/viewform$/.test(u.pathname)) return null;
+    return { action: u.origin + u.pathname.replace(/\/viewform$/, '/formResponse'), map };
+  } catch (e) { return null; }
+})();
+/* preview = inside a preview frame or a local file: the form shows but nothing is sent */
+function reportMode() { if (!appUrl()) return 'preview'; return REPORT ? 'live' : 'off'; }
+function soloHTML(p) {
+  if (p.generic) return '';
+  const tags = (p.solo || []).map(id => SOLO_BY_ID[id]).filter(Boolean);
+  const mode = reportMode();
+  const btn = mode === 'off' ? '' : '<button type="button" id="s-report">제보하기</button>';
+  const body = tags.length
+    ? '<div class="solo-tags">' + tags.map(t => '<span class="solo-tag' + (t.good ? '' : ' bad') + '">' + esc(t.short) + '</span>').join('') + '</div><p class="solo-src">다녀온 사람들의 제보로 확인한 정보예요.</p>'
+    : '<p class="solo-empty">아직 확인된 혼놀 정보가 없어요.' + (mode === 'off' ? '' : ' 다녀왔다면 1인석이나 분위기를 알려 주세요.') + '</p>';
+  return '<div class="solo"><p class="solo-h"><span>혼놀 정보</span>' + btn + '</p>' + body + '</div>';
+}
+function openReport(id) {
+  const p = BY_ID[id]; if (!p) return;
+  const chip = (type, name, val, label) => {
+    const cid = 'rp-' + name + '-' + val;
+    return '<label class="chip" for="' + cid + '"><input type="' + type + '" name="' + name + '" id="' + cid + '" value="' + val + '"><span>' + esc(label) + '</span></label>';
+  };
+  const tags = SOLO_TAGS.filter(t => !t.food || p.cat === 'food');
+  const html = '<div class="about"><p class="s-eyebrow">' + esc(p.name) + '</p><h2 id="sheet-title">혼놀 정보 제보</h2>' +
+    '<form class="report" id="report-form" novalidate>' +
+      '<fieldset class="q"><legend>해당하는 걸 모두 골라 주세요</legend><div class="chips">' + tags.map(t => chip('checkbox', 'tag', t.id, t.label)).join('') + '</div></fieldset>' +
+      '<fieldset class="q"><legend>혼자 가기 난이도는요? (선택)</legend><div class="chips">' + [1, 2, 3, 4, 5].map(n => chip('radio', 'lv', n, 'Lv.' + n + ' ' + LEVELS[n].name)).join('') + '</div></fieldset>' +
+      '<fieldset class="q"><legend>언제 다녀왔어요? (선택)</legend><div class="chips">' + WHEN_LABELS.map((w, i) => chip('radio', 'when', i, w)).join('') + '</div></fieldset>' +
+      '<div class="field"><label for="rp-tip">한 줄 팁 (선택)</label><input id="rp-tip" type="text" maxlength="100" placeholder="예: 창가 바 좌석이 혼자 앉기 좋아요" autocomplete="off"></div>' +
+      '<p class="form-err" id="rp-err" role="alert" hidden></p>' +
+      '<button type="submit" class="btn primary" id="rp-send">제보 보내기</button>' +
+      '<p class="s-fine">이름·연락처 같은 개인정보는 적지 말아 주세요. 보낸 내용은 장소 정보를 고치는 데만 쓰고, 앱에 그대로 올리지 않아요.' + (reportMode() === 'preview' ? ' 지금은 미리보기라 실제로 보내지 않아요.' : '') + '</p>' +
+    '</form></div>';
+  openSheet(html, () => {
+    const f = $('#report-form');
+    f.addEventListener('submit', e => { e.preventDefault(); submitReport(p); });
+    f.addEventListener('change', () => { $('#rp-err').hidden = true; });
+    f.addEventListener('input', () => { $('#rp-err').hidden = true; });
+  }, () => { if (selected === id) { selected = null; scheduleRender(); } });
+}
+function submitReport(p) {
+  const f = $('#report-form'), err = $('#rp-err'), btn = $('#rp-send');
+  const tags = [...f.querySelectorAll('input[name="tag"]:checked')].map(i => SOLO_BY_ID[i.value].label);
+  const lv = f.querySelector('input[name="lv"]:checked'), when = f.querySelector('input[name="when"]:checked');
+  const tip = $('#rp-tip').value.replace(/\s+/g, ' ').trim();
+  if (!tags.length && !lv && !tip) { err.textContent = '하나 이상 고르거나 한 줄 팁을 적어 주세요.'; err.hidden = false; return; }
+  err.hidden = true;
+  const sent = readStore(KEY_REPORTS, {});
+  const log = sent && typeof sent === 'object' ? sent : {};
+  if (log[p.id] && Date.now() - log[p.id] < 12 * 3600 * 1000) { closeSheet(); toast('이곳은 오늘 이미 제보했어요. 고마워요!'); return; }
+  if (reportMode() !== 'live') { closeSheet(); toast('미리보기라 실제로 보내진 않았어요'); return; }
+  const M = REPORT.map, body = new URLSearchParams();
+  body.append(M.PLACE, p.name + ' (' + p.id + ')');
+  body.append(M.TAGS, tags.join(', '));
+  if (M.LEVEL) body.append(M.LEVEL, lv ? 'Lv.' + lv.value : '');
+  if (M.WHEN) body.append(M.WHEN, when ? WHEN_LABELS[+when.value] : '');
+  if (M.TIP) body.append(M.TIP, tip);
+  btn.disabled = true; btn.textContent = '보내는 중…';
+  fetch(REPORT.action, { method: 'POST', mode: 'no-cors', body }).then(() => {
+    log[p.id] = Date.now(); writeStore(KEY_REPORTS, log);
+    closeSheet(); toast('제보 고마워요! 확인하고 반영할게요');
+  }, () => {
+    btn.disabled = false; btn.textContent = '제보 보내기';
+    err.textContent = '보내지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.'; err.hidden = false;
+  });
+}
+function openAbout() {
+  const site = appUrl();
+  const links = [];
+  if (FEEDBACK_URL) links.push('<a class="btn" href="' + esc(FEEDBACK_URL) + '" target="_blank" rel="noopener">의견 보내기</a>');
+  if (site) links.push('<a class="btn" href="privacy.html" target="_blank" rel="noopener">개인정보처리방침</a>');
+  const html = '<div class="about"><h2 id="sheet-title">혼자놀자는요</h2>' +
+    '<p class="s-tip">혼자 노는 하루를 조건에 맞춰 짜 주는 서비스예요. 서울 25개 구 혼놀 명소 ' + MAP_PLACES.length + '곳과 동네 어디서나 할 수 있는 혼놀 ' + PLACES.filter(p => p.generic).length + '가지를 담았어요.</p>' +
+    '<ul>' +
+      '<li>코스는 시간·예산·기분·혼놀 레벨에 장소별 운영시간, 휴무일, 노을 시간, 밥때까지 따져서 짜요. 산길은 해 지기 전에 끝나게 넣어요.</li>' +
+      '<li>이동은 가까우면 도보, 멀면 지하철(역까지 걷는 시간 포함)로 계산한 대략값이에요. 교통비는 예산에서 빼고 계산해요.</li>' +
+      '<li>‘내 위치에서 출발’을 고르면 그때만 위치를 써서 코스를 짜요. 위치는 저장하거나 어디로 보내지 않아요.</li>' +
+      '<li>지도는 한강과 산, 공원을 단순하게 그린 일러스트예요. 길 찾기는 네이버 지도·카카오맵 버튼으로 해 주세요.</li>' +
+      '<li>운영시간·요금은 2026년 10월 기준 국가유산청·서울시·각 시설 안내와 보도 내용을 참고했어요. 공휴일 휴무는 반영하지 못했고, 바뀔 수 있으니 가기 전에 한 번 확인해 주세요.</li>' +
+      '<li>궁궐·선정릉은 만 24세 이하 무료고, 국립현대미술관도 청소년·대학생 무료 혜택이 있어요. 코스 비용은 일반 요금으로 계산해요.</li>' +
+      '<li>찜과 설정은 이 기기에만 저장돼요. 회원가입도, 광고도 없어요.</li>' +
+      (reportMode() === 'off' ? '' : '<li>장소 정보의 ‘제보하기’로 1인석, 분위기 같은 혼놀 정보를 알려 줄 수 있어요. 보낸 내용은 확인한 뒤 앱에 반영해요.</li>') +
+    '</ul>' +
+    '<h3>동네 어디서나 혼놀</h3>' +
+    '<ul>' + PLACES.filter(p => p.generic).map(p => '<li><b>' + esc(p.name) + '</b> · Lv.' + p.lv + ' · ' + esc(p.info) + '</li>').join('') + '</ul>' +
+    (links.length ? '<div class="s-actions">' + links.join('') + '</div>' : '') +
+    '<p class="s-fine">혼자놀자 1.0 · 서울 베타</p>' +
+    '</div>';
+  openSheet(html);
+}
+function reduceMotion() { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } }
+
+/* ================= map ================= */
+const LON0 = 126.84, LAT0 = 37.61;
+const KX = 111.32 * Math.cos(37.55 * Math.PI / 180), KY = 110.95;
+const P = (lon, lat) => [(lon - LON0) * KX, (LAT0 - lat) * KY];
+const f3 = v => v.toFixed(3);
+/* Han river centre line, west to east */
+const HAN = [
+  [126.755, 37.630], [126.790, 37.612], [126.818, 37.600], [126.835, 37.588], [126.851, 37.579], [126.866, 37.570], [126.880, 37.561],
+  [126.892, 37.552], [126.902, 37.5455], [126.914, 37.5410], [126.928, 37.5375], [126.940, 37.5325], [126.950, 37.5265],
+  [126.959, 37.5200], [126.970, 37.5145], [126.981, 37.5110], [126.996, 37.5125], [127.006, 37.5175], [127.013, 37.5245],
+  [127.021, 37.5310], [127.034, 37.5352], [127.047, 37.5330], [127.058, 37.5285], [127.068, 37.5245], [127.078, 37.5210],
+  [127.092, 37.5190], [127.101, 37.5225], [127.107, 37.5300], [127.112, 37.5390], [127.115, 37.5470], [127.118, 37.5560],
+  [127.124, 37.5640], [127.134, 37.5690], [127.147, 37.5730], [127.160, 37.5790], [127.174, 37.5830], [127.190, 37.5830], [127.215, 37.5780],
+];
+const SAETGANG = [[126.9050, 37.5395], [126.9070, 37.5330], [126.9110, 37.5268], [126.9180, 37.5203], [126.9260, 37.5168],
+  [126.9340, 37.5160], [126.9410, 37.5175], [126.9460, 37.5205], [126.9480, 37.5232]];
+const JUNGNANG = [[127.044, 37.705], [127.046, 37.682], [127.049, 37.664], [127.054, 37.648], [127.061, 37.636], [127.066, 37.624], [127.064, 37.612],
+  [127.060, 37.600], [127.055, 37.585], [127.051, 37.570], [127.0465, 37.5600], [127.0400, 37.5520], [127.0340, 37.5450], [127.0330, 37.5385]];
+const ANYANG = [[126.893, 37.420], [126.889, 37.442], [126.884, 37.458], [126.878, 37.472], [126.872, 37.484], [126.866, 37.494], [126.864, 37.503],
+  [126.868, 37.512], [126.875, 37.520], [126.880, 37.528], [126.882, 37.537], [126.881, 37.546], [126.878, 37.5535], [126.8775, 37.5595]];
+const YANGJAE = [[127.005, 37.455], [127.024, 37.468], [127.036, 37.474], [127.046, 37.481], [127.058, 37.487], [127.068, 37.492], [127.074, 37.4965]];
+const CHEONGGYE = [[126.9779, 37.5692], [126.9850, 37.5690], [126.9950, 37.5695], [127.0050, 37.5700], [127.0160, 37.5705], [127.0280, 37.5690], [127.0380, 37.5650], [127.0465, 37.5600]];
+const HONGJE = [[126.957, 37.602], [126.945, 37.586], [126.933, 37.576], [126.921, 37.5685], [126.905, 37.5625], [126.895, 37.5585], [126.889, 37.5545]];
+const GYEONGUI = [[126.951, 37.543], [126.940, 37.549], [126.930, 37.553], [126.9245, 37.5572], [126.9220, 37.5630], [126.9170, 37.5690]];
+const SEOULLO = [[126.9655, 37.5565], [126.9690, 37.5560], [126.9725, 37.5568], [126.9750, 37.5585]];
+const TANCHEON = [[127.105, 37.465], [127.094, 37.478], [127.083, 37.488], [127.075, 37.497], [127.070, 37.506], [127.0685, 37.513], [127.0695, 37.5195]];
+/* lakes: [lon, lat, rx km, ry km] (석촌호수 west and east) */
+const LAKES = [[127.1003, 37.5101, 0.30, 0.11], [127.1062, 37.5086, 0.32, 0.11], [126.8346, 37.5272, 0.16, 0.09]];
+const SEONYU = [[126.8965, 37.5465], [126.8995, 37.5472], [126.9022, 37.5458], [126.9020, 37.5440], [126.8993, 37.5434], [126.8967, 37.5446]];
+const NODEUL = [[126.9555, 37.5186], [126.9590, 37.5192], [126.9628, 37.5184], [126.9630, 37.5174], [126.9592, 37.5168], [126.9556, 37.5175]];
+const BAMSEOM = [126.9275, 37.5378, 0.32, 0.12];
+/* parks and mountains: [lon, lat, rx km, ry km] */
+const GREENS = [[126.9882, 37.5512, 1.15, 0.85], [126.9580, 37.5840, 0.7, 1.05], [126.9800, 37.5960, 1.5, 0.6], [127.0392, 37.5440, 0.62, 0.45],
+  [127.0287, 37.5478, 0.28, 0.22], [126.8830, 37.5680, 1.0, 0.45], [126.9218, 37.5253, 0.22, 0.55], [126.9790, 37.5300, 0.9, 0.7],
+  [126.9805, 37.5228, 0.42, 0.22], [127.1210, 37.5205, 0.85, 0.62], [127.0482, 37.5087, 0.36, 0.30],
+  /* mountains and parks further out */
+  [126.9780, 37.6560, 3.0, 3.2], [127.0200, 37.6930, 1.4, 1.9], [127.0820, 37.6880, 1.1, 1.7], [127.0880, 37.6500, 0.9, 1.3],
+  [127.0960, 37.5690, 0.8, 1.6], [127.1100, 37.5930, 0.6, 0.9], [126.9560, 37.4430, 2.4, 1.5], [127.0140, 37.4700, 1.3, 0.8],
+  [127.0770, 37.4720, 2.0, 0.8], [126.9440, 37.5760, 0.55, 0.5], [127.0410, 37.6205, 0.6, 0.5], [127.0810, 37.5490, 0.5, 0.45],
+  [126.8350, 37.5690, 0.65, 0.35], [126.9198, 37.4927, 0.35, 0.4], [126.9730, 37.5010, 0.7, 0.5], [126.8250, 37.4832, 0.4, 0.3],
+  [126.8346, 37.5277, 0.3, 0.25], [127.0375, 37.4700, 0.35, 0.3], [127.0075, 37.5810, 0.25, 0.4]];
+/* palace and temple grounds: [lon1, lat1 (north-west), lon2, lat2 (south-east)] */
+const PALACES = [[126.9742, 37.5845, 126.9800, 37.5755], [126.9738, 37.5672, 126.9765, 37.5647], [126.9890, 37.5835, 126.9950, 37.5775], [127.0558, 37.5162, 127.0596, 37.5138]];
+/* subway line 2 loop, station by station */
+const LINE2 = [[126.9769, 37.5657], [126.9822, 37.5660], [126.9917, 37.5663], [126.9979, 37.5667], [127.0076, 37.5653], [127.0196, 37.5656], [127.0293, 37.5645],
+  [127.0371, 37.5612], [127.0436, 37.5554], [127.0474, 37.5472], [127.0558, 37.5446], [127.0692, 37.5404], [127.0857, 37.5372], [127.0947, 37.5352],
+  [127.1036, 37.5207], [127.1002, 37.5133], [127.0864, 37.5115], [127.0736, 37.5109], [127.0631, 37.5088], [127.0490, 37.5045], [127.0365, 37.5007],
+  [127.0276, 37.4979], [127.0141, 37.4934], [127.0076, 37.4919], [126.9976, 37.4815], [126.9816, 37.4766], [126.9637, 37.4769], [126.9527, 37.4812],
+  [126.9416, 37.4825], [126.9297, 37.4842], [126.9133, 37.4875], [126.9015, 37.4852], [126.8950, 37.4926], [126.8913, 37.5088], [126.8947, 37.5179],
+  [126.8960, 37.5249], [126.9022, 37.5345], [126.9139, 37.5495], [126.9245, 37.5572], [126.9369, 37.5552], [126.9460, 37.5568], [126.9563, 37.5573],
+  [126.9636, 37.5600]];
+/* m = smallest zoom (px per km) at which the label shows, so the city view stays readable */
+const AREA_LABELS = [
+  { t: '한 강', lon: 126.990, lat: 37.5128, cls: 'river' },
+  { t: '종로', lon: 126.9975, lat: 37.5752 }, { t: '홍대', lon: 126.9305, lat: 37.5522 }, { t: '여의도', lon: 126.9130, lat: 37.5290 },
+  { t: '용산', lon: 126.9662, lat: 37.5340 }, { t: '성수', lon: 127.0500, lat: 37.5430 }, { t: '강남', lon: 127.0276, lat: 37.4995 },
+  { t: '잠실', lon: 127.0905, lat: 37.5068 }, { t: '은평', lon: 126.9280, lat: 37.6150 }, { t: '서대문', lon: 126.9380, lat: 37.5830 },
+  { t: '성북', lon: 127.0100, lat: 37.6000 }, { t: '강북', lon: 127.0200, lat: 37.6340 }, { t: '도봉', lon: 127.0330, lat: 37.6700 },
+  { t: '노원', lon: 127.0720, lat: 37.6530 }, { t: '중랑', lon: 127.0930, lat: 37.6020 }, { t: '동대문', lon: 127.0450, lat: 37.5810 },
+  { t: '광진', lon: 127.0920, lat: 37.5480 }, { t: '강동', lon: 127.1430, lat: 37.5420 }, { t: '송파', lon: 127.1250, lat: 37.4880 },
+  { t: '서초', lon: 126.9950, lat: 37.4760 }, { t: '관악', lon: 126.9450, lat: 37.4720 }, { t: '동작', lon: 126.9500, lat: 37.5000 },
+  { t: '금천', lon: 126.9020, lat: 37.4580 }, { t: '구로', lon: 126.8850, lat: 37.4985 }, { t: '양천', lon: 126.8560, lat: 37.5240 },
+  { t: '강서', lon: 126.8300, lat: 37.5550 }, { t: '마포', lon: 126.9000, lat: 37.5720, m: 12 },
+  { t: '서촌', lon: 126.9668, lat: 37.5838, m: 16 }, { t: '광화문', lon: 126.9700, lat: 37.5712, m: 16 }, { t: '을지로', lon: 126.9930, lat: 37.5642, m: 16 },
+  { t: '명동', lon: 126.9832, lat: 37.5603, m: 16 }, { t: '연남', lon: 126.9160, lat: 37.5668, m: 16 }, { t: '망원', lon: 126.9025, lat: 37.5600, m: 16 },
+  { t: '이태원', lon: 126.9946, lat: 37.5322, m: 16 }, { t: '한남', lon: 127.0085, lat: 37.5350, m: 16 }, { t: '삼성', lon: 127.0665, lat: 37.5045, m: 16 },
+  { t: '신촌', lon: 126.9400, lat: 37.5570, m: 16 }, { t: '대학로', lon: 127.0030, lat: 37.5860, m: 16 }, { t: '청량리', lon: 127.0500, lat: 37.5845, m: 16 },
+  { t: '건대', lon: 127.0700, lat: 37.5420, m: 16 }, { t: '왕십리', lon: 127.0340, lat: 37.5600, m: 16 }, { t: '문래', lon: 126.8960, lat: 37.5180, m: 16 },
+  { t: '노량진', lon: 126.9430, lat: 37.5110, m: 16 }, { t: '신림', lon: 126.9290, lat: 37.4830, m: 16 }, { t: '사당', lon: 126.9816, lat: 37.4790, m: 16 },
+  { t: '천호', lon: 127.1300, lat: 37.5360, m: 16 }, { t: '상암', lon: 126.8900, lat: 37.5790, m: 16 }, { t: '반포', lon: 127.0000, lat: 37.5040, m: 16 },
+  { t: '마곡', lon: 126.8300, lat: 37.5610, m: 16 }, { t: '목동', lon: 126.8700, lat: 37.5310, m: 16 }, { t: '가산', lon: 126.8800, lat: 37.4790, m: 16 },
+  { t: '북한산', lon: 126.9780, lat: 37.6560, cls: 'small' }, { t: '관악산', lon: 126.9560, lat: 37.4430, cls: 'small' },
+  { t: '도봉산', lon: 127.0150, lat: 37.6960, cls: 'small', m: 12 }, { t: '수락산', lon: 127.0820, lat: 37.6880, cls: 'small', m: 12 },
+  { t: '불암산', lon: 127.0880, lat: 37.6500, cls: 'small', m: 14 }, { t: '아차산', lon: 127.0960, lat: 37.5700, cls: 'small', m: 14 },
+  { t: '우면산', lon: 127.0140, lat: 37.4700, cls: 'small', m: 14 }, { t: '대모산', lon: 127.0770, lat: 37.4720, cls: 'small', m: 14 },
+  { t: '남산', lon: 126.9882, lat: 37.5490, cls: 'small', m: 12 }, { t: '인왕산', lon: 126.9572, lat: 37.5852, cls: 'small', m: 16 },
+  { t: '북악산', lon: 126.9810, lat: 37.5958, cls: 'small', m: 16 }, { t: '안산', lon: 126.9440, lat: 37.5750, cls: 'small', m: 20 },
+  { t: '청계천', lon: 127.0080, lat: 37.5718, cls: 'small', m: 20 }, { t: '탄천', lon: 127.0790, lat: 37.4925, cls: 'small', m: 14 },
+  { t: '중랑천', lon: 127.0560, lat: 37.6250, cls: 'small', m: 14 }, { t: '안양천', lon: 126.8640, lat: 37.5050, cls: 'small', m: 14 },
+  { t: '양재천', lon: 127.0500, lat: 37.4800, cls: 'small', m: 18 },
+  { t: '2호선', lon: 126.9600, lat: 37.5598, cls: 'line', m: 16 },
+];
+const REGIONS = [
+  { id: 'all', label: '서울 전체', b: [126.800, 37.430, 127.180, 37.700] },
+  { id: 'center', label: '종로·중구', b: [126.955, 37.550, 127.012, 37.596] },
+  { id: 'mapo', label: '홍대·마포', b: [126.875, 37.540, 126.945, 37.575] },
+  { id: 'westnorth', label: '서대문·은평', b: [126.915, 37.565, 126.965, 37.650] },
+  { id: 'north', label: '성북·강북·노원·도봉', b: [126.985, 37.590, 127.095, 37.700] },
+  { id: 'east', label: '성수·광진·동대문', b: [127.020, 37.528, 127.112, 37.600] },
+  { id: 'yeouido', label: '여의도·영등포', b: [126.885, 37.505, 126.965, 37.545] },
+  { id: 'southwest', label: '강서·양천·구로·금천', b: [126.810, 37.470, 126.900, 37.575] },
+  { id: 'yongsan', label: '용산·이태원', b: [126.958, 37.517, 127.010, 37.546] },
+  { id: 'gangnam', label: '강남·서초', b: [126.990, 37.472, 127.070, 37.528] },
+  { id: 'gwanak', label: '관악·동작', b: [126.912, 37.472, 126.985, 37.520] },
+  { id: 'jamsil', label: '잠실·송파·강동', b: [127.085, 37.500, 127.135, 37.555] },
+];
+const MAP_PLACES = PLACES.filter(p => !p.generic);
+function curve(pts, closed) {
+  const n = pts.length; let d = '';
+  const get = i => closed ? pts[(i + n) % n] : pts[clamp(i, 0, n - 1)];
+  const segs = closed ? n : n - 1;
+  for (let i = 0; i < segs; i++) {
+    const p0 = get(i - 1), p1 = get(i), p2 = get(i + 1), p3 = get(i + 2);
+    d += 'C' + f3(p1[0] + (p2[0] - p0[0]) / 6) + ' ' + f3(p1[1] + (p2[1] - p0[1]) / 6) + ' ' +
+         f3(p2[0] - (p3[0] - p1[0]) / 6) + ' ' + f3(p2[1] - (p3[1] - p1[1]) / 6) + ' ' + f3(p2[0]) + ' ' + f3(p2[1]);
+  }
+  return d;
+}
+function smooth(lonlat, closed) { const pts = lonlat.map(a => P(a[0], a[1])); return 'M' + f3(pts[0][0]) + ' ' + f3(pts[0][1]) + curve(pts, closed) + (closed ? 'Z' : ''); }
+function ellipse(cls, e) { const c = P(e[0], e[1]); return '<ellipse class="' + cls + '" cx="' + f3(c[0]) + '" cy="' + f3(c[1]) + '" rx="' + e[2] + '" ry="' + e[3] + '"/>'; }
+function buildWorld() {
+  let g = GREENS.map(e => ellipse('green', e)).join('');
+  for (const r of PALACES) {
+    const a = P(r[0], r[1]), b = P(r[2], r[3]);
+    g += '<rect class="palace" x="' + f3(a[0]) + '" y="' + f3(a[1]) + '" width="' + f3(b[0] - a[0]) + '" height="' + f3(b[1] - a[1]) + '" rx="0.05"/>';
+  }
+  g += '<path class="greenline" d="' + smooth(GYEONGUI, false) + '" stroke-width="0.08"/><path class="greenline" d="' + smooth(SEOULLO, false) + '" stroke-width="0.05"/>';
+  $('#parks-g').innerHTML = g;
+  const han = smooth(HAN, false), saet = smooth(SAETGANG, false), jung = smooth(JUNGNANG, false), tan = smooth(TANCHEON, false);
+  const any = smooth(ANYANG, false), yj = smooth(YANGJAE, false);
+  let w = '<path class="bank" d="' + han + '" stroke-width="1.0"/><path class="bank" d="' + saet + '" stroke-width="0.17"/><path class="bank" d="' + jung + '" stroke-width="0.17"/><path class="bank" d="' + tan + '" stroke-width="0.17"/>';
+  w += '<path class="bank" d="' + any + '" stroke-width="0.17"/><path class="bank" d="' + yj + '" stroke-width="0.12"/>';
+  w += '<path class="water" d="' + han + '" stroke-width="0.92"/><path class="water" d="' + saet + '" stroke-width="0.11"/><path class="water" d="' + jung + '" stroke-width="0.12"/><path class="water" d="' + tan + '" stroke-width="0.12"/>';
+  w += '<path class="water" d="' + any + '" stroke-width="0.12"/><path class="water" d="' + yj + '" stroke-width="0.07"/>';
+  w += '<path class="water" d="' + smooth(HONGJE, false) + '" stroke-width="0.05"/><path class="water" d="' + smooth(CHEONGGYE, false) + '" stroke-width="0.035"/>';
+  w += LAKES.map(e => ellipse('lake', e)).join('');
+  w += '<path class="isle" d="' + smooth(SEONYU, true) + '"/><path class="isle" d="' + smooth(NODEUL, true) + '"/>' + ellipse('isle green', BAMSEOM);
+  $('#water-g').innerHTML = w;
+  $('#line2').setAttribute('d', LINE2.map((a, i) => { const [x, y] = P(a[0], a[1]); return (i ? 'L' : 'M') + f3(x) + ' ' + f3(y); }).join('') + 'Z');
+}
+
+const mapEl = $('#map'), overlay = $('#overlay'), world = $('#world');
+const view = { s: 20, tx: 0, ty: 0 };
+let sMin = 5, sMax = 600, mapInit = false, selected = null, courseOnMap = null;
+let mapW = 0, mapH = 0;
+const catOn = new Set(Object.keys(CATS));
+const pinEls = new Map(), labelEls = [], clusterPool = [], stopEls = [];
+const WB = { x1: P(126.76, 37.71)[0], y1: P(126.76, 37.71)[1], x2: P(127.20, 37.42)[0], y2: P(127.20, 37.42)[1] };
+
+function boundsView(b, pad) {
+  const [x1, y1] = P(b[0], b[3]), [x2, y2] = P(b[2], b[1]);
+  const pw = mapW - pad * 2, ph = mapH - pad * 2;
+  const s = clamp(Math.min(pw / (x2 - x1), ph / (y2 - y1)), sMin, sMax);
+  return { s, tx: (mapW - (x2 - x1) * s) / 2 - x1 * s, ty: (mapH - (y2 - y1) * s) / 2 - y1 * s };
+}
+function clampView() {
+  const m = 70;
+  const left = WB.x1 * view.s + view.tx, right = WB.x2 * view.s + view.tx, top = WB.y1 * view.s + view.ty, bottom = WB.y2 * view.s + view.ty;
+  if (right < m) view.tx += m - right;
+  if (left > mapW - m) view.tx -= left - (mapW - m);
+  if (bottom < m) view.ty += m - bottom;
+  if (top > mapH - m) view.ty -= top - (mapH - m);
+}
+let animId = 0;
+function animateTo(target) {
+  cancelAnimationFrame(animId);
+  if (reduceMotion()) { Object.assign(view, target); clampView(); renderMap(); return; }
+  const from = Object.assign({}, view), t0 = performance.now(), dur = 300;
+  /* interpolate in world-centre space so zooms look natural */
+  const cx = (mapW / 2 - from.tx) / from.s, cy = (mapH / 2 - from.ty) / from.s;
+  const tcx = (mapW / 2 - target.tx) / target.s, tcy = (mapH / 2 - target.ty) / target.s;
+  const step = now => {
+    const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    const s = from.s * Math.pow(target.s / from.s, e);
+    const x = cx + (tcx - cx) * e, y = cy + (tcy - cy) * e;
+    view.s = s; view.tx = mapW / 2 - x * s; view.ty = mapH / 2 - y * s;
+    renderMap();
+    if (k < 1) animId = requestAnimationFrame(step); else { clampView(); renderMap(); }
+  };
+  animId = requestAnimationFrame(step);
+}
+function zoomAt(px, py, k) {
+  const s1 = clamp(view.s * k, sMin, sMax), kk = s1 / view.s;
+  view.tx = px - (px - view.tx) * kk; view.ty = py - (py - view.ty) * kk; view.s = s1;
+}
+let rafPending = false;
+function scheduleRender() { if (rafPending || !mapInit) return; rafPending = true; requestAnimationFrame(() => { rafPending = false; renderMap(); }); }
+
+function makePin(p) {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'pin'; b.dataset.pid = p.id;
+  b.style.setProperty('--c', CATS[p.cat].c);
+  b.setAttribute('aria-label', p.name + ', ' + CATS[p.cat].label + ', 혼놀 레벨 ' + p.lv);
+  b.innerHTML = '<span class="pin-dot"><svg viewBox="0 0 16 16" aria-hidden="true">' + CATS[p.cat].icon + '</svg></span><span class="pin-label">' + esc(p.short) + '</span>';
+  overlay.appendChild(b);
+  return b;
+}
+function initMapDom() {
+  buildWorld();
+  for (const L of AREA_LABELS) {
+    const d = document.createElement('div');
+    d.className = 'alabel' + (L.cls ? ' ' + L.cls : '');
+    d.innerHTML = '<span>' + esc(L.t) + '</span>';
+    d.dataset.lon = L.lon; d.dataset.lat = L.lat; d.dataset.min = L.m || 0;
+    overlay.appendChild(d); labelEls.push(d);
+  }
+  for (const p of MAP_PLACES) pinEls.set(p.id, makePin(p));
+  $('#region-chips').innerHTML = REGIONS.map((r, i) => '<button type="button" class="fchip rchip" data-region="' + r.id + '" aria-pressed="' + (i === 0) + '">' + esc(r.label) + '</button>').join('');
+  $('#cat-chips').innerHTML = Object.entries(CATS).map(([k, c]) => '<button type="button" class="fchip" data-cat="' + k + '" aria-pressed="true" style="--c:' + c.c + '"><span class="cdot"></span>' + esc(c.label) + '</button>').join('');
+}
+function setRegionPressed(id) { document.querySelectorAll('[data-region]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.region === id))); }
+function screenOf(lon, lat) { const [x, y] = P(lon, lat); return [x * view.s + view.tx, y * view.s + view.ty]; }
+function renderMap() {
+  if (!mapInit) return;
+  world.setAttribute('transform', 'translate(' + view.tx.toFixed(2) + ' ' + view.ty.toFixed(2) + ') scale(' + view.s.toFixed(5) + ')');
+  for (const d of labelEls) {
+    const show = view.s >= +d.dataset.min;
+    d.hidden = !show;
+    if (!show) continue;
+    const [x, y] = screenOf(+d.dataset.lon, +d.dataset.lat);
+    d.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+  }
+  overlay.classList.toggle('labels', view.s >= 60);
+  const onCourse = new Set(courseOnMap ? courseOnMap.stops.map(s => s.p.id) : []);
+  const pts = [];
+  for (const p of MAP_PLACES) {
+    const el = pinEls.get(p.id);
+    const visible = catOn.has(p.cat) && !onCourse.has(p.id);
+    if (!visible) { el.hidden = true; continue; }
+    const [x, y] = screenOf(p.lon, p.lat);
+    pts.push({ p, el, x, y });
+  }
+  /* greedy screen-space clustering; the selected pin always stays single */
+  const clusters = [];
+  for (const pt of pts) {
+    if (pt.p.id === selected) { clusters.push({ x: pt.x, y: pt.y, items: [pt], fixed: true }); continue; }
+    let c = null;
+    for (const k of clusters) if (!k.fixed && Math.hypot(k.x - pt.x, k.y - pt.y) < 26) { c = k; break; }
+    if (c) { c.items.push(pt); c.x = c.items.reduce((a, i) => a + i.x, 0) / c.items.length; c.y = c.items.reduce((a, i) => a + i.y, 0) / c.items.length; }
+    else clusters.push({ x: pt.x, y: pt.y, items: [pt] });
+  }
+  let ci = 0;
+  for (const c of clusters) {
+    if (c.items.length === 1) {
+      const { el, p, x, y } = c.items[0];
+      el.hidden = false;
+      el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      el.classList.toggle('sel', p.id === selected);
+      el.classList.toggle('dim', !!courseOnMap);
+    } else {
+      for (const it of c.items) it.el.hidden = true;
+      let b = clusterPool[ci];
+      if (!b) {
+        b = document.createElement('button'); b.type = 'button'; b.className = 'cluster';
+        b.innerHTML = '<span class="num"></span>';
+        overlay.appendChild(b); clusterPool.push(b);
+      }
+      b.hidden = false;
+      b.firstChild.textContent = c.items.length;
+      b.dataset.cx = c.x; b.dataset.cy = c.y;
+      b.setAttribute('aria-label', c.items.map(i => i.p.short).join(', ') + ' 모여 있음, 눌러서 확대');
+      b.style.transform = 'translate(' + c.x.toFixed(1) + 'px,' + c.y.toFixed(1) + 'px)';
+      b.style.opacity = courseOnMap ? '.45' : '';
+      ci++;
+    }
+  }
+  for (; ci < clusterPool.length; ci++) clusterPool[ci].hidden = true;
+  /* course stops */
+  let si = 0;
+  if (courseOnMap) {
+    const stops = [{ start: true, lat: courseOnMap.o.start.lat, lon: courseOnMap.o.start.lon, label: courseOnMap.o.start.name }]
+      .concat(courseOnMap.stops.map((s, i) => ({ n: i + 1, lat: s.at.lat, lon: s.at.lon, id: s.p.id, label: s.p.short })));
+    const seen = new Map();
+    for (const s of stops) {
+      let [x, y] = screenOf(s.lon, s.lat);
+      const key = Math.round(x / 6) + ':' + Math.round(y / 6);
+      const dup = seen.get(key) || 0; seen.set(key, dup + 1);
+      x += dup * 22; y -= dup * 6;
+      let el = stopEls[si];
+      if (!el) { el = document.createElement('button'); el.type = 'button'; el.className = 'smark'; el.innerHTML = '<b></b><i></i>'; overlay.appendChild(el); stopEls.push(el); }
+      el.hidden = false;
+      el.classList.toggle('start', !!s.start);
+      el.querySelector('b').textContent = s.start ? '출발' : s.n;
+      el.querySelector('i').textContent = s.label;
+      el.dataset.sid = s.id || '';
+      el.setAttribute('aria-label', s.start ? '출발: ' + s.label : s.n + '번째: ' + s.label);
+      el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      si++;
+    }
+  }
+  for (; si < stopEls.length; si++) stopEls[si].hidden = true;
+  /* scale bar */
+  const steps = [0.2, 0.5, 1, 2, 5, 10];
+  let km = steps[0];
+  for (const st of steps) if (st * view.s <= 110) km = st;
+  $('#scale-i').style.width = (km * view.s).toFixed(0) + 'px';
+  $('#scale-t').textContent = (km < 1 ? km * 1000 + ' m' : km + ' km');
+}
+function drawCourseOverlay(fit) {
+  const banner = $('#course-banner');
+  if (!courseOnMap || !courseOnMap.stops.length) {
+    courseOnMap = null; banner.hidden = true;
+    $('#route').setAttribute('d', ''); $('#route-case').setAttribute('d', '');
+    scheduleRender(); return;
+  }
+  const c = courseOnMap;
+  const pts = [[c.o.start.lon, c.o.start.lat]].concat(c.stops.map(s => [s.at.lon, s.at.lat]));
+  const d = pts.map((a, i) => { const [x, y] = P(a[0], a[1]); return (i ? 'L' : 'M') + f3(x) + ' ' + f3(y); }).join('');
+  $('#route').setAttribute('d', d); $('#route-case').setAttribute('d', d);
+  banner.hidden = false;
+  banner.innerHTML = '<b>' + esc(pick('dur', state.dur).label + ' ' + pick('mood', state.mood).label + ' 코스') + '</b><button type="button" id="banner-x">코스 지우기</button>';
+  $('#banner-x').addEventListener('click', () => { courseOnMap = null; drawCourseOverlay(false); });
+  if (fit) hideHint();
+  if (fit && mapInit) {
+    let lo1 = 999, la1 = 999, lo2 = -999, la2 = -999;
+    for (const [lo, la] of pts) { lo1 = Math.min(lo1, lo); lo2 = Math.max(lo2, lo); la1 = Math.min(la1, la); la2 = Math.max(la2, la); }
+    const padLon = Math.max(0.004, (lo2 - lo1) * 0.18), padLat = Math.max(0.003, (la2 - la1) * 0.18);
+    animateTo(boundsView([lo1 - padLon, la1 - padLat, lo2 + padLon, la2 + padLat], 40));
+    setRegionPressed('');
+  }
+  scheduleRender();
+}
+function measureMap() {
+  const r = mapEl.getBoundingClientRect();
+  if (r.width < 10 || r.height < 10) return false;
+  if (mapW && (mapW !== r.width || mapH !== r.height)) {
+    const cx = (mapW / 2 - view.tx) / view.s, cy = (mapH / 2 - view.ty) / view.s;
+    mapW = r.width; mapH = r.height;
+    view.tx = mapW / 2 - cx * view.s; view.ty = mapH / 2 - cy * view.s;
+  } else { mapW = r.width; mapH = r.height; }
+  const all = boundsView(REGIONS[0].b, 16);
+  sMin = all.s * 0.6;
+  return true;
+}
+function ensureMap() {
+  if (!measureMap()) return;
+  if (!mapInit) {
+    mapInit = true;
+    Object.assign(view, boundsView(REGIONS[0].b, 16));
+    if (courseOnMap) drawCourseOverlay(true);
+  }
+  clampView(); renderMap();
+}
+let hintGone = false;
+function hideHint() { if (hintGone) return; hintGone = true; $('#hint').classList.add('gone'); setTimeout(() => { $('#hint').hidden = true; }, 400); }
+
+/* pointer gestures: drag to pan, pinch / wheel to zoom, tap to open */
+const ptrs = new Map();
+let gesture = null;
+mapEl.addEventListener('pointerdown', e => {
+  if (e.target.closest('.map-ui, .course-banner')) return;
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  try { mapEl.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+  ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (ptrs.size === 1) gesture = { moved: 0, multi: false, target: e.target.closest('.pin, .cluster, .smark') };
+  else if (gesture) gesture.multi = true;
+  cancelAnimationFrame(animId);
+  hideHint();
+});
+mapEl.addEventListener('pointermove', e => {
+  const prev = ptrs.get(e.pointerId);
+  if (!prev) return;
+  const cur = { x: e.clientX, y: e.clientY };
+  if (ptrs.size === 1) {
+    view.tx += cur.x - prev.x; view.ty += cur.y - prev.y;
+    if (gesture) { gesture.moved += Math.abs(cur.x - prev.x) + Math.abs(cur.y - prev.y); if (gesture.moved > 8) mapEl.classList.add('dragging'); }
+  } else if (ptrs.size === 2) {
+    let other = null;
+    for (const [id, v] of ptrs) if (id !== e.pointerId) other = v;
+    const r = mapEl.getBoundingClientRect();
+    const d0 = Math.hypot(prev.x - other.x, prev.y - other.y) || 1, d1 = Math.hypot(cur.x - other.x, cur.y - other.y);
+    const m0x = (prev.x + other.x) / 2 - r.left, m0y = (prev.y + other.y) / 2 - r.top;
+    const m1x = (cur.x + other.x) / 2 - r.left, m1y = (cur.y + other.y) / 2 - r.top;
+    zoomAt(m0x, m0y, d1 / d0);
+    view.tx += m1x - m0x; view.ty += m1y - m0y;
+    if (gesture) gesture.moved += 99;
+  }
+  ptrs.set(e.pointerId, cur);
+  clampView(); setRegionPressed(''); scheduleRender();
+});
+function endPointer(e, cancelled) {
+  if (!ptrs.has(e.pointerId)) return;
+  ptrs.delete(e.pointerId);
+  if (ptrs.size) return;
+  mapEl.classList.remove('dragging');
+  const g = gesture; gesture = null;
+  if (!g || cancelled || g.multi || g.moved > 8) return;
+  handleTap(g.target);
+}
+mapEl.addEventListener('pointerup', e => endPointer(e, false));
+mapEl.addEventListener('pointercancel', e => endPointer(e, true));
+mapEl.addEventListener('wheel', e => {
+  e.preventDefault();
+  const r = mapEl.getBoundingClientRect();
+  zoomAt(e.clientX - r.left, e.clientY - r.top, Math.exp(-e.deltaY * 0.0016));
+  clampView(); setRegionPressed(''); scheduleRender(); hideHint();
+}, { passive: false });
+/* keyboard activation of pins (pointer taps are handled above) */
+overlay.addEventListener('click', e => { if (e.detail === 0) handleTap(e.target.closest('.pin, .cluster, .smark')); });
+function handleTap(t) {
+  if (!t) { if (selected) { selected = null; scheduleRender(); } return; }
+  if (t.classList.contains('pin')) { openPlace(t.dataset.pid); return; }
+  if (t.classList.contains('smark')) { if (t.dataset.sid) openPlace(t.dataset.sid); return; }
+  if (t.classList.contains('cluster')) {
+    const x = +t.dataset.cx, y = +t.dataset.cy, s1 = clamp(view.s * 2.4, sMin, sMax);
+    const wx = (x - view.tx) / view.s, wy = (y - view.ty) / view.s;
+    animateTo({ s: s1, tx: mapW / 2 - wx * s1, ty: mapH / 2 - wy * s1 });
+    setRegionPressed('');
+  }
+}
+$('#zin').addEventListener('click', () => { const k = clamp(view.s * 1.6, sMin, sMax) / view.s; animateTo({ s: view.s * k, tx: mapW / 2 - (mapW / 2 - view.tx) * k, ty: mapH / 2 - (mapH / 2 - view.ty) * k }); setRegionPressed(''); hideHint(); });
+$('#zout').addEventListener('click', () => { const k = clamp(view.s / 1.6, sMin, sMax) / view.s; animateTo({ s: view.s * k, tx: mapW / 2 - (mapW / 2 - view.tx) * k, ty: mapH / 2 - (mapH / 2 - view.ty) * k }); setRegionPressed(''); hideHint(); });
+$('#zfit').addEventListener('click', () => { animateTo(boundsView(REGIONS[0].b, 16)); setRegionPressed('all'); });
+document.addEventListener('click', e => {
+  const r = e.target.closest('[data-region]');
+  if (r) { const reg = REGIONS.find(x => x.id === r.dataset.region); animateTo(boundsView(reg.b, reg.id === 'all' ? 16 : 28)); setRegionPressed(reg.id); hideHint(); return; }
+  const c = e.target.closest('[data-cat]');
+  if (c) {
+    const k = c.dataset.cat;
+    if (catOn.size === Object.keys(CATS).length) { catOn.clear(); catOn.add(k); }
+    else if (catOn.has(k)) { catOn.delete(k); if (!catOn.size) Object.keys(CATS).forEach(x => catOn.add(x)); }
+    else catOn.add(k);
+    const allOn = catOn.size === Object.keys(CATS).length;
+    document.querySelectorAll('[data-cat]').forEach(b => b.setAttribute('aria-pressed', String(allOn || catOn.has(b.dataset.cat))));
+    scheduleRender(); return;
+  }
+  const o = e.target.closest('[data-open]');
+  if (o) { openPlace(o.dataset.open); return; }
+  const m = e.target.closest('[data-mapto]');
+  if (m) { focusPlaceOnMap(m.dataset.mapto); return; }
+  const fv = e.target.closest('[data-fav]');
+  if (fv) { toggleFav(fv.dataset.fav); }
+});
+function focusPlaceOnMap(id) {
+  const p = BY_ID[id];
+  if (!catOn.has(p.cat)) { catOn.add(p.cat); document.querySelectorAll('[data-cat]').forEach(b => b.setAttribute('aria-pressed', String(catOn.size === Object.keys(CATS).length || catOn.has(b.dataset.cat)))); }
+  switchTab('map');
+  if (!mapInit) return;
+  const s1 = Math.max(view.s, 110), [wx, wy] = P(p.lon, p.lat);
+  animateTo({ s: s1, tx: mapW / 2 - wx * s1, ty: mapH * 0.35 - wy * s1 });
+  setRegionPressed('');
+  setTimeout(() => openPlace(id), reduceMotion() ? 0 : 320);
+}
+
+/* ================= tabs ================= */
+function switchTab(name) {
+  tab = name;
+  for (const t of ['course', 'map', 'saved']) {
+    $('#tab-' + t).hidden = t !== name;
+    $('#tb-' + t).setAttribute('aria-selected', String(t === name));
+  }
+  if (name === 'map') ensureMap();
+}
+document.querySelectorAll('.tabbar [data-tab]').forEach(b => b.addEventListener('click', () => { closeSheet(); switchTab(b.dataset.tab); }));
+$('.tabbar').addEventListener('keydown', e => {
+  if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+  const order = ['course', 'map', 'saved'];
+  const i = (order.indexOf(tab) + (e.key === 'ArrowRight' ? 1 : 2)) % 3;
+  switchTab(order[i]); $('#tb-' + order[i]).focus();
+});
+
+/* ================= wiring ================= */
+$('#opts').addEventListener('change', e => {
+  const t = e.target;
+  if (t.id === 'start-sel') {
+    if (t.value === 'here') { useMyLocation(); return; }
+    state.start = t.value; saveOpts(); updateMoreSummary(); regenerate(false);
+    return;
+  }
+  if (t.type === 'radio' && OPT[t.name]) {
+    state[t.name] = t.value; saveOpts(); updateMoreSummary(); regenerate(false);
+  }
+});
+$('#opts').addEventListener('submit', e => {
+  e.preventDefault();
+  regenerate(true);
+  const tk = $('#ticket'); if (tk) tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
+});
+$('#btn-lv-help').addEventListener('click', () => { $('#levels-h').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); });
+$('#btn-about').addEventListener('click', openAbout);
+$('#sheet-close').addEventListener('click', closeSheet);
+$('#scrim').addEventListener('click', closeSheet);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+if ('ResizeObserver' in window) new ResizeObserver(() => { if (tab === 'map') { measureMap(); if (mapInit) { clampView(); renderMap(); } else ensureMap(); } }).observe(mapEl);
+
+$('#place-count').textContent = MAP_PLACES.length;
+renderOptions();
+renderLevels();
+initMapDom();
+renderSaved();
+regenerate(false);
+const startTab = (location.hash || '').replace('#', '');
+if (startTab === 'map' || startTab === 'saved') switchTab(startTab);
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+}
+</script>
+</body>
+</html>

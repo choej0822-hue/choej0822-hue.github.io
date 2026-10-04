@@ -1,0 +1,67 @@
+{
+  "id": "./",
+  "name": "혼자놀자 - 서울 혼놀 코스·지도",
+  "short_name": "혼자놀자",
+  "description": "시간·예산·기분만 고르면 서울 혼놀 코스를 동선까지 짜 드려요. 서울 25개 구 혼놀 명소와 혼놀 지도.",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EBF0F3",
+  "theme_color": "#1B5A91",
+  "categories": [
+    "travel",
+    "lifestyle"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/course.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "조건을 고르면 혼놀 코스를 동선까지 짜 줘요"
+    },
+    {
+      "src": "screenshots/ticket.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "시간표, 이동, 비용까지 한눈에 보는 혼놀 승차권"
+    },
+    {
+      "src": "screenshots/map.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "서울 25개 구 혼놀 지도"
+    }
+  ]
+}
