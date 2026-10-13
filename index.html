@@ -183,6 +183,14 @@ a{color:inherit}
 .dotn.flag{background:var(--ink);color:var(--surface);width:16px;height:16px;margin-top:5px;border-radius:4px}
 .leg-text{font-size:12.5px;color:var(--ink-3);padding:6px 0 8px}
 .leg-text b{font-weight:600;color:var(--ink-2)}
+.trip{list-style:none;margin:7px 0 0;padding:0;display:grid;gap:7px}
+.trip .tw{font-size:12px;color:var(--ink-3)}
+.trip .tr{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;align-items:start}
+.trip .tr > span:last-child{font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
+.trip .tr small{display:block;font-size:11.5px;font-weight:500;color:var(--ink-3);line-height:1.4}
+.lb{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--lb);color:var(--lt);font:700 11px/1 var(--font-body);white-space:nowrap}
+.lb.one{width:20px;padding:0}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .stop .body,.edge .body{padding-bottom:16px;min-width:0}
 .edge .body{font-size:14px;font-weight:600;padding-top:3px}
 .edge .body small{display:block;font-weight:500;font-size:12px;color:var(--ink-3)}
@@ -205,7 +213,7 @@ a{color:inherit}
 .section-h{font-family:var(--font-display);font-weight:400;font-size:21px;margin:34px 0 4px}
 .section-p{margin:0;color:var(--ink-2);font-size:13.5px}
 .lv-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
-.lv-list li{display:grid;grid-template-columns:68px minmax(0,1fr);gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px}
+.lv-list li{display:grid;grid-template-columns:68px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px}
 .lv-list .lv-tag{font:600 13px/1 var(--font-num);display:grid;gap:5px}
 .lv-list b{font-size:14px}
 .lv-list p{margin:1px 0 0;font-size:12.5px;color:var(--ink-2)}
@@ -234,16 +242,29 @@ a{color:inherit}
 .isle{fill:var(--map-land)}
 .isle.green{fill:var(--map-green)}
 .lake{fill:var(--map-water);stroke:var(--map-bank);stroke-width:.04}
-.line2{fill:none;stroke:var(--map-line2);stroke-width:2.5;stroke-linejoin:round;opacity:.5}
-.route-case{fill:none;stroke:var(--surface);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
-.route{fill:none;stroke:var(--sun);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.metro{fill:none;stroke-linecap:round;stroke-linejoin:round;transition:opacity .2s}
+.metro .ml{stroke-width:2.2;opacity:.55}
+.metro.near .ml{stroke-width:3.2;opacity:.8}
+.metro .st{display:none}
+.metro.near .st{display:inline}
+.metro .sd{stroke-width:7.5}
+.metro .sx{stroke:var(--ink-2);stroke-width:9}
+.metro .sf{stroke:var(--surface);stroke-width:4.5}
+.metro.dim{opacity:.32}
+.route-case{fill:none;stroke:var(--surface);stroke-width:8.5;stroke-linecap:round;stroke-linejoin:round}
+.route-car{fill:none;stroke:var(--sun);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.route-walk{fill:none;stroke:var(--sun);stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:.1 6.5}
+.route-ride{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
 .overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .overlay .pin,.overlay .cluster,.overlay .smark{pointer-events:auto}
 .alabel{position:absolute;left:0;top:0;width:0;height:0}
 .alabel span{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font-size:11.5px;font-weight:600;color:var(--map-label);letter-spacing:.06em;text-shadow:0 0 3px var(--map-land),0 0 3px var(--map-land)}
 .alabel.river span{font-family:var(--font-display);font-weight:400;font-size:15px;letter-spacing:.5em;color:var(--map-bank);text-shadow:none}
 .alabel.small span{font-size:10.5px;font-weight:500;letter-spacing:.02em}
-.alabel.line span{font-size:10.5px;font-weight:600;letter-spacing:.02em;color:var(--map-line2)}
+.slabel{position:absolute;left:0;top:0;width:0;height:0}
+.slabel span{position:absolute;left:7px;top:-9px;white-space:nowrap;font-size:10.5px;font-weight:600;line-height:18px;color:var(--ink-2);text-shadow:0 0 2px var(--map-land),0 0 2px var(--map-land),0 0 4px var(--map-land)}
+.slabel.x span{color:var(--ink);font-weight:700}
+.slabel.used span{left:9px;top:-10px;line-height:20px;font-size:11.5px;color:var(--ink);font-weight:700;background:var(--surface);border-radius:6px;padding:0 6px;text-shadow:none;box-shadow:0 1px 3px rgb(0 0 0 / .18)}
 .pin,.cluster,.smark{position:absolute;left:0;top:0;width:0;height:0;border:0;padding:0;background:none;cursor:pointer}
 .pin-dot{position:absolute;left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;background:var(--c);color:var(--on-c);display:grid;place-items:center;box-shadow:0 0 0 2px var(--map-land),0 2px 6px rgb(0 0 0 / .22);transition:transform .15s}
 .pin-dot svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -262,6 +283,7 @@ a{color:inherit}
 .map-ui{position:absolute;right:12px;top:12px;display:grid;gap:6px;z-index:6}
 .map-ui button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 20px/1 var(--font-body);cursor:pointer;box-shadow:var(--shadow);display:grid;place-items:center}
 .map-ui svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.map-ui button[aria-pressed="true"]{background:var(--sea-soft);border-color:var(--sea);color:var(--sea)}
 .scalebar{position:absolute;left:12px;bottom:12px;z-index:6;font:500 11px/1 var(--font-num);color:var(--ink-2);pointer-events:none}
 .scalebar i{display:block;height:6px;border:2px solid var(--ink-2);border-top:0;margin-top:3px}
 .compass{position:absolute;right:16px;bottom:14px;z-index:6;width:26px;text-align:center;font:600 11px/1 var(--font-num);color:var(--ink-2);pointer-events:none}
@@ -326,6 +348,46 @@ a{color:inherit}
 .report .btn.primary:disabled{opacity:.6;cursor:default}
 .copybox{width:100%;min-height:150px;margin-top:10px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface-2);color:var(--ink);font:13px/1.5 var(--font-body);padding:10px;resize:vertical}
 
+/* first screen: my level card, condition bar */
+.mylv{appearance:none;width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:13px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 12px 12px 14px;box-shadow:var(--shadow);cursor:pointer;color:var(--ink);font:inherit}
+.mylv-badge{width:50px;height:50px;border-radius:50%;border:2.5px solid var(--sun);background:var(--sun-soft);color:var(--sun-ink);display:grid;place-items:center;align-content:center;transform:rotate(-9deg);font:600 19px/1 var(--font-num)}
+.mylv-badge small{font-size:10px;letter-spacing:.06em;margin-bottom:1px}
+.mylv-body{min-width:0;display:block}
+.mylv-body b{display:block;font-size:14.5px;font-weight:600}
+.mylv-body small{display:block;font-size:12.5px;line-height:1.4;color:var(--ink-2);margin-top:6px}
+.mylv-bar{display:flex;gap:4px;margin-top:7px}
+.mylv-bar i{flex:1;height:7px;border-radius:4px;background:var(--line)}
+.mylv-bar i.on{background:var(--sun)}
+.chev{width:8px;height:8px;border-right:2px solid var(--ink-3);border-top:2px solid var(--ink-3);transform:rotate(45deg);margin-right:4px}
+.cond{display:flex;align-items:center;gap:10px;margin-top:12px;padding:9px 9px 9px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm)}
+.cond-sum{flex:1;min-width:0;margin:0;font-size:13.5px;font-weight:600;line-height:1.4;color:var(--ink-2)}
+.cond-btn{flex:none;appearance:none;border:1px solid var(--sea);background:var(--surface);color:var(--sea);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;cursor:pointer}
+.cond-btn[aria-expanded="true"]{background:var(--sea);color:var(--sea-ink)}
+#opts{margin-top:16px}
+#must{margin-top:10px}
+#result .ticket{margin-top:14px}
+.chip.locked span{color:var(--ink-3);background:var(--surface-2);border-style:dashed}
+.chip.locked span svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;align-self:center}
+.btn[aria-disabled="true"]{background:var(--surface-2);border-color:var(--line);color:var(--ink-3)}
+.btn[aria-disabled="true"] svg{fill:none}
+/* stamps */
+.stampbtn[aria-pressed="true"]{color:var(--sun-ink);border-color:var(--sun);background:var(--sun-soft)}
+.lv-state{font-size:11.5px;font-weight:600;border-radius:999px;padding:4px 9px;white-space:nowrap;background:var(--surface-2);color:var(--ink-3)}
+.lv-state svg{width:10px;height:10px;vertical-align:-1px;margin-right:3px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.lv-state.done{background:var(--sun-soft);color:var(--sun-ink)}
+.lv-state.now{background:var(--sea-soft);color:var(--sea)}
+.lvup{text-align:center;padding:4px 2px 2px}
+.lvup-stamp{width:116px;height:116px;margin:14px auto 16px;border-radius:50%;border:5px double var(--sun);background:var(--sun-soft);color:var(--sun-ink);display:grid;place-items:center;align-content:center;gap:3px;transform:rotate(-10deg);animation:stampin .5s cubic-bezier(.2,1.5,.4,1) both}
+.lvup-stamp small{font:600 10.5px/1 var(--font-num);letter-spacing:.1em}
+.lvup-stamp b{font:600 32px/1 var(--font-num)}
+.lvup-stamp b.long{font-size:19px;letter-spacing:.04em}
+@keyframes stampin{from{transform:scale(1.9) rotate(-10deg);opacity:0}to{transform:scale(1) rotate(-10deg);opacity:1}}
+.lvup h2{font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.25;margin:0 0 6px}
+.lvup p{margin:0 auto;max-width:28em;color:var(--ink-2);font-size:14px}
+.lvup .s-fine{margin-top:10px}
+.lvup .s-actions{justify-content:center}
+.stamp-list{margin-top:12px}
+.stamp-empty{margin:10px 0 0;font-size:13.5px;color:var(--ink-3)}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
@@ -354,9 +416,15 @@ a{color:inherit}
     <section class="tab" id="tab-course" role="tabpanel" aria-labelledby="tb-course">
       <div class="pad">
         <h1 class="hero">오늘, <em>혼자</em><br>어디 갈까?</h1>
-        <p class="lede">시간·예산·기분만 고르면 서울 혼놀 코스를 동선까지 짜 드려요. 서울 25개 구 혼놀 명소 <span id="place-count">80</span>곳을 담았어요.</p>
-        <form class="opts" id="opts" novalidate>
+        <p class="lede">혼자 가도 안 어색한 서울 명소 <span id="place-count">80</span>곳 중에서 지금 갈 만한 코스를 지하철 동선까지 짜 드려요. 다녀온 곳에 도장을 찍으면 혼놀 레벨이 올라가요.</p>
+        <button type="button" class="mylv" id="mylv"></button>
+        <div class="cond">
+          <p class="cond-sum" id="cond-sum"></p>
+          <button type="button" class="cond-btn" id="cond-btn" aria-expanded="false" aria-controls="opts">조건 바꾸기</button>
+        </div>
+        <form class="opts" id="opts" novalidate hidden>
           <fieldset class="q"><legend>얼마나</legend><div class="chips" data-group="dur"></div></fieldset>
+          <fieldset class="q"><legend>장소마다 노는 시간</legend><div class="chips" data-group="pace"></div></fieldset>
           <fieldset class="q"><legend>예산은</legend><div class="chips" data-group="budget"></div></fieldset>
           <fieldset class="q"><legend>지금 기분</legend><div class="chips" data-group="mood"></div></fieldset>
           <fieldset class="q"><legend>혼놀 레벨<button type="button" id="btn-lv-help">레벨이 뭐예요?</button></legend><div class="chips" data-group="lv"></div></fieldset>
@@ -366,21 +434,22 @@ a{color:inherit}
               <fieldset class="q"><legend id="lg-start">어디서 출발</legend><div class="sel-wrap"><select class="sel" id="start-sel" name="start" aria-labelledby="lg-start"></select></div></fieldset>
               <fieldset class="q"><legend>이동</legend><div class="chips" data-group="move"></div></fieldset>
               <fieldset class="q"><legend>언제</legend><div class="chips" data-group="day"></div><div class="chips" data-group="when" style="margin-top:6px"></div></fieldset>
+              <fieldset class="q"><legend>몇 시까지</legend><div class="chips" data-group="until"></div></fieldset>
               <fieldset class="q"><legend>날씨</legend><div class="chips" data-group="rain"></div></fieldset>
             </div>
           </details>
-          <div class="must" id="must" hidden></div>
           <button type="submit" class="cta" id="btn-roll">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7l8-4 8 4v10l-8 4-8-4Z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg>
-            코스 뽑기
+            이 조건으로 코스 뽑기
           </button>
         </form>
+        <div class="must" id="must" hidden></div>
         <div id="result" aria-live="polite"></div>
 
         <h2 class="section-h" id="levels-h">혼놀 레벨</h2>
-        <p class="section-p">장소마다 혼자 가기 얼마나 쉬운지 다섯 단계로 매겼어요. 코스는 고른 레벨까지만 넣어요.</p>
+        <p class="section-p">장소마다 혼자 가기 얼마나 쉬운지 다섯 단계로 매겼어요. 지금 레벨의 장소에 도장을 모으면 다음 레벨이 열리고, 코스엔 고른 레벨의 장소가 하나씩 들어가요.</p>
         <ul class="lv-list" id="lv-list"></ul>
-        <p class="fine">운영시간·요금은 2026년 10월 기준 공개 안내를 참고했고 바뀔 수 있어요. 이동 시간은 거리로 계산한 대략값이에요.</p>
+        <p class="fine">운영시간·요금은 2026년 10월 기준 공개 안내를 참고했고 바뀔 수 있어요. 지하철 시간은 역 사이 거리로 어림한 값이라 급행·배차 간격·막차에 따라 달라질 수 있어요.</p>
       </div>
     </section>
 
@@ -390,14 +459,13 @@ a{color:inherit}
         <div class="scroller" id="cat-chips" aria-label="종류 필터"></div>
       </div>
       <div class="map-wrap" id="map">
-        <svg class="map-svg" id="map-svg" role="img" aria-label="서울 혼놀 지도 일러스트. 한강과 공원 위치는 단순화돼 있어요.">
+        <svg class="map-svg" id="map-svg" role="img" aria-label="서울 혼놀 지도 일러스트. 한강, 공원, 지하철 노선은 단순화돼 있어요.">
           <g id="world">
             <rect class="landbase" x="-80" y="-80" width="260" height="260"/>
             <g id="parks-g"></g>
             <g id="water-g"></g>
-            <path class="line2" id="line2" vector-effect="non-scaling-stroke"/>
-            <path class="route-case" id="route-case" vector-effect="non-scaling-stroke"/>
-            <path class="route" id="route" vector-effect="non-scaling-stroke"/>
+            <g class="metro far" id="metro-g"></g>
+            <g id="route-g"></g>
           </g>
         </svg>
         <div class="overlay" id="overlay"></div>
@@ -405,6 +473,7 @@ a{color:inherit}
           <button type="button" id="zin" aria-label="확대">+</button>
           <button type="button" id="zout" aria-label="축소">−</button>
           <button type="button" id="zfit" aria-label="서울 전체 보기"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg></button>
+          <button type="button" id="zmetro" aria-pressed="true" aria-label="지하철 노선 보기"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="2.5" width="10" height="11.5" rx="3"/><path d="M5 8.5h10M8 16.5l-1.5 1.5M12 16.5l1.5 1.5M7.5 11.2h.01M12.5 11.2h.01"/></svg></button>
         </div>
         <div class="course-banner" id="course-banner" hidden></div>
         <div class="scalebar" id="scalebar" aria-hidden="true"><span class="num" id="scale-t">1 km</span><i id="scale-i"></i></div>
@@ -416,8 +485,10 @@ a{color:inherit}
     <section class="tab" id="tab-saved" role="tabpanel" aria-labelledby="tb-saved" hidden>
       <div class="pad">
         <h1 class="hero">찜한 곳</h1>
-        <p class="lede">가 보고 싶은 곳을 모아 두고, 한 곳을 골라 코스에 넣을 수 있어요. 찜은 이 기기에만 저장돼요.</p>
+        <p class="lede">가 보고 싶은 곳을 모아 두고, 한 곳을 골라 코스에 넣을 수 있어요. 찜과 도장은 이 기기에만 저장돼요.</p>
         <div id="saved"></div>
+        <h2 class="section-h">도장 찍은 곳</h2>
+        <div id="stamped"></div>
       </div>
     </section>
   </main>
@@ -430,7 +501,7 @@ a{color:inherit}
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6Z"/><path d="M9 4v14M15 6v14"/></svg>혼놀 지도
     </button>
     <button type="button" role="tab" id="tb-saved" aria-controls="tab-saved" aria-selected="false" data-tab="saved">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20Z"/></svg><span>찜<span class="badge" id="fav-count" hidden>0</span></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20Z"/></svg><span>찜·도장<span class="badge" id="fav-count" hidden>0</span></span>
     </button>
   </nav>
 
@@ -854,6 +925,732 @@ const PLACES = [
     stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'fun'],
     info: '상시 개방 · 무료',
     tip: '한강 상류 쪽이라 다른 한강공원보다 한적해요. 따릉이 타고 강 따라 달리기도 좋아요.', q: '광나루한강공원' },
+  /* 더 채운 곳: 궁궐·북촌·정동 */
+  { id: 'changdeokgung', name: '창덕궁', short: '창덕궁', area: '종로', cat: 'heritage', lat: 37.5794, lon: 126.9910,
+    stay: 60, min: 40, cost: 3000, lv: 1, moods: ['vibe', 'heal', 'think'],
+    hours: { seasons: [[2, 5, 540, 1080], [6, 8, 540, 1110], [9, 10, 540, 1080], [11, 1, 540, 1050]] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '일반 3,000원 · 만 24세 이하·한복 입으면 무료 · 월요일 휴궁 · 후원은 따로 예약·유료 · 입장은 닫기 1시간 전까지',
+    tip: '경복궁보다 덜 붐비고 나무가 많아서 혼자 천천히 걷기 좋아요. 건물이 산자락을 따라 자연스럽게 놓여 있어요.', q: '창덕궁' },
+  { id: 'changgyeonggung', name: '창경궁 대온실', short: '창경궁', area: '종로', cat: 'heritage', lat: 37.5788, lon: 126.9948,
+    stay: 50, min: 30, cost: 1000, lv: 1, moods: ['heal', 'vibe'], tags: ['night'],
+    hours: { s: [540, 1260] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '일반 1,000원 · 만 24세 이하·한복 입으면 무료 · 9–21시 · 월요일 휴궁 · 대온실은 시간이 따로 있어요',
+    tip: '연못 춘당지와 하얀 유리 온실이 있는 궁궐이에요. 밤 9시까지 열어서 저녁 산책도 돼요.', q: '창경궁' },
+  { id: 'bukchon', name: '북촌한옥마을', short: '북촌', area: '가회동', cat: 'heritage', lat: 37.5826, lon: 126.9850,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['vibe', 'think'],
+    hours: { s: [600, 1020] },
+    info: '무료 · 주민이 사는 동네라 관광은 10–17시만 · 조용히 걷기',
+    tip: '골목 언덕에서 한옥 지붕 너머로 시내가 보여요. 사람 사는 집들이라 소리 낮추고 걸어요.', q: '북촌한옥마을' },
+  { id: 'samcheong', name: '삼청동길', short: '삼청동길', area: '삼청동', cat: 'walk', lat: 37.5847, lon: 126.9817,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['vibe', 'heal'],
+    hours: { s: [600, 1260] },
+    info: '골목 구경 무료 · 갤러리·카페는 가게마다 다름',
+    tip: '경복궁 담장을 따라 작은 갤러리와 카페가 이어지는 길이에요. 마음에 드는 곳에 들어가 쉬어 가요.', q: '삼청동길' },
+  { id: 'ssamzie', name: '인사동 쌈지길', short: '쌈지길', area: '인사동', cat: 'play', covered: true, lat: 37.5743, lon: 126.9853,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['fun', 'vibe'],
+    hours: { s: [630, 1230] },
+    info: '구경 무료 · 보통 10:30–20:30(가게마다 다름)',
+    tip: '나선형 길을 따라 올라가며 공예품 가게를 구경하는 건물이에요. 비 와도 걷기 좋아요.', q: '인사동 쌈지길' },
+  { id: 'craftmuseum', name: '서울공예박물관', short: '공예박물관', area: '안국', cat: 'culture', lat: 37.5760, lon: 126.9850,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 10–18시 · 월요일 휴관(방문 전 확인)',
+    tip: '옛 학교 건물을 고친 공예 박물관이에요. 조용하고 넓어서 혼자 천천히 보기 좋아요.', q: '서울공예박물관' },
+  { id: 'historymuseum', name: '서울역사박물관', short: '역사박물관', area: '광화문', cat: 'culture', lat: 37.5704, lon: 126.9703,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { m: [3, 10], s: [540, 1200], sWe: [540, 1140], w: [540, 1200], wWe: [540, 1080] }, lastEntry: 30, closed: [{ d: 1 }],
+    info: '상설전 무료 · 평일 9–20시, 주말 19시 무렵(겨울엔 18시) · 월요일 휴관(방문 전 확인)',
+    tip: '서울이 어떻게 변해 왔는지 한 번에 보는 곳이에요. 큰 서울 모형 앞에서 내가 사는 동네를 찾아봐요.', q: '서울역사박물관' },
+  { id: 'jeongdong', name: '정동길', short: '정동길', area: '시청', cat: 'walk', lat: 37.5662, lon: 126.9725,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['vibe', 'heal', 'think'], tags: ['night'],
+    info: '상시 · 무료',
+    tip: '덕수궁 돌담길에서 이어지는 오래된 길이에요. 붉은 벽돌 교회와 나무 그늘이 있어서 천천히 걷기 좋아요.', q: '정동길' },
+  { id: 'namsangol', name: '남산골한옥마을', short: '남산골한옥', area: '필동', cat: 'heritage', lat: 37.5594, lon: 126.9947,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'vibe'],
+    hours: { s: [540, 1200] }, closed: [{ d: 1 }],
+    info: '무료 · 9시부터 저녁까지(계절마다 다름) · 월요일 휴관',
+    tip: '옛 한옥 다섯 채를 옮겨 놓은 마을이에요. 연못가 정자에 앉아 쉬다가 남산으로 이어 걸어도 좋아요.', q: '남산골한옥마을' },
+  { id: 'suseongdong', name: '수성동계곡', short: '수성동계곡', area: '서촌', cat: 'walk', lat: 37.5852, lon: 126.9636,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 · 무료 · 비 온 다음 날 물소리가 좋아요',
+    tip: '서촌 골목 끝, 인왕산 아래 작은 계곡이에요. 옛 그림에 나온 돌다리가 남아 있어요.', q: '수성동계곡' },
+  { id: 'chosobook', name: '인왕산 초소책방', short: '초소책방', area: '인왕산', cat: 'food', cafe: true, lat: 37.5826, lon: 126.9619,
+    stay: 60, min: 30, cost: 8000, lv: 1, indoor: true, moods: ['heal', 'think', 'vibe'], tags: ['sunset'],
+    hours: { s: [600, 1260] },
+    info: '책 구경 무료 · 음료 약 8천원 · 운영시간은 가게 사정에 따라 달라요',
+    tip: '옛 경찰 초소를 고친 책방 겸 카페예요. 큰 창으로 서울 시내가 내려다보여서 노을 무렵이 특히 좋아요.', q: '더숲 초소책방' },
+  /* 홍대·신촌·마포 */
+  { id: 'sangsu_cafe', name: '상수동 카페 골목', short: '상수 카페', area: '상수', cat: 'food', cafe: true, lat: 37.5478, lon: 126.9227,
+    stay: 60, min: 30, cost: 7000, lv: 1, indoor: true, moods: ['heal', 'vibe', 'think'],
+    hours: { s: [600, 1320] },
+    info: '여러 곳 · 음료 약 7천원',
+    tip: '홍대보다 한적한 골목에 작은 카페가 많아요. 한강 쪽으로 걸어가면 당인리 발전소 굴뚝이 보여요.', q: '상수동 카페' },
+  { id: 'mangridan', name: '망리단길 골목', short: '망리단길', area: '망원', cat: 'play', lat: 37.5565, lon: 126.9020,
+    stay: 45, min: 20, cost: 0, lv: 1, moods: ['vibe', 'fun', 'taste'],
+    hours: { s: [660, 1320] },
+    info: '구경 무료 · 가게마다 다름',
+    tip: '망원시장 옆 골목에 소품숍, 작은 식당, 빵집이 모여 있어요. 망원한강공원까지 걸어서 이어져요.', q: '망리단길' },
+  { id: 'sangsangmadang', name: 'KT&G 상상마당 홍대', short: '상상마당', area: '홍대', cat: 'culture', indoor: true, lat: 37.5511, lon: 126.9213,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['vibe', 'fun', 'think'],
+    hours: { s: [660, 1260] },
+    info: '디자인 숍 구경 무료 · 전시·영화는 따로 · 운영시간은 층마다 달라요',
+    tip: '독립 디자이너 굿즈 숍, 갤러리, 작은 영화관이 한 건물에 있어요. 홍대 한복판 실내 피난처예요.', q: 'KT&G 상상마당 홍대' },
+  { id: 'bookstreet', name: '경의선책거리', short: '경의선책거리', area: '홍대', cat: 'culture', lat: 37.5548, lon: 126.9283,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['think', 'heal'],
+    hours: { s: [660, 1200] }, closed: [{ d: 1 }],
+    info: '산책로는 상시 · 책 부스는 낮에만 열고 월요일 쉬는 곳이 많아요',
+    tip: '옛 기찻길을 따라 기차 칸 모양 책 부스가 늘어선 거리예요. 홍대입구역 6번 출구에서 가까워요.', q: '경의선책거리' },
+  { id: 'oilbase', name: '문화비축기지', short: '문화비축기지', area: '상암', cat: 'culture', lat: 37.5714, lon: 126.8935,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['think', 'vibe', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 건물은 10–18시, 월요일 휴관(방문 전 확인) · 바깥 공원은 상시',
+    tip: '옛 석유 탱크를 전시장과 공연장으로 바꾼 곳이에요. 동그란 탱크 안이 묘하게 조용해요.', q: '문화비축기지' },
+  { id: 'yeonhui', name: '연희동 골목', short: '연희동', area: '연희동', cat: 'food', cafe: true, lat: 37.5664, lon: 126.9293,
+    stay: 60, min: 30, cost: 8000, lv: 1, indoor: true, moods: ['heal', 'vibe', 'taste'],
+    hours: { s: [600, 1260] },
+    info: '여러 곳 · 음료·디저트 약 8천원',
+    tip: '주택가 사이에 작은 빵집과 카페가 숨어 있는 동네예요. 홍대보다 조용해서 혼자 쉬기 좋아요.', q: '연희동 카페' },
+  { id: 'yonsei', name: '연세대 캠퍼스 산책', short: '연세대 산책', area: '신촌', cat: 'walk', lat: 37.5662, lon: 126.9386,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['think', 'heal'],
+    info: '상시 · 무료 · 수업 중인 건물엔 들어가지 않기',
+    tip: '언더우드관 앞 오래된 석조 건물과 숲길이 예뻐요. 윤동주 시비 앞에서 잠깐 쉬어 가요.', q: '연세대학교 언더우드관' },
+  { id: 'bulgwangcheon', name: '불광천 산책길', short: '불광천', area: '응암', cat: 'walk', lat: 37.5862, lon: 126.9148,
+    stay: 45, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['night'],
+    info: '상시 · 무료',
+    tip: '은평에서 한강 쪽으로 흐르는 개천 길이에요. 밤에도 걷고 뛰는 사람이 많아요.', q: '불광천' },
+  /* 성수·강남·잠실 */
+  { id: 'daelim', name: '성수 대림창고', short: '대림창고', area: '성수', cat: 'food', cafe: true, lat: 37.5418, lon: 127.0565,
+    stay: 50, min: 30, cost: 9000, lv: 1, indoor: true, moods: ['vibe', 'heal'],
+    hours: { s: [660, 1320] },
+    info: '음료 약 9천원 · 운영시간은 가게 사정에 따라 달라요',
+    tip: '옛 정미소 창고를 고친 높은 천장의 카페 겸 갤러리예요. 혼자 앉아 있어도 공간이 넓어서 편해요.', q: '대림창고' },
+  { id: 'dosan', name: '도산공원', short: '도산공원', area: '신사', cat: 'walk', lat: 37.5244, lon: 127.0353,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 · 무료',
+    tip: '압구정 한복판의 작고 조용한 공원이에요. 주변 골목 편집숍을 구경하다 쉬어 가기 좋아요.', q: '도산공원' },
+  { id: 'kyobo_gangnam', name: '교보문고 강남점', short: '교보 강남', area: '강남', cat: 'culture', lat: 37.5040, lon: 127.0248,
+    stay: 50, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [570, 1320] },
+    info: '입장 무료 · 보통 9:30–22시',
+    tip: '강남역 근처에서 혼자 시간 보내기 제일 무난한 곳이에요. 책 읽을 자리도 있어요.', q: '교보문고 강남점' },
+  { id: 'seoulsky', name: '서울스카이 전망대', short: '서울스카이', area: '잠실', cat: 'view', indoor: true, lat: 37.5126, lon: 127.1025,
+    stay: 60, min: 40, cost: 31000, lv: 2, moods: ['vibe', 'fun'], tags: ['sunset', 'night'],
+    hours: { s: [600, 1320] }, lastEntry: 60,
+    info: '약 3만원대(날짜·시간에 따라 다름) · 마감 1시간 전까지 입장 · 운영시간 방문 전 확인',
+    tip: '롯데월드타워 꼭대기에서 서울 전체를 내려다봐요. 해 질 무렵 들어가면 낮과 밤 풍경을 둘 다 봐요.', q: '서울스카이' },
+  /* 용산·여의도·영등포 */
+  { id: 'gyeongnidan', name: '경리단길', short: '경리단길', area: '이태원', cat: 'play', lat: 37.5390, lon: 126.9900,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['vibe', 'fun', 'taste'], tags: ['night'],
+    hours: { s: [660, 1320] },
+    info: '구경 무료 · 가게마다 다름',
+    tip: '남산 아래 비탈길에 작은 식당과 바가 이어져요. 위로 올라가면 해방촌과 이어져요.', q: '경리단길' },
+  { id: 'ichon', name: '이촌한강공원', short: '이촌한강공원', area: '이촌', cat: 'walk', lat: 37.5195, lon: 126.9700,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료',
+    tip: '다른 한강공원보다 조용해서 강을 보며 생각 정리하기 좋아요. 노들섬이 가까워요.', q: '이촌한강공원' },
+  { id: 'yongridan', name: '용리단길 혼밥', short: '용리단길', area: '삼각지', cat: 'food', meal: true, indoor: true, lat: 37.5320, lon: 126.9705,
+    stay: 45, min: 30, cost: 15000, lv: 2, moods: ['taste', 'vibe'],
+    hours: { s: [660, 1320] },
+    info: '여러 곳 · 1인분 약 1.5만원',
+    tip: '삼각지역 근처 골목에 분위기 좋은 식당이 몰려 있어요. 바 좌석 있는 집을 고르면 혼밥이 편해요.', q: '용리단길 맛집' },
+  { id: 'saetgang', name: '샛강생태공원', short: '샛강', area: '여의도', cat: 'walk', lat: 37.5185, lon: 126.9300,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 · 무료',
+    tip: '여의도 빌딩 숲 바로 옆인데 숲속 습지 같은 산책길이에요. 출렁다리도 건너 봐요.', q: '샛강생태공원' },
+  { id: 'timessquare', name: '영등포 타임스퀘어', short: '타임스퀘어', area: '영등포', cat: 'play', indoor: true, lat: 37.5170, lon: 126.9033,
+    stay: 60, min: 30, cost: 0, lv: 1, moods: ['fun'],
+    hours: { s: [630, 1320] },
+    info: '입장 무료 · 보통 10:30–22시',
+    tip: '서점, 영화관, 식당이 한 건물에 다 있어서 비 오는 날 혼자 하루 보내기 좋아요.', q: '영등포 타임스퀘어' },
+  /* 강서·성북·도봉·관악·서대문 */
+  { id: 'gyeomjae', name: '궁산 · 겸재정선미술관', short: '겸재정선미술관', area: '가양', cat: 'culture', lat: 37.5714, lon: 126.8407,
+    stay: 50, min: 25, cost: 1000, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '관람료 약 1천원 · 10–18시 · 월요일 휴관(방문 전 확인)',
+    tip: '한강 풍경을 그린 화가 겸재 정선의 미술관이에요. 뒤쪽 궁산에 오르면 그림 속 한강이 보여요.', q: '겸재정선미술관' },
+  { id: 'suyeon', name: '성북동 수연산방', short: '수연산방', area: '성북동', cat: 'food', cafe: true, lat: 37.5942, lon: 126.9965,
+    stay: 60, min: 30, cost: 12000, lv: 2, indoor: true, moods: ['heal', 'vibe', 'think'],
+    hours: { s: [690, 1260] },
+    info: '전통차 약 1만원대 · 운영시간은 가게 사정에 따라 달라요',
+    tip: '소설가 이태준이 살던 한옥을 찻집으로 쓰는 곳이에요. 마루에 앉아 차 한 잔 하며 쉬어 가요.', q: '수연산방' },
+  { id: 'dooly', name: '둘리뮤지엄', short: '둘리뮤지엄', area: '쌍문동', cat: 'play', indoor: true, lat: 37.6528, lon: 127.0276,
+    stay: 60, min: 30, cost: 5000, lv: 2, moods: ['fun', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '관람료 약 5천원 · 10–18시 · 월요일 휴관(방문 전 확인)',
+    tip: '쌍문동이 배경인 만화 박물관이에요. 아이들이 많지만 어른 혼자 추억 여행 오는 사람도 있어요.', q: '둘리뮤지엄' },
+  { id: 'gwanaksan', name: '관악산 계곡길', short: '관악산', area: '신림', cat: 'walk', lat: 37.4665, lon: 126.9485,
+    stay: 90, min: 50, cost: 0, lv: 1, moods: ['heal', 'think', 'fun'], tags: ['day'],
+    info: '무료 · 관악산공원 입구에서 시작 · 해 지기 전에 내려오기',
+    tip: '정상까지 안 가도 입구 쪽 계곡길만 걸어도 숲이 깊어요. 운동화면 충분해요.', q: '관악산공원 입구' },
+  { id: 'hongje_fall', name: '홍제천 인공폭포', short: '홍제폭포', area: '홍제', cat: 'view', lat: 37.5790, lon: 126.9365,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['heal', 'vibe'],
+    info: '무료 · 폭포는 정해진 시간에만 물이 흘러요(방문 전 확인) · 옆 카페는 가게마다 다름',
+    tip: '바위 절벽에서 물이 쏟아지는 개천 산책길이에요. 폭포 앞 카페 창가에 앉아 물소리 들으며 쉬어 가요.', q: '홍제천 인공폭포' },
+  /* 200곳 채우기: 종로·중구 */
+  { id: 'jongmyo', name: '종묘', short: '종묘', area: '종로', cat: 'heritage', lat: 37.5728, lon: 126.9939,
+    stay: 60, min: 40, cost: 1000, lv: 1, moods: ['think', 'heal'],
+    hours: { seasons: [[2, 5, 540, 1080], [6, 8, 540, 1110], [9, 10, 540, 1080], [11, 1, 540, 1050]] }, lastEntry: 60, closed: [{ d: 2 }],
+    info: '일반 1,000원 · 한복 입으면 무료 · 화요일 휴무 · 평일은 해설 따라 정해진 시간에 입장, 토·일은 자유 관람 · 입장은 닫기 1시간 전까지',
+    tip: '궁궐보다 훨씬 고요한 곳이에요. 주말 자유 관람 때 정전 앞 넓은 월대에 서 보면 마음이 차분해져요.', q: '종묘' },
+  { id: 'culture284', name: '문화역서울284', short: '문화역서울284', area: '서울역', cat: 'culture', lat: 37.5559, lon: 126.9723,
+    stay: 45, min: 25, cost: 0, lv: 1, indoor: true, moods: ['vibe', 'think'],
+    hours: { s: [600, 1140] }, closed: [{ d: 1 }],
+    info: '대부분 무료 · 10–19시 · 월요일 휴관 · 전시 사이엔 쉬기도 해서 방문 전 확인',
+    tip: '옛 서울역 건물을 전시장으로 쓰는 곳이에요. 전시가 없어도 오래된 역사 건물 안을 걷는 맛이 있어요.', q: '문화역서울284' },
+  { id: 'jeongdok', name: '정독도서관', short: '정독도서관', area: '삼청동', cat: 'culture', lat: 37.5810, lon: 126.9835,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [540, 1080] }, closed: [{ d: 3, n: [1, 3] }],
+    info: '무료 · 누구나 이용 · 자료실 9–18시 무렵 · 첫째·셋째 수요일 휴관',
+    tip: '옛 경기고 건물을 쓰는 도서관이에요. 봄엔 앞마당 벚꽃이 예쁘고, 북촌·삼청동 사이 쉼터로 딱이에요.', q: '정독도서관' },
+  { id: 'money_museum', name: '한국은행 화폐박물관', short: '화폐박물관', area: '명동', cat: 'culture', lat: 37.5617, lon: 126.9814,
+    stay: 40, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [600, 1020] }, closed: [{ d: 1 }],
+    info: '무료 · 10–17시 · 월요일 휴관',
+    tip: '100년 넘은 옛 한국은행 본관 건물이에요. 돈이 어떻게 만들어지는지 구경하다 보면 시간이 금방 가요.', q: '한국은행 화폐박물관' },
+  { id: 'nmkh', name: '대한민국역사박물관', short: '역사박물관(광화문)', area: '광화문', cat: 'culture', lat: 37.5745, lon: 126.9780,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [600, 1080], dow: { 3: [600, 1260], 6: [600, 1260] } },
+    info: '무료 · 10–18시(수·토 21시) · 설·추석 등 휴관일은 방문 전 확인',
+    tip: '옥상정원에서 경복궁과 광화문광장이 내려다보여요. 전시보다 옥상 때문에 가는 사람도 많아요.', q: '대한민국역사박물관' },
+  { id: 'gogung', name: '국립고궁박물관', short: '고궁박물관', area: '광화문', cat: 'culture', lat: 37.5765, lon: 126.9752,
+    stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [600, 1080], dow: { 3: [600, 1260], 6: [600, 1260] } },
+    info: '무료 · 10–18시(수·토 21시) · 설·추석 등 휴관일은 방문 전 확인',
+    tip: '경복궁 바로 옆이라 궁 산책 전후로 묶기 좋아요. 조선 왕실 물건이 많아서 비 오는 날 코스로도 좋아요.', q: '국립고궁박물관' },
+  { id: 'folk_museum', name: '국립민속박물관', short: '민속박물관', area: '삼청동', cat: 'culture', lat: 37.5813, lon: 126.9792,
+    stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [540, 1080] }, lastEntry: 60,
+    info: '무료 · 9–18시 무렵 · 휴관일은 방문 전 확인 · 경복궁 안쪽에 있어요',
+    tip: '야외 전시장의 옛 거리 모형이 사진 찍기 좋아요. 경복궁 동쪽 문으로 들어가면 가까워요.', q: '국립민속박물관' },
+  { id: 'samcheong_gallery', name: '삼청동 갤러리길', short: '갤러리길', area: '삼청동', cat: 'culture', lat: 37.5795, lon: 126.9812,
+    stay: 50, min: 25, cost: 0, lv: 1, indoor: true, moods: ['vibe', 'think'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '대부분 무료 · 갤러리마다 다름(보통 10–18시, 월요일 휴관)',
+    tip: '국제갤러리·갤러리현대 같은 갤러리가 한 길에 모여 있어요. 무료로 좋은 작품을 혼자 천천히 볼 수 있어요.', q: '삼청동 갤러리' },
+  { id: 'seosomun', name: '서소문성지역사박물관', short: '서소문성지박물관', area: '서울역', cat: 'culture', lat: 37.5596, lon: 126.9688,
+    stay: 45, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [570, 1050] }, closed: [{ d: 1 }],
+    info: '무료 · 9:30–17:30 · 월요일 휴관',
+    tip: '지하로 깊이 내려가는 건물 구조가 인상적이에요. 하늘이 뚫린 ‘하늘광장’에서 잠깐 생각에 잠기기 좋아요.', q: '서소문성지역사박물관' },
+  { id: 'gyeonghuigung', name: '경희궁', short: '경희궁', area: '광화문', cat: 'heritage', lat: 37.5713, lon: 126.9681,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 9–18시 · 월요일 휴무',
+    tip: '서울 5대 궁 중에 사람이 제일 적어서 혼자 조용히 걷기 좋아요. 서울역사박물관이 바로 옆이에요.', q: '경희궁' },
+  { id: 'donuimun', name: '돈의문박물관마을', short: '돈의문마을', area: '광화문', cat: 'heritage', lat: 37.5687, lon: 126.9681,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['vibe', 'fun'],
+    hours: { s: [600, 1140] }, closed: [{ d: 1 }],
+    info: '무료 · 10–19시 · 월요일 휴관 · 운영시간은 방문 전 확인',
+    tip: '옛 골목과 집을 그대로 살린 마을이에요. 80년대 오락실과 이발소를 재현한 집이 있어서 구경하는 재미가 있어요.', q: '돈의문박물관마을' },
+  { id: 'whanki', name: '환기미술관', short: '환기미술관', area: '부암동', cat: 'culture', lat: 37.5949, lon: 126.9632,
+    stay: 50, min: 30, cost: 10000, lv: 2, indoor: true, moods: ['think', 'vibe', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '전시마다 요금 다름(약 1만원) · 10–18시 · 월요일 휴관 · 방문 전 확인',
+    tip: '김환기 화백의 파란 점화를 볼 수 있는 조용한 미술관이에요. 부암동 골목 산책이랑 묶으면 좋아요.', q: '환기미술관' },
+  { id: 'arko', name: '아르코미술관 · 마로니에공원', short: '아르코미술관', area: '대학로', cat: 'culture', lat: 37.5813, lon: 127.0030,
+    stay: 40, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [660, 1140] }, closed: [{ d: 1 }],
+    info: '대부분 무료 · 11–19시 무렵 · 월요일 휴관 · 전시 사이엔 쉬기도 해요',
+    tip: '붉은 벽돌 건물이 예쁜 미술관이에요. 앞의 마로니에공원 벤치에서 버스킹 구경하며 쉬어 가요.', q: '아르코미술관' },
+  { id: 'sejong_story', name: '세종이야기 · 충무공이야기', short: '세종이야기', area: '광화문', cat: 'culture', lat: 37.5714, lon: 126.9769,
+    stay: 35, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 10–18시 무렵 · 월요일 휴관 · 광화문광장 세종대왕상 뒤 지하',
+    tip: '광화문광장 지하에 있는 무료 전시관이에요. 비 오는 날 광화문에서 잠깐 쉬어 가기 좋아요.', q: '세종이야기' },
+  { id: 'baeksasil', name: '백사실계곡', short: '백사실계곡', area: '부암동', cat: 'walk', lat: 37.5958, lon: 126.9622,
+    stay: 60, min: 35, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 버스 내려서 숲길을 조금 걸어요 · 생태경관보전지역이라 물에 들어가면 안 돼요',
+    tip: '서울 한복판인데 산속 계곡 같은 곳이에요. 운동화 신고 가서 물소리 들으며 멍 때리기 좋아요.', q: '백사실계곡' },
+  { id: 'baegak', name: '한양도성 백악구간', short: '백악구간', area: '부암동', cat: 'walk', lat: 37.5925, lon: 126.9665,
+    stay: 100, min: 70, cost: 0, lv: 2, moods: ['heal', 'think'], tags: ['day'],
+    info: '무료 · 창의문 안내소에서 시작 · 계절별 탐방 시간이 있어서 방문 전 확인 · 계단이 많아요',
+    tip: '청와대 뒷산인 북악산 성곽길이에요. 계단이 꽤 있지만 위에서 보는 서울 풍경이 보상이에요.', q: '한양도성 백악구간 창의문' },
+  { id: 'quarry_view', name: '창신동 채석장 전망대', short: '채석장 전망대', area: '창신동', cat: 'view', covered: true, lat: 37.5786, lon: 127.0127,
+    stay: 40, min: 25, cost: 5000, lv: 1, moods: ['vibe', 'heal'], tags: ['sunset', 'night'],
+    hours: { s: [600, 1200], dow: { 5: [600, 1320], 6: [600, 1320] } }, closed: [{ d: 1 }],
+    info: '10–20시(금·토 22시) · 월요일 휴무 · 건물 안 카페를 같이 이용해요(음료 약 5천원) · 방문 전 확인',
+    tip: '옛 채석장 절벽 위에서 동대문과 남산이 한눈에 보여요. 해 질 무렵 야경이 특히 예뻐요.', q: '창신숭인 채석장 전망대' },
+  { id: 'namdaemun', name: '남대문시장 칼국수골목', short: '칼국수골목', area: '남대문', cat: 'food', meal: true, covered: true, lat: 37.5593, lon: 126.9776,
+    stay: 35, min: 25, cost: 8000, lv: 2, moods: ['taste'],
+    hours: { s: [480, 1140] }, closed: [{ d: 0 }],
+    info: '칼국수 약 8천원 · 가게마다 다름 · 일요일 쉬는 가게가 많아요',
+    tip: '좁은 골목에 나란히 앉아 먹는 곳이라 혼밥이 자연스러워요. 칼국수 시키면 보리밥이 따라 나오기도 해요.', q: '남대문시장 칼국수골목' },
+  { id: 'dongmyo', name: '동묘 벼룩시장', short: '동묘시장', area: '동묘', cat: 'play', lat: 37.5733, lon: 127.0164,
+    stay: 45, min: 25, cost: 5000, lv: 1, moods: ['fun', 'vibe'],
+    hours: { s: [600, 1080] },
+    info: '구경은 무료 · 주말이 제일 북적여요 · 가게마다 다름',
+    tip: '빈티지 옷부터 옛날 카메라까지 없는 게 없는 시장이에요. 천 원짜리 보물찾기 하는 기분으로 둘러봐요.', q: '동묘 벼룩시장' },
+  { id: 'pungmul', name: '서울풍물시장', short: '풍물시장', area: '신설동', cat: 'play', covered: true, lat: 37.5745, lon: 127.0247,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['fun', 'vibe'],
+    hours: { s: [600, 1140] }, closed: [{ d: 2, n: [2, 4] }],
+    info: '구경은 무료 · 10–19시 무렵 · 둘째·넷째 화요일 휴무 · 방문 전 확인',
+    tip: '골동품, LP, 옛날 장난감이 가득한 실내 시장이에요. 비 오는 날 구경하기 좋아요.', q: '서울풍물시장' },
+  { id: 'used_books', name: '청계천 헌책방거리', short: '헌책방거리', area: '동대문', cat: 'culture', covered: true, lat: 37.5694, lon: 127.0088,
+    stay: 35, min: 20, cost: 5000, lv: 1, moods: ['think', 'vibe'],
+    hours: { s: [600, 1140] }, closed: [{ d: 0 }],
+    info: '가게마다 다름 · 일요일 쉬는 가게가 많아요',
+    tip: '평화시장 1층에 헌책방이 줄지어 있어요. 오래된 책 냄새 맡으며 한 권 골라 청계천에 앉아 읽어 봐요.', q: '청계천 헌책방거리' },
+  { id: 'central_asia', name: '광희동 중앙아시아거리', short: '중앙아시아거리', area: '동대문', cat: 'food', meal: true, lat: 37.5668, lon: 127.0101,
+    stay: 45, min: 30, cost: 12000, lv: 3, indoor: true, moods: ['taste', 'fun'],
+    hours: { s: [660, 1320] },
+    info: '가게마다 다름 · 1인분 약 1만~1.5만원',
+    tip: '우즈베키스탄·러시아 식당이 모여 있는 골목이에요. 샤슬릭이나 볶음밥 하나 시키면 혼자서도 해외여행 기분이에요.', q: '동대문 중앙아시아거리' },
+  { id: 'sindang', name: '신당동 떡볶이타운', short: '떡볶이타운', area: '신당동', cat: 'food', meal: true, lat: 37.5636, lon: 127.0170,
+    stay: 40, min: 25, cost: 10000, lv: 3, indoor: true, moods: ['taste', 'fun'],
+    hours: { s: [660, 1320] },
+    info: '즉석떡볶이 1인분 약 1만원 · 2인분부터 받는 집도 있으니 들어가기 전에 물어봐요',
+    tip: '즉석떡볶이 원조 골목이에요. 혼자 한 냄비 끓여 먹으면 혼놀 레벨이 한 단계 오른 기분이에요.', q: '신당동 떡볶이타운' },
+  { id: 'jeongneung', name: '정릉', short: '정릉', area: '성북', cat: 'heritage', lat: 37.6025, lon: 127.0115,
+    stay: 50, min: 30, cost: 1000, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    hours: { seasons: [[2, 5, 540, 1080], [6, 8, 540, 1110], [9, 10, 540, 1080], [11, 1, 540, 1050]] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '일반 1,000원 · 만 24세 이하 무료 · 월요일 휴무 · 입장은 닫기 1시간 전까지',
+    tip: '세계유산 조선왕릉 중 하나예요. 왕릉 뒤로 숲 산책로가 있어서 사람 없는 숲길을 혼자 걷기 좋아요.', q: '정릉 성북' },
+  { id: 'sema_archive', name: '서울시립 미술아카이브', short: '미술아카이브', area: '평창동', cat: 'culture', lat: 37.6096, lon: 126.9737,
+    stay: 45, min: 25, cost: 0, lv: 2, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 10–18시 무렵 · 월요일 휴관 · 방문 전 확인',
+    tip: '평창동 언덕의 조용한 미술관이에요. 사람이 적어서 혼자 천천히 둘러보기 좋아요.', q: '서울시립 미술아카이브' },
+  { id: 'sohn', name: '손기정기념관', short: '손기정기념관', area: '서울역', cat: 'culture', lat: 37.5555, lon: 126.9661,
+    stay: 35, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 10–18시 무렵 · 월요일 휴관',
+    tip: '마라토너 손기정 선수의 모교 건물이에요. 서울로7017 끝에서 걸어갈 수 있어서 같이 묶기 좋아요.', q: '손기정기념관' },
+  /* 용산·마포·서대문 */
+  { id: 'hyochang', name: '효창공원', short: '효창공원', area: '용산', cat: 'walk', lat: 37.5446, lon: 126.9604,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료',
+    tip: '독립운동가들이 잠든 조용한 공원이에요. 숲이 울창해서 한낮에도 그늘 아래 걷기 좋아요.', q: '효창공원' },
+  { id: 'yongsan_family', name: '용산가족공원', short: '용산가족공원', area: '용산', cat: 'walk', lat: 37.5229, lon: 126.9843,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료',
+    tip: '국립중앙박물관 바로 옆 넓은 잔디 공원이에요. 박물관 보고 나와서 호숫가 벤치에서 쉬어 가요.', q: '용산가족공원' },
+  { id: 'yongsan_elec', name: '용산전자상가', short: '용산전자상가', area: '용산', cat: 'play', covered: true, lat: 37.5338, lon: 126.9625,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['fun'],
+    hours: { s: [600, 1140] },
+    info: '구경은 무료 · 가게마다 다름 · 일요일 쉬는 가게가 많아요',
+    tip: '컴퓨터 부품, 게임기, 피규어 가게를 구경하는 재미가 있어요. 사지 않아도 눈요기로 충분해요.', q: '용산전자상가' },
+  { id: 'itaewon_food', name: '이태원 세계음식거리', short: '세계음식거리', area: '이태원', cat: 'food', meal: true, lat: 37.5345, lon: 126.9930,
+    stay: 50, min: 30, cost: 15000, lv: 2, indoor: true, moods: ['taste', 'fun'], tags: ['night'],
+    hours: { s: [690, 1320] },
+    info: '가게마다 다름 · 1인분 약 1.5만원',
+    tip: '멕시코, 터키, 인도 음식점이 골목에 모여 있어요. 혼자 온 외국인 손님이 많아서 혼밥이 전혀 어색하지 않아요.', q: '이태원 세계음식거리' },
+  { id: 'jeoldusan', name: '절두산 순교성지 · 양화진', short: '절두산', area: '합정', cat: 'heritage', lat: 37.5446, lon: 126.9124,
+    stay: 40, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['sunset'],
+    hours: { s: [540, 1080] },
+    info: '무료 · 박물관은 월요일 휴관 · 운영시간은 방문 전 확인',
+    tip: '한강이 내려다보이는 언덕 위 성지예요. 합정역에서 가깝고, 해 질 무렵 강 풍경이 고요해요.', q: '절두산 순교성지' },
+  { id: 'seoulham', name: '서울함공원', short: '서울함공원', area: '망원', cat: 'play', lat: 37.5528, lon: 126.8994,
+    stay: 50, min: 30, cost: 3000, lv: 1, moods: ['fun', 'think'],
+    hours: { m: [3, 10], s: [600, 1140], sWe: [600, 1200], w: [600, 1080] }, lastEntry: 30, closed: [{ d: 1 }],
+    info: '일반 3,000원 · 청소년 2,000원 · 3~10월 10–19시(주말 20시), 11~2월 18시 · 월요일 휴관',
+    tip: '퇴역한 진짜 군함 안을 구석구석 걸어 볼 수 있어요. 망원한강공원이랑 바로 이어져 있어요.', q: '서울함공원' },
+  { id: 'noeul', name: '노을공원', short: '노을공원', area: '상암', cat: 'walk', lat: 37.5653, lon: 126.8738,
+    stay: 50, min: 30, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['sunset'],
+    info: '무료 · 밤엔 문을 닫아요 · 맹꽁이 전기차를 타거나 계단으로 올라가요',
+    tip: '이름처럼 한강 노을이 제일 잘 보이는 언덕 공원이에요. 하늘공원보다 한적해요.', q: '노을공원' },
+  { id: 'natural_history', name: '서대문자연사박물관', short: '자연사박물관', area: '연희동', cat: 'culture', lat: 37.5772, lon: 126.9390,
+    stay: 60, min: 35, cost: 6000, lv: 1, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [540, 1080] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '일반 약 6천원 · 청소년 할인 · 월요일 휴관 · 요금·시간은 방문 전 확인',
+    tip: '거대한 공룡 뼈 화석이 반겨 주는 박물관이에요. 어린이 박물관 같지만 어른 혼자 봐도 재미있어요.', q: '서대문자연사박물관' },
+  { id: 'ewha', name: '이화여대 캠퍼스 산책', short: '이화여대', area: '신촌', cat: 'walk', lat: 37.5617, lon: 126.9466,
+    stay: 35, min: 20, cost: 0, lv: 2, moods: ['vibe', 'heal'],
+    hours: { s: [540, 1080] },
+    info: '무료 · 수업 중인 건물은 조용히 · 단체 관광은 제한돼요',
+    tip: '땅속으로 파고든 ECC 건물이 볼거리예요. 학생들 사이를 조용히 걸으며 구경해요.', q: '이화여대 ECC' },
+  { id: 'kofa', name: '한국영상자료원 (영상박물관·시네마테크)', short: '영상자료원', area: '상암', cat: 'culture', lat: 37.5787, lon: 126.8913,
+    stay: 60, min: 30, cost: 0, lv: 2, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [600, 1140] }, closed: [{ d: 1 }],
+    info: '영상박물관 무료 · 시네마테크 상영작은 무료이거나 저렴 · 월요일 휴관 · 상영표는 방문 전 확인',
+    tip: '옛날 한국 영화 포스터와 촬영 장비를 구경할 수 있어요. 시간이 맞으면 고전 영화 한 편 혼영도 좋아요.', q: '한국영상자료원' },
+  { id: 'nanji', name: '난지한강공원', short: '난지한강공원', area: '상암', cat: 'walk', lat: 37.5670, lon: 126.8765,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['sunset', 'night'],
+    info: '상시 개방 · 무료',
+    tip: '한강공원 중에 넓고 한적한 편이라 노을 보며 혼자 쉬기 좋아요. 노을공원·하늘공원이랑 가까워요.', q: '난지한강공원' },
+  /* 강서·양천·영등포·동작·관악·금천 */
+  { id: 'aviation', name: '국립항공박물관', short: '항공박물관', area: '김포공항', cat: 'play', lat: 37.5681, lon: 126.8022,
+    stay: 70, min: 40, cost: 0, lv: 1, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [600, 1080] }, lastEntry: 30, closed: [{ d: 1 }],
+    info: '전시 무료 · 비행 시뮬레이터 같은 체험은 따로 예약·유료 · 10–18시 · 월요일 휴관',
+    tip: '진짜 비행기가 천장에 매달린 박물관이에요. 옥상 전망대에서 김포공항 비행기가 뜨고 내리는 걸 볼 수 있어요.', q: '국립항공박물관' },
+  { id: 'heojun', name: '허준박물관', short: '허준박물관', area: '가양', cat: 'culture', lat: 37.5682, lon: 126.8487,
+    stay: 40, min: 25, cost: 1000, lv: 1, indoor: true, moods: ['think'],
+    hours: { m: [3, 10], s: [600, 1080], w: [600, 1020] }, closed: [{ d: 1 }],
+    info: '약 1천원 · 월요일 휴관 · 시간·요금은 방문 전 확인',
+    tip: '동의보감을 쓴 허준의 박물관이에요. 옥상 약초원과 바로 옆 궁산이 산책하기 좋아요.', q: '허준박물관' },
+  { id: 'gaehwasan', name: '개화산 전망대', short: '개화산', area: '방화', cat: 'view', lat: 37.5829, lon: 126.8021,
+    stay: 60, min: 35, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['sunset'],
+    info: '상시 · 무료 · 개화산역에서 숲길로 20분쯤 올라가요',
+    tip: '한강 하류와 김포공항 활주로가 내려다보이는 낮은 산이에요. 비행기 뜨는 걸 보며 노을까지 보기 좋아요.', q: '개화산 전망대' },
+  { id: 'yongwangsan', name: '용왕산 근린공원 (엄지산 전망)', short: '용왕산', area: '목동', cat: 'view', lat: 37.5446, lon: 126.8778,
+    stay: 40, min: 25, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['sunset'],
+    info: '상시 · 무료 · 짧은 오르막',
+    tip: '목동 아파트 숲 사이 작은 산인데 꼭대기에서 한강과 여의도가 보여요. 동네 사람만 아는 노을 명소예요.', q: '용왕산 근린공원' },
+  { id: 'daerim', name: '대림동 차이나타운', short: '대림 차이나타운', area: '대림', cat: 'food', meal: true, lat: 37.4926, lon: 126.8966,
+    stay: 45, min: 30, cost: 10000, lv: 2, moods: ['taste', 'fun'],
+    hours: { s: [600, 1320] },
+    info: '가게마다 다름 · 꼬치·만두·면 약 1만원 안쪽',
+    tip: '중국 현지 거리 음식이 모인 시장이에요. 꼬치나 만두를 하나씩 사서 걸으며 먹어 봐요.', q: '대림중앙시장' },
+  { id: 'cupbap', name: '노량진 컵밥거리', short: '컵밥거리', area: '노량진', cat: 'food', meal: true, lat: 37.5134, lon: 126.9418,
+    stay: 25, min: 15, cost: 5000, lv: 1, moods: ['taste'],
+    hours: { s: [660, 1200] },
+    info: '컵밥 약 4,500원 · 노점마다 다름 · 방문 전 확인',
+    tip: '수험생들이 혼자 후다닥 먹고 가는 곳이라 혼밥 입문으로 최고예요. 싸고 양도 넉넉해요.', q: '노량진 컵밥거리' },
+  { id: 'yongyang', name: '용양봉저정 공원', short: '용양봉저정', area: '노량진', cat: 'view', lat: 37.5124, lon: 126.9533,
+    stay: 35, min: 20, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['sunset', 'night'],
+    info: '무료 · 운영시간은 방문 전 확인 · 노들역에서 가까워요',
+    tip: '정조가 쉬어 가던 정자 옆 전망대에서 한강과 노들섬이 내려다보여요. 노들섬이랑 묶기 좋아요.', q: '용양봉저정 공원' },
+  { id: 'sayuksin', name: '사육신공원', short: '사육신공원', area: '노량진', cat: 'heritage', lat: 37.5124, lon: 126.9466,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['think', 'heal'],
+    hours: { s: [360, 1260] },
+    info: '무료 · 운영시간은 방문 전 확인',
+    tip: '노량진역 옆 언덕의 조용한 사적지예요. 컵밥 먹고 잠깐 올라가서 쉬어 가요.', q: '사육신공원' },
+  { id: 'hyeonchungwon', name: '국립서울현충원', short: '현충원', area: '동작', cat: 'walk', lat: 37.5017, lon: 126.9741,
+    stay: 60, min: 30, cost: 0, lv: 1, moods: ['think', 'heal'],
+    hours: { seasons: [[3, 10, 360, 1080], [11, 2, 420, 1020]] },
+    info: '무료 · 3~10월 6–18시, 11~2월 7–17시 무렵 · 방문 전 확인',
+    tip: '넓고 조용해서 생각 정리하며 걷기 좋은 곳이에요. 봄엔 수양벚꽃이 아주 예뻐요.', q: '국립서울현충원' },
+  { id: 'nam_sema', name: '서울시립 남서울미술관', short: '남서울미술관', area: '사당', cat: 'culture', lat: 37.4757, lon: 126.9798,
+    stay: 40, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [600, 1200], dow: { 0: [600, 1080], 6: [600, 1080] } }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '무료 · 화–금 10–20시, 주말 18시 · 월요일 휴관',
+    tip: '옛 벨기에 영사관 건물을 옮겨 지은 미술관이에요. 건물이 예뻐서 전시 보러 갔다가 사진도 남기게 돼요.', q: '서울시립 남서울미술관' },
+  { id: 'moa', name: '서울대학교미술관 MoA', short: '서울대 미술관', area: '관악', cat: 'culture', lat: 37.4625, lon: 126.9511,
+    stay: 45, min: 25, cost: 3000, lv: 2, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '전시마다 다름(약 3천원) · 월요일 휴관 · 방문 전 확인',
+    tip: '렘 쿨하스가 설계한 공중에 뜬 듯한 건물이에요. 관악산 입구랑 가까워서 산책이랑 묶기 좋아요.', q: '서울대학교미술관' },
+  { id: 'nakseongdae', name: '낙성대공원', short: '낙성대공원', area: '관악', cat: 'heritage', lat: 37.4709, lon: 126.9590,
+    stay: 35, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료',
+    tip: '강감찬 장군이 태어난 곳에 만든 공원이에요. 샤로수길에서 밥 먹고 걸어가기 좋아요.', q: '낙성대공원' },
+  { id: 'hoamsan', name: '호암산 숲길', short: '호암산', area: '금천', cat: 'walk', lat: 37.4446, lon: 126.9198,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 호압사 쪽 입구에서 시작하면 쉬워요',
+    tip: '관악산보다 덜 붐비는 금천 쪽 숲길이에요. 데크 길이 잘 돼 있어서 운동화로 충분해요.', q: '호암산 호압사' },
+  /* 노원·도봉·강북·성북·동대문 */
+  { id: 'science', name: '서울시립과학관', short: '시립과학관', area: '공릉', cat: 'play', lat: 37.6408, lon: 127.0763,
+    stay: 70, min: 40, cost: 0, lv: 1, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [570, 1050] }, closed: [{ d: 1 }],
+    info: '입장 무료(일부 체험은 유료) · 9:30–17:30 · 월요일 휴관',
+    tip: '직접 만지고 실험해 보는 전시가 많아서 어른 혼자 가도 재미있어요. 비 오는 날 코스로 좋아요.', q: '서울시립과학관' },
+  { id: 'life_museum', name: '서울생활사박물관', short: '생활사박물관', area: '공릉', cat: 'culture', lat: 37.6234, lon: 127.0772,
+    stay: 45, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 9–18시 무렵 · 월요일 휴관 · 방문 전 확인',
+    tip: '옛날 교실, 부엌, 버스까지 재현한 박물관이에요. 부모님 어릴 적 서울을 구경하는 재미가 있어요.', q: '서울생활사박물관' },
+  { id: 'changpo', name: '서울창포원', short: '창포원', area: '도봉', cat: 'walk', lat: 37.6900, lon: 127.0473,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'],
+    hours: { s: [300, 1320] },
+    info: '무료 · 5–22시',
+    tip: '붓꽃이 가득한 정원 공원이에요. 도봉산 아래라 산 풍경을 보며 평평한 길을 걷기 좋아요.', q: '서울창포원' },
+  { id: 'photo_museum', name: '서울시립 사진미술관', short: '사진미술관', area: '창동', cat: 'culture', lat: 37.6534, lon: 127.0500,
+    stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [600, 1200], dow: { 0: [600, 1080], 6: [600, 1080] } }, closed: [{ d: 1 }],
+    info: '무료 · 화–금 10–20시, 주말 18–19시 · 월요일 휴관 · 2025년에 문 연 곳이라 방문 전 확인',
+    tip: '국내 첫 공공 사진 전문 미술관이에요. 창동역에서 가까워서 북쪽 동네 혼놀 코스로 좋아요.', q: '서울시립 사진미술관' },
+  { id: 'april19', name: '국립4·19민주묘지', short: '4·19묘지', area: '수유', cat: 'walk', lat: 37.6466, lon: 127.0102,
+    stay: 40, min: 25, cost: 0, lv: 1, moods: ['think', 'heal'],
+    hours: { seasons: [[3, 10, 360, 1080], [11, 2, 420, 1020]] },
+    info: '무료 · 3~10월 6–18시, 11~2월 7–17시 무렵',
+    tip: '북한산 아래 넓고 조용한 곳이에요. 생각 정리하며 걷기 좋고, 근처 우이동 계곡까지 이어 가도 돼요.', q: '국립4·19민주묘지' },
+  { id: 'solbat', name: '솔밭근린공원', short: '솔밭공원', area: '수유', cat: 'walk', lat: 37.6555, lon: 127.0127,
+    stay: 35, min: 20, cost: 0, lv: 1, moods: ['heal'],
+    info: '상시 개방 · 무료 · 우이신설선 솔밭공원역 바로 앞',
+    tip: '수백 그루 소나무 숲이 그대로 남은 공원이에요. 솔향 맡으며 벤치에서 쉬기 좋아요.', q: '솔밭근린공원' },
+  { id: 'butterfly', name: '불암산 나비정원', short: '나비정원', area: '중계동', cat: 'walk', covered: true, lat: 37.6528, lon: 127.0855,
+    stay: 40, min: 25, cost: 0, lv: 1, moods: ['heal', 'fun'],
+    hours: { s: [600, 1020] }, closed: [{ d: 1 }],
+    info: '운영시간·요금은 방문 전 확인 · 월요일 휴관',
+    tip: '불암산 자락의 나비 온실과 정원이에요. 근처 철쭉동산과 둘레길로 이어져서 같이 걷기 좋아요.', q: '불암산 나비정원' },
+  { id: 'baebongsan', name: '배봉산 둘레길', short: '배봉산', area: '휘경동', cat: 'walk', lat: 37.5822, lon: 127.0636,
+    stay: 50, min: 30, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['sunset'],
+    info: '상시 · 무료 · 계단 없는 데크 길',
+    tip: '한 바퀴 내내 평평한 데크 길이라 산책하듯 걸을 수 있어요. 정상에서 동대문구 일대가 보여요.', q: '배봉산 둘레길' },
+  { id: 'hongneung', name: '홍릉숲', short: '홍릉숲', area: '회기', cat: 'walk', lat: 37.5927, lon: 127.0437,
+    stay: 50, min: 30, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    hours: { s: [600, 1020] }, closed: [{ d: 1 }],
+    info: '무료 · 2026년 3월부터 평일도 예약 없이 개방 · 월요일·공휴일 휴무 · 시간은 방문 전 확인',
+    tip: '우리나라 첫 수목원이라 큰 나무가 정말 많아요. 사람이 적어서 숲속을 혼자 걷는 기분이 들어요.', q: '홍릉숲' },
+  { id: 'sejong', name: '세종대왕기념관', short: '세종대왕기념관', area: '청량리', cat: 'culture', lat: 37.5902, lon: 127.0446,
+    stay: 35, min: 20, cost: 3000, lv: 1, indoor: true, moods: ['think'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1 }],
+    info: '요금·시간은 방문 전 확인 · 월요일 휴관',
+    tip: '홍릉숲 바로 옆이라 숲 산책이랑 묶기 좋아요. 한글 이야기를 천천히 볼 수 있어요.', q: '세종대왕기념관' },
+  { id: 'modern_history', name: '근현대사기념관', short: '근현대사기념관', area: '수유', cat: 'culture', lat: 37.6440, lon: 127.0150,
+    stay: 35, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 10–18시 무렵 · 월요일 휴관',
+    tip: '4·19민주묘지에서 가까운 작은 기념관이에요. 같이 묶어서 생각정리 코스로 좋아요.', q: '근현대사기념관' },
+  { id: 'kimsuyoung', name: '김수영문학관', short: '김수영문학관', area: '방학동', cat: 'culture', lat: 37.6658, lon: 127.0280,
+    stay: 35, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 9–18시 무렵 · 월요일 휴관',
+    tip: '시인 김수영의 작은 문학관이에요. 조용히 시 한 편 읽고 근처 도봉산 둘레길로 이어 가요.', q: '김수영문학관' },
+  { id: 'peace_base', name: '평화문화진지', short: '평화문화진지', area: '도봉', cat: 'culture', lat: 37.6913, lon: 127.0466,
+    stay: 35, min: 20, cost: 0, lv: 1, moods: ['think', 'vibe'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 운영시간은 방문 전 확인 · 월요일 휴관',
+    tip: '옛 군사 방호시설을 문화공간으로 바꾼 곳이에요. 서울창포원 바로 옆이라 같이 둘러보기 좋아요.', q: '평화문화진지' },
+  /* 성동·동대문 */
+  { id: 'upcycle', name: '서울새활용플라자', short: '새활용플라자', area: '용답', cat: 'play', lat: 37.5672, lon: 127.0624,
+    stay: 45, min: 25, cost: 0, lv: 1, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 10–18시 · 월요일 휴관',
+    tip: '버려진 물건으로 만든 작품과 소품숍이 모여 있어요. 공방 체험도 있어서 구경하다 하나 만들어 봐도 좋아요.', q: '서울새활용플라자' },
+  { id: 'cheonggye_museum', name: '청계천박물관', short: '청계천박물관', area: '용답', cat: 'culture', lat: 37.5693, lon: 127.0372,
+    stay: 35, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think'],
+    hours: { s: [540, 1080] }, lastEntry: 30, closed: [{ d: 1 }],
+    info: '무료 · 9–18시(입장 17:30까지) · 월요일 휴관',
+    tip: '청계천의 옛 모습을 볼 수 있는 박물관이에요. 앞의 판잣집 체험관도 들어가 볼 수 있어요.', q: '청계천박물관' },
+  { id: 'majang', name: '마장동 축산물시장', short: '마장동', area: '마장동', cat: 'food', meal: true, lat: 37.5682, lon: 127.0434,
+    stay: 50, min: 35, cost: 20000, lv: 3, indoor: true, moods: ['taste'],
+    hours: { s: [660, 1260] },
+    info: '가게마다 다름 · 고기 1인분 약 2만원 · 일요일 쉬는 가게도 있어요',
+    tip: '정육점에서 고기를 사서 옆 식당에서 구워 먹는 곳이에요. 1인분도 팔아서 혼고기 도전하기 좋아요.', q: '마장동 축산물시장' },
+  { id: 'maebongsan', name: '매봉산 팔각정 (옥수동)', short: '매봉산', area: '옥수', cat: 'view', lat: 37.5467, lon: 127.0172,
+    stay: 40, min: 25, cost: 0, lv: 1, moods: ['vibe', 'heal'], tags: ['sunset', 'night'],
+    info: '상시 · 무료 · 짧은 오르막',
+    tip: '한강과 강남이 한눈에 보이는 야경 명소예요. 응봉산보다 덜 알려져서 한적해요.', q: '매봉산 팔각정 옥수동' },
+  { id: 'water_museum', name: '수도박물관', short: '수도박물관', area: '성수', cat: 'culture', lat: 37.5458, lon: 127.0418,
+    stay: 30, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think'],
+    hours: { s: [600, 1020] }, closed: [{ d: 1 }],
+    info: '무료 · 10–17시 무렵 · 월요일 휴관',
+    tip: '서울숲 안 옛 정수장 건물이에요. 서울숲 산책하다 잠깐 들르기 좋아요.', q: '수도박물관' },
+  { id: 'herb_museum', name: '한의약박물관 · 서울약령시', short: '약령시', area: '제기동', cat: 'culture', lat: 37.5793, lon: 127.0383,
+    stay: 35, min: 20, cost: 1000, lv: 1, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '약 1천원 · 월요일 휴관 · 요금·시간은 방문 전 확인',
+    tip: '약재 냄새 가득한 약령시장 한가운데 박물관이에요. 경동시장이랑 붙어 있어서 같이 둘러보기 좋아요.', q: '한의약박물관' },
+  /* 강남·서초 */
+  { id: 'seorae', name: '서래마을 카페·베이커리', short: '서래마을', area: '반포', cat: 'food', cafe: true, lat: 37.4980, lon: 126.9953,
+    stay: 50, min: 30, cost: 9000, lv: 1, indoor: true, moods: ['vibe', 'taste', 'heal'],
+    hours: { s: [600, 1260] },
+    info: '여러 곳 · 가게마다 다름 · 빵·음료 약 1만원',
+    tip: '프랑스 사람들이 많이 사는 동네라 빵집과 카페가 유명해요. 빵 하나 사서 몽마르뜨공원에서 먹어도 좋아요.', q: '서래마을 카페' },
+  { id: 'montmartre', name: '서리풀공원 몽마르뜨공원', short: '몽마르뜨공원', area: '반포', cat: 'walk', lat: 37.4982, lon: 127.0015,
+    stay: 35, min: 20, cost: 0, lv: 1, moods: ['heal'],
+    info: '상시 개방 · 무료',
+    tip: '서래마을 옆 언덕 숲 공원이에요. 토끼가 뛰어다니는 걸 볼 수도 있어요.', q: '몽마르뜨공원' },
+  { id: 'yangjae_forest', name: '양재시민의숲', short: '양재시민의숲', area: '양재', cat: 'walk', lat: 37.4699, lon: 127.0350,
+    stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 개방 · 무료',
+    tip: '메타세쿼이아 길이 멋진 숲 공원이에요. 가을 단풍이 특히 예쁘고, 양재천 산책로와 이어져요.', q: '양재시민의숲' },
+  { id: 'cheonggyesan', name: '청계산 원터골', short: '청계산', area: '원지동', cat: 'walk', lat: 37.4473, lon: 127.0559,
+    stay: 90, min: 60, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 청계산입구역에서 걸어서 10분쯤',
+    tip: '역에서 바로 등산로가 시작돼요. 매봉까지 안 가도 원터골 쉼터까지만 다녀와도 충분해요.', q: '청계산 원터골' },
+  { id: 'apgujeong_rodeo', name: '압구정로데오거리', short: '압구정로데오', area: '압구정', cat: 'play', lat: 37.5270, lon: 127.0390,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['fun', 'vibe'],
+    hours: { s: [660, 1320] },
+    info: '구경은 무료 · 가게마다 다름',
+    tip: '편집숍과 팝업, 디저트 가게가 골목마다 있어요. 혼자 쇼핑하듯 천천히 구경하기 좋아요.', q: '압구정로데오거리' },
+  { id: 'gugak', name: '국립국악원 국악박물관', short: '국악박물관', area: '서초', cat: 'culture', lat: 37.4784, lon: 127.0124,
+    stay: 40, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 9–18시 무렵 · 월요일 휴관 · 방문 전 확인',
+    tip: '전통 악기를 직접 소리 내 볼 수 있는 곳이에요. 예술의전당 바로 옆이라 같이 묶기 좋아요.', q: '국악박물관' },
+  { id: 'umyeonsan', name: '우면산 둘레길', short: '우면산', area: '서초', cat: 'walk', lat: 37.4688, lon: 127.0185,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 예술의전당 뒤쪽에서 올라가요',
+    tip: '예술의전당 뒤로 이어지는 완만한 숲길이에요. 전시 보고 나와서 가볍게 걷기 좋아요.', q: '우면산 둘레길' },
+  { id: 'daemosan', name: '대모산 둘레길', short: '대모산', area: '일원', cat: 'walk', lat: 37.4795, lon: 127.0800,
+    stay: 70, min: 40, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 일원역이나 수서역 쪽에서 올라가요',
+    tip: '강남 끝자락의 완만한 산이에요. 사람이 적어서 혼자 생각 정리하며 걷기 좋아요.', q: '대모산 둘레길' },
+  { id: 'choiinah', name: '최인아책방', short: '최인아책방', area: '선릉', cat: 'culture', lat: 37.5060, lon: 127.0486,
+    stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [600, 1260] },
+    info: '입장 무료 · 운영시간은 방문 전 확인',
+    tip: '천장까지 책이 꽂힌 서재 같은 책방이에요. 책 한 권 골라 소파에 앉아 읽기 좋아요.', q: '최인아책방' },
+  /* 송파·강동 */
+  { id: 'amsa', name: '서울 암사동 유적', short: '암사동 유적', area: '암사', cat: 'heritage', lat: 37.5605, lon: 127.1305,
+    stay: 45, min: 25, cost: 500, lv: 1, moods: ['think', 'heal'],
+    hours: { s: [570, 1080] }, closed: [{ d: 1 }],
+    info: '약 500원 · 월요일 휴관 · 시간·요금은 방문 전 확인',
+    tip: '신석기 시대 움집 마을을 재현한 곳이에요. 넓고 한적해서 한강 쪽으로 산책을 이어 가도 좋아요.', q: '서울 암사동 유적' },
+  { id: 'kangfull', name: '강풀만화거리', short: '강풀만화거리', area: '성내동', cat: 'play', lat: 37.5297, lon: 127.1283,
+    stay: 35, min: 20, cost: 0, lv: 1, moods: ['fun', 'vibe'],
+    info: '상시 · 무료 · 강동구청역에서 걸어서 갈 수 있어요',
+    tip: '웹툰 작가 강풀의 만화 장면이 골목 벽마다 그려져 있어요. 장면을 찾아다니며 사진 찍는 재미가 있어요.', q: '강풀만화거리' },
+  { id: 'hanseong', name: '한성백제박물관', short: '한성백제박물관', area: '송파', cat: 'culture', lat: 37.5191, lon: 127.1212,
+    stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 9–18시 무렵 · 월요일 휴관 · 방문 전 확인',
+    tip: '올림픽공원 바로 옆이라 공원 산책 전후에 들르기 좋아요. 비 오는 날 송파 코스로도 좋아요.', q: '한성백제박물관' },
+  { id: 'soma', name: '소마미술관', short: '소마미술관', area: '송파', cat: 'culture', lat: 37.5174, lon: 127.1172,
+    stay: 45, min: 25, cost: 5000, lv: 1, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '전시마다 다름(약 5천원 안팎) · 월요일 휴관 · 방문 전 확인',
+    tip: '올림픽공원 조각공원 안에 있는 미술관이에요. 밖의 조각 작품까지 보면서 걸으면 한 바퀴 코스가 돼요.', q: '소마미술관' },
+  { id: 'bookbogo', name: '서울책보고', short: '서울책보고', area: '잠실', cat: 'culture', lat: 37.5174, lon: 127.1004,
+    stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [660, 1200], dow: { 5: [660, 1260], 6: [600, 1260], 0: [600, 1080] } }, closed: [{ d: 1 }],
+    info: '무료 · 화–목 11–20시, 금 21시, 토 10–21시, 일 10–18시 · 월요일 휴관',
+    tip: '옛 창고를 책 문화공간으로 바꾼 곳이에요. 터널 같은 서가 사이를 걸으며 책 구경하기 좋아요.', q: '서울책보고' },
+  { id: 'icerink', name: '롯데월드 아이스링크', short: '아이스링크', area: '잠실', cat: 'play', lat: 37.5111, lon: 127.0981,
+    stay: 60, min: 40, cost: 20000, lv: 4, indoor: true, moods: ['fun'],
+    hours: { s: [600, 1260] },
+    info: '입장+스케이트 대여 약 2만원 · 시간대별 운영이라 방문 전 확인',
+    tip: '혼자 와서 음악 들으며 빙빙 도는 사람이 은근 많아요. 처음이면 가장자리 벽 잡고 천천히 시작해요.', q: '롯데월드 아이스링크' },
+  { id: 'seongnaecheon', name: '성내천 산책로', short: '성내천', area: '송파', cat: 'walk', lat: 37.5070, lon: 127.1240,
+    stay: 40, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['night'],
+    info: '상시 · 무료',
+    tip: '올림픽공원에서 이어지는 하천 산책로예요. 물가를 따라 평평하게 걸을 수 있어요.', q: '성내천 물빛광장' },
+  { id: 'seokchon_tombs', name: '석촌동 고분군', short: '석촌동 고분군', area: '석촌', cat: 'heritage', lat: 37.5024, lon: 127.1037,
+    stay: 30, min: 15, cost: 0, lv: 1, moods: ['think', 'heal'],
+    hours: { s: [540, 1080] },
+    info: '무료 · 운영시간은 방문 전 확인',
+    tip: '백제 시대 돌무지무덤이 동네 한가운데 있어요. 석촌호수에서 걸어가서 조용히 둘러보기 좋아요.', q: '석촌동 고분군' },
+  { id: 'garak', name: '가락몰', short: '가락몰', area: '가락', cat: 'food', meal: true, lat: 37.4938, lon: 127.1102,
+    stay: 45, min: 30, cost: 15000, lv: 2, indoor: true, moods: ['taste', 'fun'],
+    hours: { s: [600, 1260] },
+    info: '가게마다 다름 · 식사 약 1.5만원 · 휴무일은 방문 전 확인',
+    tip: '가락시장 안 식당가예요. 회덮밥이나 국밥처럼 1인 메뉴가 있는 집을 고르면 편해요.', q: '가락몰' },
+  /* 서울 어디서나 탈 수 있는 체험 */
+  { id: 'cruise', name: '한강 유람선 (여의도 선착장)', short: '한강 유람선', area: '여의도', cat: 'view', covered: true, lat: 37.5281, lon: 126.9325,
+    stay: 60, min: 40, cost: 18000, lv: 3, moods: ['vibe', 'heal'], tags: ['sunset', 'night'],
+    hours: { s: [660, 1290] },
+    info: '약 1.8만원부터 · 코스·시간표는 운영사 홈페이지에서 확인',
+    tip: '혼자 타도 아무도 신경 안 써요. 해 질 녘 출발하는 배를 타면 노을과 야경을 한 번에 봐요.', q: '이랜드크루즈 여의도' },
+  { id: 'citytour', name: '서울 시티투어버스', short: '시티투어버스', area: '광화문', cat: 'view', covered: true, lat: 37.5704, lon: 126.9767,
+    stay: 90, min: 60, cost: 24000, lv: 2, moods: ['fun', 'vibe'],
+    hours: { s: [570, 1080] }, closed: [{ d: 1 }],
+    info: '코스마다 요금 다름(2만원대) · 월요일 쉬는 코스가 많아요 · 시간표는 방문 전 확인',
+    tip: '2층 지붕 없는 버스 맨 앞자리에 앉아 서울을 한 바퀴 돌아요. 혼자 여행 온 기분이 나요.', q: '서울 시티투어버스' },
+  { id: 'oldstone', name: '우리옛돌박물관', short: '옛돌박물관', area: '성북동', cat: 'culture', lat: 37.5975, lon: 126.9925,
+    stay: 45, min: 25, cost: 5000, lv: 2, moods: ['think', 'heal'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '요금·시간은 방문 전 확인 · 월요일 휴관',
+    tip: '성북동 언덕의 돌조각 정원 박물관이에요. 사람이 적고 마당이 넓어서 조용히 쉬기 좋아요.', q: '우리옛돌박물관' },
+  /* 빈 동네 채우기: 은평·강서 */
+  { id: 'gusan_library', name: '구산동도서관마을', short: '구산도서관마을', area: '구산동', cat: 'culture', lat: 37.6095, lon: 126.9131,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal', 'vibe'],
+    hours: { s: [540, 1320], dow: { 6: [540, 1080], 0: [540, 1080] } }, closed: [{ d: 1 }],
+    info: '무료 · 화–금 9–22시, 토·일 9–18시 · 월요일·공휴일 휴관',
+    tip: '오래된 집 여덟 채를 이어 붙여 만든 도서관이라 방마다 분위기가 달라요. 마음에 드는 구석 자리 하나 골라 책 한 권 천천히 읽어 보세요.', q: '구산동도서관마을' },
+  { id: 'seoul_archives', name: '서울기록원', short: '서울기록원', area: '녹번동', cat: 'culture', lat: 37.6070, lon: 126.9340,
+    stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [600, 1020] }, closed: [{ d: 1 }],
+    info: '무료 · 화–일 10–17시 · 월요일 휴관 · 불광역에서 걸어서 6분 · 전시는 바뀔 수 있어요',
+    tip: '옛 서울 사진과 기록을 천천히 둘러보는 조용한 전시장이에요. 사람이 적어서 혼자 생각 정리하며 보기 좋아요.', q: '서울기록원' },
+  { id: 'yeonseo_market', name: '연서시장', short: '연서시장', area: '연신내', cat: 'food', meal: true, covered: true, lat: 37.6192, lon: 126.9214,
+    stay: 50, min: 30, cost: 10000, lv: 2, moods: ['taste', 'fun'],
+    hours: { s: [600, 1260] },
+    info: '한 끼 약 1만원 · 가게마다 시간·휴무가 달라요(대략 10–21시) · 연신내역 바로 앞',
+    tip: '순대·떡볶이·튀김을 한 접시씩 사 먹을 수 있어요. 안쪽 먹거리 가게는 바 좌석이라 혼자 앉기 편해요.', q: '연서시장' },
+  { id: 'yetseong_gil', name: '북한산 둘레길 옛성길', short: '옛성길', area: '불광동', cat: 'walk', lat: 37.6150, lon: 126.9380,
+    stay: 100, min: 60, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 약 2.7km, 1시간 40분 안팎 · 북한산생태공원 쪽에서 시작(불광역에서 걸어서 15분)',
+    tip: '옛 성곽과 북한산 봉우리가 한눈에 보이는 둘레길이에요. 해 지기 전에 내려올 수 있게 낮에 출발하세요.', q: '북한산생태공원' },
+  { id: 'spacek', name: '스페이스K 서울', short: '스페이스K', area: '마곡', cat: 'culture', lat: 37.5612, lon: 126.8310,
+    stay: 50, min: 30, cost: 8000, lv: 2, indoor: true, moods: ['vibe', 'think'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '전시마다 다름(약 8천원) · 화–일 10–18시 · 월요일 휴관 · 전시 교체 기간엔 쉬어요',
+    tip: '길게 휘어진 벽이 인상적인 현대미술관이에요. 평일 낮에 가면 작품 앞에 오래 머물기 좋아요.', q: '스페이스K 서울' },
+  { id: 'lg_arts', name: 'LG아트센터 서울 건축 산책', short: 'LG아트센터', area: '마곡나루', cat: 'culture', lat: 37.5653, lon: 126.8294,
+    stay: 30, min: 15, cost: 0, lv: 1, indoor: true, moods: ['vibe', 'think'],
+    hours: { s: [600, 1320] }, closed: [{ d: 1 }],
+    info: '둘러보기 무료(공연은 따로) · 월요일 휴관 · 공연 일정에 따라 막히는 곳이 있어요 · 방문 전 확인',
+    tip: '안도 다다오가 설계한 건물이에요. 공연을 안 봐도 노출 콘크리트 로비와 긴 ‘튜브’ 통로를 걸어 보는 맛이 있어요.', q: 'LG아트센터 서울' },
+  { id: 'gangseo_wetland', name: '강서습지생태공원', short: '강서습지', area: '방화동', cat: 'walk', lat: 37.5858, lon: 126.8183,
+    stay: 60, min: 30, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day', 'sunset'],
+    info: '상시 · 무료 · 한강 따라 관찰로 · 철새는 11–3월',
+    tip: '갈대밭 사이 관찰로를 따라 한강을 보며 걷는 습지공원이에요. 겨울엔 조류 전망대에서 철새를 구경해 보세요.', q: '강서습지생태공원' },
+  /* 빈 동네 채우기: 노원·강북 */
+  { id: 'nowon_astro', name: '노원천문우주과학관', short: '천문과학관', area: '중계동', cat: 'culture', lat: 37.6407, lon: 127.0652,
+    stay: 60, min: 40, cost: 2000, lv: 1, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [570, 1050] }, lastEntry: 30, closed: [{ d: 1 }],
+    info: '어른 2,000원 · 화–일 9:30–17:30 · 월요일 휴관 · 태양 관측·천체투영관 시간은 방문 전 확인',
+    tip: '별과 우주를 주제로 한 작은 과학관이에요. 낮 태양 관측 시간에 맞춰 가면 망원경으로 해를 직접 볼 수 있어요.', q: '노원천문우주과학관' },
+  { id: 'danghyeoncheon', name: '당현천 산책로', short: '당현천', area: '상계·중계', cat: 'walk', lat: 37.6560, lon: 127.0695,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'vibe'], tags: ['night'],
+    info: '상시 · 무료 · 상계역·중계역에서 걸어서 3분 · 가을엔 야간 조명 행사가 열려요',
+    tip: '벽화와 조형 작품, 들꽃정원이 이어져서 혼자 걸어도 심심하지 않아요. 중간의 당현마루 카페 2층에서 쉬어 가세요.', q: '당현천 당현마루' },
+  { id: 'suyu_market', name: '수유시장', short: '수유시장', area: '수유', cat: 'food', meal: true, indoor: true, lat: 37.6328, lon: 127.0243,
+    stay: 45, min: 30, cost: 9000, lv: 2, moods: ['taste', 'fun'],
+    hours: { s: [600, 1260] },
+    info: '한 끼 약 1만원 · 가게마다 시간·휴무가 달라요(대략 10–21시) · 수유역과 미아역 사이',
+    tip: '건물 안 시장이라 비 와도 괜찮아요. 순댓국·분식처럼 한 그릇으로 끝나는 메뉴가 많아 혼밥하기 좋아요.', q: '수유시장' },
+  { id: 'cafe419', name: '4·19 카페거리', short: '4·19카페', area: '수유', cat: 'food', cafe: true, lat: 37.6455, lon: 127.0128,
+    stay: 50, min: 30, cost: 7000, lv: 1, indoor: true, moods: ['vibe', 'heal'],
+    hours: { s: [600, 1260] },
+    info: '여러 곳 · 가게마다 다름 · 음료 약 7천원',
+    tip: '북한산 자락 길을 따라 집을 고친 카페들이 이어져요. 4·19민주묘지에 들렀다가 창가 자리에서 쉬어 가기 좋아요.', q: '4.19 카페거리' },
+  /* 빈 동네 채우기: 강남역·고속터미널 */
+  { id: 'gangnam_mall', name: '강남역 지하쇼핑센터', short: '강남지하상가', area: '강남', cat: 'play', lat: 37.4980, lon: 127.0277,
+    stay: 40, min: 20, cost: 10000, lv: 1, indoor: true, moods: ['fun', 'vibe'], tags: ['night'],
+    hours: { s: [600, 1320] },
+    info: '구경 무료 · 가게는 10–22시 무렵 · 옷·신발·잡화 가게가 많아요',
+    tip: '비 오는 날에도 느긋하게 돌기 좋아요. 1~3만원대 물건이 많아서 모자나 양말 하나쯤 골라 보세요.', q: '강남역 지하쇼핑센터' },
+  { id: 'gotomall', name: '고투몰 (고속터미널 지하상가)', short: '고투몰', area: '고속터미널', cat: 'play', lat: 37.5051, lon: 127.0051,
+    stay: 60, min: 30, cost: 10000, lv: 1, indoor: true, moods: ['fun', 'vibe'], tags: ['night'],
+    hours: { s: [600, 1320] },
+    info: '구경 무료 · 가게는 10–22시 무렵 · 옷·소품·인테리어 가게가 600곳 넘어요',
+    tip: '옷과 소품을 천천히 구경하는 게 메인이에요. 오래 둘러봐도 눈치 볼 일이 없고, 배고프면 안쪽 식당에서 혼밥해요.', q: '고투몰' },
+  { id: 'kukkiwon', name: '국기원 태권도 기념관', short: '국기원', area: '역삼', cat: 'culture', lat: 37.5028, lon: 127.0302,
+    stay: 35, min: 20, cost: 0, lv: 1, indoor: true, moods: ['think', 'fun'],
+    hours: { s: [540, 1050], dow: { 5: [540, 960] } }, closed: [{ d: 0 }, { d: 6 }],
+    info: '무료 · 월–목 9–17:30, 금 16시까지 · 점심시간 11:30–13시 · 주말·공휴일 휴관',
+    tip: '강남역에서 걸어서 10분이면 닿는 태권도의 본산이에요. 평일 낮에 들러 기념관을 보고 언덕길을 따라 걸어 보세요.', q: '국기원' },
+  { id: 'platform_l', name: '플랫폼엘 컨템포러리 아트센터', short: '플랫폼엘', area: '논현', cat: 'culture', lat: 37.5162, lon: 127.0343,
+    stay: 50, min: 30, cost: 12000, lv: 2, indoor: true, moods: ['vibe', 'think'],
+    hours: { s: [660, 1200] }, closed: [{ d: 1 }],
+    info: '전시마다 다름 · 11–20시 · 월요일 휴관 · 방문 전 확인',
+    tip: '전시 하나를 혼자 천천히 보기 좋은 미술관이에요. 건물 안 계단과 중정도 구경거리예요.', q: '플랫폼엘' },
+  { id: 'nlk', name: '국립중앙도서관', short: '국립중앙도서관', area: '서초', cat: 'culture', lat: 37.4979, lon: 127.0028,
+    stay: 70, min: 30, cost: 0, lv: 1, indoor: true, moods: ['heal', 'think'],
+    hours: { s: [540, 1080] }, closed: [{ d: 1, n: [2, 4] }],
+    info: '무료 · 9–18시 · 둘째·넷째 월요일, 공휴일 휴관 · 전시는 누구나, 열람실은 이용증(만 16세 이상) 필요',
+    tip: '이용증이 없어도 전시와 기록매체박물관은 둘러볼 수 있어요. 책을 읽으려면 온라인으로 회원 가입을 먼저 해 두세요.', q: '국립중앙도서관' },
+  /* 빈 동네 채우기: 구로·관악·동작 */
+  { id: 'byeolbit', name: '별빛내린천 (도림천)', short: '별빛내린천', area: '신대방', cat: 'walk', lat: 37.4868, lon: 126.9120,
+    stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['sunset', 'night'],
+    info: '상시 · 무료 · 신림역에서 구로디지털단지역까지 이어지는 하천길 · 밤엔 조명이 켜져요',
+    tip: '걷는 길과 자전거 길이 나뉘어 있어서 편하게 걸을 수 있어요. 해 질 무렵에 걸으면 조명이 켜지는 풍경까지 봐요.', q: '별빛내린천' },
+  { id: 'game_museum', name: '넷마블게임박물관', short: '게임박물관', area: '구로', cat: 'culture', lat: 37.4833, lon: 126.8928,
+    stay: 60, min: 40, cost: 10000, lv: 2, indoor: true, moods: ['fun', 'vibe'],
+    hours: { s: [600, 1080] }, closed: [{ d: 1 }],
+    info: '어른 1만원, 청소년 7천원 · 화–일 10–18시 · 월요일 휴관 · 같은 층 G밸리산업박물관은 무료',
+    tip: '게임의 역사와 옛날 오락실을 직접 해 볼 수 있어요. 같은 층 G밸리산업박물관까지 보면 딱 한 코스예요.', q: '넷마블게임박물관' },
+  { id: 'guro_market', name: '구로시장', short: '구로시장', area: '구로', cat: 'food', meal: true, covered: true, lat: 37.4886, lon: 126.8903,
+    stay: 45, min: 30, cost: 9000, lv: 2, moods: ['taste', 'vibe'],
+    hours: { s: [540, 1200] }, closed: [{ d: 1, n: [1] }],
+    info: '한 끼 약 1만원 · 9–20시(먹거리 가게는 더 늦게까지) · 첫째 월요일 휴무 · 남구로역에서 걸어서 5분',
+    tip: '먹거리 골목에서 이것저것 조금씩 맛보기 좋아요. 시장 한쪽 한복 거리도 구경거리예요.', q: '구로시장' },
+  { id: 'sundae_town', name: '신림동 순대타운', short: '순대타운', area: '신림', cat: 'food', meal: true, indoor: true, lat: 37.4833, lon: 126.9287,
+    stay: 45, min: 30, cost: 12000, lv: 3, moods: ['taste', 'fun'],
+    hours: { s: [660, 1320] },
+    info: '백순대·순대볶음 · 약 1.2만원 · 가게마다 시간이 달라요 · 신림역에서 걸어서 3분',
+    tip: '순대볶음은 2인분부터인 집이 많아서 들어가기 전에 1인분 되는지 물어보세요. 혼자 먹으면 혼놀 레벨이 확 올라가요.', q: '신림 순대타운' },
+  { id: 'gyujanggak', name: '서울대 규장각 전시실', short: '규장각', area: '관악', cat: 'culture', lat: 37.4639, lon: 126.9522,
+    stay: 40, min: 25, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe'],
+    hours: { s: [600, 1020] }, closed: [{ d: 0 }, { d: 6 }],
+    info: '무료 · 평일 10–17시 · 주말·공휴일 휴관 · 서울대 안이라 버스로 가요',
+    tip: '조선왕조실록 같은 진짜 옛 기록을 볼 수 있어요. 같은 캠퍼스의 서울대미술관과 묶으면 반나절 코스가 돼요.', q: '서울대학교 규장각한국학연구원' },
+  { id: 'namseong_market', name: '남성사계시장', short: '남성사계시장', area: '이수', cat: 'food', meal: true, covered: true, lat: 37.4860, lon: 126.9800,
+    stay: 45, min: 25, cost: 8000, lv: 2, moods: ['taste', 'vibe'],
+    hours: { s: [540, 1260] },
+    info: '먹거리 약 8천원 · 9–21시 무렵 · 가게마다 다름 · 이수역에서 걸어서 3분',
+    tip: '어묵·떡갈비처럼 하나씩 파는 간식이 많아서 걸으면서 골라 먹기 좋아요. 몇 가지 먹으면 한 끼가 돼요.', q: '남성사계시장' },
+  { id: 'sadang_ridge', name: '관악산 사당능선', short: '사당능선', area: '사당', cat: 'walk', lat: 37.4690, lon: 126.9790,
+    stay: 120, min: 70, cost: 0, lv: 1, moods: ['heal', 'think'], tags: ['day'],
+    info: '상시 · 무료 · 사당역에서 관음사 쪽으로 올라가요 · 해 지기 전에 내려오세요',
+    tip: '사당역에서 바로 올라가는 능선길이라 서울 시내가 내려다보여요. 물을 챙기고 힘들면 중간 바위에서 돌아와도 충분해요.', q: '관음사 관악산 사당' },
+  /* 빈 동네 채우기: 강동·영등포 */
+  { id: 'jjukkumi', name: '천호 쭈꾸미골목', short: '쭈꾸미골목', area: '천호', cat: 'food', meal: true, indoor: true, lat: 37.5385, lon: 127.1262,
+    stay: 45, min: 30, cost: 13000, lv: 3, moods: ['taste', 'fun'],
+    hours: { s: [660, 1320] },
+    info: '쭈꾸미볶음 약 1.3만원 · 가게마다 시간이 달라요 · 천호역에서 걸어서 2분',
+    tip: '1인분 되는지 먼저 물어보고 들어가요. 남은 양념에 볶음밥 비벼 먹는 게 마무리예요.', q: '천호 쭈꾸미골목' },
+  { id: 'cheonho_park', name: '천호공원', short: '천호공원', area: '천호', cat: 'walk', lat: 37.5447, lon: 127.1269,
+    stay: 35, min: 20, cost: 0, lv: 1, moods: ['heal', 'think'],
+    info: '상시 · 무료 · 산책로·음악분수 · 옆에 해공도서관이 있어요',
+    tip: '벤치에서 멍하니 쉬다 가기 좋은 동네 공원이에요. 옆 도서관에 들러 책 한 권 읽고 가도 좋아요.', q: '천호공원' },
+  { id: 'ydp_park', name: '영등포공원 (옛 맥주공장 터)', short: '영등포공원', area: '영등포', cat: 'heritage', lat: 37.5176, lon: 126.9094,
+    stay: 25, min: 15, cost: 0, lv: 1, moods: ['think', 'heal'],
+    info: '상시 · 무료 · 영등포역에서 걸어서 5분',
+    tip: '1930년대 맥주공장에서 쓰던 커다란 구리 솥이 그대로 남아 있어요. 벤치에 앉아 잠깐 쉬다 가기 좋아요.', q: '영등포공원' },
   /* neighbourhood spots: no fixed pin, searched near wherever the course is */
   { id: 'g_karaoke', name: '코인노래방 ‘혼코노’', short: '혼코노', area: '동네 어디서나', cat: 'play', generic: true,
     stay: 40, min: 20, cost: 5000, lv: 2, indoor: true, moods: ['fun'],
@@ -905,6 +1702,26 @@ const PLACES = [
     hours: { s: [600, 1440] },
     info: '한 판 500원~1천원 · 약 5천원',
     tip: '리듬게임이나 펀치 기계 한 판이면 스트레스가 풀려요. 혼자 온 사람이 제일 많은 곳 중 하나예요.', q: '오락실' },
+  { id: 'g_photo', name: '셀프 사진관 ‘혼자 네컷’', short: '셀프 사진관', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 20, min: 10, cost: 5000, lv: 2, indoor: true, moods: ['fun', 'vibe'],
+    hours: { s: [600, 1440] },
+    info: '한 번에 약 5천원 · 대부분 무인',
+    tip: '무인 사진관이라 눈치 볼 사람이 없어요. 오늘 코스 기념으로 한 장 남겨요.', q: '셀프 사진관' },
+  { id: 'g_library', name: '동네 공공도서관', short: '도서관', area: '동네 어디서나', cat: 'culture', generic: true,
+    stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
+    hours: { s: [540, 1260], sWe: [540, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 보통 9–18시 이후까지 · 월요일 쉬는 곳이 많아요',
+    tip: '아무 책이나 골라 앉아 있어도 되는 제일 편한 혼놀 장소예요. 창가 자리를 노려 봐요.', q: '공공도서관' },
+  { id: 'g_climb', name: '실내 클라이밍 ‘볼더링’', short: '볼더링', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 90, min: 60, cost: 25000, lv: 3, indoor: true, moods: ['fun', 'think'],
+    hours: { s: [600, 1380] },
+    info: '일일 이용 약 2~3만원 · 처음이면 체험 강습 예약',
+    tip: '볼더링은 혼자 와서 문제를 하나씩 푸는 사람이 대부분이에요. 다 풀면 꽤 뿌듯해요.', q: '클라이밍장' },
+  { id: 'g_jjimjil', name: '찜질방 ‘혼찜’', short: '찜질방', area: '동네 어디서나', cat: 'play', generic: true,
+    stay: 120, min: 90, cost: 13000, lv: 2, indoor: true, moods: ['heal'],
+    hours: { s: [0, 1440] },
+    info: '입장 약 1~1.5만원 · 대부분 24시간',
+    tip: '뜨끈한 방에서 땀 빼고 식혜 한 잔이면 몸이 풀려요. 혼자 온 사람이 많아서 편해요.', q: '찜질방' },
 ];
 const BY_ID = Object.fromEntries(PLACES.map(p => [p.id, p]));
 const URBAN = [
@@ -965,10 +1782,12 @@ const URBAN = [
   { name: '안암', key: '안암역', lat: 37.5862, lon: 127.0292 },
 ];
 const OPT = {
-  dur: [{ id: 'd2', label: '2시간', min: 120 }, { id: 'd4', label: '반나절', sub: '4시간', min: 240 }, { id: 'd7', label: '하루', sub: '7시간', min: 420 }],
+  dur: [{ id: 'd2', label: '2시간', min: 120 }, { id: 'd4', label: '반나절', sub: '4시간', min: 240 }, { id: 'd7', label: '하루', sub: '7시간', min: 420 }, { id: 'd10', label: '종일', sub: '10시간', min: 600 }],
   budget: [{ id: 'b0', label: '0원', won: 0 }, { id: 'b1', label: '1만원', won: 10000 }, { id: 'b3', label: '3만원', won: 30000 }, { id: 'b9', label: '넉넉히', won: 1e9 }],
   mood: [{ id: 'heal', label: '힐링', sub: '조용히 쉬기' }, { id: 'vibe', label: '감성', sub: '예쁜 거 보기' }, { id: 'fun', label: '신나게', sub: '에너지 발산' }, { id: 'taste', label: '맛있게', sub: '먹으러 나옴' }, { id: 'think', label: '생각정리', sub: '머리 비우기' }],
-  lv: [{ id: 'l2', label: '입문', sub: 'Lv.1–2', max: 2 }, { id: 'l3', label: '중수', sub: 'Lv.3까지', max: 3 }, { id: 'l5', label: '고수', sub: 'Lv.5까지', max: 5 }],
+  /* the chosen level is the course's challenge: one stop at that level, the rest easier */
+  lv: [{ id: 'l1', label: 'Lv.1', sub: '누구나', max: 1 }, { id: 'l2', label: 'Lv.2', sub: '살짝 용기', max: 2 }, { id: 'l3', label: 'Lv.3', sub: '혼놀 중수', max: 3 },
+       { id: 'l4', label: 'Lv.4', sub: '혼놀 고수', max: 4 }, { id: 'l5', label: 'Lv.5', sub: '혼놀 마스터', max: 5 }],
   /* g = group in the start picker */
   start: [{ id: 'gwanghwamun', label: '광화문', name: '광화문역', g: '도심', lat: 37.5710, lon: 126.9765 },
           { id: 'euljiro', label: '을지로3가', name: '을지로3가역', g: '도심', lat: 37.5663, lon: 126.9917 },
@@ -999,8 +1818,12 @@ const OPT = {
   day: [{ id: 'today', label: '오늘' }, { id: 'tmr', label: '내일' }],
   when: [{ id: 'now', label: '지금' }, { id: 't10', label: '오전 10시', h: 10 }, { id: 't14', label: '오후 2시', h: 14 }, { id: 't18', label: '저녁 6시', h: 18 }],
   rain: [{ id: 'sun', label: '맑음' }, { id: 'rain', label: '비 와요', sub: '실내만' }],
+  /* how long to stay at each place: fewer places for longer, or more places for less */
+  pace: [{ id: 'p0', label: '보통' }, { id: 'slow', label: '여유롭게', sub: '적은 곳에서 오래' }, { id: 'fast', label: '알차게', sub: '짧게 여러 곳' }],
+  /* a hard end: nothing in the course runs past it */
+  until: [{ id: 'u0', label: '상관없음' }, { id: 'u18', label: '오후 6시', h: 18 }, { id: 'u20', label: '저녁 8시', h: 20 }, { id: 'u22', label: '밤 10시', h: 22 }],
 };
-const DEFAULTS = { dur: 'd4', budget: 'b1', mood: 'heal', lv: 'l2', start: 'hongdae', move: 'walk', day: 'today', when: 'now', rain: 'sun', must: null };
+const DEFAULTS = { dur: 'd4', pace: 'p0', budget: 'b1', mood: 'heal', lv: 'l1', start: 'hongdae', move: 'walk', day: 'today', when: 'now', until: 'u0', rain: 'sun', must: null };
 /* approximate Seoul sunset by month, minutes after midnight */
 const SUNSET = [1065, 1095, 1120, 1145, 1170, 1190, 1190, 1165, 1125, 1085, 1050, 1040];
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
@@ -1043,13 +1866,168 @@ function hoursOn(p, date) {
   if (weekend) r = (summer ? H.sWe : H.wWe) || r;
   return r;
 }
-function travel(from, to, move) {
-  const km = haversine(from, to) * 1.3;
-  if (km < 0.2) return { min: 2, mode: 'walk', km };
-  if (move === 'car') return { min: Math.round(5 + km / 20 * 60), mode: 'car', km };
-  if (km <= 1.2) return { min: Math.max(3, Math.round(km / 4.5 * 60)), mode: 'walk', km };
-  return { min: Math.round(9 + km / 30 * 60), mode: 'subway', km };
+/* Han river centre line, west to east */
+const HAN = [
+  [126.755, 37.630], [126.790, 37.612], [126.818, 37.600], [126.835, 37.588], [126.851, 37.579], [126.866, 37.570], [126.880, 37.561],
+  [126.892, 37.552], [126.902, 37.5455], [126.914, 37.5410], [126.928, 37.5375], [126.940, 37.5325], [126.950, 37.5265],
+  [126.959, 37.5200], [126.970, 37.5145], [126.981, 37.5110], [126.996, 37.5125], [127.006, 37.5175], [127.013, 37.5245],
+  [127.021, 37.5310], [127.034, 37.5352], [127.047, 37.5330], [127.058, 37.5285], [127.068, 37.5245], [127.078, 37.5210],
+  [127.092, 37.5190], [127.101, 37.5225], [127.107, 37.5300], [127.112, 37.5390], [127.115, 37.5470], [127.118, 37.5560],
+  [127.124, 37.5640], [127.134, 37.5690], [127.147, 37.5730], [127.160, 37.5790], [127.174, 37.5830], [127.190, 37.5830], [127.215, 37.5780],
+];
+/* which bank of the Han a point is on, so nobody is sent to a station across the river */
+function hanSide(pos) {
+  if (pos.lon <= HAN[0][0] || pos.lon >= HAN[HAN.length - 1][0]) return 0;
+  for (let k = 1; k < HAN.length; k++) {
+    if (pos.lon <= HAN[k][0]) {
+      const a = HAN[k - 1], b = HAN[k], f = (pos.lon - a[0]) / (b[0] - a[0]);
+      return pos.lat > a[1] + (b[1] - a[1]) * f ? 1 : -1;
+    }
+  }
+  return 0;
 }
+/* lines: [이름, 지도 색, 배지, 평균 대기 분, 배지 색, 배지 글자색] · cx: [역 이름, 위도, 경도]
+   nodes: [역, 노선, 위도, 경도, (노선마다 다른 역 이름)] · segs: [노선, 한 방향만이면 1, 역 순서] */
+const SUBWAY = {"lines":[["1호선","#0052A4","1",4,"#0052A4","#FFFFFF"],["2호선","#00A84D","2",3,"#00A84D","#FFFFFF"],["3호선","#EF7C1C","3",3,"#E57110","#FFFFFF"],["4호선","#00A5DE","4",3,"#009ED5","#FFFFFF"],["5호선","#996CAC","5",3,"#996CAC","#FFFFFF"],["6호선","#CD7C2F","6",4,"#CD7C2F","#FFFFFF"],["7호선","#747F00","7",3,"#747F00","#FFFFFF"],["8호선","#E6186C","8",4,"#E6186C","#FFFFFF"],["9호선","#BDB092","9",3,"#BDB092","#10223A"],["경의중앙선","#77C4A3","경의중앙",8,"#77C4A3","#10223A"],["공항철도","#0090D2","공항",5,"#0090D2","#FFFFFF"],["경춘선","#0C8E72","경춘",10,"#0C8E72","#FFFFFF"],["수인분당선","#FABE00","수인분당",4,"#FABE00","#10223A"],["신분당선","#D4003B","신분당",3,"#D4003B","#FFFFFF"],["우이신설선","#B0CE18","우이신설",4,"#B0CE18","#10223A"],["신림선","#6789CA","신림",3,"#6789CA","#FFFFFF"]],"cx":[["의정부",37.73842,127.04596],["회룡",37.72442,127.04736],["망월사",37.70991,127.04745],["도봉산",37.68939,127.04628],["도봉",37.67956,127.0456],["방학",37.6675,127.04427],["창동",37.65309,127.04727],["녹천",37.6448,127.05127],["월계",37.63321,127.05883],["광운대",37.62363,127.06184],["석계",37.6147,127.06576],["신이문",37.60185,127.06732],["외대앞",37.59607,127.06355],["회기",37.58946,127.05758],["청량리",37.58016,127.04551],["제기동",37.5781,127.03489],["신설동",37.57563,127.02427],["동묘앞",37.57274,127.01607],["동대문",37.57131,127.01011],["종로5가",37.57093,127.00185],["종로3가",37.57152,126.99131],["종각",37.57016,126.98292],["시청",37.56465,126.97625],["서울역",37.55488,126.97137],["남영",37.54102,126.9713],["용산",37.52985,126.96456],["노량진",37.51384,126.94186],["대방",37.51332,126.92605],["신길",37.51724,126.91635],["영등포",37.5155,126.90763],["신도림",37.50887,126.89111],["구로",37.50304,126.88197],["구일",37.49676,126.87079],["개봉",37.49459,126.85968],["오류동",37.49453,126.84537],["온수",37.49226,126.82355],["역곡",37.48518,126.8115],["소사",37.48275,126.79544],["부천",37.48405,126.78269],["중동",37.48656,126.76484],["송내",37.4876,126.75366],["부개",37.48842,126.74109],["부평",37.48945,126.72451],["가산디지털단지",37.48096,126.88262],["독산",37.46661,126.88925],["금천구청",37.45563,126.89398],["석수",37.43505,126.90229],["관악",37.41923,126.90871],["안양",37.40159,126.92287],["광명",37.41618,126.88447],["을지로입구",37.56601,126.98262],["을지로3가",37.56649,126.99212],["을지로4가",37.56697,126.99792],["동대문역사문화공원",37.56514,127.00743],["신당",37.5659,127.01788],["상왕십리",37.56435,127.02935],["왕십리",37.56154,127.03733],["한양대",37.55527,127.04366],["뚝섬",37.54718,127.04737],["성수",37.54458,127.05596],["건대입구",37.54058,127.0701],["구의",37.53708,127.08592],["강변",37.53509,127.09468],["잠실나루",37.52073,127.10379],["잠실",37.51398,127.10225],["잠실새내",37.51169,127.08616],["종합운동장",37.51122,127.07499],["삼성",37.50884,127.06316],["선릉",37.50457,127.04851],["역삼",37.50062,127.03646],["강남",37.49741,127.02801],["교대",37.49349,127.01423],["서초",37.4919,127.00792],["방배",37.48143,126.9976],["사당",37.47675,126.9816],["낙성대",37.47693,126.96369],["서울대입구",37.48125,126.95274],["봉천",37.48236,126.94189],["신림",37.48456,126.92967],["신대방",37.48746,126.91315],["구로디지털단지",37.48527,126.9014],["대림",37.49313,126.896],["문래",37.51793,126.89476],["영등포구청",37.52495,126.89582],["당산",37.53418,126.90279],["합정",37.54933,126.91359],["홍대입구",37.55729,126.9257],["신촌",37.55513,126.93693],["이대",37.55673,126.94601],["아현",37.55734,126.95614],["충정로",37.55997,126.96364],["용답",37.5619,127.0509],["신답",37.57004,127.04648],["용두",37.57403,127.03809],["도림천",37.51429,126.88277],["양천구청",37.5124,126.86582],["신정네거리",37.52007,126.85291],["까치산",37.53177,126.84668],["대화",37.67609,126.74757],["주엽",37.67007,126.76133],["정발산",37.65948,126.77336],["마두",37.65221,126.77762],["백석",37.64311,126.78787],["대곡",37.63163,126.81102],["화정",37.63459,126.83265],["원당",37.65332,126.84304],["원흥",37.65066,126.87264],["삼송",37.65308,126.89556],["지축",37.64803,126.91392],["구파발",37.63676,126.91882],["연신내",37.61893,126.92083],["불광",37.61071,126.92961],["녹번",37.60093,126.93576],["홍제",37.58907,126.94374],["무악재",37.5823,126.95029],["독립문",37.57457,126.95775],["경복궁",37.57576,126.97353],["안국",37.57648,126.98544],["충무로",37.56132,126.99408],["동대입구",37.55905,127.0056],["약수",37.55456,127.01045],["금호",37.54803,127.01587],["옥수",37.54107,127.01797],["압구정",37.52707,127.02846],["신사",37.51633,127.02011],["잠원",37.51276,127.01122],["고속터미널",37.50475,127.0048],["남부터미널",37.48501,127.01619],["양재",37.48414,127.03428],["매봉",37.48695,127.04677],["도곡",37.49107,127.05532],["대치",37.49461,127.06364],["학여울",37.49666,127.07059],["대청",37.49351,127.07953],["일원",37.48368,127.08439],["수서",37.48743,127.10166],["가락시장",37.49257,127.11808],["경찰병원",37.49592,127.12454],["오금",37.50209,127.12813],["진접",37.7205,127.2034],["오남",37.705,127.19281],["별내별가람",37.66778,127.11581],["불암산",37.67027,127.07907],["상계",37.66088,127.07357],["노원",37.65555,127.06187],["쌍문",37.64863,127.03471],["수유",37.63805,127.02573],["미아",37.62667,127.02598],["미아사거리",37.61329,127.03005],["길음",37.60341,127.02505],["성신여대입구",37.59254,127.01648],["한성대입구",37.58846,127.00622],["혜화",37.58234,127.00184],["명동",37.56099,126.98632],["회현",37.55851,126.97825],["숙대입구",37.54456,126.97211],["삼각지",37.5348,126.97332],["신용산",37.52917,126.96789],["이촌",37.52236,126.97407],["동작",37.50286,126.97925],["총신대입구(이수)",37.48573,126.9818],["남태령",37.46387,126.98913],["선바위",37.45167,127.0023],["경마공원",37.44389,127.00789],["대공원",37.43568,127.00652],["과천",37.43302,126.99657],["정부과천청사",37.42651,126.98978],["인덕원",37.40155,126.97671],["평촌",37.39429,126.96388],["방화",37.57745,126.81274],["개화산",37.5724,126.80617],["김포공항",37.56205,126.80178],["송정",37.56118,126.81197],["마곡",37.56018,126.82545],["발산",37.5586,126.83767],["우장산",37.54877,126.83632],["화곡",37.54151,126.84046],["신정",37.525,126.85619],["목동",37.52607,126.86493],["오목교",37.5245,126.87518],["양평",37.52557,126.88613],["영등포시장",37.52267,126.90514],["여의도",37.52175,126.92419],["여의나루",37.5271,126.9329],["마포",37.53957,126.94593],["공덕",37.54328,126.95179],["애오개",37.55374,126.95682],["서대문",37.56577,126.96664],["광화문",37.57153,126.97717],["청구",37.56044,127.01381],["신금호",37.55455,127.02033],["행당",37.55732,127.02948],["마장",37.5661,127.04297],["답십리",37.56675,127.0527],["장한평",37.56144,127.06462],["군자",37.55699,127.07946],["아차산",37.55169,127.08976],["광나루",37.5453,127.10357],["천호",37.53838,127.12328],["강동",37.5358,127.13248],["길동",37.5378,127.14],["굽은다리",37.54548,127.14285],["명일",37.55137,127.144],["고덕",37.555,127.15415],["상일동",37.55671,127.16642],["강일",37.55749,127.17593],["미사",37.56093,127.19388],["하남풍산",37.55203,127.20386],["하남시청",37.54205,127.20612],["하남검단산",37.53972,127.22345],["둔촌동",37.52779,127.13625],["올림픽공원",37.51624,127.13061],["방이",37.50886,127.12613],["개롱",37.49808,127.13482],["거여",37.4931,127.14415],["마천",37.49499,127.15278],["응암",37.5986,126.91558],["역촌",37.60602,126.92274],["독바위",37.61846,126.93303],["구산",37.61138,126.91727],["새절",37.59115,126.91363],["증산",37.58388,126.90964],["디지털미디어시티",37.57685,126.90015],["월드컵경기장",37.56953,126.8993],["마포구청",37.56352,126.90334],["망원",37.55609,126.91005],["상수",37.54772,126.92285],["광흥창",37.54746,126.93199],["대흥",37.54777,126.94207],["효창공원앞",37.53891,126.9618],["녹사평",37.53468,126.98669],["이태원",37.53449,126.9943],["한강진",37.53963,127.00172],["버티고개",37.54801,127.00705],["창신",37.57966,127.01524],["보문",37.58528,127.01937],["안암",37.58627,127.029],["고려대",37.59051,127.0363],["월곡",37.60195,127.04152],["상월곡",37.60638,127.04849],["돌곶이",37.61054,127.05643],["태릉입구",37.61782,127.07507],["화랑대",37.62006,127.08469],["봉화산",37.61728,127.0914],["신내",37.61303,127.10272],["장암",37.70011,127.0532],["수락산",37.67785,127.05531],["마들",37.66494,127.05768],["중계",37.64458,127.0643],["하계",37.63635,127.06799],["공릉",37.62574,127.0729],["먹골",37.61064,127.07773],["중화",37.60254,127.07926],["상봉",37.59631,127.08527],["면목",37.58858,127.0875],["사가정",37.58089,127.08848],["용마산",37.57365,127.08673],["중곡",37.56592,127.08432],["어린이대공원",37.54801,127.07466],["자양",37.53154,127.0667],["청담",37.51937,127.05335],["강남구청",37.51732,127.0412],["학동",37.51423,127.03166],["논현",37.51109,127.02142],["반포",37.50818,127.01173],["내방",37.48762,126.99351],["남성",37.4846,126.97125],["숭실대입구",37.49603,126.95382],["상도",37.50283,126.94791],["장승배기",37.5049,126.93915],["신대방삼거리",37.4997,126.92828],["보라매",37.50007,126.92043],["신풍",37.50008,126.90993],["남구로",37.48606,126.88725],["철산",37.47605,126.86791],["광명사거리",37.47925,126.85488],["천왕",37.48664,126.83871],["까치울",37.50621,126.81094],["부천종합운동장",37.50538,126.79734],["춘의",37.50366,126.78704],["신중동",37.50305,126.77596],["부천시청",37.50463,126.76354],["상동",37.50578,126.75308],["삼산체육관",37.50641,126.74215],["굴포천",37.507,126.73128],["부평구청",37.50739,126.7216],["별내",37.64217,127.12722],["다산",37.62429,127.14973],["동구릉",37.61105,127.13793],["구리",37.60301,127.14228],["장자호수공원",37.58738,127.13794],["암사역사공원",37.55695,127.13702],["암사",37.55021,127.12756],["강동구청",37.53034,127.12051],["몽촌토성",37.51741,127.11236],["석촌",37.50538,127.10694],["송파",37.4997,127.11218],["문정",37.48586,127.1225],["장지",37.4787,127.12619],["복정",37.47055,127.1267],["남위례",37.4624,127.13977],["산성",37.45712,127.14991],["남한산성입구",37.45153,127.15982],["단대오거리",37.44521,127.15687],["신흥",37.44092,127.14756],["수진",37.43743,127.14072],["모란",37.43294,127.12947],["개화",37.57861,126.79815],["공항시장",37.56373,126.81068],["신방화",37.56753,126.8166],["마곡나루",37.56616,126.82734],["양천향교",37.56838,126.84133],["가양",37.56139,126.85446],["증미",37.5574,126.86194],["등촌",37.55063,126.86569],["염창",37.54694,126.87492],["신목동",37.54428,126.88308],["선유도",37.53802,126.89352],["국회의사당",37.5281,126.91787],["샛강",37.51719,126.92891],["노들",37.51289,126.95322],["흑석",37.50877,126.96371],["구반포",37.50136,126.98733],["신반포",37.50341,126.99592],["사평",37.50421,127.01526],["신논현",37.5046,127.02506],["언주",37.50729,127.03387],["선정릉",37.51052,127.04384],["삼성중앙",37.51301,127.05328],["봉은사",37.51422,127.06024],["삼전",37.50474,127.08803],["석촌고분",37.50256,127.09703],["송파나루",37.51037,127.11222],["한성백제",37.5164,127.1165],["둔촌오륜",37.51968,127.13799],["중앙보훈병원",37.52919,127.14874],["계양",37.57166,126.7363],["운정",37.72583,126.76726],["야당",37.71233,126.76136],["탄현",37.69402,126.76109],["일산",37.68208,126.76985],["풍산",37.67235,126.78624],["백마",37.65824,126.79446],["곡산",37.64568,126.80176],["능곡",37.61881,126.82078],["행신",37.6121,126.83415],["강매",37.61231,126.84322],["한국항공대",37.60289,126.86839],["수색",37.58084,126.89561],["가좌",37.56849,126.91549],["서강대",37.55188,126.93571],["서빙고",37.51959,126.98854],["한남",37.52943,127.00917],["응봉",37.54995,127.03454],["중랑",37.59492,127.07612],["망우",37.59955,127.09191],["양원",37.6066,127.10791],["도농",37.60881,127.16115],["양정",37.60533,127.19364],["덕소",37.58678,127.20883],["도심",37.57962,127.22267],["신촌",37.55973,126.9426],["갈매",37.63412,127.11476],["퇴계원",37.64831,127.14395],["사릉",37.65108,127.17693],["금곡",37.63738,127.20785],["서울숲",37.54362,127.04471],["압구정로데오",37.52738,127.04053],["한티",37.49624,127.05287],["구룡",37.48684,127.05886],["개포동",37.48912,127.06614],["대모산입구",37.49137,127.07272],["가천대",37.44861,127.1267],["태평",37.44002,127.12771],["야탑",37.41119,127.12871],["이매",37.39537,127.12825],["양재시민의숲",37.47002,127.03842],["청계산입구",37.44721,127.05566],["판교",37.39476,127.11222],["북한산우이",37.66291,127.01271],["솔밭공원",37.65603,127.01327],["4·19민주묘지",37.6495,127.01368],["가오리",37.64154,127.01679],["화계",37.63413,127.01751],["삼양",37.62691,127.01811],["삼양사거리",37.62134,127.02047],["솔샘",37.62024,127.01363],["북한산보국문",37.61207,127.00825],["정릉",37.60313,127.0134],["서울지방병무청",37.50605,126.92271],["보라매공원",37.49557,126.91808],["보라매병원",37.49296,126.9235],["당곡",37.4903,126.92751],["서원",37.47823,126.93304],["서울대벤처타운",37.472,126.93394],["관악산",37.4691,126.94506]],"nodes":[[0,0,37.73842,127.04596],[1,0,37.72442,127.04736],[2,0,37.70991,127.04745],[3,0,37.68953,127.04605],[4,0,37.67956,127.0456],[5,0,37.6675,127.04427],[6,0,37.65309,127.04727],[7,0,37.6448,127.05127],[8,0,37.63321,127.05883],[9,0,37.62363,127.06184],[10,0,37.61453,127.06593],[11,0,37.60185,127.06732],[12,0,37.59607,127.06355],[13,0,37.58946,127.05758],[14,0,37.57996,127.04458],[15,0,37.5781,127.03489],[16,0,37.57605,127.02463],[17,0,37.5732,127.01648],[18,0,37.57169,127.01093],[19,0,37.57093,127.00185],[20,0,37.57041,126.99185],[21,0,37.57016,126.98292],[22,0,37.56571,126.97709],[23,0,37.55623,126.97213],[24,0,37.54102,126.9713],[25,0,37.52985,126.96456],[26,0,37.51415,126.94271],[27,0,37.51334,126.92638],[28,0,37.51686,126.91787],[29,0,37.5155,126.90763],[30,0,37.50879,126.89114],[31,0,37.50304,126.88197],[32,0,37.49676,126.87079],[33,0,37.49459,126.85968],[34,0,37.49453,126.84537],[35,0,37.49243,126.82409],[36,0,37.48518,126.8115],[37,0,37.48275,126.79544],[38,0,37.48405,126.78269],[39,0,37.48656,126.76484],[40,0,37.4876,126.75366],[41,0,37.48842,126.74109],[42,0,37.48945,126.72451],[43,0,37.48158,126.88258],[44,0,37.46661,126.88925],[45,0,37.45563,126.89398],[46,0,37.43505,126.90229],[47,0,37.41923,126.90871],[48,0,37.40159,126.92287],[49,0,37.41618,126.88447],[22,1,37.56359,126.97541],[50,1,37.56601,126.98262],[51,1,37.56631,126.9917],[52,1,37.56659,126.99782],[53,1,37.56561,127.00905],[54,1,37.56564,127.01961],[55,1,37.56435,127.02935],[56,1,37.56124,127.03695],[57,1,37.55527,127.04366],[58,1,37.54718,127.04737],[59,1,37.54458,127.05596],[60,1,37.54037,127.06919],[61,1,37.53708,127.08592],[62,1,37.53509,127.09468],[63,1,37.52073,127.10379],[64,1,37.51326,127.10016],[65,1,37.51169,127.08616],[66,1,37.51102,127.0737],[67,1,37.50884,127.06316],[68,1,37.50429,127.0482],[69,1,37.50062,127.03646],[70,1,37.49799,127.02791],[71,1,37.49396,127.01467],[72,1,37.4919,127.00792],[73,1,37.48143,126.9976],[74,1,37.47654,126.98154],[75,1,37.47693,126.96369],[76,1,37.48125,126.95274],[77,1,37.48236,126.94189],[78,1,37.4842,126.92972],[79,1,37.48746,126.91315],[80,1,37.48527,126.9014],[81,1,37.49324,126.89493],[30,1,37.50896,126.89108],[82,1,37.51793,126.89476],[83,1,37.52571,126.89661],[84,1,37.53495,126.90277],[85,1,37.54946,126.91381],[86,1,37.55679,126.92371],[87,1,37.55513,126.93693],[88,1,37.55673,126.94601],[89,1,37.55734,126.95614],[90,1,37.5597,126.96438],[91,1,37.5619,127.0509],[92,1,37.57004,127.04648],[93,1,37.57403,127.03809],[16,1,37.57475,127.02493],[94,1,37.51429,126.88277],[95,1,37.5124,126.86582],[96,1,37.52007,126.85291],[97,1,37.53177,126.84668],[98,2,37.67609,126.74757],[99,2,37.67007,126.76133],[100,2,37.65948,126.77336],[101,2,37.65221,126.77762],[102,2,37.64311,126.78787],[103,2,37.63163,126.81102],[104,2,37.63459,126.83265],[105,2,37.65332,126.84304],[106,2,37.65066,126.87264],[107,2,37.65308,126.89556],[108,2,37.64803,126.91392],[109,2,37.63676,126.91882],[110,2,37.61923,126.92104],[111,2,37.61055,126.92982],[112,2,37.60093,126.93576],[113,2,37.58907,126.94374],[114,2,37.5823,126.95029],[115,2,37.57457,126.95775],[116,2,37.57576,126.97353],[117,2,37.57648,126.98544],[20,2,37.5716,126.99179],[51,2,37.56667,126.99255],[118,2,37.56143,126.99407],[119,2,37.55905,127.0056],[120,2,37.55487,127.01054],[121,2,37.54803,127.01587],[122,2,37.54168,127.01727],[123,2,37.52707,127.02846],[124,2,37.51633,127.02011],[125,2,37.51276,127.01122],[126,2,37.50489,127.00492],[71,2,37.49303,127.01379],[127,2,37.48501,127.01619],[128,2,37.48448,127.0339],[129,2,37.48695,127.04677],[130,2,37.49092,127.05545],[131,2,37.49461,127.06364],[132,2,37.49666,127.07059],[133,2,37.49351,127.07953],[134,2,37.48368,127.08439],[135,2,37.48738,127.10191],[136,2,37.49224,127.11776],[137,2,37.49592,127.12454],[138,2,37.50213,127.12832],[139,3,37.7205,127.2034],[140,3,37.705,127.19281],[141,3,37.66778,127.11581],[142,3,37.67027,127.07907],[143,3,37.66088,127.07357],[144,3,37.65627,127.06328],[6,3,37.65309,127.04727],[145,3,37.64863,127.03471],[146,3,37.63805,127.02573],[147,3,37.62667,127.02598],[148,3,37.61329,127.03005],[149,3,37.60341,127.02505],[150,3,37.59261,127.01644],[151,3,37.58846,127.00622],[152,3,37.58234,127.00184],[18,3,37.57093,127.00929],[53,3,37.56513,127.00789],[118,3,37.56121,126.99408],[153,3,37.56099,126.98632],[154,3,37.55851,126.97825],[23,3,37.55281,126.97256],[155,3,37.54456,126.97211],[156,3,37.53408,126.9726],[157,3,37.52917,126.96789],[158,3,37.52229,126.97473],[159,3,37.50285,126.98035],[160,3,37.48626,126.98199,"총신대입구"],[74,3,37.47695,126.98165],[161,3,37.46387,126.98913],[162,3,37.45167,127.0023],[163,3,37.44389,127.00789],[164,3,37.43568,127.00652],[165,3,37.43302,126.99657],[166,3,37.42651,126.98978],[167,3,37.40155,126.97671],[168,3,37.39429,126.96388],[169,4,37.57745,126.81274],[170,4,37.5724,126.80617],[171,4,37.56238,126.80129],[172,4,37.56118,126.81197],[173,4,37.56018,126.82545],[174,4,37.5586,126.83767],[175,4,37.54877,126.83632],[176,4,37.54151,126.84046],[97,4,37.53177,126.84668],[177,4,37.525,126.85619],[178,4,37.52607,126.86493],[179,4,37.5245,126.87518],[180,4,37.52557,126.88613],[83,4,37.5242,126.89503],[181,4,37.52267,126.90514],[28,4,37.51762,126.91484],[182,4,37.52175,126.92436],[183,4,37.5271,126.9329],[184,4,37.53957,126.94593],[185,4,37.54443,126.95137],[186,4,37.55374,126.95682],[90,4,37.56024,126.9629],[187,4,37.56577,126.96664],[188,4,37.57153,126.97717],[20,4,37.57254,126.99031],[52,4,37.56735,126.99803],[53,4,37.56466,127.00535],[189,4,37.56028,127.01364],[190,4,37.55455,127.02033],[191,4,37.55732,127.02948],[56,4,37.56184,127.03706],[192,4,37.5661,127.04297],[193,4,37.56675,127.0527],[194,4,37.56144,127.06462],[195,4,37.55709,127.07958],[196,4,37.55169,127.08976],[197,4,37.5453,127.10357],[198,4,37.53864,127.12331],[199,4,37.5358,127.13248],[200,4,37.5378,127.14],[201,4,37.54548,127.14285],[202,4,37.55137,127.144],[203,4,37.555,127.15415],[204,4,37.55671,127.16642],[205,4,37.55749,127.17593],[206,4,37.56093,127.19388],[207,4,37.55203,127.20386],[208,4,37.54205,127.20612],[209,4,37.53972,127.22345],[210,4,37.52779,127.13625],[211,4,37.5162,127.13092],[212,4,37.50886,127.12613],[138,4,37.50206,127.12794],[213,4,37.49808,127.13482],[214,4,37.4931,127.14415],[215,4,37.49499,127.15278],[216,5,37.5986,126.91558],[217,5,37.60602,126.92274],[111,5,37.61087,126.92939],[218,5,37.61846,126.93303],[110,5,37.61864,126.92063],[219,5,37.61138,126.91727],[220,5,37.59115,126.91363],[221,5,37.58388,126.90964],[222,5,37.57611,126.90139],[223,5,37.56953,126.8993],[224,5,37.56352,126.90334],[225,5,37.55609,126.91005],[85,5,37.54921,126.91337],[226,5,37.54772,126.92285],[227,5,37.54746,126.93199],[228,5,37.54777,126.94207],[185,5,37.54355,126.95168],[229,5,37.53923,126.96138],[156,5,37.53553,126.97403],[230,5,37.53468,126.98669],[231,5,37.53449,126.9943],[232,5,37.53963,127.00172],[233,5,37.54801,127.00705],[120,5,37.55426,127.01036],[189,5,37.56061,127.01399],[54,5,37.56615,127.01615],[17,5,37.57228,127.01565],[234,5,37.57966,127.01524],[235,5,37.58527,127.01935],[236,5,37.58627,127.029],[237,5,37.59051,127.0363],[238,5,37.60195,127.04152],[239,5,37.60638,127.04849],[240,5,37.61054,127.05643],[10,5,37.61487,127.0656],[241,5,37.61734,127.07474],[242,5,37.62006,127.08469],[243,5,37.61728,127.0914],[244,5,37.61317,127.10223],[245,6,37.70011,127.0532],[3,6,37.68924,127.04651],[246,6,37.67785,127.05531],[247,6,37.66494,127.05768],[144,6,37.65484,127.06046],[248,6,37.64458,127.0643],[249,6,37.63635,127.06799],[250,6,37.62574,127.0729],[241,6,37.61829,127.0754],[251,6,37.61064,127.07773],[252,6,37.60254,127.07926],[253,6,37.59558,127.08572],[254,6,37.58858,127.0875],[255,6,37.58089,127.08848],[256,6,37.57365,127.08673],[257,6,37.56592,127.08432],[195,6,37.5569,127.07934],[258,6,37.54801,127.07466],[60,6,37.54079,127.07101],[259,6,37.53154,127.0667],[260,6,37.51937,127.05335],[261,6,37.51718,127.04126],[262,6,37.51423,127.03166],[263,6,37.51109,127.02142],[264,6,37.50818,127.01173],[126,6,37.50337,127.00507],[265,6,37.48762,126.99351],[160,6,37.4852,126.98161,"이수"],[266,6,37.4846,126.97125],[267,6,37.49603,126.95382],[268,6,37.50283,126.94791],[269,6,37.5049,126.93915],[270,6,37.4997,126.92828],[271,6,37.49987,126.92043],[272,6,37.50008,126.90993],[81,6,37.49301,126.89708],[273,6,37.48606,126.88725],[43,6,37.48034,126.88266],[274,6,37.47605,126.86791],[275,6,37.47925,126.85488],[276,6,37.48664,126.83871],[35,6,37.49209,126.82302],[277,6,37.50621,126.81094],[278,6,37.50538,126.79734],[279,6,37.50366,126.78704],[280,6,37.50305,126.77596],[281,6,37.50463,126.76354],[282,6,37.50578,126.75308],[283,6,37.50641,126.74215],[284,6,37.507,126.73128],[285,6,37.50739,126.7216],[286,7,37.64232,127.1276],[287,7,37.62429,127.14973],[288,7,37.61105,127.13793],[289,7,37.60262,127.1407],[290,7,37.58738,127.13794],[291,7,37.55695,127.13702],[292,7,37.55021,127.12756],[198,7,37.53811,127.12325],[293,7,37.53034,127.12051],[294,7,37.51741,127.11236],[64,7,37.51469,127.10434],[295,7,37.50556,127.10683],[296,7,37.4997,127.11218],[136,7,37.49289,127.1184],[297,7,37.48586,127.1225],[298,7,37.4787,127.12619],[299,7,37.47105,127.12673],[300,7,37.4624,127.13977],[301,7,37.45712,127.14991],[302,7,37.45153,127.15982],[303,7,37.44521,127.15687],[304,7,37.44092,127.14756],[305,7,37.43743,127.14072],[306,7,37.43382,127.12984],[307,8,37.57861,126.79815],[171,8,37.56192,126.80215],[308,8,37.56373,126.81068],[309,8,37.56753,126.8166],[310,8,37.56678,126.82731],[311,8,37.56838,126.84133],[312,8,37.56139,126.85446],[313,8,37.5574,126.86194],[314,8,37.55063,126.86569],[315,8,37.54694,126.87492],[316,8,37.54428,126.88308],[317,8,37.53802,126.89352],[84,8,37.53341,126.90281],[318,8,37.5281,126.91787],[182,8,37.52176,126.92403],[319,8,37.51727,126.92842],[26,8,37.51353,126.94101],[320,8,37.51289,126.95322],[321,8,37.50877,126.96371],[159,8,37.50288,126.97815],[322,8,37.50136,126.98733],[323,8,37.50341,126.99592],[126,8,37.50598,127.0044],[324,8,37.50421,127.01526],[325,8,37.5046,127.02506],[326,8,37.50729,127.03387],[327,8,37.5103,127.044],[328,8,37.51301,127.05328],[329,8,37.51422,127.06024],[66,8,37.51143,127.07627],[330,8,37.50474,127.08803],[331,8,37.50256,127.09703],[295,8,37.50521,127.10704],[332,8,37.51037,127.11222],[333,8,37.5164,127.1165],[211,8,37.51627,127.13029],[334,8,37.51968,127.13799],[335,8,37.52919,127.14874],[23,10,37.55325,126.96977],[185,10,37.54253,126.95202],[86,10,37.55744,126.92672],[222,10,37.57696,126.89861],[310,10,37.56554,126.82738],[171,10,37.56184,126.8019],[336,10,37.57166,126.7363],[337,9,37.72583,126.76726],[338,9,37.71233,126.76136],[339,9,37.69402,126.76109],[340,9,37.68208,126.76985],[341,9,37.67235,126.78624],[342,9,37.65824,126.79446],[343,9,37.64568,126.80176],[103,9,37.63163,126.81102],[344,9,37.61881,126.82078],[345,9,37.6121,126.83415],[346,9,37.61231,126.84322],[347,9,37.60289,126.86839],[348,9,37.58084,126.89561],[222,9,37.57747,126.90045],[349,9,37.56849,126.91549],[86,9,37.55764,126.92668],[350,9,37.55188,126.93571],[185,9,37.5426,126.9521],[229,9,37.53858,126.96221],[25,9,37.52985,126.96456],[158,9,37.52243,126.97341],[351,9,37.51959,126.98854],[352,9,37.52943,127.00917],[122,9,37.54045,127.01867],[353,9,37.54995,127.03454],[56,9,37.56183,127.03835],[14,9,37.58076,127.0483],[13,9,37.58946,127.05758],[354,9,37.59492,127.07612],[253,9,37.59668,127.08504],[355,9,37.59955,127.09191],[356,9,37.6066,127.10791],[289,9,37.60339,127.14387],[357,9,37.60881,127.16115],[358,9,37.60533,127.19364],[359,9,37.58678,127.20883],[360,9,37.57962,127.22267],[361,9,37.55973,126.9426],[23,9,37.55723,126.97103],[14,11,37.57996,127.04458],[13,11,37.58946,127.05758],[354,11,37.59492,127.07612],[253,11,37.59668,127.08504],[355,11,37.59955,127.09191],[244,11,37.61289,127.10322],[362,11,37.63412,127.11476],[286,11,37.64202,127.12684],[363,11,37.64831,127.14395],[364,11,37.65108,127.17693],[365,11,37.63738,127.20785],[9,11,37.62363,127.06184],[14,12,37.57996,127.04458],[56,12,37.56124,127.03695],[366,12,37.54362,127.04471],[367,12,37.52738,127.04053],[261,12,37.51747,127.04115],[327,12,37.51073,127.04368],[68,12,37.50486,127.04881],[368,12,37.49624,127.05287],[130,12,37.49122,127.05519],[369,12,37.48684,127.05886],[370,12,37.48912,127.06614],[371,12,37.49137,127.07272],[135,12,37.48747,127.10142],[299,12,37.47005,127.12666],[372,12,37.44861,127.1267],[373,12,37.44002,127.12771],[306,12,37.43205,127.1291],[374,12,37.41119,127.12871],[375,12,37.39537,127.12825],[124,13,37.51633,127.02011],[263,13,37.51109,127.02142],[325,13,37.5046,127.02506],[70,13,37.49684,127.0281],[128,13,37.48381,127.03465],[376,13,37.47002,127.03842],[377,13,37.44721,127.05566],[378,13,37.39476,127.11222],[379,14,37.66291,127.01271],[380,14,37.65603,127.01327],[381,14,37.6495,127.01368],[382,14,37.64154,127.01679],[383,14,37.63413,127.01751],[384,14,37.62691,127.01811],[385,14,37.62134,127.02047],[386,14,37.62024,127.01363],[387,14,37.61207,127.00825],[388,14,37.60313,127.0134],[150,14,37.59247,127.01652],[235,14,37.58529,127.01938],[16,14,37.5761,127.02324],[319,15,37.5171,126.9294],[27,15,37.51331,126.92573],[389,15,37.50605,126.92271],[271,15,37.50027,126.92043],[390,15,37.49557,126.91808],[391,15,37.49296,126.9235],[392,15,37.4903,126.92751],[78,15,37.48493,126.92962],[393,15,37.47823,126.93304],[394,15,37.472,126.93394],[395,15,37.4691,126.94506]],"segs":[[0,0,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]],[0,0,[31,43,44,45,46,47,48]],[0,0,[45,49]],[1,0,[50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,50]],[1,0,[60,93,94,95,96]],[1,0,[83,97,98,99,100]],[2,0,[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144]],[3,0,[145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180]],[4,0,[181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229]],[4,0,[219,230,231,232,233,234,235,236]],[5,1,[237,238,239,240,241,242,237]],[5,0,[237,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275]],[6,0,[276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326]],[7,0,[327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350]],[8,0,[351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388]],[10,0,[389,390,391,392,393,394,395]],[9,0,[396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432]],[9,0,[410,433,434]],[11,0,[435,436,437,438,439,440,441,442,443,444,445]],[11,0,[446,438]],[12,0,[447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465]],[13,0,[466,467,468,469,470,471,472,473]],[14,0,[474,475,476,477,478,479,480,481,482,483,484,485,486]],[15,0,[487,488,489,490,491,492,493,494,495,496,497]]]};
+/* ================= subway =================
+   역 위치: 서울 열린데이터광장 지하철역 정보(공공누리 제1유형). 노선은 역 순서대로 잇고,
+   역 사이 시간은 거리로 어림해요. 급행·배차표·막차는 반영하지 않아요. */
+const METRO = (() => {
+  const D = SUBWAY;
+  const RIDE_A = 0.9, RIDE_B = 1.0, ACCESS = 2, XFER = 3, NEAR_KM = 1.3;
+  const LN = D.lines.map(([n, c, b, w, bg, ink]) => ({ n, c, b, w, bg, ink }));
+  const CX = D.cx.map(([name, lat, lon]) => ({ name, lat, lon, nodes: [] }));
+  const ND = D.nodes.map(([cx, li, lat, lon, name], i) => {
+    const nd = { i, cx, li, lat, lon, name: name || CX[cx].name };
+    nd.side = hanSide(nd);
+    CX[cx].nodes.push(i);
+    return nd;
+  });
+  const adj = ND.map(() => []);
+  for (const [li, directed, seq] of D.segs) {
+    for (let k = 0; k + 1 < seq.length; k++) {
+      const a = ND[seq[k]], b = ND[seq[k + 1]];
+      const t = RIDE_A + RIDE_B * haversine(a, b);
+      adj[a.i].push(b.i, t);
+      if (!directed) adj[b.i].push(a.i, t);
+    }
+  }
+  /* transfers inside one station: stairs, the walk between platforms, then waiting for the next train */
+  for (const c of CX) for (const a of c.nodes) for (const b of c.nodes) {
+    if (a !== b) adj[a].push(b, XFER + haversine(ND[a], ND[b]) * 1000 / 70 + LN[ND[b].li].w);
+  }
+  const walkMin = km => km * 1.3 / 4.5 * 60;
+  const tree = new Map();
+  function fromNode(s) {
+    let r = tree.get(s);
+    if (r) return r;
+    const n = ND.length, dist = new Float64Array(n).fill(Infinity), prev = new Int16Array(n).fill(-1);
+    const hd = [], hv = [];
+    const push = (d, v) => {
+      let i = hd.length; hd.push(d); hv.push(v);
+      while (i > 0) { const p = (i - 1) >> 1; if (hd[p] <= d) break; hd[i] = hd[p]; hv[i] = hv[p]; i = p; }
+      hd[i] = d; hv[i] = v;
+    };
+    const pop = () => {
+      const v = hv[0], d = hd[0], ld = hd.pop(), lv = hv.pop();
+      if (hd.length) {
+        let i = 0;
+        for (;;) {
+          const l = 2 * i + 1, rr = l + 1; let m = -1, md = ld;
+          if (l < hd.length && hd[l] < md) { m = l; md = hd[l]; }
+          if (rr < hd.length && hd[rr] < md) { m = rr; md = hd[rr]; }
+          if (m < 0) break;
+          hd[i] = hd[m]; hv[i] = hv[m]; i = m;
+        }
+        hd[i] = ld; hv[i] = lv;
+      }
+      return [d, v];
+    };
+    dist[s] = 0; push(0, s);
+    while (hd.length) {
+      const [d, v] = pop();
+      if (d > dist[v]) continue;
+      const e = adj[v];
+      for (let k = 0; k < e.length; k += 2) {
+        const u = e[k], nd = d + e[k + 1];
+        if (nd < dist[u]) { dist[u] = nd; prev[u] = v; push(nd, u); }
+      }
+    }
+    r = { dist, prev };
+    tree.set(s, r);
+    return r;
+  }
+  const nearCache = new Map();
+  /* platforms within a short walk, nearest first (always at least the two nearest) */
+  function nearNodes(pos) {
+    const key = pos.lat.toFixed(5) + ',' + pos.lon.toFixed(5);
+    let r = nearCache.get(key);
+    if (r) return r;
+    const all = [], side = hanSide(pos);
+    for (const nd of ND) {
+      const km = haversine(pos, nd);
+      if (km >= 3) continue;
+      if (side && km > 0.3 && nd.side && nd.side !== side) continue;
+      all.push({ v: nd.i, km });
+    }
+    all.sort((a, b) => a.km - b.km);
+    r = all.filter((x, k) => k < 2 || x.km < NEAR_KM).slice(0, 10).map(x => ({ v: x.v, km: x.km, wm: walkMin(x.km) }));
+    nearCache.set(key, r);
+    return r;
+  }
+  /* fastest door-to-door subway trip, or null when no station is in reach */
+  function trip(from, to) {
+    const A = nearNodes(from), B = nearNodes(to);
+    let best = null;
+    for (const a of A) {
+      const base = a.wm + ACCESS + LN[ND[a.v].li].w;
+      if (best && base >= best.t) continue;
+      const T = fromNode(a.v);
+      for (const b of B) {
+        if (ND[a.v].cx === ND[b.v].cx) continue;
+        const t = base + T.dist[b.v] + ACCESS + b.wm;
+        if (!best || t < best.t) best = { t, a, b };
+      }
+    }
+    return best;
+  }
+  const stName = nm => /역$/.test(nm) ? nm : nm + '역';
+  /* the trip as rides: line, board, alight, stops, the next station (for the 방면 sign) */
+  function detail(tr) {
+    const T = fromNode(tr.a.v), path = [];
+    for (let v = tr.b.v; v !== -1; v = T.prev[v]) path.push(v);
+    path.reverse();
+    const rides = [];
+    let cur = null;
+    for (let k = 0; k < path.length; k++) {
+      const nd = ND[path[k]];
+      if (cur && nd.li === cur.li) { cur.to = nd; cur.stops++; cur.path.push(nd); continue; }
+      if (cur && cur.stops === 0) rides.pop();
+      cur = { li: nd.li, line: LN[nd.li], from: nd, to: nd, stops: 0, next: null, path: [nd] };
+      rides.push(cur);
+    }
+    if (cur && cur.stops === 0) rides.pop();
+    for (const r of rides) r.next = r.path[1];
+    return {
+      rides,
+      walkA: { min: Math.round(tr.a.wm), name: stName(ND[tr.a.v].name) },
+      walkB: { min: Math.round(tr.b.wm), name: stName(ND[tr.b.v].name) },
+    };
+  }
+  return { LN, CX, ND, trip, detail, nearNodes, walkMin, stName };
+})();
+/* door to door: walk when it is close or no slower, otherwise the fastest subway trip */
+function travel(from, to, move) {
+  const straight = haversine(from, to), km = straight * 1.3;
+  if (straight < 0.15) return { min: 2, mode: 'walk', km };
+  if (move === 'car') return { min: Math.round(5 + km / 20 * 60), mode: 'car', km };
+  const walk = Math.max(3, Math.round(km / 4.5 * 60));
+  if (walk <= 12) return { min: walk, mode: 'walk', km };
+  const sub = METRO.trip(from, to);
+  if (!sub || walk <= sub.t + (walk <= 20 ? 2 : 0)) return { min: walk, mode: 'walk', km };
+  return { min: Math.round(sub.t), mode: 'subway', km, sub };
+}
+function tripOf(tr) { return tr.d || (tr.d = METRO.detail(tr.sub)); }
 function nearUrban(pos) {
   let best = null;
   for (const u of URBAN) { const d = haversine(pos, u); if (d < 2.6 && (!best || d < best.d)) best = { u, d }; }
@@ -1077,18 +2055,32 @@ function resolveOpts(st, now, seed) {
   const start = st.start === 'here' && st.here ? { id: 'here', label: '내 위치', name: '내 위치', lat: st.here.lat, lon: st.here.lon } : pick('start', st.start);
   return {
     durMin: pick('dur', st.dur).min, budget: pick('budget', st.budget).won, mood: pick('mood', st.mood).id,
-    lvMax: pick('lv', st.lv).max, start, move: pick('move', st.move).id,
+    lvMax: pick('lv', st.lv).max, start, move: pick('move', st.move).id, pace: pick('pace', st.pace).id,
+    untilMin: pick('until', st.until).h ? pick('until', st.until).h * 60 : null, untilLabel: pick('until', st.until).label,
     date, dayOffset, startMin, rain: st.rain === 'rain', must: st.must && BY_ID[st.must] ? st.must : null, seed, shifted,
+    avoid: new Set(Array.isArray(st.avoid) ? st.avoid : []),
   };
 }
+const NIGHT_END = 1380;
 function buildCourse(o) {
   const rnd = rngFrom(o.seed);
   const sunset = SUNSET[o.date.getMonth()];
-  const endLimit = o.startMin + o.durMin;
-  const maxStops = o.durMin <= 120 ? 3 : o.durMin <= 240 ? 5 : 7;
+  const fullEnd = o.startMin + o.durMin;
+  /* '몇 시까지' is a curfew: the course ends by then even if '얼마나' would run longer */
+  let endLimit = o.untilMin ? Math.min(fullEnd, o.untilMin) : fullEnd;
+  let hardEnd = !!o.untilMin && o.untilMin <= fullEnd;
+  /* and nothing past 11pm: trains thin out and most places have closed */
+  const nightCut = endLimit > NIGHT_END;
+  if (nightCut) { endLimit = NIGHT_END; hardEnd = true; }
+  const span = endLimit - o.startMin;
+  const PACE = { p0: { stops: [3, 5, 7, 9], stay: 1, travel: 1 }, slow: { stops: [2, 3, 4, 5], stay: 1.5, travel: 1.2 }, fast: { stops: [4, 6, 8, 10], stay: 0.7, travel: 1.2 } }[o.pace] || { stops: [3, 5, 7, 9], stay: 1, travel: 1 };
+  const maxStops = PACE.stops[span <= 120 ? 0 : span <= 240 ? 1 : span <= 420 ? 2 : 3];
+  const stayFor = p => PACE.stay === 1 ? p.stay
+    : PACE.stay > 1 ? Math.min(Math.round(p.stay * PACE.stay / 5) * 5, p.stay + 60)
+    : Math.max(p.min, Math.round(p.stay * PACE.stay / 5) * 5);
   let t = o.startMin, pos = { lat: o.start.lat, lon: o.start.lon }, left = o.budget;
   const stops = [], used = new Set(), catCount = {};
-  let meals = 0, cafes = 0, generics = 0, challenge = false;
+  let meals = 0, cafes = 0, generics = 0, challenge = false, lastMeal = -999;
   /* nearby places that would fit but are closed that day, nearest first */
   const closedToday = PLACES.filter(p => !p.generic && !hoursOn(p, o.date) && p.moods.includes(o.mood) && p.lv <= o.lvMax && haversine(o.start, p) < 6)
     .sort((a, b) => haversine(o.start, a) - haversine(o.start, b));
@@ -1114,7 +2106,7 @@ function buildCourse(o) {
       if (p.lastEntry && begin > close - p.lastEntry) continue;
       const tg = p.tags || [];
       const outdoor = !p.indoor && !p.covered;
-      let stay = Math.min(p.stay, close - begin, endLimit + 10 - begin);
+      let stay = Math.min(stayFor(p), close - begin, endLimit + (hardEnd ? 0 : 10) - begin);
       /* hills and trails: be back down before sunset; unlit outdoor spots: done by dusk */
       if (tg.includes('day')) stay = Math.min(stay, sunset - 10 - begin);
       else if (outdoor && !tg.includes('night')) stay = Math.min(stay, sunset + 30 - begin);
@@ -1130,35 +2122,41 @@ function buildCourse(o) {
       const last = stops[stops.length - 1];
       if (last && last.p.cat === p.cat) s -= 3.5;
       s -= (catCount[p.cat] || 0) * 1.8;
-      s -= tr.min / 5 + Math.max(0, tr.min - 20) / 5;
+      /* realistic door-to-door subway times run long, so travel weighs a little less per minute */
+      s -= (tr.min / 7 + Math.max(0, tr.min - 28) / 5 + Math.max(0, tr.min - 40) / 2.5) * PACE.travel;
       s -= wait / 8;
       if (p.meal) {
-        if (meals) s -= (o.mood === 'taste' && o.durMin >= 420) ? 2 : 9;
+        /* a second meal only once the first one is well behind (lunch, then dinner on a long day) */
+        if (meals && begin - lastMeal < 300) s -= (o.mood === 'taste' && span >= 420) ? 2 : 9;
         else {
-          s += inMealTime(begin) ? 7 : -1;
+          s += inMealTime(begin) ? (meals ? 5 : 7) : -1;
           if (o.mood === 'taste') s += 3;
         }
       }
       if (p.cafe && cafes) s -= 6;
       if (tg.includes('sunset') && begin <= sunset + 10 && begin + stay >= sunset - 40) s += 4;
       if (tg.includes('night') && begin >= sunset - 20) s += 3;
-      if (o.lvMax >= 4 && !challenge && p.lv >= 4) s += 3;
+      /* one stop at exactly the chosen level: a small pull at first so it lands where it is close,
+         growing with every stop and when time runs short so it always makes it in */
+      if (!challenge && o.lvMax >= 2 && p.lv === o.lvMax) s += 3 + 5 * stops.length + (endLimit - t < 100 ? 12 : 0);
       /* generic spots only when nothing real is close, but a first meal is always welcome */
-      if (p.generic) s -= (p.meal && !meals) ? 1.5 : 3.5 + generics * 3;
+      if (p.generic) s -= (p.meal && !meals) ? 2.5 : 4.5 + generics * 3;
       /* don't zig-zag back to an area the course already left */
       if (!p.generic && stops.slice(0, -1).some(x => haversine(x.at, p) < 1.2)) s -= 3;
       if (o.must === p.id) s += 40;
-      s += rnd() * 2.2;
+      /* '다른 코스': steer away from places the last courses already showed */
+      if (o.avoid && o.avoid.has(p.id) && o.must !== p.id) s -= p.generic ? 3 : 14;
+      s += rnd() * 3;
       if (!best || s > best.s) best = { s, p, tr, at, arrive, begin, wait, stay };
     }
     if (!best) break;
     stops.push({ p: best.p, at: best.at, travel: best.tr, arrive: best.arrive, begin: best.begin, wait: best.wait, stay: best.stay, end: best.begin + best.stay });
     used.add(best.p.id);
     catCount[best.p.cat] = (catCount[best.p.cat] || 0) + 1;
-    if (best.p.meal) meals++;
+    if (best.p.meal) { meals++; lastMeal = best.begin; }
     if (best.p.cafe) cafes++;
     if (best.p.generic) generics++;
-    if (best.p.lv >= 4) challenge = true;
+    if (best.p.lv === o.lvMax) challenge = true;
     left -= best.p.cost;
     t = best.begin + best.stay;
     pos = { lat: best.at.lat, lon: best.at.lon };
@@ -1169,26 +2167,38 @@ function buildCourse(o) {
     lvMax: stops.reduce((a, x) => Math.max(a, x.p.lv), 0),
     travelMin: stops.reduce((a, x) => a + x.travel.min, 0),
     endMin: stops.length ? stops[stops.length - 1].end : o.startMin,
+    /* the curfew cut the chosen length short */
+    untilCut: !!o.untilMin && o.untilMin < fullEnd && o.untilMin <= NIGHT_END,
+    nightCut: nightCut && !(o.untilMin && o.untilMin <= NIGHT_END),
+    span,
     mustMissing: !!(o.must && !used.has(o.must)),
+    /* why the chosen level could not be reached: 'budget' when nothing at that level fits the money, else 'time' */
+    levelMissing: o.lvMax >= 2 && !challenge ? (PLACES.some(p => p.lv === o.lvMax && p.cost <= o.budget && (!o.rain || p.indoor || p.covered)) ? 'time' : 'budget') : null,
   };
 }
 function dayWord(o) { return (o.dayOffset ? '내일' : '오늘') + '(' + DOW[o.date.getDay()] + ')'; }
 function courseNotes(c) {
   const o = c.o, n = [];
   if (o.shifted) n.push(o.shifted);
+  if (c.untilCut && c.stops.length) n.push(o.untilLabel + '까지 끝나도록 짰어요.');
+  else if (c.nightCut && c.stops.length) n.push('늦은 밤까지 이어지지 않게 밤 11시 전에 끝나도록 짰어요.');
   if (c.mustMissing) n.push(BY_ID[o.must].short + '은(는) 이 조건에선 시간이나 예산이 안 맞아서 빠졌어요. 시간을 늘리거나 예산을 바꿔 보세요.');
   if (o.rain) n.push('비 오는 날이라 실내나 지붕 있는 곳만 넣었어요.');
   const closed = c.closedToday.slice(0, 2).map(p => p.short);
   if (closed.length) n.push(dayWord(o) + ' 휴무라 뺀 곳: ' + closed.join(', '));
   if (c.stops.some(s => (s.p.tags || []).includes('sunset') && s.begin <= c.sunset + 10 && s.end >= c.sunset - 40)) n.push('노을은 ' + fmtTime(c.sunset) + ' 무렵이에요. 시간 맞춰 넣었어요.');
-  if (o.budget === 0) n.push('예산 0원이라 무료로 즐길 수 있는 곳만 골랐어요.');
-  if (c.stops.some(s => ['gyeongbokgung', 'deoksugung', 'seonjeongneung'].includes(s.p.id))) n.push('궁궐·왕릉은 만 24세 이하면 무료예요. 비용은 일반 요금으로 계산했어요.');
+  const mealless = c.stops.length && !c.stops.some(s => s.p.meal) && MEAL_WINDOWS.some(w => w[0] >= o.startMin && w[0] <= c.endMin - 30);
+  if (o.budget === 0) n.push('예산 0원이라 무료로 즐길 수 있는 곳만 골랐어요.' + (mealless ? ' 밥은 따로 챙겨 드세요.' : ''));
+  else if (mealless && c.span >= 360) n.push('예산이 빠듯해서 밥집은 못 넣었어요. 밥까지 넣으려면 예산을 늘려 보세요.');
+  if (c.stops.some(s => ['gyeongbokgung', 'deoksugung', 'changdeokgung', 'changgyeonggung', 'seonjeongneung'].includes(s.p.id))) n.push('궁궐·왕릉은 만 24세 이하면 무료예요. 비용은 일반 요금으로 계산했어요.');
+  if (c.levelMissing === 'budget') n.push('Lv.' + o.lvMax + ' 장소는 이 예산으로 갈 수 있는 곳이 없어서 쉬운 곳으로 채웠어요. 예산을 늘려 보세요.');
+  else if (c.levelMissing) n.push('Lv.' + o.lvMax + ' 장소는 이 시간대에 맞는 곳이 없어서 쉬운 곳으로 채웠어요. 시간을 바꿔 보세요.');
   if (c.stops.some(s => s.p.generic)) n.push('‘동네 어디서나’ 장소는 지도 앱에서 가까운 곳을 찾아 가면 돼요.');
   return n;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { PLACES, OPT, DEFAULTS, buildCourse, resolveOpts, hoursOn, travel, courseNotes, fmtTime };
+  module.exports = { PLACES, OPT, DEFAULTS, buildCourse, resolveOpts, hoursOn, travel, tripOf, courseNotes, fmtTime, METRO };
 }
 if (!HAS_DOM) return;
 
@@ -1212,13 +2222,36 @@ let favs = readStore(KEY_FAVS, null);
 if (favs === null) favs = readStore('honnolgak.seoul.favs.v1', []); /* carry over picks from the beta name */
 if (!Array.isArray(favs)) favs = [];
 favs = favs.filter(id => BY_ID[id]);
-let seed = 7 + Math.floor(Math.random() * 9000);
+/* 혼놀 도장: { placeId: 'YYYY-MM-DD' }. Level N opens once you hold LV_NEED[N-1] stamps from level N-1 places. */
+const KEY_STAMPS = 'honjanolja.stamps.v1';
+const LV_NEED = [0, 3, 2, 1, 1, 1];
+let stamps = readStore(KEY_STAMPS, {});
+if (!stamps || typeof stamps !== 'object' || Array.isArray(stamps)) stamps = {};
+for (const id of Object.keys(stamps)) if (!BY_ID[id] || typeof stamps[id] !== 'string') delete stamps[id];
+function stampCount(lv) { let n = 0; for (const id in stamps) if (BY_ID[id].lv === lv) n++; return n; }
+function myLevel() { let l = 1; while (l < 5 && stampCount(l) >= LV_NEED[l]) l++; return l; }
+function isMaster() { return myLevel() === 5 && stampCount(5) >= LV_NEED[5]; }
+function lockMsg(lv) {
+  const me = myLevel();
+  if (lv === me + 1) return 'Lv.' + me + ' 장소에 도장 ' + LV_NEED[me] + '개를 모으면 열려요 (지금 ' + stampCount(me) + '개)';
+  return 'Lv.' + (lv - 1) + '까지 깨야 열려요. 지금은 Lv.' + me + ' 도전 중이에요';
+}
+/* a saved course level above what is unlocked falls back to the highest open level */
+function clampLv() { if (pick('lv', state.lv).max > myLevel()) { state.lv = 'l' + myLevel(); return true; } return false; }
+clampLv();
+let seed =7 + Math.floor(Math.random() * 9000);
 let course = null;
+/* places the last few rerolls showed, so the next one goes somewhere else */
+let recentIds = [];
 let tab = 'course';
 
 /* ================= course UI ================= */
+const LOCK = '<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.2" y="5.2" width="7.6" height="5.4" rx="1.2"/><path d="M3.9 5.2V3.9a2.1 2.1 0 0 1 4.2 0v1.3"/></svg>';
 function chipHTML(group, x) {
   const id = 'o-' + group + '-' + x.id;
+  if (group === 'lv' && x.max > myLevel())
+    return '<label class="chip locked" for="' + id + '" data-locked="' + x.max + '"><input type="radio" name="lv" id="' + id + '" value="' + x.id + '" disabled>' +
+      '<span>' + LOCK + esc(x.label) + '<small>' + esc(x.sub) + '</small></span></label>';
   return '<label class="chip" for="' + id + '"><input type="radio" name="' + group + '" id="' + id + '" value="' + x.id + '"' + (state[group] === x.id ? ' checked' : '') + '>' +
     '<span>' + esc(x.label) + (x.sub ? '<small>' + esc(x.sub) + '</small>' : '') + '</span></label>';
 }
@@ -1241,8 +2274,30 @@ function renderStartSel() {
 function startLabel() { return state.start === 'here' ? '내 위치' : pick('start', state.start).label; }
 function updateMoreSummary() {
   const parts = [startLabel() + ' 출발', pick('move', state.move).label, pick('day', state.day).label + ' ' + pick('when', state.when).label];
+  if (state.until !== 'u0') parts.push(pick('until', state.until).label + '까지');
   if (state.rain === 'rain') parts.push('비');
   $('#more-sum').textContent = parts.join(' · ');
+  updateCond();
+}
+/* the one-line summary above the course; the full form opens from 조건 바꾸기 */
+function updateCond() {
+  const b = pick('budget', state.budget);
+  const parts = [startLabel() + ' 출발', pick('dur', state.dur).label, b.id === 'b9' ? '예산 넉넉히' : '예산 ' + b.label, pick('mood', state.mood).label, pick('lv', state.lv).label];
+  if (state.pace !== 'p0') parts.push(pick('pace', state.pace).label);
+  if (state.day !== 'today' || state.when !== 'now') parts.push(pick('day', state.day).label + ' ' + pick('when', state.when).label);
+  if (state.until !== 'u0') parts.push(pick('until', state.until).label + '까지');
+  if (state.rain === 'rain') parts.push('비 와요');
+  $('#cond-sum').textContent = parts.join(' · ');
+}
+function setPanel(open) {
+  $('#opts').hidden = !open;
+  const b = $('#cond-btn');
+  b.setAttribute('aria-expanded', String(open));
+  b.textContent = open ? '접기' : '조건 바꾸기';
+}
+function renderLvChips() {
+  const box = document.querySelector('[data-group="lv"]');
+  if (box) box.innerHTML = OPT.lv.map(x => chipHTML('lv', x)).join('');
 }
 /* GPS start: ask once per pick, keep the position only in memory */
 function useMyLocation() {
@@ -1255,7 +2310,7 @@ function useMyLocation() {
       const lat = pos.coords.latitude, lon = pos.coords.longitude;
       if (lat < 37.40 || lat > 37.72 || lon < 126.74 || lon > 127.22) { back('지금 위치가 서울 밖이에요. 출발역을 골라 주세요.'); return; }
       state.here = { lat: Math.round(lat * 1000) / 1000, lon: Math.round(lon * 1000) / 1000 };
-      state.start = 'here'; saveOpts(); updateMoreSummary(); regenerate(false);
+      state.start = 'here'; recentIds = []; saveOpts(); updateMoreSummary(); regenerate(false);
       toast('내 위치에서 출발하는 코스로 바꿨어요');
     }, () => back('위치를 못 가져왔어요. 출발역을 골라 주세요.'), { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
   } catch (e) { back('위치를 못 가져왔어요. 출발역을 골라 주세요.'); }
@@ -1266,12 +2321,16 @@ function renderMust() {
   const p = BY_ID[state.must];
   box.hidden = false;
   box.innerHTML = '<span>꼭 넣을 곳 <b>' + esc(p.short) + '</b></span><button type="button" id="must-x" aria-label="꼭 넣을 곳 빼기">빼기</button>';
-  $('#must-x').addEventListener('click', () => { state.must = null; saveOpts(); renderMust(); regenerate(false); });
+  $('#must-x').addEventListener('click', () => { state.must = null; recentIds = []; saveOpts(); renderMust(); regenerate(false); });
 }
 function saveOpts() { writeStore(KEY_OPTS, Object.assign({}, state, { here: undefined })); }
+function reroll() {
+  if (course) recentIds = course.stops.map(s => s.p.id).concat(recentIds).slice(0, 14);
+  regenerate(true);
+}
 function regenerate(newSeed) {
   if (newSeed) seed = (seed * 31 + 17 + Math.floor(Math.random() * 97)) % 2147483000;
-  course = buildCourse(resolveOpts(state, new Date(), seed));
+  course = buildCourse(resolveOpts(Object.assign({}, state, { avoid: recentIds }), new Date(), seed));
   renderCourse();
   if (courseOnMap) { courseOnMap = course; drawCourseOverlay(); }
 }
@@ -1283,15 +2342,37 @@ function searchQuery(p, at) {
 function naverUrl(q) { return 'https://map.naver.com/p/search/' + encodeURIComponent(q.replace(/\s+/g, ' ').trim()); }
 function kakaoUrl(q) { return 'https://map.kakao.com/link/search/' + encodeURIComponent(q.replace(/\s+/g, ' ').trim()); }
 const HEART = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.6S2.6 10.4 2.6 6.4A3 3 0 0 1 8 4.7a3 3 0 0 1 5.4 1.7c0 4-5.4 7.2-5.4 7.2Z"/></svg>';
+function lineBadge(L) {
+  return '<span class="lb' + (L.b.length === 1 ? ' one' : '') + '" style="--lb:' + L.bg + ';--lt:' + L.ink + '">' + esc(L.b) + '<span class="sr">' + esc(L.n.slice(L.b.length)) + '</span></span>';
+}
 function legText(s) {
   const tr = s.travel;
-  let t;
-  if (tr.mode === 'near') t = '<b>근처에서 찾기</b> · 약 ' + tr.min + '분';
-  else if (tr.mode === 'walk') t = '<b>걸어서</b> ' + tr.min + '분';
-  else if (tr.mode === 'car') t = '<b>차·택시</b> 약 ' + tr.min + '분';
-  else t = '<b>지하철</b> 약 ' + fmtDur(tr.min) + ' (역까지 걷는 시간 포함)';
-  if (s.wait > 0) t += ' · ' + s.wait + '분 기다리면 오픈';
-  return t;
+  const wait = s.wait > 0 ? ' · ' + s.wait + '분 기다리면 오픈' : '';
+  if (tr.mode === 'near') return '<b>근처에서 찾기</b> · 약 ' + tr.min + '분' + wait;
+  if (tr.mode === 'walk') return '<b>걸어서</b> ' + tr.min + '분' + (tr.min >= 20 ? ' · 버스를 타면 더 빠를 수 있어요' : '') + wait;
+  if (tr.mode === 'car') return '<b>차·택시</b> 약 ' + tr.min + '분' + wait;
+  const d = tripOf(tr), xf = d.rides.length - 1;
+  let t = '<b>지하철</b> 약 ' + fmtDur(tr.min) + (xf ? ' · 환승 ' + xf + '번' : '') + wait + '<ol class="trip">';
+  if (d.walkA.min >= 3) t += '<li class="tw">' + esc(d.walkA.name) + '까지 걸어서 ' + d.walkA.min + '분</li>';
+  d.rides.forEach((r, k) => {
+    t += '<li class="tr">' + lineBadge(r.line) + '<span>' + esc(r.from.name) + ' → ' + esc(r.to.name) +
+      '<small>' + (k ? '갈아타기 · ' : '') + esc(r.next.name) + ' 방면 · ' + r.stops + '정거장</small></span></li>';
+  });
+  if (d.walkB.min >= 3) t += '<li class="tw">' + esc(d.walkB.name) + '에서 걸어서 ' + d.walkB.min + '분</li>';
+  return t + '</ol>';
+}
+function legPlain(s) {
+  const tr = s.travel;
+  if (tr.mode === 'near') return '근처에서 찾기 ' + tr.min + '분';
+  if (tr.mode === 'walk') return '걸어서 ' + tr.min + '분';
+  if (tr.mode === 'car') return '차·택시 약 ' + tr.min + '분';
+  return '지하철 약 ' + fmtDur(tr.min) + ' (' + tripOf(tr).rides.map(r => r.line.n + ' ' + r.from.name + '→' + r.to.name).join(', ') + ')';
+}
+/* why nothing fits, in words: usually a curfew too close to the start */
+function emptyText(o) {
+  if (o.untilMin && o.untilMin <= o.startMin) return '<b>' + esc(o.untilLabel) + '가 이미 지났어요</b>끝나는 시간을 바꾸거나 언제를 ‘내일’로 골라 보세요.';
+  if (o.untilMin && o.untilMin - o.startMin < 60) return '<b>노는 시간이 너무 짧아요</b>' + esc(o.untilLabel) + '까지 ' + (o.untilMin - o.startMin) + '분밖에 없어요. 끝나는 시간을 늦추거나 언제를 ‘내일’로 바꿔 보세요.';
+  return '<b>이 조건으론 갈 만한 곳이 없어요</b>출발 시간을 바꾸거나 예산·레벨을 넓혀 보세요.';
 }
 function renderCourse() {
   const box = $('#result');
@@ -1301,7 +2382,7 @@ function renderCourse() {
   const no = 'NO.' + seed.toString(36).toUpperCase().padStart(4, '0');
   if (!c.stops.length) {
     box.innerHTML = '<article class="ticket" id="ticket"><div class="t-head"><div class="t-kicker"><span>혼놀 승차권 · 1인</span><span>' + no + '</span></div></div>' +
-      '<div class="empty"><b>이 조건으론 갈 만한 곳이 없어요</b>출발 시간을 바꾸거나 예산·레벨을 넓혀 보세요.</div></article>';
+      '<div class="empty">' + emptyText(o) + '</div></article>';
     return;
   }
   const notes = courseNotes(c).map(n => '<li>' + esc(n) + '</li>').join('');
@@ -1317,6 +2398,7 @@ function renderCourse() {
       '<div class="stop-meta">' + esc(cat.label) + ' · ' + fmtDur(s.stay) + ' · ' + fmtWon(p.cost) + ' · Lv.' + p.lv + (p.generic ? ' · ' + esc((s.at.near && s.at.near.name) || '') + ' 근처' : '') + '</div>' +
       '<p class="stop-tip">' + esc(p.tip) + '</p>' +
       '<div class="stop-links">' +
+        stampBtn(p.id, 'mini stampbtn') +
         (p.generic ? '' : '<button type="button" class="mini" data-mapto="' + p.id + '">지도</button>') +
         '<a class="mini" href="' + naverUrl(q) + '" target="_blank" rel="noopener">네이버 지도</a>' +
         '<a class="mini" href="' + kakaoUrl(q) + '" target="_blank" rel="noopener">카카오맵</a>' +
@@ -1327,7 +2409,8 @@ function renderCourse() {
   box.innerHTML = '<article class="ticket" id="ticket" aria-label="' + esc(title) + '">' +
     '<div class="t-head"><div class="t-kicker"><span>혼놀 승차권 · 1인</span><span>' + no + '</span></div>' +
     '<h2 class="t-title">' + esc(title) + '</h2>' +
-    '<p class="t-sub">' + esc(dayWord(o)) + ' ' + fmtTime(o.startMin) + ' 출발 · ' + esc(o.start.name) + ' · ' + esc(pick('move', state.move).label) + '</p>' +
+    '<p class="t-sub">' + esc(dayWord(o)) + ' ' + fmtTime(o.startMin) + ' 출발 · ' + esc(o.start.name) + ' · ' + esc(pick('move', state.move).label) +
+      (o.pace !== 'p0' ? ' · ' + esc(pick('pace', o.pace).label) : '') + (o.untilMin ? ' · ' + esc(o.untilLabel) + '까지' : '') + '</p>' +
     '<dl class="t-meta">' +
       '<div><dt>시간</dt><dd class="num">' + fmtTime(o.startMin) + '–' + fmtTime(c.endMin) + '<small>' + fmtDur(c.endMin - o.startMin) + '</small></dd></div>' +
       '<div><dt>예상 비용</dt><dd class="num">' + fmtTotal(c.cost) + '<small>교통비 별도</small></dd></div>' +
@@ -1342,7 +2425,7 @@ function renderCourse() {
       '<button type="button" id="act-map"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.5 2 4v9.5L6 12l4 1.5 4-1.5V2.5L10 4Z"/><path d="M6 2.5V12M10 4v9.5"/></svg>지도로 보기</button>' +
       '<button type="button" id="act-share"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 9.5V2M5.2 4.6 8 1.8l2.8 2.8"/><path d="M5 7H3.5v7h9V7H11"/></svg>공유</button>' +
     '</div></article>';
-  $('#act-reroll').addEventListener('click', () => { regenerate(true); });
+  $('#act-reroll').addEventListener('click', reroll);
   $('#act-map').addEventListener('click', () => { courseOnMap = course; switchTab('map'); drawCourseOverlay(true); });
   $('#act-share').addEventListener('click', shareCourse);
 }
@@ -1352,7 +2435,7 @@ function courseText(c) {
   const lines = ['[혼자놀자] 서울 ' + dur.label + ' ' + mood.label + ' 코스',
     '혼놀 Lv.' + c.lvMax + ' · ' + fmtTime(o.startMin) + '–' + fmtTime(c.endMin) + ' · 예상 ' + fmtTotal(c.cost) + '(교통비 별도)',
     fmtTime(o.startMin) + ' 출발 · ' + o.start.name];
-  c.stops.forEach((s, i) => lines.push(fmtTime(s.begin) + ' ' + (i + 1) + '. ' + s.p.name + ' (' + fmtDur(s.stay) + ')'));
+  c.stops.forEach((s, i) => lines.push('  ↓ ' + legPlain(s), fmtTime(s.begin) + ' ' + (i + 1) + '. ' + s.p.name + ' (' + fmtDur(s.stay) + ')'));
   lines.push(fmtTime(c.endMin) + ' 코스 끝');
   return lines.join('\n');
 }
@@ -1386,10 +2469,105 @@ function toast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => { t.hidden = true; }, 2200);
 }
-function renderLevels() {
+/* ================= 혼놀 도장 · 레벨 ================= */
+const STAMP_ICON = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.1 1.8h3.8v3.6l1.9 2.5H4.2l1.9-2.5Z"/><path d="M2.6 9.6h10.8v2.6H2.6Z"/><path d="M3.4 14.4h9.2"/></svg>';
+function lvGa(n) { return 'Lv.' + n + (n === 1 || n === 3 ? '이' : '가'); }
+function todayKey() { const d = new Date(); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+function dateText(k) { const m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(k || ''); return m ? (+m[2]) + '월 ' + (+m[3]) + '일' : ''; }
+function stampLabel(id, big) {
+  if (!stamps[id]) return big ? '다녀왔어요 · 도장 찍기' : '다녀왔어요';
+  return big ? '도장 찍음 · ' + dateText(stamps[id]) : '도장 찍음';
+}
+function stampBtn(id, cls) {
+  const big = /\bbtn\b/.test(cls);
+  return '<button type="button" class="' + cls + '" data-stamp="' + id + '" data-big="' + (big ? 1 : 0) + '" aria-pressed="' + !!stamps[id] + '">' + STAMP_ICON + '<span>' + stampLabel(id, big) + '</span></button>';
+}
+function lvState(i) {
+  const me = myLevel(), need = LV_NEED[i], have = Math.min(stampCount(i), need);
+  if (i < me || (i === 5 && isMaster())) return '<span class="lv-state done">' + (i === 5 ? '마스터' : '깼어요') + '</span>';
+  if (i === me) return '<span class="lv-state now">도장 ' + have + '/' + need + '</span>';
+  return '<span class="lv-state">' + LOCK + '잠김</span>';
+}
+function ladderHTML() {
   let h = '';
-  for (let i = 1; i <= 5; i++) h += '<li><span class="lv-tag">Lv.' + i + pipsHTML(i) + '</span><div><b>' + esc(LEVELS[i].name) + '</b><p>' + esc(LEVELS[i].desc) + '</p></div></li>';
-  $('#lv-list').innerHTML = h;
+  for (let i = 1; i <= 5; i++) h += '<li><span class="lv-tag">Lv.' + i + pipsHTML(i) + '</span><div><b>' + esc(LEVELS[i].name) + '</b><p>' + esc(LEVELS[i].desc) + '</p></div>' + lvState(i) + '</li>';
+  return h;
+}
+function renderLevels() { $('#lv-list').innerHTML = ladderHTML(); }
+function renderMyLevel() {
+  const me = myLevel(), total = Object.keys(stamps).length;
+  let title, sub, bar = '';
+  if (isMaster()) {
+    title = '혼놀 마스터 달성!';
+    sub = '도장 ' + total + '개 · 다섯 단계를 다 깼어요';
+    for (let i = 0; i < 5; i++) bar += '<i class="on"></i>';
+  } else {
+    const need = LV_NEED[me], have = Math.min(stampCount(me), need);
+    title = '내 혼놀 레벨 · ' + LEVELS[me].name;
+    for (let i = 0; i < need; i++) bar += '<i' + (i < have ? ' class="on"' : '') + '></i>';
+    sub = 'Lv.' + me + ' 장소 도장 ' + have + '/' + need + ' · ' + (me < 5 ? '다 모으면 Lv.' + (me + 1) + ' ‘' + LEVELS[me + 1].name + '’ 열려요' : '찍으면 혼놀 마스터예요');
+    if (!total) sub = '다녀온 곳에 ‘다녀왔어요’를 눌러 도장 ' + need + '개를 모으면 Lv.2가 열려요';
+  }
+  $('#mylv').innerHTML = '<span class="mylv-badge" aria-hidden="true"><small>Lv.</small>' + me + '</span>' +
+    '<span class="mylv-body"><b>' + esc(title) + '</b><span class="mylv-bar" aria-hidden="true">' + bar + '</span><small>' + esc(sub) + '</small></span><span class="chev" aria-hidden="true"></span>';
+}
+function stampListHTML() {
+  const ids = Object.keys(stamps).sort((a, b) => stamps[b].localeCompare(stamps[a]));
+  if (!ids.length) return '<p class="stamp-empty">아직 도장이 없어요. 코스에서 다녀온 곳에 ‘다녀왔어요’를 눌러 첫 도장을 찍어 보세요.</p>';
+  return '<ul class="saved-list stamp-list">' + ids.map(id => {
+    const p = BY_ID[id];
+    return '<li><span class="cdot" style="--c:' + CATS[p.cat].c + '"></span><div style="min-width:0"><b>' + esc(p.name) + '</b><small>Lv.' + p.lv + ' · ' + esc(dateText(stamps[id])) + ' 도장</small></div>' +
+      '<button type="button" class="mini" data-open="' + id + '">보기</button><span></span></li>';
+  }).join('') + '</ul>';
+}
+function openLadder() {
+  openSheet('<div class="about"><h2 id="sheet-title">내 혼놀 레벨</h2>' +
+    '<p class="s-tip">다녀온 곳에 ‘다녀왔어요’를 눌러 도장을 찍어요. 지금 레벨의 장소에 도장을 모으면 다음 레벨이 열리고, 그 레벨 장소가 코스에 들어가기 시작해요.</p>' +
+    '<ul class="lv-list">' + ladderHTML() + '</ul>' +
+    '<h3>도장 찍은 곳 ' + Object.keys(stamps).length + '</h3>' + stampListHTML() + '</div>');
+}
+function showLevelUp(lv) {
+  const master = lv > 5;
+  clearTimeout(toastTimer); $('#toast').hidden = true;
+  const html = '<div class="lvup">' +
+    '<div class="lvup-stamp" aria-hidden="true">' + (master ? '<small>HONJA</small><b class="long">MASTER</b>' : '<small>LEVEL UP</small><b>Lv.' + lv + '</b>') + '</div>' +
+    '<h2 id="sheet-title">' + (master ? '혼놀 마스터 달성!' : 'Lv.' + lv + ' ‘' + esc(LEVELS[lv].name) + '’ 열렸어요') + '</h2>' +
+    '<p>' + (master ? '다섯 단계를 다 깼어요. 이제 서울 어디든 혼자 갈 수 있어요.' : esc(LEVELS[lv].desc) + '도 이제 코스에 들어가요.') + '</p>' +
+    (master ? '' : '<p class="s-fine">다음 목표 · Lv.' + lv + ' 장소 도장 ' + LV_NEED[lv] + '개' + (lv < 5 ? '로 Lv.' + (lv + 1) + ' 열기' : '면 혼놀 마스터') + '</p>') +
+    '<div class="s-actions">' + (master ? '' : '<button type="button" class="btn primary" id="lvup-go">Lv.' + lv + ' 코스 뽑아 보기</button>') +
+      '<button type="button" class="btn" id="lvup-ok">좋아요</button></div></div>';
+  openSheet(html, () => {
+    $('#lvup-ok').addEventListener('click', closeSheet);
+    const go = $('#lvup-go');
+    if (go) go.addEventListener('click', () => {
+      state.lv = 'l' + lv; recentIds = []; saveOpts(); renderLvChips(); updateCond();
+      closeSheet(); switchTab('course'); regenerate(true);
+      const tk = $('#ticket'); if (tk) tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+}
+function toggleStamp(id) {
+  const before = myLevel(), wasMaster = isMaster();
+  if (stamps[id]) delete stamps[id]; else stamps[id] = todayKey();
+  writeStore(KEY_STAMPS, stamps);
+  const on = !!stamps[id];
+  document.querySelectorAll('[data-stamp="' + id + '"]').forEach(b => {
+    b.setAttribute('aria-pressed', String(on));
+    const sp = b.querySelector('span'); if (sp) sp.textContent = stampLabel(id, b.dataset.big === '1');
+  });
+  const after = myLevel();
+  renderMyLevel(); renderLevels(); renderStamped();
+  if (after !== before) renderLvChips();
+  if (after < before) {
+    if (clampLv()) { saveOpts(); renderLvChips(); updateCond(); regenerate(false); }
+    toast('도장을 뺐어요. 다시 Lv.' + after + ' 도전 중이에요');
+    return;
+  }
+  if (after > before) { showLevelUp(after); return; }
+  if (!wasMaster && isMaster()) { showLevelUp(6); return; }
+  if (!on) { toast('도장을 뺐어요'); return; }
+  const p = BY_ID[id], me = myLevel();
+  toast('도장 쾅! ' + p.short + (isMaster() ? '' : p.lv === me ? ' · Lv.' + me + ' 도장 ' + Math.min(stampCount(me), LV_NEED[me]) + '/' + LV_NEED[me] : p.lv > me ? ' · Lv.' + p.lv + ' 도장은 그 레벨이 열리면 쳐줘요' : ''));
 }
 
 /* ================= favourites ================= */
@@ -1417,11 +2595,14 @@ function renderSaved() {
       '<button type="button" class="mini" data-open="' + id + '">보기</button><button type="button" class="mini" data-fav="' + id + '" aria-pressed="true" aria-label="' + esc(p.short) + ' 찜 빼기">' + HEART + '</button></li>';
   }).join('') + '</ul>';
 }
+function renderStamped() { $('#stamped').innerHTML = stampListHTML(); }
 
 /* ================= sheet ================= */
 let lastFocus = null, sheetCloseCb = null;
 function openSheet(html, after, onClose) {
-  lastFocus = document.activeElement;
+  /* one sheet replacing another (a stamp that levels you up): finish the old one first */
+  if (!$('#sheet').hidden) { const cb = sheetCloseCb; sheetCloseCb = null; if (cb) cb(); }
+  else lastFocus = document.activeElement;
   $('#sheet-body').innerHTML = html;
   $('#scrim').hidden = false;
   const sh = $('#sheet'); sh.hidden = false; sh.scrollTop = 0;
@@ -1447,6 +2628,7 @@ function openPlace(id) {
   const cat = CATS[p.cat], faved = favs.includes(id);
   const from = state.start === 'here' && state.here ? state.here : pick('start', state.start);
   const q = searchQuery(p, p.generic ? { near: nearUrban(from) } : null);
+  const locked = p.lv > myLevel();
   const html = '<p class="s-eyebrow"><span class="cdot" style="--c:' + cat.c + '"></span>' + esc(cat.label) + ' · ' + esc(p.area) + '</p>' +
     '<h2 class="s-title" id="sheet-title">' + esc(p.name) + '</h2>' +
     '<div class="s-lv">혼놀&nbsp;' + pipsHTML(p.lv) + 'Lv.' + p.lv + ' ' + esc(LEVELS[p.lv].name) + '</div>' +
@@ -1460,7 +2642,9 @@ function openPlace(id) {
     '<p class="s-info">' + esc(p.info) + '</p>' +
     soloHTML(p) +
     '<div class="s-actions">' +
-      '<button type="button" class="btn primary" id="s-must">이곳 넣어서 코스 짜기</button>' +
+      (locked ? '<button type="button" class="btn primary" id="s-must" aria-disabled="true">' + LOCK + lvGa(p.lv) + ' 열리면 코스에 넣을 수 있어요</button>'
+              : '<button type="button" class="btn primary" id="s-must">이곳 넣어서 코스 짜기</button>') +
+      stampBtn(id, 'btn stampbtn') +
       '<button type="button" class="btn" data-fav="' + id + '" aria-pressed="' + faved + '">' + HEART + '찜</button>' +
       '<a class="btn" href="' + naverUrl(q) + '" target="_blank" rel="noopener">네이버 지도</a>' +
       '<a class="btn" href="' + kakaoUrl(q) + '" target="_blank" rel="noopener">카카오맵</a>' +
@@ -1469,7 +2653,9 @@ function openPlace(id) {
   openSheet(html, () => {
     const rb = $('#s-report'); if (rb) rb.addEventListener('click', () => openReport(id));
     $('#s-must').addEventListener('click', () => {
-      state.must = id; saveOpts(); renderMust();
+      if (locked && p.lv > myLevel()) { toast(lockMsg(p.lv)); return; }
+      if (p.lv > pick('lv', state.lv).max) { state.lv = 'l' + p.lv; renderLvChips(); updateCond(); }
+      state.must = id; recentIds = []; saveOpts(); renderMust();
       closeSheet(); switchTab('course');
       regenerate(true);
       const tk = $('#ticket'); if (tk) tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
@@ -1574,12 +2760,14 @@ function openAbout() {
     '<p class="s-tip">혼자 노는 하루를 조건에 맞춰 짜 주는 서비스예요. 서울 25개 구 혼놀 명소 ' + MAP_PLACES.length + '곳과 동네 어디서나 할 수 있는 혼놀 ' + PLACES.filter(p => p.generic).length + '가지를 담았어요.</p>' +
     '<ul>' +
       '<li>코스는 시간·예산·기분·혼놀 레벨에 장소별 운영시간, 휴무일, 노을 시간, 밥때까지 따져서 짜요. 산길은 해 지기 전에 끝나게 넣어요.</li>' +
-      '<li>이동은 가까우면 도보, 멀면 지하철(역까지 걷는 시간 포함)로 계산한 대략값이에요. 교통비는 예산에서 빼고 계산해요.</li>' +
+      '<li>이동은 가까우면 걸어서, 멀면 지하철로 짜고 몇 호선을 타고 어디서 갈아타는지 알려 줘요. 시간은 역 사이 거리로 어림한 값이라 급행·배차 간격·막차는 반영하지 못해요. 교통비는 예산에서 빼고 계산해요.</li>' +
       '<li>‘내 위치에서 출발’을 고르면 그때만 위치를 써서 코스를 짜요. 위치는 저장하거나 어디로 보내지 않아요.</li>' +
-      '<li>지도는 한강과 산, 공원을 단순하게 그린 일러스트예요. 길 찾기는 네이버 지도·카카오맵 버튼으로 해 주세요.</li>' +
+      '<li>지도는 한강과 산, 공원, 지하철 노선을 단순하게 그린 일러스트예요. 버스까지 포함한 자세한 길 찾기는 네이버 지도·카카오맵 버튼으로 해 주세요.</li>' +
+      '<li>지하철역 위치는 서울 열린데이터광장의 지하철역 정보(공공누리 제1유형)를 썼어요.</li>' +
       '<li>운영시간·요금은 2026년 10월 기준 국가유산청·서울시·각 시설 안내와 보도 내용을 참고했어요. 공휴일 휴무는 반영하지 못했고, 바뀔 수 있으니 가기 전에 한 번 확인해 주세요.</li>' +
       '<li>궁궐·선정릉은 만 24세 이하 무료고, 국립현대미술관도 청소년·대학생 무료 혜택이 있어요. 코스 비용은 일반 요금으로 계산해요.</li>' +
-      '<li>찜과 설정은 이 기기에만 저장돼요. 회원가입도, 광고도 없어요.</li>' +
+      '<li>다녀온 곳에 ‘다녀왔어요’를 누르면 도장이 찍혀요. 지금 레벨의 장소에 도장을 모으면 다음 혼놀 레벨이 열리고, 그 레벨 장소가 코스에 들어가요.</li>' +
+      '<li>찜, 도장, 설정은 이 기기에만 저장돼요. 회원가입도, 광고도 없어요.</li>' +
       (reportMode() === 'off' ? '' : '<li>장소 정보의 ‘제보하기’로 1인석, 분위기 같은 혼놀 정보를 알려 줄 수 있어요. 보낸 내용은 확인한 뒤 앱에 반영해요.</li>') +
     '</ul>' +
     '<h3>동네 어디서나 혼놀</h3>' +
@@ -1596,15 +2784,6 @@ const LON0 = 126.84, LAT0 = 37.61;
 const KX = 111.32 * Math.cos(37.55 * Math.PI / 180), KY = 110.95;
 const P = (lon, lat) => [(lon - LON0) * KX, (LAT0 - lat) * KY];
 const f3 = v => v.toFixed(3);
-/* Han river centre line, west to east */
-const HAN = [
-  [126.755, 37.630], [126.790, 37.612], [126.818, 37.600], [126.835, 37.588], [126.851, 37.579], [126.866, 37.570], [126.880, 37.561],
-  [126.892, 37.552], [126.902, 37.5455], [126.914, 37.5410], [126.928, 37.5375], [126.940, 37.5325], [126.950, 37.5265],
-  [126.959, 37.5200], [126.970, 37.5145], [126.981, 37.5110], [126.996, 37.5125], [127.006, 37.5175], [127.013, 37.5245],
-  [127.021, 37.5310], [127.034, 37.5352], [127.047, 37.5330], [127.058, 37.5285], [127.068, 37.5245], [127.078, 37.5210],
-  [127.092, 37.5190], [127.101, 37.5225], [127.107, 37.5300], [127.112, 37.5390], [127.115, 37.5470], [127.118, 37.5560],
-  [127.124, 37.5640], [127.134, 37.5690], [127.147, 37.5730], [127.160, 37.5790], [127.174, 37.5830], [127.190, 37.5830], [127.215, 37.5780],
-];
 const SAETGANG = [[126.9050, 37.5395], [126.9070, 37.5330], [126.9110, 37.5268], [126.9180, 37.5203], [126.9260, 37.5168],
   [126.9340, 37.5160], [126.9410, 37.5175], [126.9460, 37.5205], [126.9480, 37.5232]];
 const JUNGNANG = [[127.044, 37.705], [127.046, 37.682], [127.049, 37.664], [127.054, 37.648], [127.061, 37.636], [127.066, 37.624], [127.064, 37.612],
@@ -1634,14 +2813,6 @@ const GREENS = [[126.9882, 37.5512, 1.15, 0.85], [126.9580, 37.5840, 0.7, 1.05],
   [126.8346, 37.5277, 0.3, 0.25], [127.0375, 37.4700, 0.35, 0.3], [127.0075, 37.5810, 0.25, 0.4]];
 /* palace and temple grounds: [lon1, lat1 (north-west), lon2, lat2 (south-east)] */
 const PALACES = [[126.9742, 37.5845, 126.9800, 37.5755], [126.9738, 37.5672, 126.9765, 37.5647], [126.9890, 37.5835, 126.9950, 37.5775], [127.0558, 37.5162, 127.0596, 37.5138]];
-/* subway line 2 loop, station by station */
-const LINE2 = [[126.9769, 37.5657], [126.9822, 37.5660], [126.9917, 37.5663], [126.9979, 37.5667], [127.0076, 37.5653], [127.0196, 37.5656], [127.0293, 37.5645],
-  [127.0371, 37.5612], [127.0436, 37.5554], [127.0474, 37.5472], [127.0558, 37.5446], [127.0692, 37.5404], [127.0857, 37.5372], [127.0947, 37.5352],
-  [127.1036, 37.5207], [127.1002, 37.5133], [127.0864, 37.5115], [127.0736, 37.5109], [127.0631, 37.5088], [127.0490, 37.5045], [127.0365, 37.5007],
-  [127.0276, 37.4979], [127.0141, 37.4934], [127.0076, 37.4919], [126.9976, 37.4815], [126.9816, 37.4766], [126.9637, 37.4769], [126.9527, 37.4812],
-  [126.9416, 37.4825], [126.9297, 37.4842], [126.9133, 37.4875], [126.9015, 37.4852], [126.8950, 37.4926], [126.8913, 37.5088], [126.8947, 37.5179],
-  [126.8960, 37.5249], [126.9022, 37.5345], [126.9139, 37.5495], [126.9245, 37.5572], [126.9369, 37.5552], [126.9460, 37.5568], [126.9563, 37.5573],
-  [126.9636, 37.5600]];
 /* m = smallest zoom (px per km) at which the label shows, so the city view stays readable */
 const AREA_LABELS = [
   { t: '한 강', lon: 126.990, lat: 37.5128, cls: 'river' },
@@ -1671,7 +2842,6 @@ const AREA_LABELS = [
   { t: '청계천', lon: 127.0080, lat: 37.5718, cls: 'small', m: 20 }, { t: '탄천', lon: 127.0790, lat: 37.4925, cls: 'small', m: 14 },
   { t: '중랑천', lon: 127.0560, lat: 37.6250, cls: 'small', m: 14 }, { t: '안양천', lon: 126.8640, lat: 37.5050, cls: 'small', m: 14 },
   { t: '양재천', lon: 127.0500, lat: 37.4800, cls: 'small', m: 18 },
-  { t: '2호선', lon: 126.9600, lat: 37.5598, cls: 'line', m: 16 },
 ];
 const REGIONS = [
   { id: 'all', label: '서울 전체', b: [126.800, 37.430, 127.180, 37.700] },
@@ -1719,12 +2889,36 @@ function buildWorld() {
   w += LAKES.map(e => ellipse('lake', e)).join('');
   w += '<path class="isle" d="' + smooth(SEONYU, true) + '"/><path class="isle" d="' + smooth(NODEUL, true) + '"/>' + ellipse('isle green', BAMSEOM);
   $('#water-g').innerHTML = w;
-  $('#line2').setAttribute('d', LINE2.map((a, i) => { const [x, y] = P(a[0], a[1]); return (i ? 'L' : 'M') + f3(x) + ' ' + f3(y); }).join('') + 'Z');
+  buildMetro();
+}
+/* subway layer: every line through its stations; station dots appear once zoomed in */
+const NSS = ' vector-effect="non-scaling-stroke"';
+function metroPath(nodes, closed) {
+  const pts = nodes.map(nd => P(nd.lon, nd.lat));
+  return 'M' + f3(pts[0][0]) + ' ' + f3(pts[0][1]) + curve(pts, closed) + (closed ? 'Z' : '');
+}
+function metroDot(nd) { const [x, y] = P(nd.lon, nd.lat); return 'M' + f3(x) + ' ' + f3(y) + 'h0'; }
+function buildMetro() {
+  let h = '';
+  for (const [li, , seq] of SUBWAY.segs) {
+    const closed = seq.length > 3 && seq[0] === seq[seq.length - 1];
+    h += '<path class="ml" stroke="' + METRO.LN[li].c + '"' + NSS + ' d="' + metroPath((closed ? seq.slice(0, -1) : seq).map(i => METRO.ND[i]), closed) + '"/>';
+  }
+  METRO.LN.forEach((L, li) => {
+    const d = METRO.ND.filter(nd => nd.li === li && METRO.CX[nd.cx].nodes.length === 1).map(metroDot).join('');
+    if (d) h += '<path class="st sd" stroke="' + L.c + '"' + NSS + ' d="' + d + '"/>';
+  });
+  h += '<path class="st sx"' + NSS + ' d="' + METRO.ND.filter(nd => METRO.CX[nd.cx].nodes.length > 1).map(metroDot).join('') + '"/>';
+  h += '<path class="st sf"' + NSS + ' d="' + METRO.ND.map(metroDot).join('') + '"/>';
+  $('#metro-g').innerHTML = h;
 }
 
 const mapEl = $('#map'), overlay = $('#overlay'), world = $('#world');
 const view = { s: 20, tx: 0, ty: 0 };
 let sMin = 5, sMax = 600, mapInit = false, selected = null, courseOnMap = null;
+const KEY_METRO = 'honjanolja.metro.v1';
+let metroOn = readStore(KEY_METRO, true) !== false, routeStations = null;
+const stLabels = [];
 let mapW = 0, mapH = 0;
 const catOn = new Set(Object.keys(CATS));
 const pinEls = new Map(), labelEls = [], clusterPool = [], stopEls = [];
@@ -1785,8 +2979,21 @@ function initMapDom() {
     d.className = 'alabel' + (L.cls ? ' ' + L.cls : '');
     d.innerHTML = '<span>' + esc(L.t) + '</span>';
     d.dataset.lon = L.lon; d.dataset.lat = L.lat; d.dataset.min = L.m || 0;
+    d.dataset.w = L.cls === 'river' ? 120 : L.t.length * (L.cls === 'small' ? 11 : 12.5) + 8;
     overlay.appendChild(d); labelEls.push(d);
   }
+  /* station names: under the pins, shown when zoomed in or when a course rides through */
+  METRO.CX.forEach((c, ci) => {
+    if (c.lon < 126.74 || c.lon > 127.22 || c.lat < 37.41 || c.lat > 37.72) return;
+    const d = document.createElement('div');
+    d.className = 'slabel' + (c.nodes.length > 1 ? ' x' : '');
+    d.innerHTML = '<span>' + esc(c.name) + '</span>';
+    d.hidden = true;
+    overlay.insertBefore(d, overlay.firstChild);
+    stLabels.push({ el: d, c, ci });
+  });
+  stLabels.sort((a, b) => b.c.nodes.length - a.c.nodes.length);
+  setMetro(metroOn, true);
   for (const p of MAP_PLACES) pinEls.set(p.id, makePin(p));
   $('#region-chips').innerHTML = REGIONS.map((r, i) => '<button type="button" class="fchip rchip" data-region="' + r.id + '" aria-pressed="' + (i === 0) + '">' + esc(r.label) + '</button>').join('');
   $('#cat-chips').innerHTML = Object.entries(CATS).map(([k, c]) => '<button type="button" class="fchip" data-cat="' + k + '" aria-pressed="true" style="--c:' + c.c + '"><span class="cdot"></span>' + esc(c.label) + '</button>').join('');
@@ -1796,14 +3003,21 @@ function screenOf(lon, lat) { const [x, y] = P(lon, lat); return [x * view.s + v
 function renderMap() {
   if (!mapInit) return;
   world.setAttribute('transform', 'translate(' + view.tx.toFixed(2) + ' ' + view.ty.toFixed(2) + ') scale(' + view.s.toFixed(5) + ')');
+  /* screen boxes already taken by labels and pins, so station names can stay out of their way */
+  const taken = [];
+  const textW = (t, px) => t.length * px + 8;
   for (const d of labelEls) {
     const show = view.s >= +d.dataset.min;
     d.hidden = !show;
     if (!show) continue;
     const [x, y] = screenOf(+d.dataset.lon, +d.dataset.lat);
     d.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+    const w = +d.dataset.w;
+    taken.push([x - w / 2, y - 9, x + w / 2, y + 9]);
   }
-  overlay.classList.toggle('labels', view.s >= 60);
+  const pinLabels = view.s >= 60;
+  overlay.classList.toggle('labels', pinLabels);
+  $('#metro-g').setAttribute('class', 'metro ' + (view.s >= 34 ? 'near' : 'far') + (courseOnMap ? ' dim' : ''));
   const onCourse = new Set(courseOnMap ? courseOnMap.stops.map(s => s.p.id) : []);
   const pts = [];
   for (const p of MAP_PLACES) {
@@ -1830,6 +3044,8 @@ function renderMap() {
       el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
       el.classList.toggle('sel', p.id === selected);
       el.classList.toggle('dim', !!courseOnMap);
+      taken.push([x - 14, y - 14, x + 14, y + 14]);
+      if (pinLabels || p.id === selected) taken.push([x + 14, y - 12, x + 16 + textW(p.short, 12.5), y + 10]);
     } else {
       for (const it of c.items) it.el.hidden = true;
       let b = clusterPool[ci];
@@ -1844,6 +3060,7 @@ function renderMap() {
       b.setAttribute('aria-label', c.items.map(i => i.p.short).join(', ') + ' 모여 있음, 눌러서 확대');
       b.style.transform = 'translate(' + c.x.toFixed(1) + 'px,' + c.y.toFixed(1) + 'px)';
       b.style.opacity = courseOnMap ? '.45' : '';
+      taken.push([c.x - 18, c.y - 18, c.x + 18, c.y + 18]);
       ci++;
     }
   }
@@ -1868,10 +3085,25 @@ function renderMap() {
       el.dataset.sid = s.id || '';
       el.setAttribute('aria-label', s.start ? '출발: ' + s.label : s.n + '번째: ' + s.label);
       el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      taken.push([x - 16, y - 16, x + 20 + textW(s.label, 12.5), y + 16]);
       si++;
     }
   }
   for (; si < stopEls.length; si++) stopEls[si].hidden = true;
+  /* station names: zoomed in, or the stations a course rides through; transfer stations get first pick */
+  const clash = r => taken.some(o => r[0] < o[2] && r[2] > o[0] && r[1] < o[3] && r[3] > o[1]);
+  for (const L of stLabels) {
+    const used = !!routeStations && routeStations.has(L.ci);
+    let show = routeStations ? used && view.s >= 18 : metroOn && view.s >= 70;
+    if (show) {
+      const [x, y] = screenOf(L.c.lon, L.c.lat);
+      const box = [x + 6, y - 10, x + 10 + textW(L.c.name, used ? 11.5 : 10.5), y + 10];
+      show = x > -90 && x < mapW + 10 && y > -20 && y < mapH + 20 && (used || !clash(box));
+      if (show) { L.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)'; taken.push(box); }
+    }
+    if (L.el.hidden === show) L.el.hidden = !show;
+    L.el.classList.toggle('used', used);
+  }
   /* scale bar */
   const steps = [0.2, 0.5, 1, 2, 5, 10];
   let km = steps[0];
@@ -1879,17 +3111,48 @@ function renderMap() {
   $('#scale-i').style.width = (km * view.s).toFixed(0) + 'px';
   $('#scale-t').textContent = (km < 1 ? km * 1000 + ' m' : km + ' km');
 }
+function setMetro(on, quiet) {
+  metroOn = on;
+  $('#zmetro').setAttribute('aria-pressed', String(on));
+  $('#metro-g').style.display = on ? '' : 'none';
+  if (!quiet) { writeStore(KEY_METRO, on); scheduleRender(); }
+}
+/* the course on the map: dotted walks, rides in their line colours along the actual stations */
 function drawCourseOverlay(fit) {
-  const banner = $('#course-banner');
+  const banner = $('#course-banner'), rg = $('#route-g');
   if (!courseOnMap || !courseOnMap.stops.length) {
-    courseOnMap = null; banner.hidden = true;
-    $('#route').setAttribute('d', ''); $('#route-case').setAttribute('d', '');
+    courseOnMap = null; routeStations = null; banner.hidden = true;
+    rg.innerHTML = '';
     scheduleRender(); return;
   }
   const c = courseOnMap;
-  const pts = [[c.o.start.lon, c.o.start.lat]].concat(c.stops.map(s => [s.at.lon, s.at.lat]));
-  const d = pts.map((a, i) => { const [x, y] = P(a[0], a[1]); return (i ? 'L' : 'M') + f3(x) + ' ' + f3(y); }).join('');
-  $('#route').setAttribute('d', d); $('#route-case').setAttribute('d', d);
+  const seg = (a, b) => { const p = P(a.lon, a.lat), q = P(b.lon, b.lat); return 'M' + f3(p[0]) + ' ' + f3(p[1]) + 'L' + f3(q[0]) + ' ' + f3(q[1]); };
+  const marks = [c.o.start].concat(c.stops.map(s => s.at));
+  const pts = marks.map(m => [m.lon, m.lat]);
+  let walk = '', car = '', rides = '', rideD = '';
+  routeStations = new Set();
+  let from = c.o.start;
+  for (const s of c.stops) {
+    const tr = s.travel, to = s.at;
+    if (tr.mode === 'subway') {
+      let prev = from;
+      for (const r of tripOf(tr).rides) {
+        walk += seg(prev, r.from);
+        const d = metroPath(r.path, false);
+        rideD += d;
+        rides += '<path class="route-ride" stroke="' + r.line.c + '"' + NSS + ' d="' + d + '"/>';
+        for (const nd of r.path) pts.push([nd.lon, nd.lat]);
+        for (const nd of [r.from, r.to]) if (!marks.some(m => haversine(m, nd) < 0.2)) routeStations.add(nd.cx);
+        prev = r.to;
+      }
+      walk += seg(prev, to);
+    } else if (tr.mode === 'car') car += seg(from, to);
+    else walk += seg(from, to);
+    from = to;
+  }
+  rg.innerHTML = '<path class="route-case"' + NSS + ' d="' + walk + car + rideD + '"/>' +
+    (car ? '<path class="route-car"' + NSS + ' d="' + car + '"/>' : '') +
+    (walk ? '<path class="route-walk"' + NSS + ' d="' + walk + '"/>' : '') + rides;
   banner.hidden = false;
   banner.innerHTML = '<b>' + esc(pick('dur', state.dur).label + ' ' + pick('mood', state.mood).label + ' 코스') + '</b><button type="button" id="banner-x">코스 지우기</button>';
   $('#banner-x').addEventListener('click', () => { courseOnMap = null; drawCourseOverlay(false); });
@@ -1994,6 +3257,7 @@ function handleTap(t) {
 $('#zin').addEventListener('click', () => { const k = clamp(view.s * 1.6, sMin, sMax) / view.s; animateTo({ s: view.s * k, tx: mapW / 2 - (mapW / 2 - view.tx) * k, ty: mapH / 2 - (mapH / 2 - view.ty) * k }); setRegionPressed(''); hideHint(); });
 $('#zout').addEventListener('click', () => { const k = clamp(view.s / 1.6, sMin, sMax) / view.s; animateTo({ s: view.s * k, tx: mapW / 2 - (mapW / 2 - view.tx) * k, ty: mapH / 2 - (mapH / 2 - view.ty) * k }); setRegionPressed(''); hideHint(); });
 $('#zfit').addEventListener('click', () => { animateTo(boundsView(REGIONS[0].b, 16)); setRegionPressed('all'); });
+$('#zmetro').addEventListener('click', () => setMetro(!metroOn));
 document.addEventListener('click', e => {
   const r = e.target.closest('[data-region]');
   if (r) { const reg = REGIONS.find(x => x.id === r.dataset.region); animateTo(boundsView(reg.b, reg.id === 'all' ? 16 : 28)); setRegionPressed(reg.id); hideHint(); return; }
@@ -2012,7 +3276,9 @@ document.addEventListener('click', e => {
   const m = e.target.closest('[data-mapto]');
   if (m) { focusPlaceOnMap(m.dataset.mapto); return; }
   const fv = e.target.closest('[data-fav]');
-  if (fv) { toggleFav(fv.dataset.fav); }
+  if (fv) { toggleFav(fv.dataset.fav); return; }
+  const st = e.target.closest('[data-stamp]');
+  if (st) { toggleStamp(st.dataset.stamp); }
 });
 function focusPlaceOnMap(id) {
   const p = BY_ID[id];
@@ -2047,16 +3313,23 @@ $('#opts').addEventListener('change', e => {
   const t = e.target;
   if (t.id === 'start-sel') {
     if (t.value === 'here') { useMyLocation(); return; }
-    state.start = t.value; saveOpts(); updateMoreSummary(); regenerate(false);
+    state.start = t.value; recentIds = []; saveOpts(); updateMoreSummary(); regenerate(false);
     return;
   }
   if (t.type === 'radio' && OPT[t.name]) {
-    state[t.name] = t.value; saveOpts(); updateMoreSummary(); regenerate(false);
+    state[t.name] = t.value; recentIds = []; saveOpts(); updateMoreSummary(); regenerate(false);
   }
 });
+$('#opts').addEventListener('click', e => {
+  const l = e.target.closest('.chip.locked');
+  if (l) { e.preventDefault(); toast(lockMsg(+l.dataset.locked)); }
+});
+$('#cond-btn').addEventListener('click', () => setPanel($('#opts').hidden));
+$('#mylv').addEventListener('click', openLadder);
 $('#opts').addEventListener('submit', e => {
   e.preventDefault();
-  regenerate(true);
+  setPanel(false);
+  reroll();
   const tk = $('#ticket'); if (tk) tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
 });
 $('#btn-lv-help').addEventListener('click', () => { $('#levels-h').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); });
@@ -2069,8 +3342,10 @@ if ('ResizeObserver' in window) new ResizeObserver(() => { if (tab === 'map') { 
 $('#place-count').textContent = MAP_PLACES.length;
 renderOptions();
 renderLevels();
+renderMyLevel();
 initMapDom();
 renderSaved();
+renderStamped();
 regenerate(false);
 const startTab = (location.hash || '').replace('#', '');
 if (startTab === 'map' || startTab === 'saved') switchTab(startTab);
