@@ -23,6 +23,7 @@
 <meta property="og:image" content="https://choej0822-hue.github.io/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="fonts/display.woff" as="font" type="font/woff" crossorigin>
+<script>try{var t=localStorage.getItem('honjanolja.theme.v1');if(t==='light'||t==='dark'||t==='black')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <style>
 @font-face{font-family:"Honja Display";src:url("fonts/display.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
 :root{
@@ -32,7 +33,7 @@
   --surface-2:#F3F6F8;
   --ink:#10223A;
   --ink-2:#4A5C70;
-  --ink-3:#74859A;
+  --ink-3:#5F7185;
   --line:#D3DCE3;
   --sea:#1B5A91;
   --sea-ink:#FFFFFF;
@@ -64,8 +65,8 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0B1520;--surface:#122030;--surface-2:#172838;--ink:#E5EDF4;--ink-2:#A8B7C5;--ink-3:#7A8B9C;--line:#24384B;
-    --sea:#5DA4E3;--sea-ink:#06121E;--sea-soft:#16324A;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#3A2617;--on-c:#FFFFFF;
+    --bg:#0B1520;--surface:#122030;--surface-2:#172838;--ink:#E5EDF4;--ink-2:#A8B7C5;--ink-3:#8696A7;--line:#24384B;
+    --sea:#5DA4E3;--sea-ink:#06121E;--sea-soft:#16324A;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#3A2617;--on-c:#06121E;
     --scrim:rgb(0 0 0 / .55);--shadow:0 1px 2px rgb(0 0 0 / .3), 0 8px 22px rgb(0 0 0 / .35);
     --map-land:#18232F;--map-green:#1C3326;--map-palace:#30291C;--map-water:#123049;--map-bank:#28506F;--map-line2:#3D9A59;--map-label:#8EA2B6;
     --c-walk:#2BA3B6;--c-view:#4F8BEA;--c-heritage:#D39A44;--c-culture:#9175DD;--c-food:#E77446;--c-play:#DE5C93;
@@ -73,8 +74,8 @@
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0B1520;--surface:#122030;--surface-2:#172838;--ink:#E5EDF4;--ink-2:#A8B7C5;--ink-3:#7A8B9C;--line:#24384B;
-  --sea:#5DA4E3;--sea-ink:#06121E;--sea-soft:#16324A;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#3A2617;--on-c:#FFFFFF;
+  --bg:#0B1520;--surface:#122030;--surface-2:#172838;--ink:#E5EDF4;--ink-2:#A8B7C5;--ink-3:#8696A7;--line:#24384B;
+  --sea:#5DA4E3;--sea-ink:#06121E;--sea-soft:#16324A;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#3A2617;--on-c:#06121E;
   --scrim:rgb(0 0 0 / .55);--shadow:0 1px 2px rgb(0 0 0 / .3), 0 8px 22px rgb(0 0 0 / .35);
   --map-land:#18232F;--map-green:#1C3326;--map-palace:#30291C;--map-water:#123049;--map-bank:#28506F;--map-line2:#3D9A59;--map-label:#8EA2B6;
   --c-walk:#2BA3B6;--c-view:#4F8BEA;--c-heritage:#D39A44;--c-culture:#9175DD;--c-food:#E77446;--c-play:#DE5C93;
@@ -83,7 +84,7 @@
 /* 검정: true black for OLED screens; cards sit just above black so they still read as cards */
 :root[data-theme="black"]{
   --bg:#000000;--surface:#0F1012;--surface-2:#17191C;--ink:#ECEFF2;--ink-2:#A9B1BA;--ink-3:#7D8690;--line:#2A2D32;
-  --sea:#5DA4E3;--sea-ink:#04101C;--sea-soft:#122638;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#2C1D10;--on-c:#FFFFFF;
+  --sea:#5DA4E3;--sea-ink:#04101C;--sea-soft:#122638;--sun:#F39A50;--sun-ink:#F6AE72;--sun-soft:#2C1D10;--on-c:#06121E;
   --scrim:rgb(0 0 0 / .7);--shadow:0 0 0 1px rgb(255 255 255 / .02);
   --map-land:#0A0B0D;--map-green:#112018;--map-palace:#221D13;--map-water:#0C2133;--map-bank:#1D3B53;--map-line2:#3D9A59;--map-label:#8B96A1;
   --c-walk:#2BA3B6;--c-view:#4F8BEA;--c-heritage:#D39A44;--c-culture:#9175DD;--c-food:#E77446;--c-play:#DE5C93;
@@ -108,10 +109,10 @@ a{color:inherit}
 .brand svg{width:30px;height:30px;flex:none}
 .logo-sun{fill:var(--sun)}
 .logo-wave{fill:none;stroke:var(--sea);stroke-width:2.2;stroke-linecap:round}
-.brand-name{font-family:var(--font-display);font-size:24px;line-height:1;letter-spacing:-.01em}
+.brand-name{font-family:var(--font-display);font-size:24px;line-height:1;letter-spacing:-.01em;white-space:nowrap}
 .beta{font-size:11.5px;font-weight:600;color:var(--sea);background:var(--sea-soft);border-radius:999px;padding:3px 8px;white-space:nowrap}
 .spacer{flex:1}
-.icon-btn{width:36px;height:36px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;color:var(--ink-2)}
+.icon-btn{width:40px;height:40px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;color:var(--ink-2)}
 .icon-btn svg{width:18px;height:18px}
 
 .main{flex:1;min-height:0;position:relative}
@@ -180,8 +181,8 @@ a{color:inherit}
 .notes li{font-size:12.5px;color:var(--ink-2);padding-left:13px;position:relative}
 .notes li::before{content:"";position:absolute;left:1px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--sun)}
 .tl{list-style:none;margin:0;padding:10px 16px 6px}
-.tl > li{display:grid;grid-template-columns:44px 26px minmax(0,1fr);column-gap:8px}
-.tl .time{font:500 13px/1.2 var(--font-num);color:var(--ink-2);padding-top:4px;text-align:right;font-variant-numeric:tabular-nums}
+.tl > li{display:grid;grid-template-columns:3.1em 26px minmax(0,1fr);column-gap:8px}
+.tl .time{white-space:nowrap;font:500 13px/1.2 var(--font-num);color:var(--ink-2);padding-top:4px;text-align:right;font-variant-numeric:tabular-nums}
 .tl .rail{position:relative;display:flex;justify-content:center}
 .tl .rail::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--line)}
 .tl > li:first-child .rail::before{top:13px}
@@ -278,7 +279,8 @@ a{color:inherit}
 .pin-dot{position:absolute;left:-13px;top:-13px;width:26px;height:26px;border-radius:50%;background:var(--c);color:var(--on-c);display:grid;place-items:center;box-shadow:0 0 0 2px var(--map-land),0 2px 6px rgb(0 0 0 / .22);transition:transform .15s}
 .pin-dot svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .pin-label{position:absolute;left:16px;top:-11px;white-space:nowrap;font-size:12px;font-weight:600;line-height:1.5;background:var(--surface);color:var(--ink);border-radius:6px;padding:1px 6px;box-shadow:0 1px 3px rgb(0 0 0 / .18);display:none}
-.overlay.labels .pin-label,.pin.sel .pin-label{display:block}
+.pin.lbl .pin-label,.pin.sel .pin-label{display:block}
+.pin-label{pointer-events:none}
 .pin.sel{z-index:3}
 .pin.sel .pin-dot{transform:scale(1.2);box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--c),0 3px 8px rgb(0 0 0 / .25)}
 .pin.dim{opacity:.38}
@@ -306,7 +308,7 @@ a{color:inherit}
 
 /* sheet */
 .scrim{position:absolute;inset:0;background:var(--scrim);z-index:20}
-.sheet{position:absolute;left:0;right:0;bottom:0;z-index:21;background:var(--surface);border-radius:18px 18px 0 0;max-height:84%;overflow-y:auto;overscroll-behavior:contain;padding:10px 16px 22px;box-shadow:0 -8px 30px rgb(0 0 0 / .2);animation:up .22s ease-out}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:21;background:var(--surface);border-radius:18px 18px 0 0;max-height:84%;display:flex;flex-direction:column;overflow:hidden;padding:10px 16px 22px;box-shadow:0 -8px 30px rgb(0 0 0 / .2);animation:up .22s ease-out}
 @keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
 .sheet-grip{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 6px}
 .sheet-close{position:absolute;right:12px;top:12px}
@@ -334,7 +336,7 @@ a{color:inherit}
 /* saved */
 .saved-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
 .saved-list li{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 10px 10px 12px}
-.saved-list b{display:block;font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.saved-list b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-weight:600;font-size:14.5px;line-height:1.35;overflow:hidden}
 .saved-list small{display:block;font-size:12px;color:var(--ink-3)}
 .saved-empty{margin-top:16px;background:var(--surface);border:1px dashed var(--line);border-radius:var(--r);padding:26px 18px;text-align:center;color:var(--ink-2)}
 .saved-empty b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
@@ -406,6 +408,18 @@ a{color:inherit}
 .tp-sw b{position:absolute;left:18px;top:19px;width:44%;height:5px;border-radius:3px;opacity:.85}
 .tp-txt b{display:block;font-size:14.5px;font-weight:600}
 .tp-txt small{display:block;font-size:12px;color:var(--ink-3);margin-top:1px}
+/* QA fixes: the sheet body scrolls under a fixed close button; toast clears an open sheet; small screens */
+#sheet-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;margin-inline:-16px;padding-inline:16px}
+.app.sheet-open .toast{bottom:auto;top:64px}
+.mini{min-height:32px;padding:6px 11px}
+.about .lv-list{padding-left:0}
+.more-t{flex:none}
+.t-actions button{white-space:nowrap}
+.tabbar button:focus-visible,.t-actions button:focus-visible{outline-offset:-3px}
+.must.warn{background:var(--surface-2);border:1px dashed var(--sun)}
+.must em{font-style:normal;color:var(--sun-ink);font-weight:600}
+@media (max-width:350px){.beta{display:none}.t-actions button{font-size:12.5px;gap:4px}}
+@media (max-height:500px){.map-ui{grid-auto-flow:column}.compass{display:none}}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
@@ -435,7 +449,7 @@ a{color:inherit}
   <main class="main">
     <section class="tab" id="tab-course" role="tabpanel" aria-labelledby="tb-course">
       <div class="pad">
-        <h1 class="hero">오늘, <em>혼자</em><br>어디 갈까?</h1>
+        <h1 class="hero" id="hero">오늘, <em>혼자</em><br>어디 갈까?</h1>
         <p class="lede">혼자 가도 안 어색한 서울 명소 <span id="place-count">80</span>곳 중에서 지금 갈 만한 코스를 지하철 동선까지 짜 드려요. 다녀온 곳에 도장을 찍으면 혼놀 레벨이 올라가요.</p>
         <button type="button" class="mylv" id="mylv"></button>
         <div class="cond">
@@ -449,7 +463,7 @@ a{color:inherit}
           <fieldset class="q"><legend>지금 기분</legend><div class="chips" data-group="mood"></div></fieldset>
           <fieldset class="q"><legend>혼놀 레벨<button type="button" id="btn-lv-help">레벨이 뭐예요?</button></legend><div class="chips" data-group="lv"></div></fieldset>
           <details class="more" id="more">
-            <summary>세부 설정 <span class="more-sum" id="more-sum"></span></summary>
+            <summary><span class="more-t">세부 설정</span> <span class="more-sum" id="more-sum"></span></summary>
             <div class="more-body">
               <fieldset class="q"><legend id="lg-start">어디서 출발</legend><div class="sel-wrap"><select class="sel" id="start-sel" name="start" aria-labelledby="lg-start"></select></div></fieldset>
               <fieldset class="q"><legend>이동</legend><div class="chips" data-group="move"></div></fieldset>
@@ -464,7 +478,8 @@ a{color:inherit}
           </button>
         </form>
         <div class="must" id="must" hidden></div>
-        <div id="result" aria-live="polite"></div>
+        <div id="result"></div>
+        <p class="sr" id="sr-status" role="status"></p>
 
         <h2 class="section-h" id="levels-h">혼놀 레벨</h2>
         <p class="section-p">장소마다 혼자 가기 얼마나 쉬운지 다섯 단계로 매겼어요. 지금 레벨의 장소에 도장을 모으면 다음 레벨이 열리고, 코스엔 고른 레벨의 장소가 하나씩 들어가요.</p>
@@ -597,7 +612,7 @@ const PLACES = [
   { id: 'tongin', name: '통인시장 엽전도시락', short: '엽전도시락', area: '서촌', cat: 'food', meal: true, covered: true, lat: 37.5807, lon: 126.9701,
     stay: 50, min: 35, cost: 10000, lv: 2, moods: ['taste', 'fun'],
     hours: { s: [660, 960] }, lastEntry: 60, closed: [{ d: 1 }, { d: 0, n: [3] }],
-    info: '1인 1만원(엽전 20개) · 화–일 11–16시 · 월요일·셋째 주 일요일 휴무',
+    info: '1인 1만원(엽전 20개) · 화–일 11–16시 · 월요일·셋째 주 일요일 휴무(휴무일은 방문 전 확인)',
     tip: '엽전으로 시장 반찬을 하나씩 사서 나만의 도시락을 채워요. 1인분 단위라 혼밥 입문으로 좋아요.', q: '통인시장 엽전도시락' },
   { id: 'kyobo', name: '교보문고 광화문점', short: '교보문고', area: '광화문', cat: 'culture', lat: 37.5709, lon: 126.9779,
     stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
@@ -628,7 +643,7 @@ const PLACES = [
     stay: 30, min: 20, cost: 0, lv: 1, moods: ['vibe', 'heal'], tags: ['sunset', 'night'],
     info: '상시 개방 · 무료 · 짧은 오르막',
     tip: '한강과 서울숲, 성수대교가 한눈에 보이는 야경 명소예요. 짧은 오르막이 있어요.', q: '응봉산 팔각정' },
-  { id: 'yeonmujang', name: '성수 연무장길 (팝업·편집숍)', short: '연무장길', area: '성수', cat: 'play', covered: true, lat: 37.5428, lon: 127.0552,
+  { id: 'yeonmujang', name: '성수 연무장길 (팝업·편집숍)', short: '연무장길', area: '성수', cat: 'play', lat: 37.5428, lon: 127.0552,
     stay: 60, min: 30, cost: 0, lv: 2, moods: ['fun', 'vibe'],
     hours: { s: [660, 1260] },
     info: '구경은 무료 · 가게마다 다름',
@@ -669,7 +684,7 @@ const PLACES = [
   { id: 'mangwon_park', name: '망원한강공원', short: '망원한강공원', area: '망원', cat: 'walk', lat: 37.5553, lon: 126.8950,
     stay: 50, min: 25, cost: 0, lv: 1, moods: ['heal', 'vibe', 'think'], tags: ['sunset', 'night'],
     info: '상시 개방 · 무료',
-    tip: '한강 노을 명소예요. 해 지기 30분쯤 전에 도착해서 강가 계단에 앉아 보세요.', q: '망원한강공원' },
+    tip: '한강 노을 명소예요. 해 질 무렵엔 노을, 해 진 뒤엔 다리 야경이 좋아요. 강가 계단에 앉아 쉬어 가요.', q: '망원한강공원' },
   { id: 'seonyudo', name: '선유도공원', short: '선유도공원', area: '한강', cat: 'walk', lat: 37.5453, lon: 126.8995,
     stay: 50, min: 30, cost: 0, lv: 1, moods: ['heal', 'think', 'vibe'],
     hours: { s: [360, 1440] },
@@ -890,8 +905,8 @@ const PLACES = [
   /* 강서·양천·구로·금천 */
   { id: 'botanic', name: '서울식물원 온실', short: '서울식물원', area: '마곡', cat: 'walk', indoor: true, lat: 37.5694, lon: 126.8350,
     stay: 70, min: 40, cost: 5000, lv: 1, moods: ['heal', 'vibe', 'think'],
-    hours: { s: [570, 1080] }, lastEntry: 60, closed: [{ d: 1 }],
-    info: '온실 5,000원 · 9:30–18시(표는 17시까지) · 월요일 휴관 · 바깥 공원은 무료',
+    hours: { m: [3, 10], s: [570, 1080], w: [570, 1020] }, lastEntry: 60, closed: [{ d: 1 }],
+    info: '온실 5,000원 · 9:30–18시(11~2월 17시) · 표는 1시간 전까지 · 월요일 휴관 · 바깥 공원은 무료',
     tip: '열대·지중해 식물이 가득한 큰 유리 온실이에요. 비 오는 날에도 숲속을 걷는 기분이 나요.', q: '서울식물원' },
   { id: 'westlake', name: '서서울호수공원', short: '서서울호수', area: '신월동', cat: 'walk', lat: 37.5277, lon: 126.8346,
     stay: 45, min: 25, cost: 0, lv: 1, moods: ['heal', 'fun'],
@@ -1055,7 +1070,7 @@ const PLACES = [
     tip: '강남역 근처에서 혼자 시간 보내기 제일 무난한 곳이에요. 책 읽을 자리도 있어요.', q: '교보문고 강남점' },
   { id: 'seoulsky', name: '서울스카이 전망대', short: '서울스카이', area: '잠실', cat: 'view', indoor: true, lat: 37.5126, lon: 127.1025,
     stay: 60, min: 40, cost: 31000, lv: 2, moods: ['vibe', 'fun'], tags: ['sunset', 'night'],
-    hours: { s: [600, 1320] }, lastEntry: 60,
+    hours: { s: [630, 1320], dow: { 5: [630, 1380], 6: [630, 1380] } }, lastEntry: 60,
     info: '약 3만원대(날짜·시간에 따라 다름) · 마감 1시간 전까지 입장 · 운영시간 방문 전 확인',
     tip: '롯데월드타워 꼭대기에서 서울 전체를 내려다봐요. 해 질 무렵 들어가면 낮과 밤 풍경을 둘 다 봐요.', q: '서울스카이' },
   /* 용산·여의도·영등포 */
@@ -1090,8 +1105,8 @@ const PLACES = [
     tip: '한강 풍경을 그린 화가 겸재 정선의 미술관이에요. 뒤쪽 궁산에 오르면 그림 속 한강이 보여요.', q: '겸재정선미술관' },
   { id: 'suyeon', name: '성북동 수연산방', short: '수연산방', area: '성북동', cat: 'food', cafe: true, lat: 37.5942, lon: 126.9965,
     stay: 60, min: 30, cost: 12000, lv: 2, indoor: true, moods: ['heal', 'vibe', 'think'],
-    hours: { s: [690, 1260] },
-    info: '전통차 약 1만원대 · 운영시간은 가게 사정에 따라 달라요',
+    hours: { s: [690, 1070], dow: { 6: [690, 1200], 0: [690, 1190] } }, lastEntry: 50, closed: [{ d: 1 }, { d: 2 }],
+    info: '전통차 약 1만원대 · 수–금 11:30–17:50, 토 20시, 일 19:50(주문은 50분 전까지) · 월·화요일 휴무',
     tip: '소설가 이태준이 살던 한옥을 찻집으로 쓰는 곳이에요. 마루에 앉아 차 한 잔 하며 쉬어 가요.', q: '수연산방' },
   { id: 'dooly', name: '둘리뮤지엄', short: '둘리뮤지엄', area: '쌍문동', cat: 'play', indoor: true, lat: 37.6528, lon: 127.0276,
     stay: 60, min: 30, cost: 5000, lv: 2, moods: ['fun', 'heal'],
@@ -1114,8 +1129,8 @@ const PLACES = [
     tip: '궁궐보다 훨씬 고요한 곳이에요. 주말 자유 관람 때 정전 앞 넓은 월대에 서 보면 마음이 차분해져요.', q: '종묘' },
   { id: 'culture284', name: '문화역서울284', short: '문화역서울284', area: '서울역', cat: 'culture', lat: 37.5559, lon: 126.9723,
     stay: 45, min: 25, cost: 0, lv: 1, indoor: true, moods: ['vibe', 'think'],
-    hours: { s: [600, 1140] }, closed: [{ d: 1 }],
-    info: '대부분 무료 · 10–19시 · 월요일 휴관 · 전시 사이엔 쉬기도 해서 방문 전 확인',
+    hours: { s: [600, 1080], dow: { 3: [600, 1140] } }, closed: [{ d: 1 }],
+    info: '대부분 무료 · 10–18시(수 19시) · 월요일 휴관 · 전시 사이엔 쉬기도 해서 방문 전 확인',
     tip: '옛 서울역 건물을 전시장으로 쓰는 곳이에요. 전시가 없어도 오래된 역사 건물 안을 걷는 맛이 있어요.', q: '문화역서울284' },
   { id: 'jeongdok', name: '정독도서관', short: '정독도서관', area: '삼청동', cat: 'culture', lat: 37.5810, lon: 126.9835,
     stay: 60, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'heal'],
@@ -1134,8 +1149,8 @@ const PLACES = [
     tip: '옥상정원에서 경복궁과 광화문광장이 내려다보여요. 전시보다 옥상 때문에 가는 사람도 많아요.', q: '대한민국역사박물관' },
   { id: 'gogung', name: '국립고궁박물관', short: '고궁박물관', area: '광화문', cat: 'culture', lat: 37.5765, lon: 126.9752,
     stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe'],
-    hours: { s: [600, 1080], dow: { 3: [600, 1260], 6: [600, 1260] } },
-    info: '무료 · 10–18시(수·토 21시) · 설·추석 등 휴관일은 방문 전 확인',
+    hours: { s: [600, 1080] }, closed: [{ d: 1, last: true }],
+    info: '무료 · 10–18시 · 매달 마지막 월요일 휴관 · 야간 개장은 방문 전 확인',
     tip: '경복궁 바로 옆이라 궁 산책 전후로 묶기 좋아요. 조선 왕실 물건이 많아서 비 오는 날 코스로도 좋아요.', q: '국립고궁박물관' },
   { id: 'folk_museum', name: '국립민속박물관', short: '민속박물관', area: '삼청동', cat: 'culture', lat: 37.5813, lon: 126.9792,
     stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'fun'],
@@ -1157,11 +1172,6 @@ const PLACES = [
     hours: { s: [540, 1080] }, closed: [{ d: 1 }],
     info: '무료 · 9–18시 · 월요일 휴무',
     tip: '서울 5대 궁 중에 사람이 제일 적어서 혼자 조용히 걷기 좋아요. 서울역사박물관이 바로 옆이에요.', q: '경희궁' },
-  { id: 'donuimun', name: '돈의문박물관마을', short: '돈의문마을', area: '광화문', cat: 'heritage', lat: 37.5687, lon: 126.9681,
-    stay: 45, min: 25, cost: 0, lv: 1, moods: ['vibe', 'fun'],
-    hours: { s: [600, 1140] }, closed: [{ d: 1 }],
-    info: '무료 · 10–19시 · 월요일 휴관 · 운영시간은 방문 전 확인',
-    tip: '옛 골목과 집을 그대로 살린 마을이에요. 80년대 오락실과 이발소를 재현한 집이 있어서 구경하는 재미가 있어요.', q: '돈의문박물관마을' },
   { id: 'whanki', name: '환기미술관', short: '환기미술관', area: '부암동', cat: 'culture', lat: 37.5949, lon: 126.9632,
     stay: 50, min: 30, cost: 10000, lv: 2, indoor: true, moods: ['think', 'vibe', 'heal'],
     hours: { s: [600, 1080] }, closed: [{ d: 1 }],
@@ -1246,8 +1256,8 @@ const PLACES = [
     tip: '국립중앙박물관 바로 옆 넓은 잔디 공원이에요. 박물관 보고 나와서 호숫가 벤치에서 쉬어 가요.', q: '용산가족공원' },
   { id: 'yongsan_elec', name: '용산전자상가', short: '용산전자상가', area: '용산', cat: 'play', covered: true, lat: 37.5338, lon: 126.9625,
     stay: 45, min: 25, cost: 0, lv: 1, moods: ['fun'],
-    hours: { s: [600, 1140] },
-    info: '구경은 무료 · 가게마다 다름 · 일요일 쉬는 가게가 많아요',
+    hours: { s: [600, 1140] }, closed: [{ d: 0 }],
+    info: '구경은 무료 · 가게마다 다름 · 일요일은 쉬는 가게가 많아서 코스에선 빼요',
     tip: '컴퓨터 부품, 게임기, 피규어 가게를 구경하는 재미가 있어요. 사지 않아도 눈요기로 충분해요.', q: '용산전자상가' },
   { id: 'itaewon_food', name: '이태원 세계음식거리', short: '세계음식거리', area: '이태원', cat: 'food', meal: true, lat: 37.5345, lon: 126.9930,
     stay: 50, min: 30, cost: 15000, lv: 2, indoor: true, moods: ['taste', 'fun'], tags: ['night'],
@@ -1366,8 +1376,8 @@ const PLACES = [
     tip: '붓꽃이 가득한 정원 공원이에요. 도봉산 아래라 산 풍경을 보며 평평한 길을 걷기 좋아요.', q: '서울창포원' },
   { id: 'photo_museum', name: '서울시립 사진미술관', short: '사진미술관', area: '창동', cat: 'culture', lat: 37.6534, lon: 127.0500,
     stay: 50, min: 30, cost: 0, lv: 1, indoor: true, moods: ['think', 'vibe'],
-    hours: { s: [600, 1200], dow: { 0: [600, 1080], 6: [600, 1080] } }, closed: [{ d: 1 }],
-    info: '무료 · 화–금 10–20시, 주말 18–19시 · 월요일 휴관 · 2025년에 문 연 곳이라 방문 전 확인',
+    hours: { m: [3, 10], s: [600, 1200], sWe: [600, 1140], w: [600, 1200], wWe: [600, 1080] }, closed: [{ d: 1 }],
+    info: '무료 · 화–금 10–20시, 주말 19시(11~2월 18시) · 월요일 휴관 · 2025년에 문 연 곳이라 방문 전 확인',
     tip: '국내 첫 공공 사진 전문 미술관이에요. 창동역에서 가까워서 북쪽 동네 혼놀 코스로 좋아요.', q: '서울시립 사진미술관' },
   { id: 'april19', name: '국립4·19민주묘지', short: '4·19묘지', area: '수유', cat: 'walk', lat: 37.6466, lon: 127.0102,
     stay: 40, min: 25, cost: 0, lv: 1, moods: ['think', 'heal'],
@@ -1533,7 +1543,7 @@ const PLACES = [
     hours: { s: [660, 1290] },
     info: '약 1.8만원부터 · 코스·시간표는 운영사 홈페이지에서 확인',
     tip: '혼자 타도 아무도 신경 안 써요. 해 질 녘 출발하는 배를 타면 노을과 야경을 한 번에 봐요.', q: '이랜드크루즈 여의도' },
-  { id: 'citytour', name: '서울 시티투어버스', short: '시티투어버스', area: '광화문', cat: 'view', covered: true, lat: 37.5704, lon: 126.9767,
+  { id: 'citytour', name: '서울 시티투어버스', short: '시티투어버스', area: '광화문', cat: 'view', lat: 37.5704, lon: 126.9767,
     stay: 90, min: 60, cost: 24000, lv: 2, moods: ['fun', 'vibe'],
     hours: { s: [570, 1080] }, closed: [{ d: 1 }],
     info: '코스마다 요금 다름(2만원대) · 월요일 쉬는 코스가 많아요 · 시간표는 방문 전 확인',
@@ -1743,7 +1753,7 @@ const PLACES = [
     info: '입장 약 1~1.5만원 · 대부분 24시간',
     tip: '뜨끈한 방에서 땀 빼고 식혜 한 잔이면 몸이 풀려요. 혼자 온 사람이 많아서 편해요.', q: '찜질방' },
 ];
-const BY_ID = Object.fromEntries(PLACES.map(p => [p.id, p]));
+const BY_ID = Object.assign(Object.create(null), Object.fromEntries(PLACES.map(p => [p.id, p])));
 const URBAN = [
   { name: '홍대', key: '홍대', lat: 37.5560, lon: 126.9230 },
   { name: '망원', key: '망원동', lat: 37.5560, lon: 126.9050 },
@@ -1841,11 +1851,19 @@ const OPT = {
   /* how long to stay at each place: fewer places for longer, or more places for less */
   pace: [{ id: 'p0', label: '보통' }, { id: 'slow', label: '여유롭게', sub: '적은 곳에서 오래' }, { id: 'fast', label: '알차게', sub: '짧게 여러 곳' }],
   /* a hard end: nothing in the course runs past it */
-  until: [{ id: 'u0', label: '상관없음' }, { id: 'u18', label: '오후 6시', h: 18 }, { id: 'u20', label: '저녁 8시', h: 20 }, { id: 'u22', label: '밤 10시', h: 22 }],
+  until: [{ id: 'u0', label: '상관없음' }, { id: 'u18', label: '저녁 6시', h: 18 }, { id: 'u20', label: '저녁 8시', h: 20 }, { id: 'u22', label: '밤 10시', h: 22 }],
 };
 const DEFAULTS = { dur: 'd4', pace: 'p0', budget: 'b1', mood: 'heal', lv: 'l1', start: 'hongdae', move: 'walk', day: 'today', when: 'now', until: 'u0', rain: 'sun', must: null };
 /* approximate Seoul sunset by month, minutes after midnight */
-const SUNSET = [1065, 1095, 1120, 1145, 1170, 1190, 1190, 1165, 1125, 1085, 1050, 1040];
+/* Seoul sunset (minutes after midnight, KST) for a date — NOAA's approximate solar formula, good to a couple of minutes */
+function sunsetOn(date) {
+  const N = Math.round((Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 864e5);
+  const g = 2 * Math.PI / 365 * (N - 0.5), rad = Math.PI / 180, lat = 37.5665 * rad;
+  const eqt = 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g) - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
+  const decl = 0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g) - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
+  const ha = Math.acos(Math.cos(90.833 * rad) / (Math.cos(lat) * Math.cos(decl)) - Math.tan(lat) * Math.tan(decl)) / rad;
+  return Math.round(720 - 4 * (126.978 - ha) - eqt + 540);
+}
 const DOW = ['일', '월', '화', '수', '목', '금', '토'];
 
 /* ================= helpers ================= */
@@ -1870,7 +1888,8 @@ function rngFrom(seed) {
 /* ================= course engine ================= */
 function hoursOn(p, date) {
   const dow = date.getDay(), nth = Math.ceil(date.getDate() / 7), m = date.getMonth() + 1;
-  if (p.closed && p.closed.some(r => r.d === dow && (!r.n || r.n.includes(nth)))) return null;
+  const lastWeek = date.getDate() + 7 > new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  if (p.closed && p.closed.some(r => r.d === dow && (!r.n || r.n.includes(nth)) && (!r.last || lastWeek))) return null;
   const H = p.hours;
   if (!H) return [0, 1440];
   if (H.dow && H.dow[dow]) return H.dow[dow];
@@ -1886,14 +1905,14 @@ function hoursOn(p, date) {
   if (weekend) r = (summer ? H.sWe : H.wWe) || r;
   return r;
 }
-/* Han river centre line, west to east */
+/* Han river centre line, west to east (상암–가양, 합정, 반포, 잠실 stretches re-aligned after QA: pins sat in the water) */
 const HAN = [
-  [126.755, 37.630], [126.790, 37.612], [126.818, 37.600], [126.835, 37.588], [126.851, 37.579], [126.866, 37.570], [126.880, 37.561],
-  [126.892, 37.552], [126.902, 37.5455], [126.914, 37.5410], [126.928, 37.5375], [126.940, 37.5325], [126.950, 37.5265],
-  [126.959, 37.5200], [126.970, 37.5145], [126.981, 37.5110], [126.996, 37.5125], [127.006, 37.5175], [127.013, 37.5245],
-  [127.021, 37.5310], [127.034, 37.5352], [127.047, 37.5330], [127.058, 37.5285], [127.068, 37.5245], [127.078, 37.5210],
-  [127.092, 37.5190], [127.101, 37.5225], [127.107, 37.5300], [127.112, 37.5390], [127.115, 37.5470], [127.118, 37.5560],
-  [127.124, 37.5640], [127.134, 37.5690], [127.147, 37.5730], [127.160, 37.5790], [127.174, 37.5830], [127.190, 37.5830], [127.215, 37.5780],
+  [126.755, 37.63], [126.790, 37.612], [126.818, 37.595], [126.835, 37.582], [126.851, 37.572], [126.866, 37.5635], [126.880, 37.5565],
+  [126.892, 37.552], [126.902, 37.5455], [126.914, 37.539], [126.928, 37.5375], [126.940, 37.5325], [126.950, 37.5265], [126.959, 37.52],
+  [126.970, 37.5145], [126.981, 37.511], [126.996, 37.515], [127.006, 37.5175], [127.013, 37.5245], [127.021, 37.531], [127.034, 37.5352],
+  [127.047, 37.533], [127.058, 37.5285], [127.068, 37.5245], [127.078, 37.521], [127.092, 37.5225], [127.101, 37.5265], [127.107, 37.5335],
+  [127.112, 37.539], [127.115, 37.547], [127.118, 37.556], [127.124, 37.564], [127.134, 37.569], [127.147, 37.573], [127.160, 37.579],
+  [127.174, 37.583], [127.190, 37.583], [127.215, 37.578],
 ];
 /* which bank of the Han a point is on, so nobody is sent to a station across the river */
 function hanSide(pos) {
@@ -1924,14 +1943,29 @@ const METRO = (() => {
     return nd;
   });
   const adj = ND.map(() => []);
+  /* branch lines: each stretch gets a zone; a ride may only run on between zones that trains really run through
+     (e.g. 2호선 본선 ↔ 성수지선 needs a change at 성수, 1호선 부평 쪽 ↔ 안양 쪽 a change at 구로) */
+  const BR = { '1호선': [['구로', 'L1N', 'L1W'], 'L1S', 'L1G'], '2호선': ['L2', 'L2S', 'L2W'], '5호선': [['강동', 'L5W', 'L5E'], 'L5M'], '경의중앙선': [['가좌', 'GJW', 'GJE'], 'GJS'] };
+  const THRU = new Set(['L1N|L1W', 'L1N|L1S', 'L5W|L5E', 'L5W|L5M', 'GJW|GJE', 'GJW|GJS']);
+  const thru = (a, b) => a === b || THRU.has(a + '|' + b) || THRU.has(b + '|' + a);
+  const zoneOf = new Map(), segIx = {};
   for (const [li, directed, seq] of D.segs) {
+    const name = LN[li].n;
+    if (name === '경춘선' && seq.length === 2) continue;
+    const k0 = segIx[name] = (segIx[name] || 0) + 1, rule = BR[name] && BR[name][k0 - 1];
+    const split = Array.isArray(rule) ? seq.findIndex(v => ND[v].name === rule[0]) : -1;
     for (let k = 0; k + 1 < seq.length; k++) {
       const a = ND[seq[k]], b = ND[seq[k + 1]];
       const t = RIDE_A + RIDE_B * haversine(a, b);
       adj[a.i].push(b.i, t);
       if (!directed) adj[b.i].push(a.i, t);
+      if (rule) {
+        const z = Array.isArray(rule) ? (k < split ? rule[1] : rule[2]) : rule;
+        zoneOf.set(a.i * 4096 + b.i, z); zoneOf.set(b.i * 4096 + a.i, z);
+      }
     }
   }
+  const LOOP2 = D.segs.find(g => LN[g[0]].n === '2호선')[2];
   /* transfers inside one station: stairs, the walk between platforms, then waiting for the next train */
   for (const c of CX) for (const a of c.nodes) for (const b of c.nodes) {
     if (a !== b) adj[a].push(b, XFER + haversine(ND[a], ND[b]) * 1000 / 70 + LN[ND[b].li].w);
@@ -2009,25 +2043,53 @@ const METRO = (() => {
         if (!best || t < best.t) best = { t, a, b };
       }
     }
+    if (best) best.t += branchChanges(pathOf(best)) * (XFER + 4);
     return best;
+  }
+  function pathOf(tr) {
+    const T = fromNode(tr.a.v), path = [];
+    for (let v = tr.b.v; v !== -1; v = T.prev[v]) path.push(v);
+    return path.reverse();
+  }
+  function branchChanges(path) {
+    let n = 0, z = null;
+    for (let k = 1; k < path.length; k++) {
+      const a = ND[path[k - 1]], b = ND[path[k]];
+      if (a.li !== b.li) { z = null; continue; }
+      const nz = zoneOf.get(a.i * 4096 + b.i);
+      if (nz && z && !thru(z, nz)) n++;
+      if (nz) z = nz;
+    }
+    return n;
   }
   const stName = nm => /역$/.test(nm) ? nm : nm + '역';
   /* the trip as rides: line, board, alight, stops, the next station (for the 방면 sign) */
   function detail(tr) {
-    const T = fromNode(tr.a.v), path = [];
-    for (let v = tr.b.v; v !== -1; v = T.prev[v]) path.push(v);
-    path.reverse();
+    const path = pathOf(tr);
     const rides = [];
     let cur = null;
     for (let k = 0; k < path.length; k++) {
       const nd = ND[path[k]];
-      if (cur && nd.li === cur.li) { cur.to = nd; cur.stops++; cur.path.push(nd); continue; }
+      if (cur && nd.li === cur.li) {
+        const prevNd = cur.path[cur.path.length - 1], z = zoneOf.get(prevNd.i * 4096 + nd.i);
+        if (!(z && cur.zone && !thru(cur.zone, z))) { if (z) cur.zone = z; cur.to = nd; cur.stops++; cur.path.push(nd); continue; }
+        /* same line, but this branch needs a change of train here */
+        cur = { li: nd.li, line: LN[nd.li], from: prevNd, to: nd, stops: 1, next: null, path: [prevNd, nd], zone: z };
+        rides.push(cur);
+        continue;
+      }
       if (cur && cur.stops === 0) rides.pop();
-      cur = { li: nd.li, line: LN[nd.li], from: nd, to: nd, stops: 0, next: null, path: [nd] };
+      cur = { li: nd.li, line: LN[nd.li], from: nd, to: nd, stops: 0, next: null, path: [nd], zone: null };
       rides.push(cur);
     }
     if (cur && cur.stops === 0) rides.pop();
-    for (const r of rides) r.next = r.path[1];
+    for (const r of rides) {
+      r.next = r.path[1];
+      if (r.zone === 'L2') {
+        const i0 = LOOP2.indexOf(r.path[0].i), i1 = LOOP2.indexOf(r.path[1].i), L = LOOP2.length - 1;
+        r.loop = ((i1 - i0 + L) % L === 1) ? '내선순환' : '외선순환';
+      }
+    }
     return {
       rides,
       walkA: { min: Math.round(tr.a.wm), name: stName(ND[tr.a.v].name) },
@@ -2040,7 +2102,8 @@ const METRO = (() => {
 function travel(from, to, move) {
   const straight = haversine(from, to), km = straight * 1.3;
   if (straight < 0.15) return { min: 2, mode: 'walk', km };
-  if (move === 'car') return { min: Math.round(5 + km / 20 * 60), mode: 'car', km };
+  if (move === 'car' && km > 0.8) return { min: Math.round(5 + km / 20 * 60), mode: 'car', km };
+  if (move === 'car') return { min: Math.max(3, Math.round(km / 4.5 * 60)), mode: 'walk', km };
   const walk = Math.max(3, Math.round(km / 4.5 * 60));
   if (walk <= 12) return { min: walk, mode: 'walk', km };
   const sub = METRO.trip(from, to);
@@ -2068,10 +2131,16 @@ function resolveOpts(st, now, seed) {
     else {
       const nm = now.getHours() * 60 + now.getMinutes();
       startMin = Math.ceil(nm / 10) * 10;
-      if (startMin < 480) { startMin = 540; shifted = '이른 시간이라 오전 9시 출발로 맞췄어요.'; }
+      if (startMin < 540) { if (startMin < 480) shifted = '이른 시간이라 오전 9시 출발로 맞췄어요.'; startMin = 540; }
       else if (startMin > 1230) { date.setDate(date.getDate() + 1); dayOffset = 1; startMin = 600; shifted = '늦은 시간이라 내일 오전 10시 출발로 짰어요.'; }
     }
-  } else startMin = w.h * 60;
+  } else {
+    startMin = w.h * 60;
+    if (!dayOffset && startMin < now.getHours() * 60 + now.getMinutes()) {
+      date.setDate(date.getDate() + 1); dayOffset = 1;
+      shifted = w.label + '는 이미 지나서 내일 ' + w.label + ' 출발로 짰어요.';
+    }
+  }
   const start = st.start === 'here' && st.here ? { id: 'here', label: '내 위치', name: '내 위치', lat: st.here.lat, lon: st.here.lon } : pick('start', st.start);
   return {
     durMin: pick('dur', st.dur).min, budget: pick('budget', st.budget).won, mood: pick('mood', st.mood).id,
@@ -2084,7 +2153,7 @@ function resolveOpts(st, now, seed) {
 const NIGHT_END = 1380;
 function buildCourse(o) {
   const rnd = rngFrom(o.seed);
-  const sunset = SUNSET[o.date.getMonth()];
+  const sunset = sunsetOn(o.date);
   const fullEnd = o.startMin + o.durMin;
   /* '몇 시까지' is a curfew: the course ends by then even if '얼마나' would run longer */
   let endLimit = o.untilMin ? Math.min(fullEnd, o.untilMin) : fullEnd;
@@ -2102,7 +2171,8 @@ function buildCourse(o) {
   const stops = [], used = new Set(), catCount = {};
   let meals = 0, cafes = 0, generics = 0, challenge = false, lastMeal = -999;
   /* nearby places that would fit but are closed that day, nearest first */
-  const closedToday = PLACES.filter(p => !p.generic && !hoursOn(p, o.date) && p.moods.includes(o.mood) && p.lv <= o.lvMax && haversine(o.start, p) < 6)
+  const closedToday = PLACES.filter(p => !p.generic && !hoursOn(p, o.date) && p.moods.includes(o.mood) && p.lv <= o.lvMax && haversine(o.start, p) < 6
+    && p.cost <= o.budget && (!o.rain || p.indoor || p.covered))
     .sort((a, b) => haversine(o.start, a) - haversine(o.start, b));
   while (stops.length < maxStops && endLimit - t >= 25) {
     let best = null;
@@ -2118,15 +2188,17 @@ function buildCourse(o) {
         tr = { min: 6, mode: 'near', km: 0 };
         at = { lat: pos.lat, lon: pos.lon, near: u };
       } else { tr = travel(pos, p, o.move); at = p; }
+      /* no 25-minute-plus walks and no 45-minute-plus hops in a day out */
+      if ((tr.mode === 'walk' && tr.min > 25) || tr.min > 45) continue;
       const arrive = t + tr.min;
       const begin = Math.max(arrive, hrs[0]);
       const wait = begin - arrive;
-      if (wait > 30) continue;
+      if (wait > 20) continue;
       const close = hrs[1];
       if (p.lastEntry && begin > close - p.lastEntry) continue;
       const tg = p.tags || [];
       const outdoor = !p.indoor && !p.covered;
-      let stay = Math.min(stayFor(p), close - begin, endLimit + (hardEnd ? 0 : 10) - begin);
+      let stay = Math.min(stayFor(p), close - begin, Math.min(NIGHT_END, endLimit + (hardEnd ? 0 : 10)) - begin);
       /* hills and trails: be back down before sunset; unlit outdoor spots: done by dusk */
       if (tg.includes('day')) stay = Math.min(stay, sunset - 10 - begin);
       else if (outdoor && !tg.includes('night')) stay = Math.min(stay, sunset + 30 - begin);
@@ -2144,7 +2216,10 @@ function buildCourse(o) {
       s -= (catCount[p.cat] || 0) * 1.8;
       /* realistic door-to-door subway times run long, so travel weighs a little less per minute */
       s -= (tr.min / 7 + Math.max(0, tr.min - 28) / 5 + Math.max(0, tr.min - 40) / 2.5) * PACE.travel;
-      s -= wait / 8;
+      s -= wait / 6;
+      /* a long ride for a short stay, or drifting far from where the day started */
+      if (tr.min > 30 && stay < tr.min) s -= 4;
+      if (!p.generic) s -= Math.max(0, haversine(o.start, p) - 7) * 0.6;
       if (p.meal) {
         /* a second meal only once the first one is well behind (lunch, then dinner on a long day) */
         if (meals && begin - lastMeal < 300) s -= (o.mood === 'taste' && span >= 420) ? 2 : 9;
@@ -2192,9 +2267,25 @@ function buildCourse(o) {
     nightCut: nightCut && !(o.untilMin && o.untilMin <= NIGHT_END),
     span,
     mustMissing: !!(o.must && !used.has(o.must)),
-    /* why the chosen level could not be reached: 'budget' when nothing at that level fits the money, else 'time' */
-    levelMissing: o.lvMax >= 2 && !challenge ? (PLACES.some(p => p.lv === o.lvMax && p.cost <= o.budget && (!o.rain || p.indoor || p.covered)) ? 'time' : 'budget') : null,
+    mustWhy: o.must && !used.has(o.must) ? mustWhy(o) : null,
+    /* why the chosen level could not be reached: 'budget' when hardly anything at that level fits the money, else 'time' */
+    levelMissing: o.lvMax >= 2 && !challenge ? (PLACES.filter(p => p.lv === o.lvMax && p.cost <= o.budget && (!o.rain || p.indoor || p.covered)).length >= 3 ? 'time' : 'budget') : null,
   };
+}
+/* 은/는, 이/가, 을/를 after a word, by whether its last syllable has a final consonant */
+function josa(word, withF, without) {
+  const ch = String(word).replace(/[\s)’'”"]+$/, '').slice(-1), c = ch.charCodeAt(0);
+  const fin = c >= 0xAC00 && c <= 0xD7A3 ? (c - 0xAC00) % 28 > 0 : /[0-9]$/.test(ch) ? '013678'.includes(ch) : false;
+  return word + (fin ? withF : without);
+}
+function mustWhy(o) {
+  const p = BY_ID[o.must];
+  if (!hoursOn(p, o.date)) return 'closed';
+  if (o.rain && !(p.indoor || p.covered)) return 'rain';
+  if (p.lv > o.lvMax) return 'level';
+  if (p.cost > o.budget) return 'budget';
+  if (!p.generic && travel(o.start, p, o.move).min > 45) return 'far';
+  return 'time';
 }
 function dayWord(o) { return (o.dayOffset ? '내일' : '오늘') + '(' + DOW[o.date.getDay()] + ')'; }
 function courseNotes(c) {
@@ -2202,23 +2293,34 @@ function courseNotes(c) {
   if (o.shifted) n.push(o.shifted);
   if (c.untilCut && c.stops.length) n.push(o.untilLabel + '까지 끝나도록 짰어요.');
   else if (c.nightCut && c.stops.length) n.push('늦은 밤까지 이어지지 않게 밤 11시 전에 끝나도록 짰어요.');
-  if (c.mustMissing) n.push(BY_ID[o.must].short + '은(는) 이 조건에선 시간이나 예산이 안 맞아서 빠졌어요. 시간을 늘리거나 예산을 바꿔 보세요.');
+  if (c.mustMissing) {
+    const p = BY_ID[o.must], nm = josa(p.short, '은', '는');
+    n.push({
+      closed: nm + ' ' + dayWord(o) + ' 휴무라 못 넣었어요. 다른 날로 골라 보세요.',
+      rain: '비 오는 날 설정이라 야외인 ' + josa(p.short, '은', '는') + ' 뺐어요. 날씨를 맑음으로 바꾸면 넣을 수 있어요.',
+      level: nm + ' Lv.' + p.lv + ' 장소라 Lv.' + o.lvMax + ' 코스엔 못 넣어요. 혼놀 레벨을 올려 보세요.',
+      budget: nm + ' 약 ' + fmtTotal(p.cost) + '이라 예산을 넘어서 못 넣었어요. 예산을 늘려 보세요.',
+      far: nm + ' 출발지에서 너무 멀어서 못 넣었어요. 출발역을 가까운 곳으로 바꿔 보세요.',
+      time: nm + ' 이 시간대엔 들르기 어려워서 못 넣었어요. 시간을 늘리거나 출발 시간을 바꿔 보세요.',
+    }[c.mustWhy] || nm + ' 이 조건에선 못 넣었어요.');
+  }
   if (o.rain) n.push('비 오는 날이라 실내나 지붕 있는 곳만 넣었어요.');
   const closed = c.closedToday.slice(0, 2).map(p => p.short);
   if (closed.length) n.push(dayWord(o) + ' 휴무라 뺀 곳: ' + closed.join(', '));
   if (c.stops.some(s => (s.p.tags || []).includes('sunset') && s.begin <= c.sunset + 10 && s.end >= c.sunset - 40)) n.push('노을은 ' + fmtTime(c.sunset) + ' 무렵이에요. 시간 맞춰 넣었어요.');
-  const mealless = c.stops.length && !c.stops.some(s => s.p.meal) && MEAL_WINDOWS.some(w => w[0] >= o.startMin && w[0] <= c.endMin - 30);
-  if (o.budget === 0) n.push('예산 0원이라 무료로 즐길 수 있는 곳만 골랐어요.' + (mealless ? ' 밥은 따로 챙겨 드세요.' : ''));
+  const mealless = c.stops.length && !c.stops.some(s => s.p.meal) && MEAL_WINDOWS.some(w => w[1] > o.startMin + 30 && w[0] <= c.endMin - 30);
+  if (o.budget === 0) n.push(o.mood === 'taste' ? '예산 0원이라 맛집은 못 넣고 무료로 즐길 수 있는 곳만 골랐어요. 먹으러 가려면 예산을 늘려 보세요.'
+    : '예산 0원이라 무료로 즐길 수 있는 곳만 골랐어요.' + (mealless ? ' 밥은 따로 챙겨 드세요.' : ''));
   else if (mealless && c.span >= 360) n.push('예산이 빠듯해서 밥집은 못 넣었어요. 밥까지 넣으려면 예산을 늘려 보세요.');
   if (c.stops.some(s => ['gyeongbokgung', 'deoksugung', 'changdeokgung', 'changgyeonggung', 'seonjeongneung'].includes(s.p.id))) n.push('궁궐·왕릉은 만 24세 이하면 무료예요. 비용은 일반 요금으로 계산했어요.');
-  if (c.levelMissing === 'budget') n.push('Lv.' + o.lvMax + ' 장소는 이 예산으로 갈 수 있는 곳이 없어서 쉬운 곳으로 채웠어요. 예산을 늘려 보세요.');
+  if (c.levelMissing === 'budget') n.push('Lv.' + o.lvMax + ' 장소는 이 예산으로 갈 만한 곳이 거의 없어서 쉬운 곳으로 채웠어요. 예산을 늘려 보세요.');
   else if (c.levelMissing) n.push('Lv.' + o.lvMax + ' 장소는 이 시간대에 맞는 곳이 없어서 쉬운 곳으로 채웠어요. 시간을 바꿔 보세요.');
   if (c.stops.some(s => s.p.generic)) n.push('‘동네 어디서나’ 장소는 지도 앱에서 가까운 곳을 찾아 가면 돼요.');
   return n;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { PLACES, OPT, DEFAULTS, buildCourse, resolveOpts, hoursOn, travel, tripOf, courseNotes, fmtTime, METRO };
+  module.exports = { PLACES, OPT, DEFAULTS, buildCourse, resolveOpts, hoursOn, travel, tripOf, courseNotes, fmtTime, METRO, sunsetOn, josa };
 }
 if (!HAS_DOM) return;
 
@@ -2231,13 +2333,21 @@ const FEEDBACK_URL = '';
    Left empty, the report button stays hidden on the site. */
 const REPORT_PREFILL_URL = '';
 function readStore(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
-function writeStore(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage off: keep in memory */ } }
+let storeWarned = false;
+function writeStore(k, v) {
+  try { localStorage.setItem(k, JSON.stringify(v)); }
+  catch (e) { /* storage off: keep in memory, and say so once */
+    if (!storeWarned) { storeWarned = true; setTimeout(() => toast('이 브라우저에선 저장이 안 돼요. 닫으면 찜·도장이 사라질 수 있어요.'), 0); }
+  }
+}
 const saved = readStore(KEY_OPTS, null);
 const state = Object.assign({}, DEFAULTS, saved && typeof saved === 'object' ? saved : {});
 /* "my location" is never stored, so a saved 'here' falls back to the default station */
 for (const k of Object.keys(OPT)) if (!OPT[k].some(x => x.id === state[k])) state[k] = DEFAULTS[k];
 delete state.here;
 if (state.must && !BY_ID[state.must]) state.must = null;
+/* weather, day, time, curfew and the must-visit are for one outing: a new day starts from the defaults */
+if (!saved || saved.savedOn !== todayKey()) for (const k of ['day', 'when', 'until', 'rain', 'must']) state[k] = DEFAULTS[k];
 let favs = readStore(KEY_FAVS, null);
 if (favs === null) favs = readStore('honnolgak.seoul.favs.v1', []); /* carry over picks from the beta name */
 if (!Array.isArray(favs)) favs = [];
@@ -2247,7 +2357,10 @@ const KEY_STAMPS = 'honjanolja.stamps.v1';
 const LV_NEED = [0, 3, 2, 1, 1, 1];
 let stamps = readStore(KEY_STAMPS, {});
 if (!stamps || typeof stamps !== 'object' || Array.isArray(stamps)) stamps = {};
-for (const id of Object.keys(stamps)) if (!BY_ID[id] || typeof stamps[id] !== 'string') delete stamps[id];
+for (const id of Object.keys(stamps)) {
+  if (!BY_ID[id] || typeof stamps[id] !== 'string' || !/^\d{4}-\d\d-\d\d$/.test(stamps[id])) delete stamps[id];
+  else if (stamps[id] > todayKey()) stamps[id] = todayKey();
+}
 function stampCount(lv) { let n = 0; for (const id in stamps) if (BY_ID[id].lv === lv) n++; return n; }
 function myLevel() { let l = 1; while (l < 5 && stampCount(l) >= LV_NEED[l]) l++; return l; }
 function isMaster() { return myLevel() === 5 && stampCount(5) >= LV_NEED[5]; }
@@ -2270,7 +2383,7 @@ const LOCK = '<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.2" y="5.2" 
 function chipHTML(group, x) {
   const id = 'o-' + group + '-' + x.id;
   if (group === 'lv' && x.max > myLevel())
-    return '<label class="chip locked" for="' + id + '" data-locked="' + x.max + '"><input type="radio" name="lv" id="' + id + '" value="' + x.id + '" disabled>' +
+    return '<label class="chip locked" for="' + id + '" data-locked="' + x.max + '"><input type="radio" name="lv" id="' + id + '" value="' + x.id + '" aria-disabled="true">' +
       '<span>' + LOCK + esc(x.label) + '<small>' + esc(x.sub) + '</small></span></label>';
   return '<label class="chip" for="' + id + '"><input type="radio" name="' + group + '" id="' + id + '" value="' + x.id + '"' + (state[group] === x.id ? ' checked' : '') + '>' +
     '<span>' + esc(x.label) + (x.sub ? '<small>' + esc(x.sub) + '</small>' : '') + '</span></label>';
@@ -2292,8 +2405,9 @@ function renderStartSel() {
   $('#start-sel').value = state.start;
 }
 function startLabel() { return state.start === 'here' ? '내 위치' : pick('start', state.start).label; }
+function whenText() { return state.day === 'tmr' && state.when === 'now' ? '내일 오전 10시' : pick('day', state.day).label + ' ' + pick('when', state.when).label; }
 function updateMoreSummary() {
-  const parts = [startLabel() + ' 출발', pick('move', state.move).label, pick('day', state.day).label + ' ' + pick('when', state.when).label];
+  const parts = [startLabel() + ' 출발', pick('move', state.move).label, whenText()];
   if (state.until !== 'u0') parts.push(pick('until', state.until).label + '까지');
   if (state.rain === 'rain') parts.push('비');
   $('#more-sum').textContent = parts.join(' · ');
@@ -2304,7 +2418,7 @@ function updateCond() {
   const b = pick('budget', state.budget);
   const parts = [startLabel() + ' 출발', pick('dur', state.dur).label, b.id === 'b9' ? '예산 넉넉히' : '예산 ' + b.label, pick('mood', state.mood).label, pick('lv', state.lv).label];
   if (state.pace !== 'p0') parts.push(pick('pace', state.pace).label);
-  if (state.day !== 'today' || state.when !== 'now') parts.push(pick('day', state.day).label + ' ' + pick('when', state.when).label);
+  if (state.day !== 'today' || state.when !== 'now') parts.push(whenText());
   if (state.until !== 'u0') parts.push(pick('until', state.until).label + '까지');
   if (state.rain === 'rain') parts.push('비 와요');
   $('#cond-sum').textContent = parts.join(' · ');
@@ -2320,39 +2434,57 @@ function renderLvChips() {
   if (box) box.innerHTML = OPT.lv.map(x => chipHTML('lv', x)).join('');
 }
 /* GPS start: ask once per pick, keep the position only in memory */
+let geoReq = 0;
 function useMyLocation() {
+  const my = ++geoReq;
   const prev = state.start === 'here' ? DEFAULTS.start : state.start;
   const back = msg => { $('#start-sel').value = state.start === 'here' && state.here ? 'here' : (state.start = prev); toast(msg); updateMoreSummary(); };
   if (!navigator.geolocation) { back('이 기기에선 위치를 쓸 수 없어요. 출발역을 골라 주세요.'); return; }
   toast('위치 확인 중이에요…');
   try {
     navigator.geolocation.getCurrentPosition(pos => {
+      if (my !== geoReq || $('#start-sel').value !== 'here') return;
       const lat = pos.coords.latitude, lon = pos.coords.longitude;
       if (lat < 37.40 || lat > 37.72 || lon < 126.74 || lon > 127.22) { back('지금 위치가 서울 밖이에요. 출발역을 골라 주세요.'); return; }
       state.here = { lat: Math.round(lat * 1000) / 1000, lon: Math.round(lon * 1000) / 1000 };
       state.start = 'here'; recentIds = []; saveOpts(); updateMoreSummary(); regenerate(false);
       toast('내 위치에서 출발하는 코스로 바꿨어요');
-    }, () => back('위치를 못 가져왔어요. 출발역을 골라 주세요.'), { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+    }, () => { if (my === geoReq && $('#start-sel').value === 'here') back('위치를 못 가져왔어요. 출발역을 골라 주세요.'); }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
   } catch (e) { back('위치를 못 가져왔어요. 출발역을 골라 주세요.'); }
 }
 function renderMust() {
   const box = $('#must');
   if (!state.must) { box.hidden = true; box.innerHTML = ''; return; }
-  const p = BY_ID[state.must];
+  const p = BY_ID[state.must], miss = !!(course && course.mustMissing);
   box.hidden = false;
-  box.innerHTML = '<span>꼭 넣을 곳 <b>' + esc(p.short) + '</b></span><button type="button" id="must-x" aria-label="꼭 넣을 곳 빼기">빼기</button>';
+  box.classList.toggle('warn', miss);
+  box.innerHTML = '<span>꼭 넣을 곳 <b>' + esc(p.short) + '</b>' + (miss ? ' <em>· 이번 코스엔 못 넣었어요(아래 안내 참고)</em>' : '') + '</span><button type="button" id="must-x" aria-label="꼭 넣을 곳 빼기">빼기</button>';
   $('#must-x').addEventListener('click', () => { state.must = null; recentIds = []; saveOpts(); renderMust(); regenerate(false); });
 }
-function saveOpts() { writeStore(KEY_OPTS, Object.assign({}, state, { here: undefined })); }
+function saveOpts() { writeStore(KEY_OPTS, Object.assign({}, state, { here: undefined, savedOn: todayKey() })); }
+const recentSigs = [];
+let courseRefit = false;
+const sigOf = c => c.stops.map(s => s.p.id).join('>');
+function nextSeed() { seed = (seed * 31 + 17 + Math.floor(Math.random() * 97)) % 2147483000; }
+function buildNow() { return buildCourse(resolveOpts(Object.assign({}, state, { avoid: recentIds }), new Date(), seed)); }
+function showCourse() {
+  renderCourse();
+  if (courseOnMap) { courseOnMap = course; drawCourseOverlay(tab === 'map'); if (tab !== 'map') courseRefit = true; }
+}
 function reroll() {
-  if (course) recentIds = course.stops.map(s => s.p.id).concat(recentIds).slice(0, 14);
-  regenerate(true);
+  if (course) {
+    recentIds = course.stops.map(s => s.p.id).concat(recentIds).slice(0, 30);
+    recentSigs.unshift(sigOf(course)); recentSigs.splice(8);
+  }
+  for (let k = 0; k < 6; k++) { nextSeed(); course = buildNow(); if (!recentSigs.includes(sigOf(course))) break; }
+  showCourse();
+  const tk = $('#ticket');
+  if (tk && tab === 'course') tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
 }
 function regenerate(newSeed) {
-  if (newSeed) seed = (seed * 31 + 17 + Math.floor(Math.random() * 97)) % 2147483000;
-  course = buildCourse(resolveOpts(Object.assign({}, state, { avoid: recentIds }), new Date(), seed));
-  renderCourse();
-  if (courseOnMap) { courseOnMap = course; drawCourseOverlay(); }
+  if (newSeed) nextSeed();
+  course = buildNow();
+  showCourse();
 }
 function pipsHTML(lv) { let h = '<span class="pips" aria-hidden="true">'; for (let i = 1; i <= 5; i++) h += '<i' + (i <= lv ? ' class="on"' : '') + '></i>'; return h + '</span>'; }
 function searchQuery(p, at) {
@@ -2376,7 +2508,7 @@ function legText(s) {
   if (d.walkA.min >= 3) t += '<li class="tw">' + esc(d.walkA.name) + '까지 걸어서 ' + d.walkA.min + '분</li>';
   d.rides.forEach((r, k) => {
     t += '<li class="tr">' + lineBadge(r.line) + '<span>' + esc(r.from.name) + ' → ' + esc(r.to.name) +
-      '<small>' + (k ? '갈아타기 · ' : '') + esc(r.next.name) + ' 방면 · ' + r.stops + '정거장</small></span></li>';
+      '<small>' + (k ? '갈아타기 · ' : '') + (r.loop ? r.loop + ' · ' : '') + esc(r.next.name) + ' 방면 · ' + r.stops + '정거장</small></span></li>';
   });
   if (d.walkB.min >= 3) t += '<li class="tw">' + esc(d.walkB.name) + '에서 걸어서 ' + d.walkB.min + '분</li>';
   return t + '</ol>';
@@ -2390,15 +2522,23 @@ function legPlain(s) {
 }
 /* why nothing fits, in words: usually a curfew too close to the start */
 function emptyText(o) {
-  if (o.untilMin && o.untilMin <= o.startMin) return '<b>' + esc(o.untilLabel) + '가 이미 지났어요</b>끝나는 시간을 바꾸거나 언제를 ‘내일’로 골라 보세요.';
-  if (o.untilMin && o.untilMin - o.startMin < 60) return '<b>노는 시간이 너무 짧아요</b>' + esc(o.untilLabel) + '까지 ' + (o.untilMin - o.startMin) + '분밖에 없어요. 끝나는 시간을 늦추거나 언제를 ‘내일’로 바꿔 보세요.';
+  const nowToday = state.when === 'now' && !o.dayOffset;
+  if (o.untilMin && o.untilMin <= o.startMin) return nowToday
+    ? '<b>' + esc(josa(o.untilLabel, '이', '가')) + ' 이미 지났어요</b>끝나는 시간을 바꾸거나 언제를 ‘내일’로 골라 보세요.'
+    : '<b>끝나는 시간이 출발보다 빨라요</b>' + esc(o.untilLabel) + '까지로는 ' + fmtTime(o.startMin) + ' 출발 코스를 짤 수 없어요. 끝나는 시간을 늦춰 보세요.';
+  if (o.untilMin && o.untilMin - o.startMin < 60) return '<b>노는 시간이 너무 짧아요</b>' + esc(o.untilLabel) + '까지 ' + (o.untilMin - o.startMin) + '분밖에 없어요. ' +
+    (o.dayOffset ? '끝나는 시간을 늦춰 보세요.' : '끝나는 시간을 늦추거나 언제를 ‘내일’로 바꿔 보세요.');
   return '<b>이 조건으론 갈 만한 곳이 없어요</b>출발 시간을 바꾸거나 예산·레벨을 넓혀 보세요.';
 }
 function renderCourse() {
   const box = $('#result');
   const c = course, o = c.o;
   const dur = pick('dur', state.dur), mood = pick('mood', state.mood);
-  const title = dur.label + ' ' + mood.label + ' 코스';
+  /* a curfew or the night cut can leave far less than the chosen length: name it by what is left */
+  const realLen = c.stops.length ? c.endMin - o.startMin : dur.min;
+  const title = (realLen < dur.min * 0.7 ? fmtDur(realLen) : dur.label) + ' ' + mood.label + ' 코스';
+  $('#hero').innerHTML = (o.dayOffset ? '내일' : '오늘') + ', <em>혼자</em><br>어디 갈까?';
+  $('#sr-status').textContent = c.stops.length ? '코스를 새로 짰어요: ' + title + ', ' + c.stops.length + '곳' : '이 조건으론 코스를 못 짰어요';
   const no = 'NO.' + seed.toString(36).toUpperCase().padStart(4, '0');
   if (!c.stops.length) {
     box.innerHTML = '<article class="ticket" id="ticket"><div class="t-head"><div class="t-kicker"><span>혼놀 승차권 · 1인</span><span>' + no + '</span></div></div>' +
@@ -2419,7 +2559,7 @@ function renderCourse() {
       '<p class="stop-tip">' + esc(p.tip) + '</p>' +
       '<div class="stop-links">' +
         stampBtn(p.id, 'mini stampbtn') +
-        (p.generic ? '' : '<button type="button" class="mini" data-mapto="' + p.id + '">지도</button>') +
+        (p.generic ? '' : '<button type="button" class="mini" data-mapto="' + p.id + '" aria-label="' + esc(p.short) + ' 지도에서 보기">지도</button>') +
         '<a class="mini" href="' + naverUrl(q) + '" target="_blank" rel="noopener">네이버 지도</a>' +
         '<a class="mini" href="' + kakaoUrl(q) + '" target="_blank" rel="noopener">카카오맵</a>' +
         '<button type="button" class="mini" data-fav="' + p.id + '" aria-pressed="' + faved + '" aria-label="' + esc(p.short) + ' 찜하기">' + HEART + '찜</button>' +
@@ -2433,7 +2573,7 @@ function renderCourse() {
       (o.pace !== 'p0' ? ' · ' + esc(pick('pace', o.pace).label) : '') + (o.untilMin ? ' · ' + esc(o.untilLabel) + '까지' : '') + '</p>' +
     '<dl class="t-meta">' +
       '<div><dt>시간</dt><dd class="num">' + fmtTime(o.startMin) + '–' + fmtTime(c.endMin) + '<small>' + fmtDur(c.endMin - o.startMin) + '</small></dd></div>' +
-      '<div><dt>예상 비용</dt><dd class="num">' + fmtTotal(c.cost) + '<small>교통비 별도</small></dd></div>' +
+      '<div><dt>예상 비용</dt><dd class="num">' + fmtTotal(c.cost) + '<small>입장·식비 기준 · 교통비 별도</small></dd></div>' +
       '<div><dt>혼놀 난이도</dt><dd>' + pipsHTML(c.lvMax) + 'Lv.' + c.lvMax + '<small>' + esc(LEVELS[c.lvMax].name) + ' 코스</small></dd></div>' +
       '<div><dt>들르는 곳</dt><dd>' + c.stops.length + '곳<small>이동 약 ' + fmtDur(c.travelMin) + '</small></dd></div>' +
     '</dl></div>' +
@@ -2446,15 +2586,21 @@ function renderCourse() {
       '<button type="button" id="act-share"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 9.5V2M5.2 4.6 8 1.8l2.8 2.8"/><path d="M5 7H3.5v7h9V7H11"/></svg>공유</button>' +
     '</div></article>';
   $('#act-reroll').addEventListener('click', reroll);
+  renderMust();
   $('#act-map').addEventListener('click', () => { courseOnMap = course; switchTab('map'); drawCourseOverlay(true); });
   $('#act-share').addEventListener('click', shareCourse);
+}
+function startName(o) {
+  if (o.start.id !== 'here') return o.start.name;
+  const nn = METRO.nearNodes(o.start)[0];
+  return nn ? METRO.stName(METRO.ND[nn.v].name) + ' 근처' : '내 위치';
 }
 function courseText(c) {
   const o = c.o;
   const dur = pick('dur', state.dur), mood = pick('mood', state.mood);
   const lines = ['[혼자놀자] 서울 ' + dur.label + ' ' + mood.label + ' 코스',
     '혼놀 Lv.' + c.lvMax + ' · ' + fmtTime(o.startMin) + '–' + fmtTime(c.endMin) + ' · 예상 ' + fmtTotal(c.cost) + '(교통비 별도)',
-    fmtTime(o.startMin) + ' 출발 · ' + o.start.name];
+    dayWord(o) + ' ' + fmtTime(o.startMin) + ' 출발 · ' + startName(o)];
   c.stops.forEach((s, i) => lines.push('  ↓ ' + legPlain(s), fmtTime(s.begin) + ' ' + (i + 1) + '. ' + s.p.name + ' (' + fmtDur(s.stay) + ')'));
   lines.push(fmtTime(c.endMin) + ' 코스 끝');
   return lines.join('\n');
@@ -2499,8 +2645,10 @@ function stampLabel(id, big) {
   return big ? '도장 찍음 · ' + dateText(stamps[id]) : '도장 찍음';
 }
 function stampBtn(id, cls) {
-  const big = /\bbtn\b/.test(cls);
-  return '<button type="button" class="' + cls + '" data-stamp="' + id + '" data-big="' + (big ? 1 : 0) + '" aria-pressed="' + !!stamps[id] + '">' + STAMP_ICON + '<span>' + stampLabel(id, big) + '</span></button>';
+  const big = /\bbtn\b/.test(cls), p = BY_ID[id];
+  if (!stamps[id] && p.lv > myLevel())
+    return '<button type="button" class="' + cls + '" data-stamp="' + id + '" aria-disabled="true">' + LOCK + '<span>' + (big ? lvGa(p.lv) + ' 열리면 도장' : '잠김') + '</span></button>';
+  return '<button type="button" class="' + cls + '" data-stamp="' + id + '" data-big="' + (big ? 1 : 0) + '" aria-pressed="' + !!stamps[id] + '"' + (big ? '' : ' aria-label="' + esc(p.short) + ' 다녀왔어요"') + '>' + STAMP_ICON + '<span>' + stampLabel(id, big) + '</span></button>';
 }
 function lvState(i) {
   const me = myLevel(), need = LV_NEED[i], have = Math.min(stampCount(i), need);
@@ -2532,7 +2680,8 @@ function renderMyLevel() {
     '<span class="mylv-body"><b>' + esc(title) + '</b><span class="mylv-bar" aria-hidden="true">' + bar + '</span><small>' + esc(sub) + '</small></span><span class="chev" aria-hidden="true"></span>';
 }
 function stampListHTML() {
-  const ids = Object.keys(stamps).sort((a, b) => stamps[b].localeCompare(stamps[a]));
+  /* newest first; on the same day the latest stamp on top */
+  const ids = Object.keys(stamps).map((id, i) => [id, i]).sort((a, b) => stamps[b[0]].localeCompare(stamps[a[0]]) || b[1] - a[1]).map(x => x[0]);
   if (!ids.length) return '<p class="stamp-empty">아직 도장이 없어요. 코스에서 다녀온 곳에 ‘다녀왔어요’를 눌러 첫 도장을 찍어 보세요.</p>';
   return '<ul class="saved-list stamp-list">' + ids.map(id => {
     const p = BY_ID[id];
@@ -2560,7 +2709,14 @@ function showLevelUp(lv) {
     $('#lvup-ok').addEventListener('click', closeSheet);
     const go = $('#lvup-go');
     if (go) go.addEventListener('click', () => {
-      state.lv = 'l' + lv; recentIds = []; saveOpts(); renderLvChips(); updateCond();
+      if (myLevel() < lv) { closeSheet(); return; }
+      state.lv = 'l' + lv; recentIds = [];
+      const need = OPT.budget.find(b => PLACES.filter(p => p.lv === lv && p.cost <= b.won).length >= 3);
+      if (need && need.won > pick('budget', state.budget).won) {
+        state.budget = need.id; renderOptions();
+        setTimeout(() => toast('Lv.' + lv + ' 장소가 들어가게 예산을 ' + (need.id === 'b9' ? '넉넉히로 바꿨어요' : need.label + '으로 올렸어요')), 60);
+      }
+      saveOpts(); renderLvChips(); updateCond();
       closeSheet(); switchTab('course'); regenerate(true);
       const tk = $('#ticket'); if (tk) tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
     });
@@ -2568,6 +2724,7 @@ function showLevelUp(lv) {
 }
 function toggleStamp(id) {
   const before = myLevel(), wasMaster = isMaster();
+  if (!stamps[id] && BY_ID[id].lv > before) { toast(lvGa(BY_ID[id].lv) + ' 열리면 도장을 찍을 수 있어요. ' + lockMsg(BY_ID[id].lv)); return; }
   if (stamps[id]) delete stamps[id]; else stamps[id] = todayKey();
   writeStore(KEY_STAMPS, stamps);
   const on = !!stamps[id];
@@ -2579,18 +2736,21 @@ function toggleStamp(id) {
   renderMyLevel(); renderLevels(); renderStamped();
   if (after !== before) renderLvChips();
   if (after < before) {
-    if (clampLv()) { saveOpts(); renderLvChips(); updateCond(); regenerate(false); }
-    toast('도장을 뺐어요. 다시 Lv.' + after + ' 도전 중이에요');
+    const dropMust = !!(state.must && BY_ID[state.must].lv > after);
+    if (dropMust) state.must = null;
+    if (clampLv() || dropMust) { saveOpts(); renderLvChips(); updateCond(); regenerate(false); }
+    toast('도장을 뺐어요. 다시 Lv.' + after + ' 도전 중이에요' + (dropMust ? ' · 꼭 넣을 곳도 뺐어요' : ''));
     return;
   }
-  if (after > before) { showLevelUp(after); return; }
   if (!wasMaster && isMaster()) { showLevelUp(6); return; }
+  if (after > before) { showLevelUp(after); return; }
   if (!on) { toast('도장을 뺐어요'); return; }
   const p = BY_ID[id], me = myLevel();
   toast('도장 쾅! ' + p.short + (isMaster() ? '' : p.lv === me ? ' · Lv.' + me + ' 도장 ' + Math.min(stampCount(me), LV_NEED[me]) + '/' + LV_NEED[me] : p.lv > me ? ' · Lv.' + p.lv + ' 도장은 그 레벨이 열리면 쳐줘요' : ''));
 }
 
 /* ================= favourites ================= */
+let lastTapAt = 0;
 function toggleFav(id) {
   const i = favs.indexOf(id);
   if (i >= 0) favs.splice(i, 1); else favs.push(id);
@@ -2619,27 +2779,53 @@ function renderStamped() { $('#stamped').innerHTML = stampListHTML(); }
 
 /* ================= sheet ================= */
 let lastFocus = null, sheetCloseCb = null;
+let sheetOpenedAt = 0;
+function setInert(on) { for (const el of [document.querySelector('.top'), document.querySelector('.main'), document.querySelector('.tabbar')]) if (el) el.inert = on; }
 function openSheet(html, after, onClose) {
   /* one sheet replacing another (a stamp that levels you up): finish the old one first */
   if (!$('#sheet').hidden) { const cb = sheetCloseCb; sheetCloseCb = null; if (cb) cb(); }
   else lastFocus = document.activeElement;
   $('#sheet-body').innerHTML = html;
   $('#scrim').hidden = false;
-  const sh = $('#sheet'); sh.hidden = false; sh.scrollTop = 0;
+  const sh = $('#sheet'); sh.hidden = false; $('#sheet-body').scrollTop = 0;
+  sheetOpenedAt = Date.now();
+  $('#app').classList.add('sheet-open'); setInert(true);
   sheetCloseCb = onClose || null;
   $('#sheet-close').focus({ preventScroll: true });
   if (after) after();
+  syncHist();
 }
 function closeSheet() {
   if ($('#sheet').hidden) return;
   $('#sheet').hidden = true; $('#scrim').hidden = true;
+  $('#app').classList.remove('sheet-open'); setInert(false);
   const cb = sheetCloseCb; sheetCloseCb = null;
   if (cb) cb();
   if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll: true });
+  syncHist();
 }
-function todayHoursText(p) {
-  const h = hoursOn(p, new Date());
-  if (!h) return '오늘 휴무';
+/* Android back (and browser back): close the sheet, then go back to the course tab, then leave.
+   One history entry stands for "something is open"; it is added and removed as that changes. */
+let innerHist = false, ignorePop = false, histT = 0;
+function syncHist() {
+  clearTimeout(histT);
+  histT = setTimeout(() => {
+    const open = !$('#sheet').hidden || tab !== 'course';
+    try {
+      if (open && !innerHist) { history.pushState({ honja: 1 }, ''); innerHist = true; }
+      else if (!open && innerHist) { innerHist = false; ignorePop = true; history.back(); }
+    } catch (e) { /* framed preview without history: nothing to do */ }
+  }, 60);
+}
+window.addEventListener('popstate', () => {
+  if (ignorePop) { ignorePop = false; return; }
+  innerHist = false;
+  if (!$('#sheet').hidden) closeSheet();
+  else if (tab !== 'course') switchTab('course');
+});
+function todayHoursText(p, date) {
+  const h = hoursOn(p, date || new Date());
+  if (!h) return '휴무';
   if (h[0] === 0 && h[1] >= 1440) return '상시';
   return fmtTime(h[0]) + '–' + (h[1] >= 1440 ? '24:00' : fmtTime(h[1]));
 }
@@ -2649,13 +2835,14 @@ function openPlace(id) {
   const from = state.start === 'here' && state.here ? state.here : pick('start', state.start);
   const q = searchQuery(p, p.generic ? { near: nearUrban(from) } : null);
   const locked = p.lv > myLevel();
+  const day = course ? course.o.date : new Date(), dayLabel = course && course.o.dayOffset ? dayWord(course.o) + ' 운영' : '오늘 운영';
   const html = '<p class="s-eyebrow"><span class="cdot" style="--c:' + cat.c + '"></span>' + esc(cat.label) + ' · ' + esc(p.area) + '</p>' +
     '<h2 class="s-title" id="sheet-title">' + esc(p.name) + '</h2>' +
     '<div class="s-lv">혼놀&nbsp;' + pipsHTML(p.lv) + 'Lv.' + p.lv + ' ' + esc(LEVELS[p.lv].name) + '</div>' +
     '<dl class="facts">' +
       '<div><dt>머무는 시간</dt><dd>약 ' + fmtDur(p.stay) + '</dd></div>' +
       '<div><dt>예상 비용</dt><dd>' + fmtWon(p.cost) + '</dd></div>' +
-      '<div><dt>오늘 운영</dt><dd class="num">' + esc(todayHoursText(p)) + '</dd></div>' +
+      '<div><dt>' + esc(dayLabel) + '</dt><dd class="num">' + esc(todayHoursText(p, day)) + '</dd></div>' +
       '<div><dt>실내·야외</dt><dd>' + (p.indoor ? '실내' : p.covered ? '지붕 있음' : '야외') + '</dd></div>' +
     '</dl>' +
     '<p class="s-tip">' + esc(p.tip) + '</p>' +
@@ -2674,7 +2861,16 @@ function openPlace(id) {
     const rb = $('#s-report'); if (rb) rb.addEventListener('click', () => openReport(id));
     $('#s-must').addEventListener('click', () => {
       if (locked && p.lv > myLevel()) { toast(lockMsg(p.lv)); return; }
-      if (p.lv > pick('lv', state.lv).max) { state.lv = 'l' + p.lv; renderLvChips(); updateCond(); }
+      const o = course ? course.o : null;
+      if (o && !hoursOn(p, o.date)) { toast(josa(p.short, '은', '는') + ' ' + dayWord(o) + ' 휴무예요. 세부 설정에서 언제를 바꿔 보세요.'); return; }
+      if (state.rain === 'rain' && !(p.indoor || p.covered)) { toast('비 오는 날 설정이라 야외인 ' + josa(p.short, '은', '는') + ' 못 넣어요'); return; }
+      const msgs = [];
+      if (p.lv > pick('lv', state.lv).max) { state.lv = 'l' + p.lv; msgs.push('레벨을 Lv.' + p.lv + '로'); }
+      if (p.cost > pick('budget', state.budget).won) {
+        const b = OPT.budget.find(x => x.won >= p.cost);
+        if (b) { state.budget = b.id; msgs.push('예산을 ' + (b.id === 'b9' ? '넉넉히로' : b.label + '으로')); }
+      }
+      if (msgs.length) { renderOptions(); setTimeout(() => toast(msgs.join(', ') + ' 바꿨어요'), 60); }
       state.must = id; recentIds = []; saveOpts(); renderMust();
       closeSheet(); switchTab('course');
       regenerate(true);
@@ -2788,15 +2984,30 @@ function openAbout() {
       '<li>궁궐·선정릉은 만 24세 이하 무료고, 국립현대미술관도 청소년·대학생 무료 혜택이 있어요. 코스 비용은 일반 요금으로 계산해요.</li>' +
       '<li>다녀온 곳에 ‘다녀왔어요’를 누르면 도장이 찍혀요. 지금 레벨의 장소에 도장을 모으면 다음 혼놀 레벨이 열리고, 그 레벨 장소가 코스에 들어가요.</li>' +
       '<li>위쪽 해·달 버튼으로 화면을 밝게, 어둡게, 검정으로 고를 수 있어요. 처음엔 기기 설정을 따라가요.</li>' +
-      '<li>찜, 도장, 설정은 이 기기에만 저장돼요. 회원가입도, 광고도 없어요.</li>' +
+      '<li>찜, 도장, 설정은 이 기기에만 저장돼요. 회원가입도, 광고도 없어요. 아래 버튼으로 언제든 지울 수 있어요.</li>' +
       (reportMode() === 'off' ? '' : '<li>장소 정보의 ‘제보하기’로 1인석, 분위기 같은 혼놀 정보를 알려 줄 수 있어요. 보낸 내용은 확인한 뒤 앱에 반영해요.</li>') +
     '</ul>' +
     '<h3>동네 어디서나 혼놀</h3>' +
     '<ul>' + PLACES.filter(p => p.generic).map(p => '<li><b>' + esc(p.name) + '</b> · Lv.' + p.lv + ' · ' + esc(p.info) + '</li>').join('') + '</ul>' +
+    '<h3>이용 안내</h3>' +
+    '<ul>' +
+      '<li>장소·운영시간·요금·지하철 정보는 참고용이에요. 실제와 다를 수 있으니 가기 전에 꼭 확인해 주세요.</li>' +
+      '<li>코스는 제안일 뿐이에요. 이동과 장소 이용은 스스로 판단해서 안전하게 해 주세요. 앱 정보만 믿고 생긴 손해는 책임지기 어려워요.</li>' +
+      '<li>무료로 제공하고, 기능과 정보는 예고 없이 바뀌거나 멈출 수 있어요.</li>' +
+    '</ul>' +
     (links.length ? '<div class="s-actions">' + links.join('') + '</div>' : '') +
+    '<div class="s-actions"><button type="button" class="btn" id="wipe">이 기기에 저장된 기록 모두 지우기</button></div>' +
     '<p class="s-fine">혼자놀자 1.0 · 서울 베타</p>' +
     '</div>';
-  openSheet(html);
+  openSheet(html, () => {
+    let armed = 0;
+    $('#wipe').addEventListener('click', e => {
+      const b = e.currentTarget;
+      if (Date.now() - armed > 5000) { armed = Date.now(); b.textContent = '정말 지울까요? 한 번 더 누르면 찜·도장·설정이 모두 지워져요'; return; }
+      try { Object.keys(localStorage).filter(k => /^(honjanolja|honnolgak)\./.test(k)).forEach(k => localStorage.removeItem(k)); } catch (err) { /* nothing stored */ }
+      location.reload();
+    });
+  });
 }
 /* ================= 화면 밝기 ================= */
 /* default follows the device; the picker pins 밝게 / 어둡게 / 검정 on this device */
@@ -2985,11 +3196,12 @@ const catOn = new Set(Object.keys(CATS));
 const pinEls = new Map(), labelEls = [], clusterPool = [], stopEls = [];
 const WB = { x1: P(126.76, 37.71)[0], y1: P(126.76, 37.71)[1], x2: P(127.20, 37.42)[0], y2: P(127.20, 37.42)[1] };
 
-function boundsView(b, pad) {
+function boundsView(b, pad, padR) {
+  if (padR === undefined) padR = pad;
   const [x1, y1] = P(b[0], b[3]), [x2, y2] = P(b[2], b[1]);
-  const pw = mapW - pad * 2, ph = mapH - pad * 2;
+  const pw = mapW - pad - padR, ph = mapH - pad * 2;
   const s = clamp(Math.min(pw / (x2 - x1), ph / (y2 - y1)), sMin, sMax);
-  return { s, tx: (mapW - (x2 - x1) * s) / 2 - x1 * s, ty: (mapH - (y2 - y1) * s) / 2 - y1 * s };
+  return { s, tx: pad + (pw - (x2 - x1) * s) / 2 - x1 * s, ty: (mapH - (y2 - y1) * s) / 2 - y1 * s };
 }
 function clampView() {
   const m = 70;
@@ -3076,7 +3288,7 @@ function renderMap() {
     const w = +d.dataset.w;
     taken.push([x - w / 2, y - 9, x + w / 2, y + 9]);
   }
-  const pinLabels = view.s >= 60;
+  const pinLabels = view.s >= 45;
   overlay.classList.toggle('labels', pinLabels);
   $('#metro-g').setAttribute('class', 'metro ' + (view.s >= 34 ? 'near' : 'far') + (courseOnMap ? ' dim' : ''));
   const onCourse = new Set(courseOnMap ? courseOnMap.stops.map(s => s.p.id) : []);
@@ -3089,15 +3301,21 @@ function renderMap() {
     pts.push({ p, el, x, y });
   }
   /* greedy screen-space clustering; the selected pin always stays single */
-  const clusters = [];
+  const clusters = [], maxZoom = view.s >= sMax * 0.98;
   for (const pt of pts) {
     if (pt.p.id === selected) { clusters.push({ x: pt.x, y: pt.y, items: [pt], fixed: true }); continue; }
+    if (maxZoom) {
+      while (clusters.some(k => Math.hypot(k.x - pt.x, k.y - pt.y) < 24)) pt.x += 28;
+      clusters.push({ x: pt.x, y: pt.y, items: [pt] }); continue;
+    }
     let c = null;
-    for (const k of clusters) if (!k.fixed && Math.hypot(k.x - pt.x, k.y - pt.y) < 26) { c = k; break; }
+    for (const k of clusters) if (!k.fixed && Math.hypot(k.x - pt.x, k.y - pt.y) < 32) { c = k; break; }
     if (c) { c.items.push(pt); c.x = c.items.reduce((a, i) => a + i.x, 0) / c.items.length; c.y = c.items.reduce((a, i) => a + i.y, 0) / c.items.length; }
     else clusters.push({ x: pt.x, y: pt.y, items: [pt] });
   }
   let ci = 0;
+  const singles = [], dots = [];
+  for (const c of clusters) dots.push(c.items.length === 1 ? [c.x - 14, c.y - 14, c.x + 14, c.y + 14] : [c.x - 19, c.y - 19, c.x + 19, c.y + 19]);
   for (const c of clusters) {
     if (c.items.length === 1) {
       const { el, p, x, y } = c.items[0];
@@ -3106,7 +3324,7 @@ function renderMap() {
       el.classList.toggle('sel', p.id === selected);
       el.classList.toggle('dim', !!courseOnMap);
       taken.push([x - 14, y - 14, x + 14, y + 14]);
-      if (pinLabels || p.id === selected) taken.push([x + 14, y - 12, x + 16 + textW(p.short, 12.5), y + 10]);
+      singles.push(c.items[0]);
     } else {
       for (const it of c.items) it.el.hidden = true;
       let b = clusterPool[ci];
@@ -3126,6 +3344,17 @@ function renderMap() {
     }
   }
   for (; ci < clusterPool.length; ci++) clusterPool[ci].hidden = true;
+  {
+    const over = (r, list) => list.some(o => r[0] < o[2] && r[2] > o[0] && r[1] < o[3] && r[3] > o[1]);
+    const names = [];
+    singles.sort((a, b) => (b.p.id === selected) - (a.p.id === selected));
+    for (const { el, p, x, y } of singles) {
+      const box = [x + 14, y - 12, x + 16 + textW(p.short, 12.5), y + 10];
+      const show = p.id === selected || (pinLabels && !over(box, names) && !over(box, dots.filter(d => !(d[0] === x - 14 && d[1] === y - 14))));
+      el.classList.toggle('lbl', show);
+      if (show) { names.push(box); taken.push(box); }
+    }
+  }
   /* course stops */
   let si = 0;
   if (courseOnMap) {
@@ -3134,9 +3363,12 @@ function renderMap() {
     const seen = new Map();
     for (const s of stops) {
       let [x, y] = screenOf(s.lon, s.lat);
-      const key = Math.round(x / 6) + ':' + Math.round(y / 6);
-      const dup = seen.get(key) || 0; seen.set(key, dup + 1);
-      x += dup * 22; y -= dup * 6;
+      /* keep clear of the markers and names already placed (출발 and 1 are often a few metres apart) */
+      const lw = 22 + textW(s.label, 12.5);
+      const hits = () => [...seen.values()].some(q => Math.hypot(q[0] - x, q[1] - y) < 26 || (x + 16 > q[0] + 16 && x - 16 < q[0] + 16 + q[2] && Math.abs(y - q[1]) < 22));
+      let tries = 0;
+      while (tries++ < 6 && hits()) y += 28;
+      seen.set(si, [x, y, lw]);
       let el = stopEls[si];
       if (!el) { el = document.createElement('button'); el.type = 'button'; el.className = 'smark'; el.innerHTML = '<b></b><i></i>'; overlay.appendChild(el); stopEls.push(el); }
       el.hidden = false;
@@ -3222,7 +3454,7 @@ function drawCourseOverlay(fit) {
     let lo1 = 999, la1 = 999, lo2 = -999, la2 = -999;
     for (const [lo, la] of pts) { lo1 = Math.min(lo1, lo); lo2 = Math.max(lo2, lo); la1 = Math.min(la1, la); la2 = Math.max(la2, la); }
     const padLon = Math.max(0.004, (lo2 - lo1) * 0.18), padLat = Math.max(0.003, (la2 - la1) * 0.18);
-    animateTo(boundsView([lo1 - padLon, la1 - padLat, lo2 + padLon, la2 + padLat], 40));
+    animateTo(boundsView([lo1 - padLon, la1 - padLat, lo2 + padLon, la2 + padLat], 40, 110));
     setRegionPressed('');
   }
   scheduleRender();
@@ -3321,7 +3553,7 @@ $('#zfit').addEventListener('click', () => { animateTo(boundsView(REGIONS[0].b, 
 $('#zmetro').addEventListener('click', () => setMetro(!metroOn));
 document.addEventListener('click', e => {
   const r = e.target.closest('[data-region]');
-  if (r) { const reg = REGIONS.find(x => x.id === r.dataset.region); animateTo(boundsView(reg.b, reg.id === 'all' ? 16 : 28)); setRegionPressed(reg.id); hideHint(); return; }
+  if (r) { const reg = REGIONS.find(x => x.id === r.dataset.region); animateTo(boundsView(reg.b, reg.id === 'all' ? 16 : 28, reg.id === 'all' ? 16 : 56)); setRegionPressed(reg.id); hideHint(); return; }
   const c = e.target.closest('[data-cat]');
   if (c) {
     const k = c.dataset.cat;
@@ -3337,9 +3569,9 @@ document.addEventListener('click', e => {
   const m = e.target.closest('[data-mapto]');
   if (m) { focusPlaceOnMap(m.dataset.mapto); return; }
   const fv = e.target.closest('[data-fav]');
-  if (fv) { toggleFav(fv.dataset.fav); return; }
+  if (fv) { if (Date.now() - lastTapAt > 450) { lastTapAt = Date.now(); toggleFav(fv.dataset.fav); } return; }
   const st = e.target.closest('[data-stamp]');
-  if (st) { toggleStamp(st.dataset.stamp); }
+  if (st) { if (Date.now() - lastTapAt > 450) { lastTapAt = Date.now(); toggleStamp(st.dataset.stamp); } }
 });
 function focusPlaceOnMap(id) {
   const p = BY_ID[id];
@@ -3347,9 +3579,11 @@ function focusPlaceOnMap(id) {
   switchTab('map');
   if (!mapInit) return;
   const s1 = Math.max(view.s, 110), [wx, wy] = P(p.lon, p.lat);
-  animateTo({ s: s1, tx: mapW / 2 - wx * s1, ty: mapH * 0.35 - wy * s1 });
+  animateTo({ s: s1, tx: mapW / 2 - wx * s1, ty: mapH * 0.42 - wy * s1 });
   setRegionPressed('');
-  setTimeout(() => openPlace(id), reduceMotion() ? 0 : 320);
+  /* show the place on the map; its sheet opens when the pin is tapped (a sheet right away would cover it) */
+  selected = id; scheduleRender();
+  toast('핀을 누르면 자세한 정보가 열려요');
 }
 
 /* ================= tabs ================= */
@@ -3359,7 +3593,12 @@ function switchTab(name) {
     $('#tab-' + t).hidden = t !== name;
     $('#tb-' + t).setAttribute('aria-selected', String(t === name));
   }
-  if (name === 'map') ensureMap();
+  if (name === 'map') {
+    ensureMap();
+    /* the course changed while the map was hidden: frame the new one */
+    if (courseRefit && courseOnMap && mapInit) { courseRefit = false; drawCourseOverlay(true); }
+  }
+  syncHist();
 }
 document.querySelectorAll('.tabbar [data-tab]').forEach(b => b.addEventListener('click', () => { closeSheet(); switchTab(b.dataset.tab); }));
 $('.tabbar').addEventListener('keydown', e => {
@@ -3374,10 +3613,13 @@ $('#opts').addEventListener('change', e => {
   const t = e.target;
   if (t.id === 'start-sel') {
     if (t.value === 'here') { useMyLocation(); return; }
+    geoReq++;
     state.start = t.value; recentIds = []; saveOpts(); updateMoreSummary(); regenerate(false);
     return;
   }
   if (t.type === 'radio' && OPT[t.name]) {
+    const lk = t.closest('.chip.locked');
+    if (lk) { const cur = document.getElementById('o-lv-' + state.lv); if (cur) cur.checked = true; toast(lockMsg(+lk.dataset.locked)); return; }
     state[t.name] = t.value; recentIds = []; saveOpts(); updateMoreSummary(); regenerate(false);
   }
 });
@@ -3393,13 +3635,14 @@ $('#opts').addEventListener('submit', e => {
   reroll();
   const tk = $('#ticket'); if (tk) tk.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' });
 });
-$('#btn-lv-help').addEventListener('click', () => { $('#levels-h').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); });
+$('#btn-lv-help').addEventListener('click', openLadder);
 $('#btn-about').addEventListener('click', openAbout);
 $('#btn-theme').addEventListener('click', openThemePicker);
 if (darkMQ && darkMQ.addEventListener) darkMQ.addEventListener('change', paintTheme);
 paintTheme();
 $('#sheet-close').addEventListener('click', closeSheet);
-$('#scrim').addEventListener('click', closeSheet);
+/* the second tap of a double tap that opened a sheet must not close it again */
+$('#scrim').addEventListener('click', () => { if (Date.now() - sheetOpenedAt > 450) closeSheet(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
 if ('ResizeObserver' in window) new ResizeObserver(() => { if (tab === 'map') { measureMap(); if (mapInit) { clampView(); renderMap(); } else ensureMap(); } }).observe(mapEl);
 

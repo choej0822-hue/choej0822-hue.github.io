@@ -1,6 +1,6 @@
 /* 혼자놀자 service worker: works offline after the first visit.
    Bump CACHE when you change files so phones pick up the new version. */
-const CACHE = 'honjanolja-v1';
+const CACHE = 'honjanolja-v2';
 const CORE = ['./', './index.html', './manifest.webmanifest', './privacy.html', './fonts/display.woff',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/favicon-32.png', './icons/apple-touch-icon.png'];
 
