@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.choej0822_hue.honjanolja",
+      "sha256_cert_fingerprints": [
+        "0C:73:82:5A:02:BB:49:58:16:48:7B:B4:7E:11:3E:1A:24:7F:AE:12:8E:42:92:4A:06:C4:8F:78:AD:05:E8:59"
+      ]
+    }
+  }
+]
